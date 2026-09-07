@@ -7,18 +7,27 @@ submissions into GoHighLevel.
 ├── index.html            home
 ├── how-it-works.html     ten stages, division of labor
 ├── is-it-for-you.html    fit list and FAQ
+├── for-buyers.html       buyer track + qualification form
 ├── the-book.html         coming soon + waitlist capture
 ├── about.html            Brian and Gina (needs real bio)
 ├── apply.html            deal analysis form
 ├── api/
 │   ├── deal-analysis.js  → GHL_DEAL_WEBHOOK_URL
+│   ├── buyer-inquiry.js  → GHL_BUYER_WEBHOOK_URL
 │   └── book-waitlist.js  → GHL_BOOK_WAITLIST_WEBHOOK_URL
+├── build.py              regenerates every page — edit here, not in the HTML
 ├── nextjs/               same handlers as Next.js route files,
 │                         if this ever moves into an app
 └── ghl-build.md          workflow spec: fields, tags, sequences
 ```
 
-No build step and no dependencies. Vercel serves the HTML from root and
+**Editing pages:** the CSS and the shared nav, footer, and form script are
+inlined into every HTML file so each page stands alone (useful for pasting
+one into a GHL page). That means the HTML is generated — change `build.py`
+and run `python3 build.py`, or a copy edit will silently drift from the
+other six pages. Output goes straight into this folder.
+
+No build step on the host and no dependencies. Vercel serves the HTML from root and
 picks up `api/` automatically. Framework preset: **Other**.
 
 ---
@@ -29,9 +38,9 @@ The sequence matters — GHL can't map webhook fields until it has seen a
 real payload, so the site has to be live before the workflows can be
 finished.
 
-**1. Create both GHL workflows, triggers only.**
-Workflow → Inbound Webhook trigger → copy the URL. Do this twice, once
-per form. Don't build the actions yet.
+**1. Create all three GHL workflows, triggers only.**
+Workflow → Inbound Webhook trigger → copy the URL. Once per form:
+deal analysis, buyer list, book waitlist. Don't build the actions yet.
 
 **2. Push and deploy.**
 
@@ -52,6 +61,7 @@ Variables, for Production and Preview:
 
 ```
 GHL_DEAL_WEBHOOK_URL=https://...
+GHL_BUYER_WEBHOOK_URL=https://...
 GHL_BOOK_WAITLIST_WEBHOOK_URL=https://...
 ```
 
@@ -96,4 +106,7 @@ hit, add Vercel's WAF rules or a per-IP check in the handler.
 - [ ] Replace `hello@example.com` in the form fallback message
 - [ ] Decide whether to show the enrollment price
 - [ ] Add testimonials from students who have closed
+- [ ] Confirm what conveys with a buyer property (furnished, managed, tenanted)
+- [ ] Confirm whether buyers are matched before or after renovation starts
+- [ ] Disclose any buyer-side fee on for-buyers.html
 - [ ] Point a custom domain at the deployment

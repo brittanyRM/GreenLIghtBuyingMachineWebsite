@@ -117,6 +117,19 @@
   ol.stages b{font-family:var(--display);font-weight:600;letter-spacing:-.01em}
   ol.stages span{display:block;font-size:.95rem;opacity:.75;line-height:1.45}
 
+  .doors{display:grid;gap:1.5rem;grid-template-columns:1fr;margin-top:2.5rem}
+  @media(min-width:52rem){.doors{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .door{border:1px solid var(--rule);padding:clamp(1.5rem,3vw,2.25rem);display:flex;
+    flex-direction:column;border-top:4px solid var(--green)}
+  .door.buy{border-top-color:var(--amber)}
+  .door .who{font-family:var(--plan);font-size:.75rem;letter-spacing:.08em;
+    color:var(--green);margin-bottom:.9rem}
+  .door.buy .who{color:var(--amber)}
+  .door h3{font-size:clamp(1.3rem,1.1rem + .8vw,1.75rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.75rem}
+  .door p{flex:1;max-width:none}
+  .door .cta-row{margin-top:1.25rem}
+  .band .door{border-color:rgba(232,231,224,.3)}
+
   .qa{border-top:1px solid var(--rule);padding-block:1.4rem;max-width:44rem}
   .qa h3{margin-bottom:.35rem}
   .qa p{margin-bottom:0;max-width:none}
@@ -175,8 +188,8 @@
     <a class="brand" href="index.html">Green Light<br>Buying Machine</a>
     <ul>
 <li><a href="index.html" aria-current="page">Home</a></li>
-<li><a href="how-it-works.html">How it works</a></li>
-<li><a href="is-it-for-you.html">Is it for you</a></li>
+<li><a href="how-it-works.html">Build with us</a></li>
+<li><a href="for-buyers.html">Buy a property</a></li>
 <li><a href="the-book.html">The book</a></li>
 <li><a href="about.html">About</a></li>
     </ul>
@@ -188,10 +201,10 @@
     <div class="hero-grid">
       <div>
         <h1 style="font-size:clamp(2.9rem,1.5rem + 6vw,5.6rem)">One house.<br>Seven doors.</h1>
-        <p class="lede">A done-with-you program for flippers who already know how to run a rehab. We source the deal. You renovate it to co-living standard. We bring the buyer.</p>
+        <p class="lede">Co-living conversions in Arizona, built by operators who already know how to run a rehab and sold to investors who want the finished product. We connect both ends and stand in the middle.</p>
         <div class="cta-row">
-          <a class="btn" href="apply.html">Get a deal analyzed</a>
-          <a class="btn ghost" href="how-it-works.html">See how it works</a>
+          <a class="btn" href="how-it-works.html">I build</a>
+          <a class="btn ghost" href="for-buyers.html">I buy</a>
         </div>
       </div>
       <figure style="margin:0">
@@ -269,10 +282,27 @@
 
 <section>
   <div class="wrap">
-    <h2>Built for operators, not beginners</h2>
-    <p>The program takes flippers with completed projects behind them and puts them into an Arizona cohort. If you've never run a renovation, this isn't the right starting point &mdash; and we'd rather say so now.</p>
-    <div class="cta-row">
-      <a class="btn ghost" href="is-it-for-you.html">Read the honest fit list</a>
+    <h2>Two ways in</h2>
+    <p>The model has two sides. Operators build the houses. Investors buy them. Both sides are qualified before we put a deal in front of anyone.</p>
+    <div class="doors">
+      <div class="door">
+        <div class="who">If you build</div>
+        <h3>Build one of our houses</h3>
+        <p>You have completed renovations and a crew. We source the deal, coach you through the conversion, and bring the buyer at the end. You run the job.</p>
+        <p style="opacity:.75;font-size:.95rem"><b>Requires:</b> completed projects, capital, an Arizona property.</p>
+        <div class="cta-row">
+          <a class="btn" href="how-it-works.html">See how the program works</a>
+        </div>
+      </div>
+      <div class="door buy">
+        <div class="who">If you buy</div>
+        <h3>Buy a finished property</h3>
+        <p>You want a co-living property that's already converted, furnished, and built to standard &mdash; without running the renovation yourself. We qualify buyers ahead of inventory.</p>
+        <p style="opacity:.75;font-size:.95rem"><b>Requires:</b> proof of funds or financing in place.</p>
+        <div class="cta-row">
+          <a class="btn" href="for-buyers.html">Get on the buyer list</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -296,8 +326,9 @@
     <div>
       <h4>Pages</h4>
       <ul>
-        <li><a href="how-it-works.html">How it works</a></li>
-        <li><a href="is-it-for-you.html">Is it for you</a></li>
+        <li><a href="how-it-works.html">Build with us</a></li>
+        <li><a href="is-it-for-you.html">Is the program for you</a></li>
+        <li><a href="for-buyers.html">Buy a finished property</a></li>
         <li><a href="the-book.html">The book</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="apply.html">Get a deal analyzed</a></li>

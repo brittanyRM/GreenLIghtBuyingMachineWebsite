@@ -1,6 +1,9 @@
 # Green Light Buying Machine — Website to GHL Build
 
-Two inbound webhooks, two workflows, one new custom field group. Everything
+Three inbound webhooks, three workflows, two new custom field groups.
+The site serves two audiences — operators who build a house, and investors
+who buy one — and they need separate pipelines, separate qualification, and
+separate follow-up. Everything
 here attaches to the existing Marcus AI Trigger System rather than replacing
 any of it.
 
@@ -34,6 +37,24 @@ comes up empty for fields that don't exist yet.
 `analysis_verdict` options: `Converts`, `Converts with conditions`,
 `Does not convert`, `Not analyzed`. This one is set by hand after the
 analysis, and it drives the follow-up branch.
+
+**Group: Buyer**
+
+| Field name | Key | Type |
+|---|---|---|
+| Funding Method | `buyer_funding` | Dropdown |
+| Purchase Timeline | `buyer_timeline` | Dropdown |
+| Rentals Owned | `buyer_portfolio` | Dropdown |
+| Buying Criteria | `buyer_criteria` | Multi line |
+| Buyer Tier | `buyer_tier` | Dropdown |
+| Proof of Funds Received | `buyer_pof` | Checkbox |
+
+Dropdown options must match the form exactly.
+`buyer_funding`: `Cash`, `Conventional or DSCR financing`, `1031 exchange`,
+`Partnership or fund`, `Still figuring it out`.
+`buyer_timeline`: `Ready now`, `Next 3 months`, `3 to 6 months`, `Just researching`.
+`buyer_portfolio`: `None yet`, `1 to 3`, `4 to 10`, `More than 10`.
+`buyer_tier`: `core`, `review`, `nurture` — set by the handler, don't edit by hand.
 
 **Group: Attribution**
 
@@ -93,9 +114,58 @@ Split on `completed_renovations`:
 
 ---
 
-## 3. Webhook B — Book waitlist
+## 3. Webhook B — Buyer list
 
-**Workflow:** `WEB-B · Book Waitlist`
+**Workflow:** `WEB-B · Buyer Qualification`
+**Trigger:** Inbound Webhook → `GHL_BUYER_WEBHOOK_URL`
+
+**Pipeline:** new buyer pipeline. I've called it **Pipeline D** below to
+avoid colliding with A, B, and C in the existing Marcus system —
+confirm that letter is free before building.
+
+Payload keys:
+
+```
+first_name, last_name, full_name, email, phone,
+buyer_funding, buyer_timeline, buyer_portfolio, buyer_criteria,
+buyer_tier, source, page, submitted_at
+```
+
+`buyer_tier` is pre-computed by the handler so the workflow doesn't have
+to re-derive it: `core` means funded and moving inside three months,
+`nurture` means still researching or undecided on funding, `review`
+means anything in between.
+
+### Actions
+
+1. **Create/Update Contact** — map name, email, phone, and all six buyer fields.
+2. **Add tag** `D-001-BUYER-INQUIRY` and `SRC-WEBSITE`
+3. **If/Else** on `buyer_tier`:
+   - `core` → tag `D-002-BUYER-QUALIFIED`, create opportunity in Pipeline D,
+     notify Brian and Gina, send the booking link for a criteria call.
+   - `review` → tag `D-002-BUYER-REVIEW`, internal task to look at it manually.
+     Don't auto-book; these need a human read.
+   - `nurture` → tag `D-002-BUYER-NURTURE`, send the education sequence, no call.
+4. **Send email** — confirmation, copy below.
+
+### Proof of funds
+
+Nothing on the site asks for proof of funds, on purpose — asking on a first
+form kills conversion. Collect it on the criteria call and set `buyer_pof`
+manually. A buyer without it should never receive an off-market address.
+
+### Matching buyers to inventory
+
+The payoff for all of this is the SmartList: `buyer_tier` is `core`, `buyer_pof`
+is checked, and criteria match the property. That list is what makes the
+promise on the builder side real — you can only tell an operator you'll bring
+the buyer if you already have qualified buyers waiting.
+
+---
+
+## 4. Webhook C — Book waitlist
+
+**Workflow:** `WEB-C · Book Waitlist`
 **Trigger:** Inbound Webhook → `GHL_BOOK_WAITLIST_WEBHOOK_URL`
 
 Payload: `first_name, last_name, full_name, email, source, page, submitted_at`
@@ -118,7 +188,7 @@ reactivation later, but give it the book first.
 
 ---
 
-## 4. Tag index
+## 5. Tag index
 
 Following `[Pipeline]-[Stage]-[Action]-[Result]`:
 
@@ -129,13 +199,18 @@ Following `[Pipeline]-[Stage]-[Action]-[Result]`:
 | `A-002-QUALIFIED-LIGHT` | 1–3 projects, needs human review |
 | `A-002-QUALIFIED-CORE` | 4+ projects, straight to cohort conversation |
 | `A-003-ANALYSIS-SENT` | Written verdict delivered |
+| `D-001-BUYER-INQUIRY` | Buyer came in through the website |
+| `D-002-BUYER-QUALIFIED` | Funded and moving inside three months |
+| `D-002-BUYER-REVIEW` | Needs a human read before a call |
+| `D-002-BUYER-NURTURE` | Researching, not ready |
+| `D-003-BUYER-POF` | Proof of funds on file |
 | `BOOK-WAITLIST` | Wants the book at launch |
 | `BOOK-PURCHASED` | Suppression tag for launch broadcast |
 | `SRC-WEBSITE` | Attribution |
 
 ---
 
-## 5. Email copy
+## 6. Email copy
 
 ### Deal analysis confirmation — sends immediately
 
@@ -161,6 +236,23 @@ Subject: `Your analysis on {{contact.property_address}}`
 > If you want to talk through what a conversion on this one would actually
 > look like, reply and we'll set up a call.
 
+### Buyer list confirmation — sends immediately
+
+Subject: `You're on the buyer list`
+
+> Thanks for sending this over.
+>
+> We'll reach out to talk through what you're looking for — area, budget,
+> and how the numbers need to work for you. Once we know that, you'll hear
+> from us when a property matches, usually before it's listed anywhere.
+>
+> One thing worth saying now: co-living properties earn from multiple rooms,
+> which means vacancy and management work differently than they do on a
+> standard rental. We'd rather you understand that going in than find out
+> in month three.
+>
+> — Green Light Buying Machine
+
 ### Book waitlist confirmation
 
 Subject: `You're on the list`
@@ -176,7 +268,7 @@ Subject: `You're on the list`
 
 ---
 
-## 6. Test before launch
+## 7. Test before launch
 
 - Submit the deal form with a real address. Confirm the contact, all seven
   custom fields, both tags, and the opportunity all land.
@@ -185,6 +277,9 @@ Subject: `You're on the list`
   *not* created — the route should return 200 and drop it.
 - Submit the waitlist form twice with the same email and confirm it updates
   rather than duplicating.
+- Submit the buyer form once as `Cash` + `Ready now` and confirm it tags
+  `core`, and once as `Still figuring it out` + `Just researching` and
+  confirm it tags `nurture` and does *not* send a booking link.
 - Kill the webhook URL in Vercel env and confirm the form shows the error
   state instead of a false success.
 
@@ -200,3 +295,11 @@ Subject: `You're on the list`
   `hello@example.com`.
 - Decide whether unqualified leads get a standing nurture sequence or sit in a
   SmartList until someone works them.
+- Confirm Pipeline D is a free letter in the existing Marcus system.
+- Decide who owns buyer relationships. The builder side and the buyer side are
+  different jobs, and running both out of one inbox is how the second one gets
+  dropped.
+- Settle what is promised to buyers in writing before any income figures go on
+  the site. Selling a finished property with projected room income attached is
+  a different regulatory posture than teaching a class, and the wording needs
+  counsel.
