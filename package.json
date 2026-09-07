@@ -1,0 +1,7 @@
+{
+  "name": "green-light-buying-machine",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Marketing site for Green Light Buying Machine, with GHL webhook handlers."
+}
