@@ -269,6 +269,7 @@ PLAN_SVG = r"""<svg class="plan" viewBox="0 0 720 460" role="img" aria-labelledb
 
 
 PLANS = [
+    ("plan-ash", "Ash &#183; 8 bedrooms, 7 bathrooms"),
     ("plan-colors", "Ten bedrooms named by colour, around a shared kitchen and living room"),
     ("plan-ten-room", "Ten-room conversion, 2,011 sq ft"),
     ("plan-harmony", "Harmony &#183; 2,074 sq ft"),
@@ -517,7 +518,7 @@ main="""<header class="phead">
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <h1 style="font-size:clamp(2.9rem,1.5rem + 6vw,5.6rem)">One house.<br>Ten doors.</h1>
+        <h1 style="font-size:clamp(2.9rem,1.5rem + 6vw,5.6rem)">One house.<br>Eight doors.</h1>
         <p class="lede">Solving affordable housing, one room at a time. Co-living conversions in Arizona &mdash; built by operators who know how to run a rehab, bought by investors who want the finished product.</p>
         <div class="cta-row">
           <a class="btn" href="how-it-works.html">I build</a>
@@ -525,10 +526,10 @@ main="""<header class="phead">
         </div>
       </div>
       <div>
-        <figure class="shot hero-plan" data-full="images/plans/plan-ten-room.jpg">
-          <img src="images/plans/plan-ten-room.jpg" alt="Floor plan of a completed conversion: ten bedrooms named by colour and numbered one through ten, around a shared kitchen, living room and hall">
+        <figure class="shot hero-plan" data-full="images/plans/plan-ash.jpg">
+          <img src="images/plans/plan-ash.jpg" alt="Floor plan of the Ash conversion: eight bedrooms and seven bathrooms around a shared kitchen, great room, dining area and second sitting area">
         </figure>
-        <p class="plan-cap">Orange&#8209;1 through Brass&#8209;10. One of ours, 2,011 sq ft.</p>
+        <p class="plan-cap">Ash &#183; 8 bedrooms, 7 baths, two living areas.</p>
       </div>
     </div>
   </div>
@@ -1104,7 +1105,7 @@ main=phead("The work", "Homes we&#8217;ve built",
 <section>
   <div class="wrap">
     <h2>Floor plans</h2>
-    <p>Rooms are named by colour rather than numbered &mdash; it reads better to residents and it keeps the plan legible for the crew. Ten bedrooms on a footprint that started as three or four.</p>
+    <p>Eight to ten bedrooms on footprints that started as three or four. Rooms are named rather than numbered where we can &mdash; it reads better to residents and keeps the plan legible for the crew.</p>
     <div class="grid-plans">
 """ + shots(PLANS, "plans") + """</div>
   </div>
