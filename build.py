@@ -76,6 +76,11 @@ CSS = r"""
   @keyframes fadein{to{opacity:1}}
   @media(prefers-reduced-motion:reduce){.plan .new,.plan .fade{animation:none;stroke-dashoffset:0;opacity:1}}
   .plan-cap{font-family:var(--plan);font-size:.78rem;opacity:.55;margin-top:.9rem}
+  .hero-plan{background:#fff;border:1px solid rgba(232,231,224,.3);padding:.75rem;
+    aspect-ratio:auto;display:block}
+  .hero-plan img{width:100%;height:auto;object-fit:contain;background:#fff}
+  .hero-plan::after{content:"";position:absolute;inset:.35rem;
+    border:1px solid rgba(16,28,34,.12);pointer-events:none}
 
   /* layout helpers */
   .split{display:grid;gap:clamp(2rem,4vw,3.5rem);grid-template-columns:1fr}
@@ -519,10 +524,12 @@ main="""<header class="phead">
           <a class="btn ghost" href="for-buyers.html">I buy</a>
         </div>
       </div>
-      <figure style="margin:0">
-        """ + PLAN_SVG + """
-        <figcaption class="plan-cap">Same footprint. Ten rentable rooms instead of one retail sale.</figcaption>
-      </figure>
+      <div>
+        <figure class="shot hero-plan" data-full="images/plans/plan-ten-room.jpg">
+          <img src="images/plans/plan-ten-room.jpg" alt="Floor plan of a completed conversion: ten bedrooms named by colour and numbered one through ten, around a shared kitchen, living room and hall">
+        </figure>
+        <p class="plan-cap">Orange&#8209;1 through Brass&#8209;10. One of ours, 2,011 sq ft.</p>
+      </div>
     </div>
   </div>
 </header>

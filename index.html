@@ -81,6 +81,11 @@
   @keyframes fadein{to{opacity:1}}
   @media(prefers-reduced-motion:reduce){.plan .new,.plan .fade{animation:none;stroke-dashoffset:0;opacity:1}}
   .plan-cap{font-family:var(--plan);font-size:.78rem;opacity:.55;margin-top:.9rem}
+  .hero-plan{background:#fff;border:1px solid rgba(232,231,224,.3);padding:.75rem;
+    aspect-ratio:auto;display:block}
+  .hero-plan img{width:100%;height:auto;object-fit:contain;background:#fff}
+  .hero-plan::after{content:"";position:absolute;inset:.35rem;
+    border:1px solid rgba(16,28,34,.12);pointer-events:none}
 
   /* layout helpers */
   .split{display:grid;gap:clamp(2rem,4vw,3.5rem);grid-template-columns:1fr}
@@ -261,40 +266,12 @@
           <a class="btn ghost" href="for-buyers.html">I buy</a>
         </div>
       </div>
-      <figure style="margin:0">
-        <svg class="plan" viewBox="0 0 720 460" role="img" aria-labelledby="plantitle">
-  <title id="plantitle">Floor plan of a single-family house redivided into ten named bedrooms around a shared kitchen, living room and laundry.</title>
-  <rect class="sheet" x="6" y="6" width="708" height="448"/>
-  <rect class="shell" x="26" y="30" width="668" height="380"/>
-  <line class="keep" x1="170" y1="30" x2="170" y2="410"/>
-  <line class="keep" x1="485" y1="30" x2="485" y2="410"/>
-  <line class="new" x1="170" y1="200" x2="694" y2="200" style="--len:524;--d:.25s"/>
-  <line class="new" x1="170" y1="240" x2="694" y2="240" style="--len:524;--d:.35s"/>
-  <line class="new" x1="275" y1="30"  x2="275" y2="200" style="--len:170;--d:.55s"/>
-  <line class="new" x1="380" y1="30"  x2="380" y2="200" style="--len:170;--d:.62s"/>
-  <line class="new" x1="590" y1="30"  x2="590" y2="200" style="--len:170;--d:.69s"/>
-  <line class="new" x1="275" y1="240" x2="275" y2="410" style="--len:170;--d:.76s"/>
-  <line class="new" x1="380" y1="240" x2="380" y2="410" style="--len:170;--d:.83s"/>
-  <line class="new" x1="590" y1="240" x2="590" y2="410" style="--len:170;--d:.9s"/>
-  <g class="tag" text-anchor="middle" font-size="13">
-    <text class="fade" style="--d:1.15s" x="222" y="120">Blue</text>
-    <text class="fade" style="--d:1.19s" x="327" y="120">Green</text>
-    <text class="fade" style="--d:1.23s" x="432" y="120">Yellow</text>
-    <text class="fade" style="--d:1.27s" x="537" y="120">Orange</text>
-    <text class="fade" style="--d:1.31s" x="642" y="120">Violet</text>
-    <text class="fade" style="--d:1.35s" x="222" y="335">Indigo</text>
-    <text class="fade" style="--d:1.39s" x="327" y="335">Gold</text>
-    <text class="fade" style="--d:1.43s" x="432" y="335">Silver</text>
-    <text class="fade" style="--d:1.47s" x="537" y="335">Bronze</text>
-    <text class="fade" style="--d:1.51s" x="642" y="335">Brass</text>
-  </g>
-  <text class="note fade" style="--d:1.65s" x="360" y="226" text-anchor="middle">shared hall</text>
-  <text class="fade" style="--d:1.65s" transform="translate(105,310) rotate(-90)" font-size="13">kitchen &#183; living &#183; laundry</text>
-  <text class="note fade" style="--d:1.8s" x="26" y="440">existing walls</text>
-  <text class="tag fade" style="--d:1.8s" x="170" y="440">new walls</text>
-</svg>
-        <figcaption class="plan-cap">Same footprint. Ten rentable rooms instead of one retail sale.</figcaption>
-      </figure>
+      <div>
+        <figure class="shot hero-plan" data-full="images/plans/plan-ten-room.jpg">
+          <img src="images/plans/plan-ten-room.jpg" alt="Floor plan of a completed conversion: ten bedrooms named by colour and numbered one through ten, around a shared kitchen, living room and hall">
+        </figure>
+        <p class="plan-cap">Orange&#8209;1 through Brass&#8209;10. One of ours, 2,011 sq ft.</p>
+      </div>
     </div>
   </div>
 </header>
