@@ -7,14 +7,16 @@ submissions into GoHighLevel.
 ├── index.html            home
 ├── how-it-works.html     ten stages, division of labor
 ├── is-it-for-you.html    fit list and FAQ
-├── for-buyers.html       buyer track + qualification form
+├── for-buyers.html       buyer track: lender pre-qual + GHL form embed
+├── homes.html            photo and floor plan gallery
 ├── the-book.html         coming soon + waitlist capture
 ├── about.html            Brian and Gina (needs real bio)
 ├── apply.html            deal analysis form
 ├── api/
 │   ├── deal-analysis.js  → GHL_DEAL_WEBHOOK_URL
-│   ├── buyer-inquiry.js  → GHL_BUYER_WEBHOOK_URL
 │   └── book-waitlist.js  → GHL_BOOK_WAITLIST_WEBHOOK_URL
+├── images/plans/         5 floor plans, full + thumb
+├── images/homes/         17 finished-home photos, full + thumb
 ├── build.py              regenerates every page — edit here, not in the HTML
 ├── nextjs/               same handlers as Next.js route files,
 │                         if this ever moves into an app
@@ -38,9 +40,14 @@ The sequence matters — GHL can't map webhook fields until it has seen a
 real payload, so the site has to be live before the workflows can be
 finished.
 
-**1. Create all three GHL workflows, triggers only.**
-Workflow → Inbound Webhook trigger → copy the URL. Once per form:
-deal analysis, buyer list, book waitlist. Don't build the actions yet.
+**1. Create both GHL workflows, triggers only.**
+Workflow → Inbound Webhook trigger → copy the URL. Once for deal analysis,
+once for the book waitlist. Don't build the actions yet.
+
+The buyer form is different: it's the existing GHL form embedded directly
+on `for-buyers.html`, so it already runs through whatever workflow that
+form is attached to. No webhook needed — but confirm the form ID, since
+the one on the current page is named "Rachelle Test".
 
 **2. Push and deploy.**
 
@@ -61,7 +68,6 @@ Variables, for Production and Preview:
 
 ```
 GHL_DEAL_WEBHOOK_URL=https://...
-GHL_BUYER_WEBHOOK_URL=https://...
 GHL_BOOK_WAITLIST_WEBHOOK_URL=https://...
 ```
 
@@ -106,6 +112,8 @@ hit, add Vercel's WAF rules or a per-IP check in the handler.
 - [ ] Replace `hello@example.com` in the form fallback message
 - [ ] Decide whether to show the enrollment price
 - [ ] Add testimonials from students who have closed
+- [ ] Swap the "Rachelle Test" form ID for the production one
+- [ ] Substantiate the 450+ doors / 15% market share / 26+ years figures
 - [ ] Confirm what conveys with a buyer property (furnished, managed, tenanted)
 - [ ] Confirm whether buyers are matched before or after renovation starts
 - [ ] Disclose any buyer-side fee on for-buyers.html

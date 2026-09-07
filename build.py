@@ -112,6 +112,59 @@ CSS = r"""
   ol.stages b{font-family:var(--display);font-weight:600;letter-spacing:-.01em}
   ol.stages span{display:block;font-size:.95rem;opacity:.75;line-height:1.45}
 
+  .stats{display:grid;gap:1.5rem;grid-template-columns:repeat(3,minmax(0,1fr));
+    padding-block:clamp(2.25rem,4vw,3.25rem)}
+  .stat .n{font-family:var(--display);font-weight:800;letter-spacing:-.03em;
+    font-size:clamp(2.1rem,1.4rem + 3vw,3.6rem);line-height:1;color:var(--green-bright)}
+  .stat .l{font-family:var(--display);font-weight:600;font-size:.82rem;letter-spacing:.02em;
+    opacity:.75;margin-top:.5rem}
+
+  .grid-plans,.grid-homes{display:grid;gap:.75rem;margin-top:1.75rem}
+  .grid-plans{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid-homes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  @media(min-width:44rem){.grid-plans{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid-homes{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media(min-width:66rem){.grid-homes{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  .shot{margin:0;position:relative;overflow:hidden;border:1px solid var(--rule);
+    background:var(--paper-dim);cursor:zoom-in;padding:0}
+  .band .shot{border-color:rgba(232,231,224,.25)}
+  .shot img{width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .35s ease;background:#fff}
+  .grid-homes .shot{aspect-ratio:4/3}
+  .grid-plans .shot{aspect-ratio:4/3}
+  .grid-plans .shot img{object-fit:contain;background:#fff}
+  .shot:hover img,.shot:focus-visible img{transform:scale(1.04)}
+  @media(prefers-reduced-motion:reduce){.shot img{transition:none}
+    .shot:hover img,.shot:focus-visible img{transform:none}}
+  .shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:.5rem .7rem;
+    font-family:var(--plan);font-size:.72rem;color:#fff;
+    background:linear-gradient(to top,rgba(16,28,34,.85),rgba(16,28,34,0));
+    opacity:0;transition:opacity .25s ease}
+  .shot:hover figcaption,.shot:focus-visible figcaption{opacity:1}
+  .grid-plans .shot figcaption{opacity:1;background:linear-gradient(to top,rgba(16,28,34,.8),rgba(16,28,34,0))}
+
+  .lightbox{position:fixed;inset:0;background:rgba(16,28,34,.95);z-index:99;
+    display:none;align-items:center;justify-content:center;padding:clamp(1rem,4vw,3rem)}
+  .lightbox[open],.lightbox.open{display:flex}
+  .lightbox img{max-width:100%;max-height:88vh;object-fit:contain;background:#fff}
+  .lightbox .close{position:absolute;top:1rem;right:1.25rem;background:none;border:0;
+    color:var(--paper);font-size:2.5rem;line-height:1;cursor:pointer;padding:.25rem .5rem}
+  .lightbox .cap{position:absolute;bottom:1.25rem;left:0;right:0;text-align:center;
+    font-family:var(--plan);font-size:.8rem;color:var(--paper);opacity:.8}
+
+  .embed{background:#fff;border:1px solid var(--rule);padding:.5rem;margin-top:1.5rem}
+  .embed iframe{width:100%;min-height:800px;border:0;display:block}
+
+  .steps2{display:grid;gap:1.5rem;grid-template-columns:1fr;margin-top:2rem}
+  @media(min-width:52rem){.steps2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .stepbox{border:1px solid var(--rule);border-top:4px solid var(--green);
+    padding:clamp(1.5rem,3vw,2rem)}
+  .band .stepbox{border-color:rgba(232,231,224,.3);border-top-color:var(--green-bright)}
+  .stepbox .n{font-family:var(--plan);font-size:.75rem;letter-spacing:.08em;
+    color:var(--green);margin-bottom:.75rem}
+  .band .stepbox .n{color:var(--green-bright)}
+  .stepbox p{max-width:none}
+
   .doors{display:grid;gap:1.5rem;grid-template-columns:1fr;margin-top:2.5rem}
   @media(min-width:52rem){.doors{grid-template-columns:repeat(2,minmax(0,1fr))}}
   .door{border:1px solid var(--rule);padding:clamp(1.5rem,3vw,2.25rem);display:flex;
@@ -177,37 +230,90 @@ CSS = r"""
   footer .fine{opacity:.6}
 """
 
-PLAN_SVG = r"""<svg class="plan" viewBox="0 0 720 440" role="img" aria-labelledby="plantitle">
-  <title id="plantitle">Floor plan showing a three-bedroom house redivided into seven rentable rooms around a shared kitchen and living area.</title>
-  <rect class="sheet" x="6" y="6" width="708" height="428"/>
-  <rect class="shell" x="26" y="30" width="668" height="366"/>
-  <line class="keep" x1="150" y1="30" x2="150" y2="396"/>
-  <line class="keep" x1="392" y1="30" x2="392" y2="396"/>
-  <line class="new" x1="150" y1="196" x2="694" y2="196" style="--len:544;--d:.25s"/>
-  <line class="new" x1="150" y1="238" x2="694" y2="238" style="--len:544;--d:.35s"/>
-  <line class="new" x1="272" y1="30"  x2="272" y2="196" style="--len:166;--d:.6s"/>
-  <line class="new" x1="530" y1="30"  x2="530" y2="196" style="--len:166;--d:.7s"/>
-  <line class="new" x1="312" y1="238" x2="312" y2="396" style="--len:158;--d:.8s"/>
-  <line class="new" x1="472" y1="238" x2="472" y2="396" style="--len:158;--d:.9s"/>
-  <g class="tag">
-    <text class="fade" style="--d:1.15s" x="200" y="120">01</text>
-    <text class="fade" style="--d:1.2s"  x="322" y="120">02</text>
-    <text class="fade" style="--d:1.25s" x="452" y="120">03</text>
-    <text class="fade" style="--d:1.3s"  x="602" y="120">04</text>
-    <text class="fade" style="--d:1.35s" x="220" y="330">05</text>
-    <text class="fade" style="--d:1.4s"  x="382" y="330">06</text>
-    <text class="fade" style="--d:1.45s" x="574" y="330">07</text>
+PLAN_SVG = r"""<svg class="plan" viewBox="0 0 720 460" role="img" aria-labelledby="plantitle">
+  <title id="plantitle">Floor plan of a single-family house redivided into ten named bedrooms around a shared kitchen, living room and laundry.</title>
+  <rect class="sheet" x="6" y="6" width="708" height="448"/>
+  <rect class="shell" x="26" y="30" width="668" height="380"/>
+  <line class="keep" x1="170" y1="30" x2="170" y2="410"/>
+  <line class="keep" x1="485" y1="30" x2="485" y2="410"/>
+  <line class="new" x1="170" y1="200" x2="694" y2="200" style="--len:524;--d:.25s"/>
+  <line class="new" x1="170" y1="240" x2="694" y2="240" style="--len:524;--d:.35s"/>
+  <line class="new" x1="275" y1="30"  x2="275" y2="200" style="--len:170;--d:.55s"/>
+  <line class="new" x1="380" y1="30"  x2="380" y2="200" style="--len:170;--d:.62s"/>
+  <line class="new" x1="590" y1="30"  x2="590" y2="200" style="--len:170;--d:.69s"/>
+  <line class="new" x1="275" y1="240" x2="275" y2="410" style="--len:170;--d:.76s"/>
+  <line class="new" x1="380" y1="240" x2="380" y2="410" style="--len:170;--d:.83s"/>
+  <line class="new" x1="590" y1="240" x2="590" y2="410" style="--len:170;--d:.9s"/>
+  <g class="tag" text-anchor="middle" font-size="13">
+    <text class="fade" style="--d:1.15s" x="222" y="120">Blue</text>
+    <text class="fade" style="--d:1.19s" x="327" y="120">Green</text>
+    <text class="fade" style="--d:1.23s" x="432" y="120">Yellow</text>
+    <text class="fade" style="--d:1.27s" x="537" y="120">Orange</text>
+    <text class="fade" style="--d:1.31s" x="642" y="120">Violet</text>
+    <text class="fade" style="--d:1.35s" x="222" y="335">Indigo</text>
+    <text class="fade" style="--d:1.39s" x="327" y="335">Gold</text>
+    <text class="fade" style="--d:1.43s" x="432" y="335">Silver</text>
+    <text class="fade" style="--d:1.47s" x="537" y="335">Bronze</text>
+    <text class="fade" style="--d:1.51s" x="642" y="335">Brass</text>
   </g>
-  <text class="note fade" style="--d:1.6s" x="326" y="223">shared corridor</text>
-  <text class="fade" style="--d:1.6s" transform="translate(96,300) rotate(-90)" font-size="14">kitchen &#183; living &#183; laundry</text>
-  <text class="note fade" style="--d:1.75s" x="26" y="420">existing walls</text>
-  <text class="tag fade" style="--d:1.75s" x="170" y="420">new walls</text>
+  <text class="note fade" style="--d:1.65s" x="360" y="226" text-anchor="middle">shared hall</text>
+  <text class="fade" style="--d:1.65s" transform="translate(105,310) rotate(-90)" font-size="13">kitchen &#183; living &#183; laundry</text>
+  <text class="note fade" style="--d:1.8s" x="26" y="440">existing walls</text>
+  <text class="tag fade" style="--d:1.8s" x="170" y="440">new walls</text>
 </svg>"""
+
+
+PLANS = [
+    ("plan-colors", "Ten bedrooms named by colour, around a shared kitchen and living room"),
+    ("plan-ten-room", "Ten-room conversion, 2,011 sq ft"),
+    ("plan-harmony", "Harmony &#183; 2,074 sq ft"),
+    ("plan-rooms", "Ten bedrooms, 1,926 sq ft"),
+    ("plan-pepper", "Pepper &#183; 1,863 sq ft"),
+]
+
+HOMES = [
+    ("kitchen-navy", "Shared kitchen"),
+    ("common-green", "Common area"),
+    ("kitchen-green", "Shared kitchen"),
+    ("dining-bar", "Dining and living"),
+    ("living-open", "Living room"),
+    ("common-seating", "Common seating"),
+    ("bedroom-eight", "Room 8"),
+    ("bedroom-yellow", "Bedroom"),
+    ("bedroom-desert", "Bedroom"),
+    ("bedroom-two", "Bedroom"),
+    ("harmony-kitchen", "Harmony &#183; kitchen"),
+    ("harmony-common", "Harmony &#183; common area"),
+    ("pepper-kitchen", "Pepper &#183; kitchen"),
+    ("pepper-common", "Pepper &#183; common area"),
+    ("howe-kitchen", "Howe &#183; kitchen"),
+    ("howe-bedroom", "Howe &#183; bedroom"),
+    ("laundry", "Shared laundry"),
+]
+
+def shots(items, folder, limit=None):
+    out = ""
+    for slug, alt in (items[:limit] if limit else items):
+        out += ('<figure class="shot" data-full="images/%s/%s.jpg">'
+                '<img src="images/%s/%s-thumb.jpg" alt="%s" loading="lazy" decoding="async">'
+                '<figcaption>%s</figcaption></figure>\n' % (folder, slug, folder, slug, alt, alt))
+    return out
+
+STATS = """<section class="band">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><div class="n">450+</div><div class="l">Doors produced</div></div>
+      <div class="stat"><div class="n">15%</div><div class="l">Arizona market share</div></div>
+      <div class="stat"><div class="n">26+</div><div class="l">Years of experience</div></div>
+    </div>
+  </div>
+</section>"""
 
 NAVLINKS = [
     ("index.html", "Home"),
     ("how-it-works.html", "Build with us"),
     ("for-buyers.html", "Buy a property"),
+    ("homes.html", "Homes we've built"),
     ("the-book.html", "The book"),
     ("about.html", "About"),
 ]
@@ -238,6 +344,7 @@ FOOTER = """<footer>
         <li><a href="how-it-works.html">Build with us</a></li>
         <li><a href="is-it-for-you.html">Is the program for you</a></li>
         <li><a href="for-buyers.html">Buy a finished property</a></li>
+        <li><a href="homes.html">Homes we&#8217;ve built</a></li>
         <li><a href="the-book.html">The book</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="apply.html">Get a deal analyzed</a></li>
@@ -266,6 +373,55 @@ SHELL = """<!DOCTYPE html>
 {{NAV}}
 {{MAIN}}
 {{FOOTER}}
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <button class="close" id="lightboxClose" aria-label="Close">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+  <div class="cap" id="lightboxCap"></div>
+</div>
+
+<script>
+/* Gallery lightbox. Thumbnails carry the full-size path in data-full so the
+   grid stays light and the big file only loads when someone asks for it. */
+(function () {
+  var box = document.getElementById('lightbox');
+  var img = document.getElementById('lightboxImg');
+  var cap = document.getElementById('lightboxCap');
+  var shots = document.querySelectorAll('.shot');
+  if (!shots.length) return;
+  var last = null;
+
+  function open(shot) {
+    var thumb = shot.querySelector('img');
+    last = shot;
+    img.src = shot.dataset.full || thumb.src;
+    img.alt = thumb.alt;
+    cap.textContent = thumb.alt;
+    box.classList.add('open');
+    document.getElementById('lightboxClose').focus();
+  }
+  function close() {
+    box.classList.remove('open');
+    img.src = '';
+    if (last) last.focus();
+  }
+
+  Array.prototype.forEach.call(shots, function (shot) {
+    shot.setAttribute('tabindex', '0');
+    shot.setAttribute('role', 'button');
+    shot.addEventListener('click', function () { open(shot); });
+    shot.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(shot); }
+    });
+  });
+  document.getElementById('lightboxClose').addEventListener('click', close);
+  box.addEventListener('click', function (e) { if (e.target === box) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && box.classList.contains('open')) close();
+  });
+})();
+</script>
+
 <script>
 /* Handles every form marked .js-form. Posts JSON to the form's action,
    which forwards to GoHighLevel server-side. Messages come from data
@@ -356,8 +512,8 @@ main="""<header class="phead">
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <h1 style="font-size:clamp(2.9rem,1.5rem + 6vw,5.6rem)">One house.<br>Seven doors.</h1>
-        <p class="lede">Co-living conversions in Arizona, built by operators who already know how to run a rehab and sold to investors who want the finished product. We connect both ends and stand in the middle.</p>
+        <h1 style="font-size:clamp(2.9rem,1.5rem + 6vw,5.6rem)">One house.<br>Ten doors.</h1>
+        <p class="lede">Solving affordable housing, one room at a time. Co-living conversions in Arizona &mdash; built by operators who know how to run a rehab, bought by investors who want the finished product.</p>
         <div class="cta-row">
           <a class="btn" href="how-it-works.html">I build</a>
           <a class="btn ghost" href="for-buyers.html">I buy</a>
@@ -365,11 +521,13 @@ main="""<header class="phead">
       </div>
       <figure style="margin:0">
         """ + PLAN_SVG + """
-        <figcaption class="plan-cap">Same footprint. Seven rentable rooms instead of one retail sale.</figcaption>
+        <figcaption class="plan-cap">Same footprint. Ten rentable rooms instead of one retail sale.</figcaption>
       </figure>
     </div>
   </div>
 </header>
+
+""" + STATS + """
 
 <section>
   <div class="wrap">
@@ -407,6 +565,18 @@ main="""<header class="phead">
         <h3>The exit</h3>
         <p>We bring the buyer. You aren't listing into a retail market and hoping &mdash; you know who the property is for before you open a wall.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What a finished one looks like</h2>
+    <p>Not renderings. Houses we&#8217;ve converted, furnished, and put into service.</p>
+    <div class="grid-homes">
+""" + shots(HOMES, "homes", 8) + """</div>
+    <div class="cta-row">
+      <a class="btn ghost" href="homes.html">See all the homes and floor plans</a>
     </div>
   </div>
 </section>
@@ -793,7 +963,7 @@ PAGES["for-buyers.html"] = dict(
 title="Buy a finished co-living property — Green Light Buying Machine",
 desc="Qualified investors get first look at Arizona co-living properties, converted and built to operator standard.",
 main=phead("For investors", "Buy a finished property",
-  "Converted, furnished, and built to standard. You didn't run the renovation and you don't have to fix what someone else got wrong.") + """
+  "Converted, furnished, and built to standard. Pre-qualified buyers get first access when a house goes live.") + """
 
 <section>
   <div class="wrap">
@@ -854,83 +1024,103 @@ main=phead("For investors", "Buy a finished property",
 
 <section class="band" id="qualify">
   <div class="wrap">
-    <div class="split">
-      <div>
-        <h2>Get on the buyer list</h2>
-        <p>Tell us what you're looking for and how you're funding it. If it's a fit, you'll hear from us when something matches &mdash; usually before it's listed anywhere.</p>
-        <form class="js-form" action="/api/buyer-inquiry" method="post" novalidate
-              data-source="buyer list"
-              data-sending="Sending&#8230;"
-              data-success="Got it. We&#8217;ll be in touch to talk through what you&#8217;re looking for.">
-          <div class="hp" aria-hidden="true">
-            <label for="company">Company</label>
-            <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
-          </div>
-          <div class="pair">
-            <div class="field">
-              <label for="b-name">Your name</label>
-              <input id="b-name" name="name" type="text" autocomplete="name" required>
-            </div>
-            <div class="field">
-              <label for="b-phone">Phone</label>
-              <input id="b-phone" name="phone" type="tel" autocomplete="tel">
-            </div>
-          </div>
-          <div class="field">
-            <label for="b-email">Email</label>
-            <input id="b-email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div class="pair">
-            <div class="field">
-              <label for="b-funding">How you'd fund a purchase</label>
-              <select id="b-funding" name="funding" required>
-                <option value="">Select one</option>
-                <option>Cash</option>
-                <option>Conventional or DSCR financing</option>
-                <option>1031 exchange</option>
-                <option>Partnership or fund</option>
-                <option>Still figuring it out</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="b-timeline">Timeline</label>
-              <select id="b-timeline" name="timeline" required>
-                <option value="">Select one</option>
-                <option>Ready now</option>
-                <option>Next 3 months</option>
-                <option>3 to 6 months</option>
-                <option>Just researching</option>
-              </select>
-            </div>
-          </div>
-          <div class="field">
-            <label for="b-portfolio">Rentals you own now</label>
-            <select id="b-portfolio" name="portfolio">
-              <option value="">Select one</option>
-              <option>None yet</option>
-              <option>1 to 3</option>
-              <option>4 to 10</option>
-              <option>More than 10</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="b-notes">What you're looking for</label>
-            <textarea id="b-notes" name="notes" placeholder="Area, budget range, anything else worth knowing."></textarea>
-          </div>
-          <button class="submit" type="submit">Get on the list</button>
-        </form>
+    <h2>Getting qualified is two steps</h2>
+    <p>We can't bring you a deal until you're pre-qualified. When a house goes live it moves fast, and we need to know you can close &mdash; not that you're interested.</p>
+
+    <div class="steps2">
+      <div class="stepbox">
+        <div class="n">STEP ONE</div>
+        <h3>Talk to Rachelle</h3>
+        <p>Rachelle Coffey is the lender we work with. Getting pre-qualified with her is how we know you're ready to purchase the moment a home becomes available. It costs you nothing and takes one conversation.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://go.homeownersfg.com/home/rachelle-coffey" target="_blank" rel="noopener noreferrer">Get pre-qualified with Rachelle &rarr;</a>
+        </div>
       </div>
-      <div>
-        <h3 style="margin-bottom:1rem">What happens next</h3>
-        <ul class="plain">
-          <li>We read what you sent</li>
-          <li>A short call to understand your criteria</li>
-          <li>You go on the qualified list</li>
-          <li>You hear from us when a property matches</li>
-        </ul>
-        <p style="margin-top:2rem;font-size:.95rem;opacity:.8">We don't sell or share this list, and we won't send you properties that don't fit what you told us.</p>
+      <div class="stepbox">
+        <div class="n">STEP TWO</div>
+        <h3>Tell us you're ready</h3>
+        <p>Once Rachelle confirms you're pre-qualified, fill in the form below. That's what puts you on the list &mdash; and pre-qualified buyers get first access when a deal goes live.</p>
+        <div class="cta-row">
+          <a class="btn ghost" href="#ready">Go to the form &darr;</a>
+        </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="ready">
+  <div class="wrap">
+    <h2>Let us know you&#8217;re ready</h2>
+    <p>Already pre-qualified? This is how we know to put you on the list. When a property goes live, this is who we call first.</p>
+    <p class="todo">The embedded form is currently the one named &#8220;Rachelle Test&#8221; &mdash; confirm the production form ID before launch.</p>
+    <div class="embed">
+      <iframe
+        src="https://api.leadconnectorhq.com/widget/form/cIkTFxnNpva0nNDICpQx?notrack=true"
+        id="inline-cIkTFxnNpva0nNDICpQx"
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-activation-type="alwaysActivated"
+        data-deactivation-type="neverDeactivate"
+        data-form-name="Buyer readiness"
+        data-height="800"
+        data-layout-iframe-id="inline-cIkTFxnNpva0nNDICpQx"
+        data-form-id="cIkTFxnNpva0nNDICpQx"
+        title="Buyer readiness form"
+        loading="lazy"
+        allowfullscreen></iframe>
+    </div>
+    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>What you&#8217;d be buying</h2>
+    <p>Finished conversions, furnished and in service. The floor plans and photos are worth looking at before you talk to anyone.</p>
+    <div class="grid-homes">
+""" + shots(HOMES, "homes", 4) + """</div>
+    <div class="cta-row">
+      <a class="btn ghost" href="homes.html">See all the homes and plans</a>
+    </div>
+  </div>
+</section>""")
+
+# ---------------------------------------------------------------- homes
+PAGES["homes.html"] = dict(
+title="Homes we've built — Green Light Buying Machine",
+desc="Finished Arizona co-living conversions and the floor plans behind them.",
+main=phead("The work", "Homes we&#8217;ve built",
+  "Finished conversions and the plans behind them. Every property is held to the same standard, whoever renovated it.") + """
+
+""" + STATS + """
+
+<section>
+  <div class="wrap">
+    <h2>Floor plans</h2>
+    <p>Rooms are named by colour rather than numbered &mdash; it reads better to residents and it keeps the plan legible for the crew. Ten bedrooms on a footprint that started as three or four.</p>
+    <div class="grid-plans">
+""" + shots(PLANS, "plans") + """</div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Finished houses</h2>
+    <p>Shared kitchens, common areas, laundry, and private rooms &mdash; furnished and in service.</p>
+    <div class="grid-homes">
+""" + shots(HOMES, "homes") + """</div>
+    <div class="cta-row">
+      <a class="btn" href="for-buyers.html">Get on the buyer list</a>
+      <a class="btn ghost" href="how-it-works.html">Build one with us</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>More of the construction work</h2>
+    <p>Brian and Gina's construction company has a wider portfolio than the co-living conversions shown here.</p>
+    <p><a class="btn ghost" href="https://trinitydesignconstruction.com/" target="_blank" rel="noopener noreferrer">See Trinity Design and Construction &rarr;</a></p>
   </div>
 </section>""")
 
