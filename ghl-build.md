@@ -29,6 +29,8 @@ comes up empty for fields that don't exist yet.
 | Market Status | `market_status` | Dropdown |
 | Start Timeline | `start_timeline` | Dropdown |
 | Recent Project | `recent_project` | Multi line |
+| Operating Market | `operating_market` | Single line |
+| Expansion Lead | `expansion_lead` | Dropdown |
 | Applicant Tier | `applicant_tier` | Dropdown |
 
 Dropdown options must match the form exactly.
@@ -37,6 +39,8 @@ Dropdown options must match the form exactly.
 `I hire per project`, `I'd need to build one`.
 `applicant_tier`: `core`, `qualified`, `review`, `below_bar` — set by the
 handler, don't edit by hand.
+`expansion_lead`: `yes` when an out-of-state applicant clears the experience
+and crew bar. These are not declines — they're the map for where to open next.
 
 **Group: Property Submission**
 
@@ -119,6 +123,9 @@ instead of three: `core` (meets the bar and starting soon), `qualified`
      reads the recent-project answer and decides.
    - `below_bar` → tag `A-002-BELOW-BAR`, send the honest decline below. No
      opportunity created.
+4. **If** `expansion_lead` is `yes` → tag `EXPANSION-INTEREST` plus a market
+   tag derived from `operating_market` (`MKT-DFW`, `MKT-TAMPA`, and so on).
+   Send the out-of-market email below instead of the booking link.
 4. **Send email** — confirmation or decline, copy below.
 
 The decline matters more than it looks. An operator with four flips today has
@@ -248,6 +255,8 @@ Following `[Pipeline]-[Stage]-[Action]-[Result]`:
 | `A-002-QUALIFIED` | Meets the bar, longer timeline |
 | `A-002-REVIEW` | Borderline, needs a human read |
 | `A-002-BELOW-BAR` | Under the experience or crew requirement |
+| `EXPANSION-INTEREST` | Qualified operator outside Arizona |
+| `MKT-<CITY>` | Which market they operate in |
 | `DEAL-SUBMITTED` | Property came in from the supply side |
 | `SUPPLY-WHOLESALER` / `SUPPLY-AGENT` | Who sent it |
 | `D-001-BUYER-INQUIRY` | Buyer came in through the website |
@@ -288,6 +297,22 @@ Subject: `Not yet — here's what we'd want to see`
 > someone who learned it the hard way.
 >
 > In the meantime, the [FAQ] covers how the co-living model actually works.
+>
+> — Green Light Buying Machine
+
+### Qualified but out of market
+
+Subject: `You'd qualify — wrong state, for now`
+
+> Your background is what we look for. The problem is geography: our deal flow,
+> our lender and our buyers are all in Arizona, and those are most of what
+> you'd be paying for.
+>
+> We're planning which market to open next, and we're deciding it by where
+> qualified operators actually are. You're on the list for yours.
+>
+> If you'd consider running a deal in Arizona in the meantime, reply and we'll
+> talk about it.
 >
 > — Green Light Buying Machine
 
@@ -365,6 +390,9 @@ Subject: `You're on the list`
 - Decide whether unqualified leads get a standing nurture sequence or sit in a
   SmartList until someone works them.
 - Confirm Pipeline D is a free letter in the existing Marcus system.
+- Build the expansion SmartList: `EXPANSION-INTEREST` grouped by market tag.
+  That count, market by market, is the input for where to open next — it's
+  worth reviewing monthly rather than when someone remembers.
 - Decide who owns buyer relationships. The builder side and the buyer side are
   different jobs, and running both out of one inbox is how the second one gets
   dropped.

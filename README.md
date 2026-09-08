@@ -110,11 +110,10 @@ hit, add Vercel's WAF rules or a per-IP check in the handler.
 ## Before launch
 
 - [ ] Real bio and photo on `about.html`
-- [ ] Confirm the ten stage names against the actual Pipeline A
-- [ ] Answer the "is the buyer guaranteed" FAQ, with counsel review
+- [ ] Confirm the buyer-presentation guarantee wording matches the MSA
+      exactly (site now says: we guarantee to present, not to sell)
 - [ ] Confirm whether students can bring their own deal
 - [ ] Real cover art for the book (300 DPI minimum)
-- [ ] Decide whether to show the enrollment price
 - [ ] Add testimonials from students who have closed
 - [ ] Swap the "Rachelle Test" form ID for the production one
 - [ ] Real bio, photo, and Trinity relationship on about.html

@@ -334,7 +334,7 @@ def nav(current):
     <a class="brand" href="index.html">Green Light<br>Buying Machine</a>
     <ul>
 %s    </ul>
-    <a class="btn" href="apply.html">Apply to the program</a>
+    <a class="btn" href="apply.html">Become a student</a>
   </div>
 </nav>""" % items
 
@@ -355,7 +355,7 @@ FOOTER = """<footer>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="the-book.html">The book</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="apply.html">Apply to the program</a></li>
+        <li><a href="apply.html">Apply to become a student</a></li>
         <li><a href="submit-a-property.html">Submit a property</a></li>
       </ul>
     </div>
@@ -505,7 +505,7 @@ CTA_BAND = """<section class="band">
     <h2>Think you're a fit? Tell us about your work.</h2>
     <p>We're looking for operators with 10 to 15 flips behind them and a crew already running. Send us your background and we'll tell you straight whether the program makes sense for you right now.</p>
     <div class="cta-row">
-      <a class="btn" href="apply.html">Apply to the program</a>
+      <a class="btn" href="apply.html">Apply to become a student</a>
       <a class="btn ghost" href="is-it-for-you.html">Read the fit list first</a>
     </div>
   </div>
@@ -522,7 +522,7 @@ main="""<header class="phead">
     <div class="hero-grid">
       <div>
         <h1 style="font-size:clamp(2.9rem,1.5rem + 6vw,5.6rem)">One house.<br>Eight doors.</h1>
-        <p class="lede">Institutional-grade deal flow for PadSplit investors. Our Green Light App underwrites Arizona houses by the room, so operators build the right conversion and investors buy a finished one.</p>
+        <p class="lede">Institutional-grade deal flow for PadSplit investors. The Green Light Way underwrites Arizona houses by the room &mdash; so operators build the right conversion and investors buy a finished one.</p>
         <div class="cta-row">
           <a class="btn" href="how-it-works.html">I build</a>
           <a class="btn ghost" href="for-buyers.html">I buy</a>
@@ -532,7 +532,7 @@ main="""<header class="phead">
         <figure class="shot hero-plan" data-full="images/plans/plan-ash.jpg">
           <img src="images/plans/plan-ash.jpg" alt="Floor plan of the Ash conversion: eight bedrooms and seven bathrooms around a shared kitchen, great room, dining area and second sitting area">
         </figure>
-        <p class="plan-cap">Ash &#183; 8 bedrooms, 7 baths, two living areas.</p>
+        <p class="plan-cap">Ash &#183; 8 bedrooms, 7 baths. Nearly every room ensuite.</p>
       </div>
     </div>
   </div>
@@ -638,7 +638,7 @@ main=phead("The program", "How it works",
       <div class="roles">
         <span class="who">We bring</span>
         <h3>Deal flow</h3>
-        <p>Distressed wholesale properties, already run through the Green Light App and underwritten on rentable rooms rather than bedroom count.</p>
+        <p>Distressed wholesale properties, already underwritten the Green Light way &mdash; on rentable rooms rather than bedroom count.</p>
       </div>
       <div class="roles">
         <span class="who">You own</span>
@@ -648,7 +648,7 @@ main=phead("The program", "How it works",
       <div class="roles">
         <span class="who">We bring</span>
         <h3>The buyer</h3>
-        <p>We work to identify your buyer while you're still renovating &mdash; someone pricing the house on what it produces rather than on what the block comps at.</p>
+        <p>We guarantee to present your finished house to our qualified buyer list &mdash; investors who've bought from us before and are waiting on the next one. Whether one of them buys yours depends on the house and the market.</p>
       </div>
     </div>
   </div>
@@ -656,15 +656,16 @@ main=phead("The program", "How it works",
 
 <section>
   <div class="wrap">
-    <h2>The Green Light App</h2>
+    <h2>The Green Light Way</h2>
+    <p style="margin-bottom:2rem"><b>The floor is eight bedrooms and two bathrooms.</b> We don't build below it, because room count is where the economics come from. Everything above that floor is a decision the numbers make for you.</p>
     <div class="split">
       <div>
-        <p>Bedrooms don't tell you what a co-living house is worth. Rentable rooms do, and that's a different calculation &mdash; egress, bathroom ratios, parking, what the shared space can actually carry.</p>
-        <p>Our underwriting engine runs that math on distressed wholesale inventory before anyone walks a property. Students see houses already screened for room count and margin instead of guessing at a listing.</p>
+        <p>Bedrooms don't tell you what a co-living house is worth. Rentable rooms do &mdash; and not every room is worth the same. PadSplit reports what rooms actually rent for by submarket, and a room with its own ensuite bathroom prices differently than one sharing down the hall.</p>
+        <p>That turns bathroom count into an underwriting decision rather than a finish preference. We run that math on distressed inventory before anyone walks a property, so students see houses already screened for room count, ensuite potential, and margin instead of guessing at a listing.</p>
       </div>
       <div>
-        <p>It's also why we start from scratch rather than converting an existing rental. When you design for the model from the first wall, you get a house that performs instead of a compromise you have to explain to a buyer.</p>
-        <p>The margin comes from the gap between what a distressed house costs and what a converted one is worth to an income buyer. That gap is wider than a retail flip's, which is the whole reason to do this &mdash; but it lives in the specific deal, not in an average we could print here.</p>
+        <p>It's also why we start from scratch rather than converting an existing rental. Adding bathrooms is the kind of thing you can only plan from the first wall &mdash; retrofit it later and you're working around plumbing that was never meant to be there.</p>
+        <p>That's the Green Light Way: buy on what the house can become, build it to the standard the buyer expects, and know who that buyer is before you finish. The margin lives in the specific deal, not in an average we could print here.</p>
       </div>
     </div>
   </div>
@@ -688,11 +689,11 @@ main=phead("The program", "How it works",
 <section>
   <div class="wrap">
     <h2>Ten stages, start to close</h2>
-    <p>Every student runs the same sequence, tracked in your portal so you always know what's next and what's waiting on you. <span class="todo">Confirm stage names against the real pipeline.</span></p>
+    <p>Every student runs the same sequence, tracked in your portal so you always know what's next and what's waiting on you.</p>
     <ol class="stages">
       <li><div><b>Qualification</b><span>We confirm your experience, capital, and capacity before you enroll.</span></div></li>
       <li><div><b>Market brief</b><span>Where co-living works in the Valley, and why &mdash; submarket by submarket.</span></div></li>
-      <li><div><b>Deal sourced</b><span>We bring you a property screened for co-living use through the Green Light App.</span></div></li>
+      <li><div><b>Deal sourced</b><span>We bring you a property already screened for co-living use and room count.</span></div></li>
       <li><div><b>Room-count underwriting</b><span>Pricing a house on rentable rooms instead of bedrooms.</span></div></li>
       <li><div><b>You buy it</b><span>Your offer, your financing, your name on the deed.</span></div></li>
       <li><div><b>Scope and design</b><span>Floor plan, partition strategy, and finish standard.</span></div></li>
@@ -721,7 +722,12 @@ main=phead("The program", "How it works",
         <li>A copy of <i>The Green Light Buying Machine</i></li>
       </ul>
     </div>
-    <p class="todo" style="margin-top:1.5rem">Add enrollment terms and price here once Brian and Gina decide how public to be about the number.</p>
+    <div class="stepbox" style="margin-top:2.5rem;border-top-color:var(--green)">
+      <div class="n">BECOMING A STUDENT</div>
+      <h3 style="font-size:clamp(1.3rem,1.1rem + .8vw,1.75rem);font-weight:800">$15,000, once you're accepted</h3>
+      <p>You apply first. We review your background, and if it's a fit we talk. Payment comes after you're accepted &mdash; not before, and not as a way in.</p>
+      <p style="margin-bottom:0">As a student you get access to everything: we walk you through every step, from the first deal we bring you to the buyer at the end. The full curriculum, the coaching, the deal flow, the standards, the buyer side. It doesn't include the house &mdash; you buy and finance that yourself, the way you would any flip.</p>
+    </div>
   </div>
 </section>
 
@@ -745,7 +751,8 @@ main=phead("Before you apply", "Is it for you?",
           <li>Buy and finance your own deals: first, second, hard money, however you normally stack it</li>
           <li>Are ready to own the entire buildout, start to finish</li>
           <li>Want a different exit, not a different hobby</li>
-          <li>Can work an Arizona property</li>
+          <li>Can work an Arizona property &mdash; that's where our deal flow and buyers are today</li>
+          <li>Can invest $15,000 in the program, if accepted, on top of the deal itself</li>
         </ul>
       </div>
       <div class="col not">
@@ -780,6 +787,22 @@ main=phead("Before you apply", "Is it for you?",
   </div>
 </section>
 
+<section class="band">
+  <div class="wrap">
+    <h2>Not in Arizona?</h2>
+    <div class="split" style="margin-top:1.5rem">
+      <div>
+        <p>Arizona is where we operate today. The deal flow, the lender, the buyer list, and twenty-six years of knowing which streets work &mdash; all of it is here, and that's most of what makes the program worth $15,000.</p>
+        <p>We're building toward other markets. We'd rather do that properly than plant a flag somewhere we can't yet source a deal or bring you a buyer.</p>
+      </div>
+      <div>
+        <p>So apply anyway. Tell us where you operate, and we'll put you on the list for your market. Where we go next is going to be decided by where the qualified operators are &mdash; which means the applications we get.</p>
+        <div class="cta-row"><a class="btn" href="apply.html">Apply and name your market</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <h2>Straight answers</h2>
@@ -793,15 +816,15 @@ main=phead("Before you apply", "Is it for you?",
     </div>
     <div class="qa">
       <h3>Is the buyer guaranteed?</h3>
-      <p><span class="todo">Answer this precisely with Brian and Gina, and have counsel review the wording.</span> Buyer placement is a core part of the model, and how it's described here needs to match exactly what's contractually promised.</p>
+      <p>We guarantee we'll present your finished property to our qualified buyer list &mdash; investors who have already bought from us and are waiting on the next one. What we can't guarantee is that one of them buys yours. That comes down to the house, your execution, and the market when you finish. <span class="todo">Confirm this wording matches the MSA before launch.</span></p>
     </div>
     <div class="qa">
       <h3>Do I have to be in Arizona?</h3>
-      <p>You don't have to live here, but the property does. Cohorts are Arizona-based and the deals we source are in this market.</p>
+      <p>You don't have to live here, but today the property does. Cohorts are Arizona-based because that's where our deal flow, our lender and our buyers are. We're working toward other markets, and applications from out-of-state operators are how we decide which one comes next &mdash; so apply and tell us where you are.</p>
     </div>
     <div class="qa">
-      <h3>How long does one project take?</h3>
-      <p><span class="todo">Add a realistic range from completed student projects.</span></p>
+      <h3>What if the renovation runs long?</h3>
+      <p>Same as any flip &mdash; it's your holding cost and your schedule. What changes is that your buyer is being lined up while you work rather than after you list, so the back end of the timeline isn't sitting on a market you can't control.</p>
     </div>
   </div>
 </section>
@@ -933,7 +956,8 @@ main=phead("For operators", "Apply to the program",
   <div class="wrap">
     <div class="split">
       <div>
-        <p style="margin-bottom:1.75rem">Nothing here is a commitment. It's how we find out whether your experience, your crew, and your capital line up with what the program actually requires &mdash; before either of us spends time on a call.</p>
+        <p>Nothing here is a commitment. It's how we find out whether your experience, your crew, and your capital line up with what the program actually requires &mdash; before either of us spends time on a call.</p>
+        <p style="margin-bottom:1.75rem">Applying costs nothing. If you're accepted, the program is <b>$15,000</b>, separate from the house &mdash; you buy and finance the property yourself. We'd rather you know the number now than three conversations from now.</p>
         <form class="js-form" action="/api/apply" method="post" novalidate
               data-source="program application"
               data-sending="Sending your application&#8230;"
@@ -990,13 +1014,13 @@ main=phead("For operators", "Apply to the program",
           </div>
           <div class="pair">
             <div class="field">
-              <label for="a-market">Arizona properties</label>
+              <label for="a-market">Where you operate</label>
               <select id="a-market" name="market" required>
                 <option value="">Select one</option>
-                <option>I already work the Valley</option>
-                <option>I'm elsewhere in Arizona</option>
-                <option>Out of state, willing to work here</option>
-                <option>Out of state, would rather not</option>
+                <option>The Phoenix valley</option>
+                <option>Elsewhere in Arizona</option>
+                <option>Out of state, would work an Arizona deal</option>
+                <option>Out of state, want it in my market</option>
               </select>
             </div>
             <div class="field">
@@ -1011,6 +1035,11 @@ main=phead("For operators", "Apply to the program",
             </div>
           </div>
           <div class="field">
+            <label for="a-city">Your city and state</label>
+            <input id="a-city" name="city" type="text" placeholder="Mesa, AZ" required>
+            <p class="hint">We run Arizona cohorts today. We're planning where to open next, and applications are how we decide.</p>
+          </div>
+          <div class="field">
             <label for="a-recent">Your last project</label>
             <textarea id="a-recent" name="recent" placeholder="Where it was, what the scope was, how it went. A few lines is fine."></textarea>
           </div>
@@ -1022,7 +1051,9 @@ main=phead("For operators", "Apply to the program",
         <ul class="plain">
           <li>We read it &mdash; a person, not a filter</li>
           <li>If it's a fit, we set up a call</li>
-          <li>If it isn't yet, we'll tell you what would change that</li>
+          <li>If we both want to go ahead, you're accepted</li>
+          <li>Payment comes after that, not before</li>
+          <li>If it isn't a fit yet, we'll tell you what would change that</li>
         </ul>
 
         <h3 style="margin:2rem 0 1rem">Before you apply</h3>
@@ -1040,7 +1071,7 @@ PAGES["submit-a-property.html"] = dict(
 title="Submit a property — Green Light Buying Machine",
 desc="Wholesalers, agents and owners: send us an Arizona property you think converts to co-living.",
 main=phead("Deal flow", "Submit a property",
-  "Have an Arizona house you think would make a good co-living conversion? Send it over. We'll run it through the Green Light App and tell you what we see.") + """
+  "Have an Arizona house you think would make a good co-living conversion? Send it over. We'll underwrite it the Green Light way and tell you what we see.") + """
 
 <section>
   <div class="wrap">
@@ -1086,7 +1117,7 @@ main=phead("Deal flow", "Submit a property",
           <div class="field">
             <label for="p-address">Property address</label>
             <input id="p-address" name="address" type="text" required>
-            <p class="hint">Arizona properties. An MLS or listing link works too.</p>
+            <p class="hint">Arizona properties for now. An MLS or listing link works too.</p>
           </div>
           <div class="pair">
             <div class="field">
@@ -1109,14 +1140,14 @@ main=phead("Deal flow", "Submit a property",
         <h3 style="margin-bottom:1rem">What we look for</h3>
         <ul class="plain">
           <li>Distressed or dated &mdash; we'd rather do the work</li>
-          <li>A footprint that can carry eight to ten rooms</li>
+          <li>A footprint that can carry at least eight bedrooms</li>
           <li>Somewhere residents actually want to live</li>
           <li>Numbers that leave room for a conversion budget</li>
         </ul>
         <p style="margin-top:1.75rem">Not every property works, and we'll tell you why when one doesn't. Send the next one anyway.</p>
 
         <h3 style="margin:2rem 0 1rem">Want to build them instead?</h3>
-        <p>If you're an operator with 10 to 15 flips behind you, <a href="apply.html">apply to the program</a>.</p>
+        <p>If you're an operator with 10 to 15 flips behind you, <a href="apply.html">apply to become a student</a>.</p>
       </div>
     </div>
   </div>
@@ -1138,7 +1169,8 @@ main=phead("For investors", "Buy a finished property",
         <p>Every property in our inventory was renovated by an operator inside our program, to a scope we set, with review at defined checkpoints. That's the difference between this and buying somebody's first attempt at a room conversion.</p>
       </div>
       <div>
-        <p>The house comes furnished. We handle the furnishings as part of the buildout, so you're not sourcing ten bedrooms' worth of beds and desks after closing.</p>
+        <p>Every house we build has at least eight bedrooms and two bathrooms, and often considerably more bathrooms than that. Ensuite rooms command higher rent on PadSplit and turn over less, so where the numbers support the extra baths we build them &mdash; and it's far cheaper to do that during a gut renovation than to add them later.</p>
+        <p>The house comes furnished. We handle the furnishings as part of the buildout, so you're not sourcing eight or ten bedrooms' worth of beds and desks after closing.</p>
         <p>We also help you launch it on PadSplit &mdash; getting the listing live and the rooms ready to fill. That holds whether you bring in a property manager or run it yourself.</p>
         <p><span class="todo">Confirm whether properties are tenanted or vacant at close, and disclose any buyer-side fee here.</span></p>
       </div>
@@ -1277,7 +1309,7 @@ main=phead("The work", "Homes we&#8217;ve built",
 <section>
   <div class="wrap">
     <h2>Floor plans</h2>
-    <p>Eight to ten bedrooms on footprints that started as three or four. Rooms are named rather than numbered where we can &mdash; it reads better to residents and keeps the plan legible for the crew.</p>
+    <p>Eight bedrooms minimum, on footprints that started as three or four, with ensuite bathrooms wherever the numbers support them. Rooms are named rather than numbered where we can &mdash; it reads better to residents and keeps the plan legible for the crew.</p>
     <div class="grid-plans">
 """ + shots(PLANS, "plans") + """</div>
   </div>
@@ -1315,7 +1347,7 @@ main=phead("Questions", "Frequently asked questions",
   <div class="wrap">
     <div class="qa">
       <h3>What is co-living?</h3>
-      <p>Three or four unrelated adults sharing a house. Kitchen, living room, and laundry are common; each resident has their own private, furnished bedroom that they rent individually.</p>
+      <p>Unrelated adults sharing a house, each renting their own private, furnished bedroom while the kitchen, living room and laundry stay common. A lot of co-living houses run three or four residents. Ours don't &mdash; we build to a minimum of eight bedrooms, because the economics that make this worth doing come from room count.</p>
     </div>
     <div class="qa">
       <h3>What is PadSplit?</h3>
@@ -1331,11 +1363,15 @@ main=phead("Questions", "Frequently asked questions",
     </div>
     <div class="qa">
       <h3>What makes the Green Light approach different?</h3>
-      <p>Most operators convert an existing rental or short-term property and work around what's already there. We buy distressed wholesale properties and design them for PadSplit from the first wall. Designing for the model instead of retrofitting it is what produces a house that holds rent and keeps residents.</p>
+      <p>Most operators convert an existing rental or short-term property and work around what's already there &mdash; which usually means rooms sharing a hall bathroom, because adding baths to a finished house is expensive and awkward. We buy distressed properties and design for PadSplit from the first wall, which lets us build ensuite rooms where the numbers support them. Designing for the model instead of retrofitting it is what produces a house that holds rent and keeps residents.</p>
     </div>
     <div class="qa">
-      <h3>What is the Green Light App?</h3>
-      <p>Our underwriting engine. It prices a house by rentable room rather than by bedroom count, which is the calculation that decides whether a conversion works. It's what turns a pile of wholesale addresses into deal flow an investor can act on.</p>
+      <h3>How many bedrooms and bathrooms?</h3>
+      <p>Eight bedrooms and two bathrooms is the floor &mdash; we don't build below it. Above that floor, bathrooms are an underwriting decision rather than a finish upgrade: a room with its own ensuite bathroom rents for more than one sharing down the hall, and PadSplit's data shows how much more by submarket. Where the numbers support the extra baths, we build them. The plan on our home page is eight bedrooms and seven bathrooms for exactly that reason.</p>
+    </div>
+    <div class="qa">
+      <h3>What is the Green Light Way?</h3>
+      <p>How we underwrite. We price a house by rentable room rather than by bedroom count, using PadSplit's room-level rent data and accounting for which rooms can be built ensuite. That calculation is what decides whether a conversion works, and it's what turns a pile of wholesale addresses into deal flow an investor can act on.</p>
     </div>
     <div class="qa">
       <h3>What is the Green Light Buying Machine?</h3>

@@ -7,7 +7,7 @@
 // Required env var: GHL_APPLICATION_WEBHOOK_URL
 
 const MAX_LENGTH = 2000;
-const REQUIRED = ["name", "email", "flips", "crew", "financing", "market", "timeline"];
+const REQUIRED = ["name", "email", "flips", "crew", "financing", "market", "city", "timeline"];
 
 function clean(value) {
   return typeof value === "string" ? value.trim().slice(0, MAX_LENGTH) : "";
@@ -50,11 +50,17 @@ export default async function handler(req, res) {
   const crewOk = crew === "I run my own crew" || crew === "I use the same trades on every job";
   const readyNow = timeline === "Next available cohort" || timeline === "Next 3 months";
 
+  // Out-of-state applicants aren't declines — they're the expansion list.
+  // Tag them by market so the next city is chosen from real demand.
+  const outOfState = clean(body.market).startsWith("Out of state");
+
   const applicantTier =
     experienceOk && crewOk && readyNow ? "core"
     : experienceOk && crewOk ? "qualified"
     : flips === "Fewer than 5" || crew === "I'd need to build one" ? "below_bar"
     : "review";
+
+  const expansionLead = outOfState && experienceOk && crewOk;
 
   const fullName = clean(body.name);
   const [firstName, ...rest] = fullName.split(/\s+/);
@@ -69,6 +75,8 @@ export default async function handler(req, res) {
     crew_status: crew,
     financing_method: clean(body.financing),
     market_status: clean(body.market),
+    operating_market: clean(body.city),
+    expansion_lead: expansionLead ? "yes" : "no",
     start_timeline: timeline,
     recent_project: clean(body.recent),
     applicant_tier: applicantTier,

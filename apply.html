@@ -252,7 +252,7 @@
 <li><a href="faq.html">FAQ</a></li>
 <li><a href="about.html">About</a></li>
     </ul>
-    <a class="btn" href="apply.html">Apply to the program</a>
+    <a class="btn" href="apply.html">Become a student</a>
   </div>
 </nav>
 <header class="phead">
@@ -267,7 +267,8 @@
   <div class="wrap">
     <div class="split">
       <div>
-        <p style="margin-bottom:1.75rem">Nothing here is a commitment. It's how we find out whether your experience, your crew, and your capital line up with what the program actually requires &mdash; before either of us spends time on a call.</p>
+        <p>Nothing here is a commitment. It's how we find out whether your experience, your crew, and your capital line up with what the program actually requires &mdash; before either of us spends time on a call.</p>
+        <p style="margin-bottom:1.75rem">Applying costs nothing. If you're accepted, the program is <b>$15,000</b>, separate from the house &mdash; you buy and finance the property yourself. We'd rather you know the number now than three conversations from now.</p>
         <form class="js-form" action="/api/apply" method="post" novalidate
               data-source="program application"
               data-sending="Sending your application&#8230;"
@@ -324,13 +325,13 @@
           </div>
           <div class="pair">
             <div class="field">
-              <label for="a-market">Arizona properties</label>
+              <label for="a-market">Where you operate</label>
               <select id="a-market" name="market" required>
                 <option value="">Select one</option>
-                <option>I already work the Valley</option>
-                <option>I'm elsewhere in Arizona</option>
-                <option>Out of state, willing to work here</option>
-                <option>Out of state, would rather not</option>
+                <option>The Phoenix valley</option>
+                <option>Elsewhere in Arizona</option>
+                <option>Out of state, would work an Arizona deal</option>
+                <option>Out of state, want it in my market</option>
               </select>
             </div>
             <div class="field">
@@ -345,6 +346,11 @@
             </div>
           </div>
           <div class="field">
+            <label for="a-city">Your city and state</label>
+            <input id="a-city" name="city" type="text" placeholder="Mesa, AZ" required>
+            <p class="hint">We run Arizona cohorts today. We're planning where to open next, and applications are how we decide.</p>
+          </div>
+          <div class="field">
             <label for="a-recent">Your last project</label>
             <textarea id="a-recent" name="recent" placeholder="Where it was, what the scope was, how it went. A few lines is fine."></textarea>
           </div>
@@ -356,7 +362,9 @@
         <ul class="plain">
           <li>We read it &mdash; a person, not a filter</li>
           <li>If it's a fit, we set up a call</li>
-          <li>If it isn't yet, we'll tell you what would change that</li>
+          <li>If we both want to go ahead, you're accepted</li>
+          <li>Payment comes after that, not before</li>
+          <li>If it isn't a fit yet, we'll tell you what would change that</li>
         </ul>
 
         <h3 style="margin:2rem 0 1rem">Before you apply</h3>
@@ -385,7 +393,7 @@
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="the-book.html">The book</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="apply.html">Apply to the program</a></li>
+        <li><a href="apply.html">Apply to become a student</a></li>
         <li><a href="submit-a-property.html">Submit a property</a></li>
       </ul>
     </div>
