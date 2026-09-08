@@ -320,7 +320,7 @@ NAVLINKS = [
     ("how-it-works.html", "Build with us"),
     ("for-buyers.html", "Buy a property"),
     ("homes.html", "Homes we've built"),
-    ("the-book.html", "The book"),
+    ("faq.html", "FAQ"),
     ("about.html", "About"),
 ]
 
@@ -342,7 +342,8 @@ FOOTER = """<footer>
   <div class="wrap">
     <div>
       <h4>Green Light Buying Machine</h4>
-      <p class="fine" style="margin:0">Co-living conversions for experienced Arizona flippers.</p>
+      <p class="fine" style="margin:0 0 .6rem">The infrastructure behind certified co-living assets.</p>
+      <p style="margin:0"><a href="mailto:info@greenlightbuyingmachine.com">info@greenlightbuyingmachine.com</a></p>
     </div>
     <div>
       <h4>Pages</h4>
@@ -351,6 +352,7 @@ FOOTER = """<footer>
         <li><a href="is-it-for-you.html">Is the program for you</a></li>
         <li><a href="for-buyers.html">Buy a finished property</a></li>
         <li><a href="homes.html">Homes we&#8217;ve built</a></li>
+        <li><a href="faq.html">FAQ</a></li>
         <li><a href="the-book.html">The book</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="apply.html">Get a deal analyzed</a></li>
@@ -433,7 +435,7 @@ SHELL = """<!DOCTYPE html>
    which forwards to GoHighLevel server-side. Messages come from data
    attributes on the form so each one can speak for itself. */
 (function () {
-  var FALLBACK = 'hello@example.com'; /* TODO: real inbox */
+  var FALLBACK = 'info@greenlightbuyingmachine.com';
 
   Array.prototype.forEach.call(document.querySelectorAll('.js-form'), function (form) {
     var button = form.querySelector('[type=submit]');
@@ -519,7 +521,7 @@ main="""<header class="phead">
     <div class="hero-grid">
       <div>
         <h1 style="font-size:clamp(2.9rem,1.5rem + 6vw,5.6rem)">One house.<br>Eight doors.</h1>
-        <p class="lede">Solving affordable housing, one room at a time. Co-living conversions in Arizona &mdash; built by operators who know how to run a rehab, bought by investors who want the finished product.</p>
+        <p class="lede">Institutional-grade deal flow for PadSplit investors. Our Green Light App underwrites Arizona houses by the room, so operators build the right conversion and investors buy a finished one.</p>
         <div class="cta-row">
           <a class="btn" href="how-it-works.html">I build</a>
           <a class="btn ghost" href="for-buyers.html">I buy</a>
@@ -597,8 +599,8 @@ main="""<header class="phead">
       <div class="door">
         <div class="who">If you build</div>
         <h3>Build one of our houses</h3>
-        <p>You have completed renovations and a crew. We source the deal, coach you through the conversion, and bring the buyer at the end. You run the job.</p>
-        <p style="opacity:.75;font-size:.95rem"><b>Requires:</b> completed projects, capital, an Arizona property.</p>
+        <p>Same as any flip &mdash; you buy it, finance it, run your crew. We bring the deal flow, hold you to the standard, and identify your buyer while you're still building.</p>
+        <p style="opacity:.75;font-size:.95rem"><b>Requires:</b> 10&#8211;15 completed flips, your own crew, your own capital.</p>
         <div class="cta-row">
           <a class="btn" href="how-it-works.html">See how the program works</a>
         </div>
@@ -606,7 +608,7 @@ main="""<header class="phead">
       <div class="door buy">
         <div class="who">If you buy</div>
         <h3>Buy a finished property</h3>
-        <p>You want a co-living property that's already converted, furnished, and built to standard &mdash; without running the renovation yourself. We qualify buyers ahead of inventory.</p>
+        <p>Converted, furnished, and launched on PadSplit &mdash; without running the renovation yourself. We qualify buyers ahead of inventory and match you before the build is finished.</p>
         <p style="opacity:.75;font-size:.95rem"><b>Requires:</b> proof of funds or financing in place.</p>
         <div class="cta-row">
           <a class="btn" href="for-buyers.html">Get on the buyer list</a>
@@ -627,23 +629,41 @@ main=phead("The program", "How it works",
 
 <section>
   <div class="wrap">
-    <h2>The division of labor</h2>
-    <p>Most education sells you information and wishes you luck. This is closer to a joint venture with training attached: we take on the parts that sink first-time conversions, and you do the part you're already good at.</p>
+    <h2>It's a flip. The exit is what changes.</h2>
+    <p>You buy the distressed house and finance it the way you always do &mdash; first, second, hard money, your usual stack. You run your crew, you hold the budget, you own the risk. Nothing about the acquisition or the buildout is unfamiliar.</p>
+    <p>What changes is who you sell to. A retail buyer prices your house against comps down the street. A co-living investor prices it against what the finished house produces by the room, and that's a different number. You're buying for the potential the property will have, and selling to someone who's paying for exactly that.</p>
+    <p>The other change is that we're identifying your buyer while you're still working. You're not listing and hoping.</p>
     <div class="split thirds" style="margin-top:2.5rem">
       <div class="roles">
-        <span class="who">We handle</span>
-        <h3>Deal sourcing</h3>
-        <p>Properties are brought to you already screened for co-living use and underwritten on rentable rooms rather than bedroom count.</p>
+        <span class="who">We bring</span>
+        <h3>Deal flow</h3>
+        <p>Distressed wholesale properties, already run through the Green Light App and underwritten on rentable rooms rather than bedroom count.</p>
       </div>
       <div class="roles">
-        <span class="who">You handle</span>
-        <h3>Execution</h3>
-        <p>Your crew, your schedule, your budget &mdash; built to a defined co-living standard with review at set checkpoints.</p>
+        <span class="who">You own</span>
+        <h3>The whole buildout</h3>
+        <p>You buy it, you finance it, you run your crew. We hand-hold the build to make sure it hits the standard our buyers expect &mdash; because your exit depends on it.</p>
       </div>
       <div class="roles">
-        <span class="who">We handle</span>
-        <h3>Buyer placement</h3>
-        <p>The exit is arranged rather than hoped for. You know the buyer profile before the first wall goes up.</p>
+        <span class="who">We bring</span>
+        <h3>The buyer</h3>
+        <p>Identified while you're still renovating, and paying for what the finished house produces rather than what the block comps at.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The Green Light App</h2>
+    <div class="split">
+      <div>
+        <p>Bedrooms don't tell you what a co-living house is worth. Rentable rooms do, and that's a different calculation &mdash; egress, bathroom ratios, parking, what the shared space can actually carry.</p>
+        <p>Our underwriting engine runs that math on distressed wholesale inventory before anyone walks a property. Students see houses already screened for room count and margin instead of guessing at a listing.</p>
+      </div>
+      <div>
+        <p>It's also why we start from scratch rather than converting an existing rental. When you design for the model from the first wall, you get a house that performs instead of a compromise you have to explain to a buyer.</p>
+        <p>Retail flip margins have thinned as rates rose. Co-living conversions have produced $60,000 to $80,000 or more per deal. <span class="todo">Earnings claims tied to a paid program need substantiation and a disclaimer &mdash; counsel should set this wording.</span></p>
       </div>
     </div>
   </div>
@@ -651,19 +671,34 @@ main=phead("The program", "How it works",
 
 <section class="band">
   <div class="wrap">
+    <h2>Financing that already understands the asset</h2>
+    <div class="split" style="margin-top:1.5rem">
+      <div>
+        <p>Rachelle Coffey is the lender we work with, and she finances PadSplit conversions specifically &mdash; both the acquisition side for operators and the purchase side for buyers.</p>
+      </div>
+      <div>
+        <p>That matters more than it sounds. A lender who prices this asset on room income rather than residential comps removes the friction that stalls these deals at the appraisal.</p>
+        <p><a href="https://go.homeownersfg.com/home/rachelle-coffey" target="_blank" rel="noopener noreferrer">Talk to Rachelle &rarr;</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
     <h2>Ten stages, start to close</h2>
     <p>Every student runs the same sequence, tracked in your portal so you always know what's next and what's waiting on you. <span class="todo">Confirm stage names against the real pipeline.</span></p>
     <ol class="stages">
       <li><div><b>Qualification</b><span>We confirm your experience, capital, and capacity before you enroll.</span></div></li>
       <li><div><b>Market brief</b><span>Where co-living works in the Valley, and why &mdash; submarket by submarket.</span></div></li>
-      <li><div><b>Deal sourced</b><span>We bring you a property screened for shared-housing use.</span></div></li>
+      <li><div><b>Deal sourced</b><span>We bring you a property screened for co-living use through the Green Light App.</span></div></li>
       <li><div><b>Room-count underwriting</b><span>Pricing a house on rentable rooms instead of bedrooms.</span></div></li>
-      <li><div><b>Offer and close</b><span>Structuring and acquiring the property.</span></div></li>
+      <li><div><b>You buy it</b><span>Your offer, your financing, your name on the deed.</span></div></li>
       <li><div><b>Scope and design</b><span>Floor plan, partition strategy, and finish standard.</span></div></li>
-      <li><div><b>Renovation</b><span>Your crew executes. We review at defined checkpoints.</span></div></li>
+      <li><div><b>Renovation</b><span>Your crew executes. We hand-hold to the standard and review at checkpoints.</span></div></li>
       <li><div><b>Standards inspection</b><span>The property is checked against operator requirements before listing.</span></div></li>
-      <li><div><b>Furnish and stage</b><span>Getting the house ready to produce income on day one.</span></div></li>
-      <li><div><b>Buyer placement</b><span>We bring the buyer and you close.</span></div></li>
+      <li><div><b>Furnish and launch</b><span>We furnish the house and get it live on PadSplit, ready to produce income on day one.</span></div></li>
+      <li><div><b>You sell</b><span>We bring the buyer, identified while you were still building.</span></div></li>
     </ol>
   </div>
 </section>
@@ -696,7 +731,7 @@ PAGES["is-it-for-you.html"] = dict(
 title="Is it for you — Green Light Buying Machine",
 desc="An honest fit list for the program: who it works for, who it doesn't, and what we expect from students.",
 main=phead("Before you apply", "Is it for you?",
-  "This isn't a starter program. Being honest about that up front saves everyone a hard conversation three weeks in.") + """
+  "We're looking for operators with 10 to 15 flips behind them and a crew already working. Being honest about that up front saves everyone a hard conversation three weeks in.") + """
 
 <section>
   <div class="wrap">
@@ -704,10 +739,10 @@ main=phead("Before you apply", "Is it for you?",
       <div class="col">
         <h3>A fit if you</h3>
         <ul>
-          <li>Have finished renovations you can point to</li>
-          <li>Run your own crew or have trades you trust</li>
-          <li>Can read a scope and hold a budget</li>
-          <li>Have capital or reliable access to it</li>
+          <li>Have 10 to 15 completed flips behind you</li>
+          <li>Already run your own crew &mdash; not trades you'd have to go find</li>
+          <li>Buy and finance your own deals: first, second, hard money, however you normally stack it</li>
+          <li>Are ready to own the entire buildout, start to finish</li>
           <li>Want a different exit, not a different hobby</li>
           <li>Can work an Arizona property</li>
         </ul>
@@ -715,7 +750,8 @@ main=phead("Before you apply", "Is it for you?",
       <div class="col not">
         <h3>Not a fit if you</h3>
         <ul>
-          <li>Haven't completed a renovation yet</li>
+          <li>Are early in your flipping career</li>
+          <li>Would need to assemble a crew first</li>
           <li>Are looking for passive income</li>
           <li>Want to assign the contract instead of building</li>
           <li>Need someone else to manage the build</li>
@@ -959,7 +995,7 @@ main=phead("No charge", "Send us a property",
           <li>If it works and you want in, we talk about the cohort</li>
         </ul>
         <h3 style="margin:2rem 0 1rem">Not ready for that</h3>
-        <p>Read <a href="is-it-for-you.html">the fit list</a> first, or get on the list for <a href="the-book.html">the book</a>. Neither costs you anything and both will tell you more than a sales call would.</p>
+        <p>Read <a href="is-it-for-you.html">the fit list</a> or <a href="faq.html">the FAQ</a> first, or get on the list for <a href="the-book.html">the book</a>. Neither costs you anything and both will tell you more than a sales call would.</p>
       </div>
     </div>
   </div>
@@ -971,19 +1007,36 @@ PAGES["for-buyers.html"] = dict(
 title="Buy a finished co-living property — Green Light Buying Machine",
 desc="Qualified investors get first look at Arizona co-living properties, converted and built to operator standard.",
 main=phead("For investors", "Buy a finished property",
-  "Converted, furnished, and built to standard. Pre-qualified buyers get first access when a house goes live.") + """
+  "Converted, furnished, and built to PadSplit standard. Inventory is matched to pre-qualified buyers before the renovation is finished &mdash; which is why getting qualified comes first.") + """
 
 <section>
   <div class="wrap">
     <h2>What you're actually buying</h2>
     <div class="split">
       <div>
-        <p>A single-family house in the Valley, reconfigured into individually rented rooms with shared kitchen and living space. Built to the standard co-living operators require rather than to whatever a contractor thought was close enough.</p>
-        <p>Every property in our inventory was renovated by an operator inside our program, to a scope we set, with review at defined checkpoints. That's the difference between this and buying somebody's first attempt at a room conversion.</p>
+        <p>A single-family house in the Valley, reconfigured into individually rented rooms with shared kitchen and living space, listed and managed through PadSplit. Built to the standard the platform's residents expect rather than to whatever a contractor thought was close enough.</p>
+        <p>Every property in our inventory was renovated by an operator inside our program, to a scope we set, with review at defined checkpoints. These homes finish above most of what's on the platform &mdash; that's the difference between this and buying somebody's first attempt at a room conversion.</p>
       </div>
       <div>
-        <p><span class="todo">Specify exactly what conveys: furnished or unfurnished, management in place or not, tenants placed or vacant at close, and any warranty on the work. Buyers will ask on the first call, and the answer belongs on this page.</span></p>
-        <p><span class="todo">If there is a listing or referral fee to the buyer, disclose it here.</span></p>
+        <p>The house comes furnished. We handle the furnishings as part of the buildout, so you're not sourcing ten bedrooms' worth of beds and desks after closing.</p>
+        <p>We also help you launch it on PadSplit &mdash; getting the listing live and the rooms ready to fill. That holds whether you bring in a property manager or run it yourself.</p>
+        <p><span class="todo">Confirm whether properties are tenanted or vacant at close, and disclose any buyer-side fee here.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>After you close</h2>
+    <div class="split">
+      <div>
+        <p>A finished house still has to get listed, filled, and run. We help you launch on PadSplit rather than handing you keys and a login &mdash; the listing, the room setup, and getting the first residents in.</p>
+        <p>PadSplit handles the parts a marketplace should: background checks, income verification, eviction history, and week-to-week payments. No credit check on residents.</p>
+      </div>
+      <div>
+        <p>Day-to-day management is your call. Some buyers bring in a property manager, others run the house themselves. Both work, and we'll walk you through what each actually involves before you decide.</p>
+        <p>Worth knowing going in: co-living earns from multiple rooms, so vacancy and turnover behave differently than they do on a single-tenant rental. One empty room isn't an empty house.</p>
       </div>
     </div>
   </div>
@@ -995,11 +1048,10 @@ main=phead("For investors", "Buy a finished property",
     <ol class="stages">
       <li><div><b>You get qualified</b><span>Short conversation about your criteria, timeline, and how you're funding the purchase.</span></div></li>
       <li><div><b>You go on the list</b><span>Qualified buyers see properties before they're marketed anywhere else.</span></div></li>
-      <li><div><b>We send matches</b><span>Address, scope, room count, and the numbers, as properties come available.</span></div></li>
+      <li><div><b>We match you before it's finished</b><span>Inventory is matched to buyers while the renovation is still underway, not after it lists.</span></div></li>
       <li><div><b>You tour and diligence</b><span>Your inspector, your lender, your timeline. We don't rush this part.</span></div></li>
       <li><div><b>You close</b><span>On a property that was built to be exactly what it is.</span></div></li>
     </ol>
-    <p style="margin-top:2rem"><span class="todo">Confirm this sequence with Brian and Gina, especially whether buyers are matched before or after a property is under renovation.</span></p>
   </div>
 </section>
 
@@ -1022,7 +1074,7 @@ main=phead("For investors", "Buy a finished property",
           <li>Are still deciding whether to invest at all</li>
           <li>Need seller financing we don't offer</li>
           <li>Want a guaranteed return</li>
-          <li>Expect a hands-off asset with no management decisions</li>
+          <li>Expect an asset with no management decisions at all</li>
         </ul>
       </div>
     </div>
@@ -1039,7 +1091,7 @@ main=phead("For investors", "Buy a finished property",
       <div class="stepbox">
         <div class="n">STEP ONE</div>
         <h3>Talk to Rachelle</h3>
-        <p>Rachelle Coffey is the lender we work with. Getting pre-qualified with her is how we know you're ready to purchase the moment a home becomes available. It costs you nothing and takes one conversation.</p>
+        <p>Rachelle Coffey is the lender we work with, and she finances PadSplit properties specifically &mdash; which matters, because a lender pricing this house against ordinary residential comps will undervalue what you're buying. Getting pre-qualified is how we know you can close when a home comes available. It costs nothing and takes one conversation.</p>
         <div class="cta-row">
           <a class="btn" href="https://go.homeownersfg.com/home/rachelle-coffey" target="_blank" rel="noopener noreferrer">Get pre-qualified with Rachelle &rarr;</a>
         </div>
@@ -1084,7 +1136,7 @@ main=phead("For investors", "Buy a finished property",
 <section class="band">
   <div class="wrap">
     <h2>What you&#8217;d be buying</h2>
-    <p>Finished conversions, furnished and in service. The floor plans and photos are worth looking at before you talk to anyone.</p>
+    <p>Finished conversions, furnished by us and launched on PadSplit. The floor plans and photos are worth looking at before you talk to anyone.</p>
     <div class="grid-homes">
 """ + shots(HOMES, "homes", 4) + """</div>
     <div class="cta-row">
@@ -1129,6 +1181,70 @@ main=phead("The work", "Homes we&#8217;ve built",
     <h2>More of the construction work</h2>
     <p>Brian and Gina's construction company has a wider portfolio than the co-living conversions shown here.</p>
     <p><a class="btn ghost" href="https://trinitydesignconstruction.com/" target="_blank" rel="noopener noreferrer">See Trinity Design and Construction &rarr;</a></p>
+  </div>
+</section>""")
+
+# ---------------------------------------------------------------- faq
+PAGES["faq.html"] = dict(
+title="FAQ — Green Light Buying Machine",
+desc="Co-living, PadSplit, who actually lives in these homes, and how the numbers compare to traditional flipping.",
+main=phead("Questions", "Frequently asked questions",
+  "The infrastructure behind certified co-living assets. Start here if co-living or PadSplit is new to you.") + """
+
+<section>
+  <div class="wrap">
+    <div class="qa">
+      <h3>What is co-living?</h3>
+      <p>Three or four unrelated adults sharing a house. Kitchen, living room, and laundry are common; each resident has their own private, furnished bedroom that they rent individually.</p>
+    </div>
+    <div class="qa">
+      <h3>What is PadSplit?</h3>
+      <p>A marketplace that connects residents with hosts, in the way Airbnb connects guests with owners. PadSplit runs background checks, income verification, and eviction history &mdash; no credit check &mdash; and provides the management system for week-to-week rentals.</p>
+    </div>
+    <div class="qa">
+      <h3>Who actually lives in these homes?</h3>
+      <p>Not students. In the Kingdeskis' houses the average resident is between 45 and 50 years old, and many stay for years rather than weeks. Affordable housing for working adults is what this is, and it's worth setting the stereotype aside early.</p>
+    </div>
+    <div class="qa">
+      <h3>How do the numbers compare to a traditional flip?</h3>
+      <p>Retail flip margins have thinned as rates rose. Converting to co-living has produced profits in the range of $60,000 to $80,000 or more per deal. <span class="todo">Earnings figures attached to a paid program need substantiation and a disclaimer &mdash; have counsel set the wording before this goes live.</span></p>
+    </div>
+    <div class="qa">
+      <h3>What makes the Green Light approach different?</h3>
+      <p>Most operators convert an existing rental or short-term property and work around what's already there. We buy distressed wholesale properties and design them for PadSplit from scratch. The result is finish quality above most of what's on the platform &mdash; which is what lets these homes hold rent and residents.</p>
+    </div>
+    <div class="qa">
+      <h3>What is the Green Light App?</h3>
+      <p>Our underwriting engine. It prices a house by rentable room rather than by bedroom count, which is the calculation that decides whether a conversion works. It's what turns a pile of wholesale addresses into deal flow an investor can act on.</p>
+    </div>
+    <div class="qa">
+      <h3>What is the Green Light Buying Machine?</h3>
+      <p>The system and training program Brian and Gina built to teach operators how to find, buy, and convert distressed homes into co-living properties &mdash; using 26 years of trade knowledge rather than theory.</p>
+    </div>
+    <div class="qa">
+      <h3>Is there real demand for the finished homes?</h3>
+      <p>In Arizona, buyers are lined up for these properties before the acquisition even closes. Demand for affordable housing is the reason the model works, and it's why the buyer list matters as much as the build.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Still deciding which side you're on</h2>
+    <div class="doors">
+      <div class="door">
+        <div class="who">If you build</div>
+        <h3>Build one with us</h3>
+        <p>You have completed renovations and a crew. We source the deal, coach the conversion, and bring the buyer.</p>
+        <div class="cta-row"><a class="btn" href="how-it-works.html">How the program works</a></div>
+      </div>
+      <div class="door buy">
+        <div class="who">If you buy</div>
+        <h3>Buy a finished property</h3>
+        <p>Converted, furnished, built to standard. Pre-qualified buyers are matched to inventory before the renovation finishes.</p>
+        <div class="cta-row"><a class="btn" href="for-buyers.html">Get on the buyer list</a></div>
+      </div>
+    </div>
   </div>
 </section>""")
 

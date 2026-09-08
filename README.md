@@ -8,6 +8,7 @@ submissions into GoHighLevel.
 ├── how-it-works.html     ten stages, division of labor
 ├── is-it-for-you.html    fit list and FAQ
 ├── for-buyers.html       buyer track: lender pre-qual + GHL form embed
+├── faq.html              co-living, PadSplit, the model
 ├── homes.html            photo and floor plan gallery
 ├── the-book.html         coming soon + waitlist capture
 ├── about.html            Brian and Gina (needs real bio)
@@ -109,12 +110,15 @@ hit, add Vercel's WAF rules or a per-IP check in the handler.
 - [ ] Answer the "is the buyer guaranteed" FAQ, with counsel review
 - [ ] Confirm whether students can bring their own deal
 - [ ] Real cover art for the book (300 DPI minimum)
-- [ ] Replace `hello@example.com` in the form fallback message
 - [ ] Decide whether to show the enrollment price
 - [ ] Add testimonials from students who have closed
 - [ ] Swap the "Rachelle Test" form ID for the production one
+- [ ] Real bio, photo, and Trinity relationship on about.html
 - [ ] Substantiate the 450+ doors / 15% market share / 26+ years figures
 - [ ] Confirm what conveys with a buyer property (furnished, managed, tenanted)
-- [ ] Confirm whether buyers are matched before or after renovation starts
 - [ ] Disclose any buyer-side fee on for-buyers.html
-- [ ] Point a custom domain at the deployment
+- [ ] Point greenlightbuyingmachine.com at the deployment
+- [ ] Have counsel set the wording on the $60k–$80k per-deal figure (earnings
+      claims tied to a paid program need substantiation and a disclaimer)
+- [ ] Confirm PadSplit brand usage is cleared — the name now appears in copy
+      and is rendered into the Ash plan image
