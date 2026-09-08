@@ -334,7 +334,7 @@ def nav(current):
     <a class="brand" href="index.html">Green Light<br>Buying Machine</a>
     <ul>
 %s    </ul>
-    <a class="btn" href="apply.html">Get a deal analyzed</a>
+    <a class="btn" href="apply.html">Apply to the program</a>
   </div>
 </nav>""" % items
 
@@ -355,7 +355,8 @@ FOOTER = """<footer>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="the-book.html">The book</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="apply.html">Get a deal analyzed</a></li>
+        <li><a href="apply.html">Apply to the program</a></li>
+        <li><a href="submit-a-property.html">Submit a property</a></li>
       </ul>
     </div>
     <div>
@@ -501,11 +502,11 @@ def phead(kicker, h1, lede):
 
 CTA_BAND = """<section class="band">
   <div class="wrap">
-    <h2>Send us a property. We'll tell you if it converts.</h2>
-    <p>No charge, no pitch. Send an address and we'll come back with whether the house works for co-living, roughly what room count it supports, and what the conversion would involve. If it's a no, we'll tell you why.</p>
+    <h2>Think you're a fit? Tell us about your work.</h2>
+    <p>We're looking for operators with 10 to 15 flips behind them and a crew already running. Send us your background and we'll tell you straight whether the program makes sense for you right now.</p>
     <div class="cta-row">
-      <a class="btn" href="apply.html">Get a deal analyzed</a>
-      <a class="btn ghost" href="is-it-for-you.html">See if the program fits</a>
+      <a class="btn" href="apply.html">Apply to the program</a>
+      <a class="btn ghost" href="is-it-for-you.html">Read the fit list first</a>
     </div>
   </div>
 </section>"""
@@ -923,84 +924,203 @@ main=phead("Who runs this", "Brian and Gina Kingdeski",
 
 # ---------------------------------------------------------------- apply
 PAGES["apply.html"] = dict(
-title="Get a deal analyzed — Green Light Buying Machine",
-desc="Send us an Arizona property and we'll tell you whether it converts to co-living, what room count it supports, and what the conversion involves.",
-main=phead("No charge", "Send us a property",
-  "We'll tell you whether it converts, roughly what room count it supports, and what the conversion would involve. If it's a no, we'll tell you why it's a no.") + """
+title="Apply to the program — Green Light Buying Machine",
+desc="For Arizona fix-and-flip operators with 10 to 15 projects behind them and a crew already running.",
+main=phead("For operators", "Apply to the program",
+  "We take a small number of operators who already know how to build. Tell us about your work and we'll tell you honestly whether this is the right move for you now.") + """
 
 <section>
   <div class="wrap">
     <div class="split">
       <div>
-        <form class="js-form" action="/api/deal-analysis" method="post" novalidate
-              data-source="website deal analysis"
-              data-sending="Sending your property&#8230;"
-              data-success="Got it. We&#8217;ll come back to you with an answer on this property, usually within a few days.">
+        <p style="margin-bottom:1.75rem">Nothing here is a commitment. It's how we find out whether your experience, your crew, and your capital line up with what the program actually requires &mdash; before either of us spends time on a call.</p>
+        <form class="js-form" action="/api/apply" method="post" novalidate
+              data-source="program application"
+              data-sending="Sending your application&#8230;"
+              data-success="Got it. We&#8217;ll review your background and come back to you either way.">
           <div class="hp" aria-hidden="true">
             <label for="company">Company</label>
             <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
           </div>
           <div class="pair">
             <div class="field">
-              <label for="name">Your name</label>
-              <input id="name" name="name" type="text" autocomplete="name" required>
+              <label for="a-name">Your name</label>
+              <input id="a-name" name="name" type="text" autocomplete="name" required>
             </div>
             <div class="field">
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel">
+              <label for="a-phone">Phone</label>
+              <input id="a-phone" name="phone" type="tel" autocomplete="tel">
             </div>
           </div>
           <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required>
+            <label for="a-email">Email</label>
+            <input id="a-email" name="email" type="email" autocomplete="email" required>
           </div>
           <div class="field">
-            <label for="address">Property address</label>
-            <input id="address" name="address" type="text" required>
-            <p class="hint">Arizona properties only. An MLS or Zillow link works too.</p>
-          </div>
-          <div class="pair">
-            <div class="field">
-              <label for="price">Asking or contract price</label>
-              <input id="price" name="price" type="text">
-            </div>
-            <div class="field">
-              <label for="specs">Beds, baths, square footage</label>
-              <input id="specs" name="specs" type="text" placeholder="3 / 2 / 1,650">
-            </div>
-          </div>
-          <div class="field">
-            <label for="experience">Renovations you've completed</label>
-            <select id="experience" name="experience">
+            <label for="a-flips">Flips you've completed</label>
+            <select id="a-flips" name="flips" required>
               <option value="">Select one</option>
-              <option>None yet</option>
-              <option>1 to 3</option>
-              <option>4 to 10</option>
-              <option>More than 10</option>
+              <option>Fewer than 5</option>
+              <option>5 to 9</option>
+              <option>10 to 15</option>
+              <option>More than 15</option>
+            </select>
+            <p class="hint">We're looking for 10 to 15 or more. Fewer is not a no forever, just a no for now.</p>
+          </div>
+          <div class="field">
+            <label for="a-crew">Your crew</label>
+            <select id="a-crew" name="crew" required>
+              <option value="">Select one</option>
+              <option>I run my own crew</option>
+              <option>I use the same trades on every job</option>
+              <option>I hire per project</option>
+              <option>I'd need to build one</option>
             </select>
           </div>
           <div class="field">
-            <label for="notes">Anything else we should know</label>
-            <textarea id="notes" name="notes"></textarea>
+            <label for="a-financing">How you fund your deals</label>
+            <select id="a-financing" name="financing" required>
+              <option value="">Select one</option>
+              <option>Cash</option>
+              <option>Hard money, first and second</option>
+              <option>Private lenders</option>
+              <option>Line of credit</option>
+              <option>Still arranging financing</option>
+            </select>
           </div>
-          <button class="submit" type="submit">Send the property</button>
+          <div class="pair">
+            <div class="field">
+              <label for="a-market">Arizona properties</label>
+              <select id="a-market" name="market" required>
+                <option value="">Select one</option>
+                <option>I already work the Valley</option>
+                <option>I'm elsewhere in Arizona</option>
+                <option>Out of state, willing to work here</option>
+                <option>Out of state, would rather not</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="a-timeline">When you'd start</label>
+              <select id="a-timeline" name="timeline" required>
+                <option value="">Select one</option>
+                <option>Next available cohort</option>
+                <option>Next 3 months</option>
+                <option>3 to 6 months</option>
+                <option>Just exploring</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="a-recent">Your last project</label>
+            <textarea id="a-recent" name="recent" placeholder="Where it was, what the scope was, how it went. A few lines is fine."></textarea>
+          </div>
+          <button class="submit" type="submit">Send my application</button>
         </form>
       </div>
       <div>
         <h3 style="margin-bottom:1rem">What happens next</h3>
         <ul class="plain">
-          <li>You send the address</li>
-          <li>We run the layout and the numbers</li>
-          <li>You get a written answer, usually within a few days</li>
-          <li>If it works and you want in, we talk about the cohort</li>
+          <li>We read it &mdash; a person, not a filter</li>
+          <li>If it's a fit, we set up a call</li>
+          <li>If it isn't yet, we'll tell you what would change that</li>
         </ul>
-        <h3 style="margin:2rem 0 1rem">Not ready for that</h3>
-        <p>Read <a href="is-it-for-you.html">the fit list</a> or <a href="faq.html">the FAQ</a> first, or get on the list for <a href="the-book.html">the book</a>. Neither costs you anything and both will tell you more than a sales call would.</p>
+
+        <h3 style="margin:2rem 0 1rem">Before you apply</h3>
+        <p>The <a href="is-it-for-you.html">fit list</a> is blunt about who this works for. Reading it first will save you five minutes if the answer is no.</p>
+
+        <h3 style="margin:2rem 0 1rem">Not an operator?</h3>
+        <p>If you have a property you think would convert well, <a href="submit-a-property.html">send it to us</a> instead. If you're looking to buy a finished home, <a href="for-buyers.html">start here</a>.</p>
       </div>
     </div>
   </div>
 </section>""")
 
+# ---------------------------------------------------------------- submit a property
+PAGES["submit-a-property.html"] = dict(
+title="Submit a property — Green Light Buying Machine",
+desc="Wholesalers, agents and owners: send us an Arizona property you think converts to co-living.",
+main=phead("Deal flow", "Submit a property",
+  "Have an Arizona house you think would make a good co-living conversion? Send it over. We'll run it through the Green Light App and tell you what we see.") + """
+
+<section>
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p>We're always looking at distressed inventory for our operators. If you're a wholesaler, an agent, or an owner sitting on something that might work, this is the fastest way to get it in front of us.</p>
+        <p style="margin-bottom:1.75rem">We underwrite by rentable room rather than bedroom count, so houses that look unremarkable on the MLS sometimes work very well &mdash; and some that look perfect don't. Send it either way.</p>
+        <form class="js-form" action="/api/property" method="post" novalidate
+              data-source="property submission"
+              data-sending="Sending the property&#8230;"
+              data-success="Got it. We&#8217;ll take a look and come back to you.">
+          <div class="hp" aria-hidden="true">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="pair">
+            <div class="field">
+              <label for="p-name">Your name</label>
+              <input id="p-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="p-phone">Phone</label>
+              <input id="p-phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+          </div>
+          <div class="pair">
+            <div class="field">
+              <label for="p-email">Email</label>
+              <input id="p-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="p-role">You are</label>
+              <select id="p-role" name="role" required>
+                <option value="">Select one</option>
+                <option>Wholesaler</option>
+                <option>Agent</option>
+                <option>Owner</option>
+                <option>Investor</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="p-address">Property address</label>
+            <input id="p-address" name="address" type="text" required>
+            <p class="hint">Arizona properties. An MLS or listing link works too.</p>
+          </div>
+          <div class="pair">
+            <div class="field">
+              <label for="p-price">Asking or contract price</label>
+              <input id="p-price" name="price" type="text">
+            </div>
+            <div class="field">
+              <label for="p-specs">Beds, baths, square footage</label>
+              <input id="p-specs" name="specs" type="text" placeholder="3 / 2 / 1,650">
+            </div>
+          </div>
+          <div class="field">
+            <label for="p-notes">Anything we should know</label>
+            <textarea id="p-notes" name="notes" placeholder="Condition, lot, timing, why you think it works."></textarea>
+          </div>
+          <button class="submit" type="submit">Send the property</button>
+        </form>
+      </div>
+      <div>
+        <h3 style="margin-bottom:1rem">What we look for</h3>
+        <ul class="plain">
+          <li>Distressed or dated &mdash; we'd rather do the work</li>
+          <li>A footprint that can carry eight to ten rooms</li>
+          <li>Somewhere residents actually want to live</li>
+          <li>Numbers that leave room for a conversion budget</li>
+        </ul>
+        <p style="margin-top:1.75rem">Not every property works, and we'll tell you why when one doesn't. Send the next one anyway.</p>
+
+        <h3 style="margin:2rem 0 1rem">Want to build them instead?</h3>
+        <p>If you're an operator with 10 to 15 flips behind you, <a href="apply.html">apply to the program</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>""")
 
 # ---------------------------------------------------------------- buyers
 PAGES["for-buyers.html"] = dict(

@@ -12,9 +12,11 @@ submissions into GoHighLevel.
 ├── homes.html            photo and floor plan gallery
 ├── the-book.html         coming soon + waitlist capture
 ├── about.html            Brian and Gina (needs real bio)
-├── apply.html            deal analysis form
+├── apply.html            operator application (the primary intake)
+├── submit-a-property.html deal flow from wholesalers, agents, owners
 ├── api/
-│   ├── deal-analysis.js  → GHL_DEAL_WEBHOOK_URL
+│   ├── apply.js          → GHL_APPLICATION_WEBHOOK_URL
+│   ├── property.js       → GHL_PROPERTY_WEBHOOK_URL
 │   └── book-waitlist.js  → GHL_BOOK_WAITLIST_WEBHOOK_URL
 ├── images/plans/         5 floor plans, full + thumb
 ├── images/homes/         17 finished-home photos, full + thumb
@@ -41,9 +43,10 @@ The sequence matters — GHL can't map webhook fields until it has seen a
 real payload, so the site has to be live before the workflows can be
 finished.
 
-**1. Create both GHL workflows, triggers only.**
-Workflow → Inbound Webhook trigger → copy the URL. Once for deal analysis,
-once for the book waitlist. Don't build the actions yet.
+**1. Create the three GHL workflows, triggers only.**
+Workflow → Inbound Webhook trigger → copy the URL. Once each for operator
+applications, property submissions, and the book waitlist. Don't build the
+actions yet.
 
 The buyer form is different: it's the existing GHL form embedded directly
 on `for-buyers.html`, so it already runs through whatever workflow that
@@ -68,7 +71,8 @@ output directory root.
 Variables, for Production and Preview:
 
 ```
-GHL_DEAL_WEBHOOK_URL=https://...
+GHL_APPLICATION_WEBHOOK_URL=https://...
+GHL_PROPERTY_WEBHOOK_URL=https://...
 GHL_BOOK_WAITLIST_WEBHOOK_URL=https://...
 ```
 

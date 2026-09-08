@@ -19,24 +19,39 @@ and the tag numbering below shifts.
 Create these before building either workflow — the webhook mapping dropdown
 comes up empty for fields that don't exist yet.
 
-**Group: Deal Analysis**
+**Group: Operator Application**
+
+| Field name | Key | Type |
+|---|---|---|
+| Completed Flips | `completed_flips` | Dropdown |
+| Crew Status | `crew_status` | Dropdown |
+| Financing Method | `financing_method` | Dropdown |
+| Market Status | `market_status` | Dropdown |
+| Start Timeline | `start_timeline` | Dropdown |
+| Recent Project | `recent_project` | Multi line |
+| Applicant Tier | `applicant_tier` | Dropdown |
+
+Dropdown options must match the form exactly.
+`completed_flips`: `Fewer than 5`, `5 to 9`, `10 to 15`, `More than 15`.
+`crew_status`: `I run my own crew`, `I use the same trades on every job`,
+`I hire per project`, `I'd need to build one`.
+`applicant_tier`: `core`, `qualified`, `review`, `below_bar` — set by the
+handler, don't edit by hand.
+
+**Group: Property Submission**
 
 | Field name | Key | Type |
 |---|---|---|
 | Property Address | `property_address` | Single line |
 | Asking Price | `asking_price` | Single line |
 | Property Specs | `property_specs` | Single line |
-| Completed Renovations | `completed_renovations` | Dropdown |
+| Submitter Role | `submitter_role` | Dropdown |
 | Deal Notes | `notes` | Multi line |
 | Analysis Verdict | `analysis_verdict` | Dropdown |
-| Analysis Sent On | `analysis_sent_on` | Date |
 
-`completed_renovations` options must match the form exactly: `None yet`,
-`1 to 3`, `4 to 10`, `More than 10`.
-
-`analysis_verdict` options: `Converts`, `Converts with conditions`,
-`Does not convert`, `Not analyzed`. This one is set by hand after the
-analysis, and it drives the follow-up branch.
+`submitter_role`: `Wholesaler`, `Agent`, `Owner`, `Investor`, `Other`.
+`analysis_verdict`: `Converts`, `Converts with conditions`, `Does not convert`,
+`Not analyzed` — set by hand after review, drives the follow-up.
 
 **Group: Buyer**
 
@@ -65,12 +80,12 @@ Dropdown options must match the form exactly.
 
 ---
 
-## 2. Webhook A — Deal analysis
+## 2. Webhook A — Program applications
 
-**Workflow:** `WEB-A · Deal Analysis Intake`
+**Workflow:** `WEB-A · Operator Application`
 **Trigger:** Inbound Webhook
 
-Copy the trigger URL into `GHL_DEAL_WEBHOOK_URL` on Vercel. Submit the live
+Copy the trigger URL into `GHL_APPLICATION_WEBHOOK_URL` on Vercel. Submit the live
 form once before you map anything — GHL only exposes payload fields after it
 has captured a real sample.
 
@@ -78,45 +93,79 @@ Payload keys arriving from the route handler:
 
 ```
 first_name, last_name, full_name, email, phone,
-property_address, asking_price, property_specs,
-completed_renovations, notes, source, page, submitted_at
+completed_flips, crew_status, financing_method, market_status,
+start_timeline, recent_project, applicant_tier,
+source, page, submitted_at
 ```
+
+`applicant_tier` is computed by the handler against the stated bar — 10+
+flips and a crew they already run — so the workflow branches on one field
+instead of three: `core` (meets the bar and starting soon), `qualified`
+(meets the bar, longer timeline), `review` (borderline, needs a human),
+`below_bar` (under 5 flips or no crew).
 
 ### Actions, in order
 
-1. **Create/Update Contact** — map name, email, phone, then every custom field
-   above by matching key.
-2. **Add tag** `A-001-DEAL-SUBMITTED`
-3. **Add tag** `SRC-WEBSITE`
-4. **Create Opportunity** — Pipeline A, first stage, opportunity name
-   `{{contact.property_address}}`, value blank until the analysis is done.
-5. **Internal notification** — SMS or email to Brian and Gina with the address
-   and the experience level. This is the one action worth getting right on day
-   one: the promise on the site is an answer within a few days, and nothing
-   erodes that faster than a submission sitting unseen.
-6. **Send email** — confirmation, copy below.
-7. **Wait** 3 days.
-8. **If/Else** — has `analysis_verdict` been set?
-   - No → internal reminder to Brian and Gina. This is the SLA backstop.
-   - Yes → continue.
+1. **Create/Update Contact** — map name, email, phone, then every Operator
+   Application field by matching key.
+2. **Add tag** `A-001-APPLIED` and `SRC-WEBSITE`
+3. **If/Else** on `applicant_tier`:
+   - `core` → tag `A-002-QUALIFIED-CORE`, create the Pipeline A opportunity,
+     notify Brian and Gina, send the booking link.
+   - `qualified` → tag `A-002-QUALIFIED`, create the opportunity, send a
+     nurture sequence until their timeline arrives. Don't lose these to the
+     three-month gap.
+   - `review` → tag `A-002-REVIEW`, internal task. No auto-booking; a human
+     reads the recent-project answer and decides.
+   - `below_bar` → tag `A-002-BELOW-BAR`, send the honest decline below. No
+     opportunity created.
+4. **Send email** — confirmation or decline, copy below.
 
-### Qualification branch
-
-Split on `completed_renovations`:
-
-- **None yet** → tag `A-001-UNQUALIFIED-EXPERIENCE`. Still send the property
-  analysis, since it was promised, but route to a nurture list rather than the
-  cohort conversation. These people are worth keeping — some of them will have
-  three projects done in eighteen months.
-- **1 to 3** → tag `A-002-QUALIFIED-LIGHT`. Human review before a cohort offer.
-- **4 to 10 / More than 10** → tag `A-002-QUALIFIED-CORE`, move opportunity to
-  the next Pipeline A stage, and trigger the existing intake sequence.
+The decline matters more than it looks. An operator with four flips today has
+twelve in three years, and how you turn them down decides whether they come
+back or go to a competitor.
 
 ---
 
-## 3. Webhook B — Buyer list
+## 3. Webhook B — Property submissions
 
-**Workflow:** `WEB-B · Buyer Qualification`
+**Workflow:** `WEB-B · Property Intake`
+**Trigger:** Inbound Webhook → `GHL_PROPERTY_WEBHOOK_URL`
+
+Deal flow from wholesalers, agents and owners — not student applications.
+These contacts are a supply-side list and should never receive the program
+nurture sequence.
+
+Payload keys:
+
+```
+first_name, last_name, full_name, email, phone,
+property_address, asking_price, property_specs, submitter_role,
+notes, source, page, submitted_at
+```
+
+### Actions
+
+1. **Create/Update Contact** — map name, email, phone, and the Property
+   Submission fields.
+2. **Add tag** `DEAL-SUBMITTED`, `SRC-WEBSITE`, and a role tag
+   (`SUPPLY-WHOLESALER`, `SUPPLY-AGENT`, and so on).
+3. **Create Opportunity** in the acquisitions pipeline, named
+   `{{contact.property_address}}`. <span>Confirm which pipeline letter is
+   free — this is deal flow, not student intake, and shouldn't sit in
+   Pipeline A.</span>
+4. **Internal notification** to whoever runs acquisitions.
+5. **Send email** — acknowledgement.
+6. **Wait** 3 days → if `analysis_verdict` is unset, internal reminder.
+
+A wholesaler who sends one good property will send twenty more if you answer
+quickly. Response time is the whole relationship here.
+
+---
+
+## 4. Webhook C — Buyer list
+
+**Workflow:** `WEB-C · Buyer Qualification`
 **Trigger:** Inbound Webhook → `GHL_BUYER_WEBHOOK_URL`
 
 **Pipeline:** new buyer pipeline. I've called it **Pipeline D** below to
@@ -163,9 +212,9 @@ the buyer if you already have qualified buyers waiting.
 
 ---
 
-## 4. Webhook C — Book waitlist
+## 5. Webhook D — Book waitlist
 
-**Workflow:** `WEB-C · Book Waitlist`
+**Workflow:** `WEB-D · Book Waitlist`
 **Trigger:** Inbound Webhook → `GHL_BOOK_WAITLIST_WEBHOOK_URL`
 
 Payload: `first_name, last_name, full_name, email, source, page, submitted_at`
@@ -188,17 +237,19 @@ reactivation later, but give it the book first.
 
 ---
 
-## 5. Tag index
+## 6. Tag index
 
 Following `[Pipeline]-[Stage]-[Action]-[Result]`:
 
 | Tag | Meaning |
 |---|---|
-| `A-001-DEAL-SUBMITTED` | Property came in through the website |
-| `A-001-UNQUALIFIED-EXPERIENCE` | No completed renovations |
-| `A-002-QUALIFIED-LIGHT` | 1–3 projects, needs human review |
-| `A-002-QUALIFIED-CORE` | 4+ projects, straight to cohort conversation |
-| `A-003-ANALYSIS-SENT` | Written verdict delivered |
+| `A-001-APPLIED` | Operator applied through the website |
+| `A-002-QUALIFIED-CORE` | Meets the bar, starting soon |
+| `A-002-QUALIFIED` | Meets the bar, longer timeline |
+| `A-002-REVIEW` | Borderline, needs a human read |
+| `A-002-BELOW-BAR` | Under the experience or crew requirement |
+| `DEAL-SUBMITTED` | Property came in from the supply side |
+| `SUPPLY-WHOLESALER` / `SUPPLY-AGENT` | Who sent it |
 | `D-001-BUYER-INQUIRY` | Buyer came in through the website |
 | `D-002-BUYER-QUALIFIED` | Funded and moving inside three months |
 | `D-002-BUYER-REVIEW` | Needs a human read before a call |
@@ -210,31 +261,46 @@ Following `[Pipeline]-[Stage]-[Action]-[Result]`:
 
 ---
 
-## 6. Email copy
+## 7. Email copy
 
-### Deal analysis confirmation — sends immediately
+### Application received — sends immediately
 
-Subject: `We've got {{contact.property_address}}`
+Subject: `We got your application`
 
-> Thanks for sending this over.
+> Thanks for sending your background over.
 >
-> Brian or Gina will look at the property and come back to you with whether it
-> converts, roughly what room count it supports, and what the conversion would
-> involve. That usually takes a few days.
->
-> If the answer is no, you'll get that too, along with the reason. A quick no
-> on the wrong house is worth more than a slow maybe.
+> Brian or Gina will read it — an actual person, not a filter — and come back
+> to you either way. If it's a fit we'll set up a call. If the timing isn't
+> right yet, we'll tell you what would change that.
 >
 > — Green Light Buying Machine
 
-### Analysis delivered — sent manually or triggered by `analysis_verdict`
+### Below the bar — honest decline
 
-Subject: `Your analysis on {{contact.property_address}}`
+Subject: `Not yet — here's what we'd want to see`
 
-> Here's what we found. [analysis]
+> Thanks for applying. Straight answer: we're looking for operators with ten
+> to fifteen flips behind them and a crew already working, and you're not
+> there yet.
 >
-> If you want to talk through what a conversion on this one would actually
-> look like, reply and we'll set up a call.
+> That's a timing problem, not a verdict on you. Keep building, and when
+> you've got the volume and the crew, come back — we'd rather work with
+> someone who learned it the hard way.
+>
+> In the meantime, the [FAQ] covers how the co-living model actually works.
+>
+> — Green Light Buying Machine
+
+### Property received
+
+Subject: `Got {{contact.property_address}}`
+
+> Thanks for sending this over. We'll run it and come back to you with what we
+> see — whether it converts, roughly what room count it supports, and what the
+> conversion would involve.
+>
+> If it's a no, you'll get that too, with the reason. Send us the next one
+> either way.
 
 ### Buyer list confirmation — sends immediately
 
@@ -268,11 +334,14 @@ Subject: `You're on the list`
 
 ---
 
-## 7. Test before launch
+## 8. Test before launch
 
-- Submit the deal form with a real address. Confirm the contact, all seven
-  custom fields, both tags, and the opportunity all land.
-- Submit with `None yet` selected and confirm it takes the unqualified branch.
+- Submit the application with `More than 15` + `I run my own crew` +
+  `Next available cohort` and confirm it tags `core` and books.
+- Submit with `Fewer than 5` and confirm it tags `below_bar`, sends the
+  decline, and creates no opportunity.
+- Submit the property form and confirm it lands on the supply side and does
+  NOT enter the program nurture sequence.
 - Fill the hidden `company` field via devtools and confirm the contact is
   *not* created — the route should return 200 and drop it.
 - Submit the waitlist form twice with the same email and confirm it updates
