@@ -309,8 +309,8 @@ STATS = """<section class="band">
   <div class="wrap">
     <div class="stats">
       <div class="stat"><div class="n">450+</div><div class="l">Doors produced</div></div>
-      <div class="stat"><div class="n">15%</div><div class="l">Arizona market share</div></div>
-      <div class="stat"><div class="n">26+</div><div class="l">Years of experience</div></div>
+      <div class="stat"><div class="n">26+</div><div class="l">Years in the trades</div></div>
+      <div class="stat"><div class="n">AZ</div><div class="l">Built and sold in the Valley</div></div>
     </div>
   </div>
 </section>"""
@@ -608,7 +608,7 @@ main="""<header class="phead">
       <div class="door buy">
         <div class="who">If you buy</div>
         <h3>Buy a finished property</h3>
-        <p>Converted, furnished, and launched on PadSplit &mdash; without running the renovation yourself. We qualify buyers ahead of inventory and match you before the build is finished.</p>
+        <p>Converted, furnished, and launched on PadSplit &mdash; without running the renovation yourself. We qualify buyers ahead of inventory so we can match early.</p>
         <p style="opacity:.75;font-size:.95rem"><b>Requires:</b> proof of funds or financing in place.</p>
         <div class="cta-row">
           <a class="btn" href="for-buyers.html">Get on the buyer list</a>
@@ -647,7 +647,7 @@ main=phead("The program", "How it works",
       <div class="roles">
         <span class="who">We bring</span>
         <h3>The buyer</h3>
-        <p>Identified while you're still renovating, and paying for what the finished house produces rather than what the block comps at.</p>
+        <p>We work to identify your buyer while you're still renovating &mdash; someone pricing the house on what it produces rather than on what the block comps at.</p>
       </div>
     </div>
   </div>
@@ -663,7 +663,7 @@ main=phead("The program", "How it works",
       </div>
       <div>
         <p>It's also why we start from scratch rather than converting an existing rental. When you design for the model from the first wall, you get a house that performs instead of a compromise you have to explain to a buyer.</p>
-        <p>Retail flip margins have thinned as rates rose. Co-living conversions have produced $60,000 to $80,000 or more per deal. <span class="todo">Earnings claims tied to a paid program need substantiation and a disclaimer &mdash; counsel should set this wording.</span></p>
+        <p>The margin comes from the gap between what a distressed house costs and what a converted one is worth to an income buyer. That gap is wider than a retail flip's, which is the whole reason to do this &mdash; but it lives in the specific deal, not in an average we could print here.</p>
       </div>
     </div>
   </div>
@@ -698,7 +698,7 @@ main=phead("The program", "How it works",
       <li><div><b>Renovation</b><span>Your crew executes. We hand-hold to the standard and review at checkpoints.</span></div></li>
       <li><div><b>Standards inspection</b><span>The property is checked against operator requirements before listing.</span></div></li>
       <li><div><b>Furnish and launch</b><span>We furnish the house and get it live on PadSplit, ready to produce income on day one.</span></div></li>
-      <li><div><b>You sell</b><span>We bring the buyer, identified while you were still building.</span></div></li>
+      <li><div><b>You sell</b><span>We bring the buyer we've been working to line up while you built.</span></div></li>
     </ol>
   </div>
 </section>
@@ -1007,7 +1007,7 @@ PAGES["for-buyers.html"] = dict(
 title="Buy a finished co-living property — Green Light Buying Machine",
 desc="Qualified investors get first look at Arizona co-living properties, converted and built to operator standard.",
 main=phead("For investors", "Buy a finished property",
-  "Converted, furnished, and built to PadSplit standard. Inventory is matched to pre-qualified buyers before the renovation is finished &mdash; which is why getting qualified comes first.") + """
+  "Converted, furnished, and built to PadSplit standard. We work to match inventory with pre-qualified buyers before a renovation finishes &mdash; which is why getting qualified comes first.") + """
 
 <section>
   <div class="wrap">
@@ -1015,7 +1015,7 @@ main=phead("For investors", "Buy a finished property",
     <div class="split">
       <div>
         <p>A single-family house in the Valley, reconfigured into individually rented rooms with shared kitchen and living space, listed and managed through PadSplit. Built to the standard the platform's residents expect rather than to whatever a contractor thought was close enough.</p>
-        <p>Every property in our inventory was renovated by an operator inside our program, to a scope we set, with review at defined checkpoints. These homes finish above most of what's on the platform &mdash; that's the difference between this and buying somebody's first attempt at a room conversion.</p>
+        <p>Every property in our inventory was renovated by an operator inside our program, to a scope we set, with review at defined checkpoints. That's the difference between this and buying somebody's first attempt at a room conversion.</p>
       </div>
       <div>
         <p>The house comes furnished. We handle the furnishings as part of the buildout, so you're not sourcing ten bedrooms' worth of beds and desks after closing.</p>
@@ -1031,11 +1031,11 @@ main=phead("For investors", "Buy a finished property",
     <h2>After you close</h2>
     <div class="split">
       <div>
-        <p>A finished house still has to get listed, filled, and run. We help you launch on PadSplit rather than handing you keys and a login &mdash; the listing, the room setup, and getting the first residents in.</p>
-        <p>PadSplit handles the parts a marketplace should: background checks, income verification, eviction history, and week-to-week payments. No credit check on residents.</p>
+        <p>A finished house still has to get listed and filled. We help you launch on PadSplit rather than handing you keys and a login &mdash; the listing, the room setup, and getting live in front of residents.</p>
+        <p>From there PadSplit is the engine. It markets the rooms and drives the applicant flow, so you're not advertising a bedroom or fielding calls. It screens too: background checks, income verification, eviction history, and week-to-week payments, with no credit check on residents.</p>
       </div>
       <div>
-        <p>Day-to-day management is your call. Some buyers bring in a property manager, others run the house themselves. Both work, and we'll walk you through what each actually involves before you decide.</p>
+        <p>What's left is the physical house &mdash; turnovers, repairs, keeping common areas right. That part is your call: some buyers bring in a property manager, others handle it themselves. Both work, and we'll walk you through what each involves before you decide.</p>
         <p>Worth knowing going in: co-living earns from multiple rooms, so vacancy and turnover behave differently than they do on a single-tenant rental. One empty room isn't an empty house.</p>
       </div>
     </div>
@@ -1048,7 +1048,7 @@ main=phead("For investors", "Buy a finished property",
     <ol class="stages">
       <li><div><b>You get qualified</b><span>Short conversation about your criteria, timeline, and how you're funding the purchase.</span></div></li>
       <li><div><b>You go on the list</b><span>Qualified buyers see properties before they're marketed anywhere else.</span></div></li>
-      <li><div><b>We match you before it's finished</b><span>Inventory is matched to buyers while the renovation is still underway, not after it lists.</span></div></li>
+      <li><div><b>We work to match you early</b><span>We aim to pair inventory with buyers while the renovation is underway rather than after it lists.</span></div></li>
       <li><div><b>You tour and diligence</b><span>Your inspector, your lender, your timeline. We don't rush this part.</span></div></li>
       <li><div><b>You close</b><span>On a property that was built to be exactly what it is.</span></div></li>
     </ol>
@@ -1199,7 +1199,7 @@ main=phead("Questions", "Frequently asked questions",
     </div>
     <div class="qa">
       <h3>What is PadSplit?</h3>
-      <p>A marketplace that connects residents with hosts, in the way Airbnb connects guests with owners. PadSplit runs background checks, income verification, and eviction history &mdash; no credit check &mdash; and provides the management system for week-to-week rentals.</p>
+      <p>A marketplace that connects residents with hosts, in the way Airbnb connects guests with owners. PadSplit does the marketing and brings the applicants, then screens them &mdash; background checks, income verification, eviction history, no credit check &mdash; and runs the management system for week-to-week rentals. As the owner you're not advertising rooms or chasing rent.</p>
     </div>
     <div class="qa">
       <h3>Who actually lives in these homes?</h3>
@@ -1207,11 +1207,11 @@ main=phead("Questions", "Frequently asked questions",
     </div>
     <div class="qa">
       <h3>How do the numbers compare to a traditional flip?</h3>
-      <p>Retail flip margins have thinned as rates rose. Converting to co-living has produced profits in the range of $60,000 to $80,000 or more per deal. <span class="todo">Earnings figures attached to a paid program need substantiation and a disclaimer &mdash; have counsel set the wording before this goes live.</span></p>
+      <p>Retail flip margins have thinned as rates rose, and you're competing for the same houses as everyone else. A co-living conversion sells to a buyer pricing the property on what it produces by the room rather than on comps down the street, and that spread is meaningfully wider than a retail exit. What any individual deal returns depends on the house, the market, and how you execute &mdash; we'll walk you through the math on a real property rather than quote you an average.</p>
     </div>
     <div class="qa">
       <h3>What makes the Green Light approach different?</h3>
-      <p>Most operators convert an existing rental or short-term property and work around what's already there. We buy distressed wholesale properties and design them for PadSplit from scratch. The result is finish quality above most of what's on the platform &mdash; which is what lets these homes hold rent and residents.</p>
+      <p>Most operators convert an existing rental or short-term property and work around what's already there. We buy distressed wholesale properties and design them for PadSplit from the first wall. Designing for the model instead of retrofitting it is what produces a house that holds rent and keeps residents.</p>
     </div>
     <div class="qa">
       <h3>What is the Green Light App?</h3>
@@ -1223,7 +1223,7 @@ main=phead("Questions", "Frequently asked questions",
     </div>
     <div class="qa">
       <h3>Is there real demand for the finished homes?</h3>
-      <p>In Arizona, buyers are lined up for these properties before the acquisition even closes. Demand for affordable housing is the reason the model works, and it's why the buyer list matters as much as the build.</p>
+      <p>Demand for affordable housing in the Valley is the reason this model works at all, and it's why we qualify buyers before inventory rather than after. How quickly any particular house finds its buyer depends on the property and the market at the time.</p>
     </div>
   </div>
 </section>

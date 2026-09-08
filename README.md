@@ -114,11 +114,12 @@ hit, add Vercel's WAF rules or a per-IP check in the handler.
 - [ ] Add testimonials from students who have closed
 - [ ] Swap the "Rachelle Test" form ID for the production one
 - [ ] Real bio, photo, and Trinity relationship on about.html
-- [ ] Substantiate the 450+ doors / 15% market share / 26+ years figures
+- [ ] Confirm you can substantiate 450+ doors and 26+ years if asked
+      (the market-share claim has been removed)
+- [ ] Decide whether the stats strip stays at all — it's the last
+      performance claim on the site
 - [ ] Confirm what conveys with a buyer property (furnished, managed, tenanted)
 - [ ] Disclose any buyer-side fee on for-buyers.html
 - [ ] Point greenlightbuyingmachine.com at the deployment
-- [ ] Have counsel set the wording on the $60k–$80k per-deal figure (earnings
-      claims tied to a paid program need substantiation and a disclaimer)
 - [ ] Confirm PadSplit brand usage is cleared — the name now appears in copy
       and is rendered into the Ash plan image
