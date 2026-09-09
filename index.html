@@ -58,9 +58,9 @@
   .nav{background:var(--ink-soft);color:var(--paper);
     box-shadow:inset 0 -1px 0 rgba(232,231,224,.12)}
   .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;
-    flex-wrap:wrap;padding-block:1.15rem}
+    flex-wrap:wrap;padding-block:.5rem}
   .nav .brand{display:block;line-height:0}
-  .nav .brand img,.lp-nav .brand img{width:auto;height:56px;display:block;
+  .nav .brand img,.lp-nav .brand img{width:auto;height:92px;display:block;
     filter:drop-shadow(0 0 9px rgba(85,200,120,.42))
            drop-shadow(0 1px 2px rgba(0,0,0,.45))
            saturate(1.08) brightness(1.06)}
@@ -72,7 +72,7 @@
     .nav .brand img,.lp-nav .brand img{transition:filter .25s ease}
   }
   @media(max-width:46rem){
-    .nav .brand img,.lp-nav .brand img{height:46px}
+    .nav .brand img,.lp-nav .brand img{height:70px}
   }
   .nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;margin:0;padding:0;
     font-family:var(--display);font-weight:500;font-size:.94rem}
@@ -167,7 +167,7 @@
   .lp-below--top{margin-top:clamp(1.25rem,3vw,2rem)}
 
   /* landing page */
-  .lp-nav{background:var(--ink-soft);color:var(--paper);padding-block:1.15rem;
+  .lp-nav{background:var(--ink-soft);color:var(--paper);padding-block:.5rem;
     box-shadow:inset 0 -1px 0 rgba(232,231,224,.12)}
   .lp-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
   .lp-nav .brand{display:block;line-height:0}
@@ -334,7 +334,7 @@
 <body>
 <nav class="nav">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="images/brand/logo-h.webp" srcset="images/brand/logo-h.webp 1x, images/brand/logo-h-2x.webp 2x" alt="Green Light Buying Machine" width="900" height="270"></a>
+    <a class="brand" href="index.html"><img src="images/brand/logo-full.webp" srcset="images/brand/logo-full.webp 1x, images/brand/logo-full-2x.webp 2x" alt="Green Light Buying Machine" width="560" height="505"></a>
     <ul>
 <li><a href="index.html" aria-current="page">Home</a></li>
 <li><a href="how-it-works.html">Build with us</a></li>
