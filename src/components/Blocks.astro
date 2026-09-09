@@ -8,9 +8,11 @@ const { blocks } = Astro.props;
    never presents two identical grounds in a row. Blocks that carry their
    own ground opt out. */
 const SELF_GROUND = new Set(["callout", "cta"]);
-let dark = false;
+const ALWAYS_LIGHT = new Set(["form"]);
+let dark = true; // flipped before first use, so the first section lands on paper
 const withGround = blocks.map((b: any) => {
   if (SELF_GROUND.has(b.type)) return { block: b, band: false };
+  if (ALWAYS_LIGHT.has(b.type)) { dark = false; return { block: b, band: false }; }
   dark = !dark;
   return { block: b, band: dark };
 });

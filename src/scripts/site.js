@@ -64,7 +64,16 @@
 
     form.addEventListener('submit', function (event) {
       event.preventDefault();
-      if (!form.checkValidity()) { form.reportValidity(); return; }
+      if (!form.checkValidity()) {
+        var bad = form.querySelector(":invalid");
+        if (bad) {
+          bad.scrollIntoView({ behavior: "smooth", block: "center" });
+          try { bad.focus({ preventScroll: true }); } catch (e) { bad.focus(); }
+        }
+        show("err", "Some fields still need filling in.");
+        form.reportValidity();
+        return;
+      }
 
       var payload = {};
       new FormData(form).forEach(function (value, key) { payload[key] = value; });
