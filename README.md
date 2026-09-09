@@ -120,10 +120,13 @@ hit, add Vercel's WAF rules or a per-IP check in the handler.
 - [ ] Add testimonials from students who have closed
 - [ ] Rename the "Rachelle Test" form in GHL — the name shows in the iframe title
 - [ ] Replace G-XXXXXXXXXX with the real GA4 measurement ID (in build.py, then rebuild)
-- [ ] Resolve the lifetime-coaching conflict: the site says coaching lasts as long
-      as membership is active, because the MSA is month-to-month. If coaching is
-      meant to continue after a subscription ends, amend the MSA
 - [ ] Have counsel check disclosures.html against the executed MSA
+- [ ] RESOLVE FEE CONFLICT: site says $15,000 onboarding, MSA says $10,000.
+      Amend the MSA or change the site. A member seeing two different numbers
+      is a refund dispute waiting to happen, and the fee is non-refundable
+- [ ] Confirm what the ongoing membership and marketplace fees will be, and
+      that they're stated in full during the application call (the site says
+      they exist and that you'll walk through them — honor that)
 - [ ] Written permission from the student in the how-it-works story, plus his
       name, a photo, and two sentences in his own words
 - [ ] Decide book delivery: instant PDF download or emailed link

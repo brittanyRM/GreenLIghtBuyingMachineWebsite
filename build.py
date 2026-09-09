@@ -811,15 +811,12 @@ main=phead("The program", "How it works",
 
     <div class="stepbox" style="margin-top:2.5rem;border-top-color:var(--green)">
       <div class="n">BECOMING A MEMBER</div>
-      <h3 style="font-size:clamp(1.3rem,1.1rem + .8vw,1.75rem);font-weight:800">What it costs</h3>
+      <h3 style="font-size:clamp(1.3rem,1.1rem + .8vw,1.75rem);font-weight:800">$15,000 to onboard</h3>
       <p>You apply first. We review your background, and if it's a fit we talk. Nothing is due before you're accepted.</p>
-      <ul class="plain" style="margin-top:1.25rem">
-        <li><b>$10,000 one-time</b> &mdash; certification and onboarding. Covers onboarding, coaching, education materials, and platform setup. Non-refundable, because digital resources open immediately.</li>
-        <li><b>$1,000 per month</b> &mdash; platform subscription, which begins once you've completed the trigger system course and one Green Light transaction. Covers platform tools, mentor-based coaching, the member community, certification maintenance, and marketplace access.</li>
-        <li><b>2% of gross sale price</b> &mdash; platform technology success fee, owed if a certified property closes during an active listing period. This is a technology usage fee for the Marketplace Module, not a real estate commission.</li>
-      </ul>
-      <p>None of that includes the house. You buy and finance the property and the renovation yourself, exactly as you would any fix and flip.</p>
-      <p style="margin-bottom:0">Membership is month to month, and either side can end it with 30 days' written notice. If the subscription lapses, certification goes inactive.</p>
+      <p>The onboarding fee covers coaching, education materials, certification, and platform setup. It's non-refundable once you're in, because the digital resources open immediately.</p>
+      <p>Ongoing membership fees and a marketplace fee at closing also apply. We'll walk you through the full fee schedule during the application conversation, before you commit to anything &mdash; and it's all set out in the agreement you'd sign.</p>
+      <p style="margin-bottom:0">None of it includes the house. You buy and finance the property and the renovation yourself, exactly as you would any fix and flip. Membership is month to month; either side can end it with 30 days' written notice, and certification goes inactive if membership lapses.</p>
+      <p class="todo" style="margin-top:1.25rem">The MSA states a $10,000 onboarding fee. Amend the agreement to $15,000 before this page goes live, or change this number back &mdash; the two must not disagree.</p>
     </div>
   </div>
 </section>
@@ -845,7 +842,7 @@ main=phead("Before you apply", "Is it for you?",
           <li>Are ready to own the entire buildout and every decision in it</li>
           <li>Want a different exit, not a different hobby</li>
           <li>Can work an Arizona property &mdash; that's where our deal flow and buyers are today</li>
-          <li>Can cover the onboarding fee and monthly subscription on top of the deal itself</li>
+          <li>Can cover the $15,000 onboarding fee and ongoing membership on top of the deal itself</li>
           <li>Carry general liability insurance of at least $1,000,000 per occurrence</li>
         </ul>
       </div>
@@ -922,7 +919,7 @@ main=phead("Before you apply", "Is it for you?",
     </div>
     <div class="qa">
       <h3>How long does coaching last?</h3>
-      <p>For as long as your membership is active. Coaching runs weekly through your first month and every other week after that, and the agreement is month to month. <span class="todo">If coaching is meant to continue after a subscription ends, that needs to be written into the MSA &mdash; right now the two say different things.</span></p>
+      <p>For as long as your membership is active. Coaching runs weekly through your first month and every other week after that. The agreement is month to month, so coaching continues while you're a member and ends when membership does.</p>
     </div>
     <div class="qa">
       <h3>When does the next cohort start?</h3>
@@ -1076,7 +1073,7 @@ main=phead("For operators", "Apply to the program",
     <div class="split">
       <div>
         <p>Nothing here is a commitment. It's how we find out whether your experience, your crew, and your capital line up with what the program actually requires &mdash; before either of us spends time on a call.</p>
-        <p style="margin-bottom:1.75rem">Applying costs nothing. If you're accepted it's <b>$10,000</b> to onboard and certify, then <b>$1,000 a month</b> once you've finished the course and your first transaction, plus a <b>2%</b> platform fee if a certified property sells through the marketplace. The house and the renovation are yours to finance, as with any flip. Better you know that now than three conversations from now.</p>
+        <p style="margin-bottom:1.75rem">Applying costs nothing. If you're accepted, onboarding is <b>$15,000</b>, and ongoing membership and marketplace fees apply &mdash; we'll go through the full schedule with you before you commit. The house and the renovation are yours to finance, as with any flip. Better you know the shape of it now than three conversations from now.</p>
         <form class="js-form" action="/api/apply" method="post" novalidate
               data-source="program application"
               data-sending="Sending your application&#8230;"
@@ -1731,7 +1728,7 @@ LANDING = """<!DOCTYPE html>
         <li>Tools for supplies, furnishings, and launching on PadSplit</li>
       </ul>
     </div>
-    <p style="margin-top:2rem"><b>$10,000 to onboard, then $1,000 a month</b> once you&#8217;ve completed the course and your first transaction, plus a 2% platform fee if a certified property sells through the marketplace. Applying is free. None of it includes the house &mdash; you buy and finance that yourself, the way you would any flip.</p>
+    <p style="margin-top:2rem"><b>$15,000 to onboard</b>, with ongoing membership and marketplace fees covered in full during the application conversation. Applying is free. None of it includes the house &mdash; you buy and finance that yourself, the way you would any flip.</p>
     <div class="cta-row">
       <a class="btn" href="#form-card">Apply now</a>
       <a class="btn ghost" href="how-it-works.html">See the full process</a>
@@ -1916,7 +1913,8 @@ main=phead("Plain language", "Disclosures",
     </div>
     <div class="qa">
       <h3>Fees</h3>
-      <p>A one-time $10,000 certification and onboarding fee, non-refundable because digital resources are made available immediately. A $1,000 monthly subscription, applied once the trigger system course and one Green Light transaction are complete. A 2% platform technology success fee on gross sale price if a certified property closes during an active listing period &mdash; a technology usage fee for the Marketplace Module, not a real estate commission.</p>
+      <p>A one-time certification and onboarding fee, non-refundable because digital resources are made available immediately. A recurring monthly platform subscription, which begins once the trigger system course and one Green Light transaction are complete, and which keeps certification active. A platform technology success fee calculated on gross sale price if a certified property closes during an active listing period &mdash; a technology usage fee for the Marketplace Module, not a real estate commission.</p>
+      <p>Current amounts are set out in the Master Services Agreement and reviewed with you before you sign. <span class="todo">Confirm the fee figures here match the executed MSA.</span></p>
     </div>
     <div class="qa">
       <h3>Term, liability and disputes</h3>
