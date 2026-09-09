@@ -7,14 +7,35 @@ const { blocks } = Astro.props;
 /* Sections alternate between the paper ground and the dark band so a page
    never presents two identical grounds in a row. Blocks that carry their
    own ground opt out. */
-const SELF_GROUND = new Set(["callout", "cta"]);
-const ALWAYS_LIGHT = new Set(["form"]);
-let dark = true; // flipped before first use, so the first section lands on paper
+/* Each block type has a ground it was designed for. Stats and role cards
+   need the dark band — bright green numerals go washy on paper. Forms and
+   galleries need paper. Only plain prose alternates, and it starts light
+   because the page header above it is already dark. */
+const GROUND: Record<string, "band" | "paper" | "alternate"> = {
+  stats: "band",
+  roles: "band",
+  lists: "band",
+  stages: "paper",
+  cta: "alternate",
+  prose: "alternate",
+  fit: "alternate",
+  qa: "paper",
+  gallery: "alternate",
+  doors: "alternate",
+  form: "paper",
+  people: "paper",
+  callout: "paper",
+  html: "alternate",
+};
+
+let lastWasDark = true; // the page header is dark, so prose starts on paper
 const withGround = blocks.map((b: any) => {
-  if (SELF_GROUND.has(b.type)) return { block: b, band: false };
-  if (ALWAYS_LIGHT.has(b.type)) { dark = false; return { block: b, band: false }; }
-  dark = !dark;
-  return { block: b, band: dark };
+  const rule = GROUND[b.type] ?? "alternate";
+  let band: boolean;
+  if (rule === "alternate") { band = !lastWasDark; }
+  else { band = rule === "band"; }
+  lastWasDark = band;
+  return { block: b, band };
 });
 
 const shots = (set: "homes" | "plans", limit?: number) => {
