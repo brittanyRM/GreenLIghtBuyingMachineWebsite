@@ -1,0 +1,121 @@
+---
+import "../styles/global.css";
+import { getEntry } from "astro:content";
+import { NAV } from "../consts";
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+  bare?: boolean; // funnel/landing pages: minimal nav, no menu
+}
+
+const { title, description, noindex = false, bare = false } = Astro.props;
+const site = (await getEntry("settings", "site"))!.data;
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="icon" type="image/png" href="/images/brand/favicon-256.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Literata:opsz,wght@7..72,400;7..72,500&family=Spline+Sans+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    {site.ga4 && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${site.ga4}`}></script>
+        <script is:inline define:vars={{ id: site.ga4 }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag("js", new Date());
+          gtag("config", id);
+        </script>
+      </>
+    )}
+  </head>
+
+  <body>
+    <nav class={bare ? "lp-nav" : "nav"}>
+      <div class="wrap">
+        <a class="brand" href="/">
+          <img
+            src="/images/brand/logo-full.webp"
+            srcset="/images/brand/logo-full.webp 1x, /images/brand/logo-full-2x.webp 2x"
+            alt={site.brand}
+            width="560"
+            height="505"
+          />
+        </a>
+        {bare ? (
+          <span class="ph">{site.phone}</span>
+        ) : (
+          <>
+            <ul>
+              {NAV.map((item) => (
+                <li>
+                  <a href={item.href} aria-current={path === item.href ? "page" : undefined}>
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <span class="nav-cta">
+              <a class="btn ghost" href={site.navCtaSecondary.href}>{site.navCtaSecondary.label}</a>
+              <a class="btn" href={site.navCtaPrimary.href}>{site.navCtaPrimary.label}</a>
+            </span>
+          </>
+        )}
+      </div>
+    </nav>
+
+    <slot />
+
+    <footer>
+      <div class="wrap">
+        <div>
+          <h4>{site.brand}</h4>
+          <p class="fine" style="margin:0 0 .6rem">{site.tagline}</p>
+          <p style="margin:0 0 .25rem"><a href={`mailto:${site.email}`}>{site.email}</a></p>
+          <p style="margin:0 0 .6rem"><a href={site.phoneHref}>{site.phone}</a></p>
+          <p style="margin:0">
+            {site.instagram && <a href={site.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>}
+            {site.youtube && <> &middot; <a href={site.youtube} target="_blank" rel="noopener noreferrer">YouTube</a></>}
+            {site.trinity && <> &middot; <a href={site.trinity} target="_blank" rel="noopener noreferrer">Trinity</a></>}
+          </p>
+        </div>
+        <div>
+          <h4>Pages</h4>
+          <ul>
+            {NAV.slice(1).map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+            <li><a href="/apply">Apply to become a student</a></li>
+            <li><a href="/submit-a-property">Submit a property</a></li>
+            <li><a href="/the-book">The book</a></li>
+            <li><a href="/disclosures">Disclosures</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Fine print</h4>
+          <p class="fine" style="margin:0 0 .6rem">{site.footerFinePrint}</p>
+          <p style="margin:0"><a href="/disclosures">Full disclosures</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+      <button class="close" id="lightboxClose" aria-label="Close">&times;</button>
+      <img id="lightboxImg" src="" alt="" />
+      <div class="cap" id="lightboxCap"></div>
+    </div>
+
+    <script src="../scripts/site.js"></script>
+  </body>
+</html>

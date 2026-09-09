@@ -1,0 +1,100 @@
+{
+  "title": "Certified co-living properties — Green Light Buying Machine",
+  "description": "Register as a buyer and see certified co-living properties as they're listed.",
+  "kicker": "For investors",
+  "heading": "Certified co-living properties",
+  "lede": "Converted, furnished, and documented against our standards. Register as a buyer and you'll see certified properties as they're listed.",
+  "blocks": [
+    {
+      "type": "prose",
+      "heading": "What you're actually buying",
+      "columns": [
+        {
+          "body": "<p>A single-family house reconfigured into individually rented rooms with shared kitchen and living space, listed and managed through PadSplit. Built to the standard the platform's residents expect rather than to whatever a contractor thought was close enough.</p><p>Every certified property was renovated by an operator working through our program and our standards, and the documentation behind that certification comes with the listing. Certification is a documentation review rather than a physical inspection &mdash; your own inspection and due diligence still matter.</p>"
+        },
+        {
+          "body": "<p>Every house has at least eight bedrooms and two bathrooms, often considerably more bathrooms than that. Ensuite rooms command higher rent on PadSplit and turn over less, so where the numbers support the extra baths we build them.</p><p>The house comes furnished. We handle the furnishings as part of the buildout, so you're not sourcing eight or ten bedrooms' worth of beds and desks after closing.</p><p>Houses close vacant. That's deliberate &mdash; you set the rules, the rates and the room mix from day one rather than inheriting someone else's residents and agreements.</p>"
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "heading": "After you close",
+      "columns": [
+        {
+          "body": "<p>You close on a vacant house, which means the lease-up is yours &mdash; and so is every decision about how the house runs. We help you launch on PadSplit: the listing, the room setup, the house rules, and getting live in front of residents.</p><p>From there PadSplit is the engine. It markets the rooms and drives the applicant flow, so you're not advertising a bedroom or fielding calls.</p>"
+        },
+        {
+          "body": "<p>What's left is the physical house &mdash; turnovers, repairs, keeping common areas right. That part is your call: some buyers bring in a property manager, others handle it themselves.</p><p>Worth knowing going in: co-living earns from multiple rooms, so vacancy and turnover behave differently than they do on a single-tenant rental. One empty room isn't an empty house.</p>"
+        }
+      ]
+    },
+    {
+      "type": "stages",
+      "heading": "How it works",
+      "items": [
+        {
+          "title": "You get pre-qualified",
+          "body": "A conversation with Rachelle so you know what you can close on, and so do we."
+        },
+        {
+          "title": "You register as a buyer",
+          "body": "Tell us your criteria and you'll be notified when certified properties are listed."
+        },
+        {
+          "title": "You review listings",
+          "body": "Certification documentation comes with the listing, so you can see how the house was built."
+        },
+        {
+          "title": "You tour and diligence",
+          "body": "Your inspector, your lender, your timeline. We don't rush this part."
+        },
+        {
+          "title": "You close",
+          "body": "Vacant, furnished, and built to be exactly what it is."
+        },
+        {
+          "title": "We launch it with you",
+          "body": "Listing live on PadSplit, rooms set up, house rules in. The platform fills them from there."
+        }
+      ]
+    },
+    {
+      "type": "fit",
+      "heading": "Who we can work with",
+      "fit": [
+        "Have cash or financing already arranged",
+        "Are buying to hold, not to resell quickly",
+        "Understand shared housing is operationally different from a single-tenant rental",
+        "Can move on a timeline when the right property comes up"
+      ],
+      "not": [
+        "Are still deciding whether to invest at all",
+        "Need seller financing we don't offer",
+        "Want a guaranteed return",
+        "Expect an asset with no management decisions at all",
+        "Need income from day one &mdash; houses close vacant and fill from there"
+      ]
+    },
+    {
+      "type": "form",
+      "heading": "Get pre-qualified",
+      "lede": "We can't bring you a deal until you're pre-qualified. When a house goes live it moves fast, and we need to know you can close &mdash; not that you're interested.",
+      "form": "prequal",
+      "aside": "<h3 style=\"margin-bottom:1rem\">What Rachelle does</h3><ul class=\"plain\"><li>Reviews what you can close on, and how quickly</li><li>Finances PadSplit conversions specifically &mdash; she prices this asset on room income rather than residential comps</li><li>Sends you a pre-qualification letter so you can move when a property is listed</li></ul><p style=\"margin-top:1.5rem;font-size:.95rem;opacity:.85\">Prefer to go direct? <a href=\"https://go.homeownersfg.com/home/rachelle-coffey\" target=\"_blank\" rel=\"noopener noreferrer\">Rachelle&#8217;s booking page</a>.</p><p style=\"margin-top:1.25rem;font-size:.95rem;opacity:.8\">We don't sell or share this list. We provide listing visibility only &mdash; we don't represent buyers or sellers, negotiate, or hold escrow, and any purchase is transacted directly with the property owner.</p>"
+    },
+    {
+      "type": "gallery",
+      "heading": "What you'd be buying",
+      "lede": "Finished conversions, furnished by us and launched on PadSplit.",
+      "set": "homes",
+      "limit": 4
+    },
+    {
+      "type": "cta",
+      "heading": "See the rest",
+      "primaryLabel": "All the homes and plans",
+      "primaryHref": "/homes"
+    }
+  ]
+}

@@ -1,0 +1,317 @@
+---
+export const prerender = false;
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Edit the site — Green Light Buying Machine</title>
+    <link rel="icon" type="image/png" href="/images/brand/favicon-256.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Literata:opsz,wght@7..72,400&family=Spline+Sans+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body { background: var(--paper); }
+      .admin-bar { background: var(--ink-deep); color: var(--paper); padding: .9rem 0; }
+      .admin-bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+      .admin-bar img { height: 46px; width: auto; display: block; }
+      .admin-bar .who { font-family: var(--plan); font-size: .78rem; opacity: .7; }
+
+      .gate { max-width: 24rem; margin: 5rem auto; }
+      .gate .card { padding: 2rem; }
+
+      .editor { display: grid; gap: 2rem; grid-template-columns: 1fr; padding-block: 2rem 5rem; }
+      @media (min-width: 60rem) { .editor { grid-template-columns: 15rem minmax(0, 1fr); } }
+
+      .pagelist { list-style: none; margin: 0; padding: 0; position: sticky; top: 1rem; align-self: start; }
+      .pagelist li { margin-bottom: .2rem; }
+      .pagelist button {
+        width: 100%; text-align: left; background: none; border: 0; cursor: pointer;
+        font: inherit; font-size: .95rem; padding: .5rem .7rem; border-radius: 2px; color: var(--ink);
+      }
+      .pagelist button:hover { background: var(--paper-dim); }
+      .pagelist button[aria-current="true"] { background: var(--ink); color: var(--paper); }
+
+      .blockcard { border: 1px solid var(--rule); border-left: 3px solid var(--green);
+        padding: 1.1rem 1.25rem; margin-bottom: 1rem; background: #fff; }
+      .blockcard > h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em;
+        color: var(--green); margin: 0 0 .9rem; font-family: var(--display); }
+      .blockcard .field { margin-bottom: .8rem; }
+      .blockcard label { font-size: .8rem; }
+      .blockcard textarea { min-height: 5rem; }
+      .sub-list { border-left: 2px solid var(--rule); padding-left: .9rem; margin: .4rem 0 1rem; }
+
+      .savebar { position: sticky; bottom: 0; background: var(--paper);
+        border-top: 1px solid var(--rule); padding: 1rem 0; display: flex;
+        align-items: center; gap: 1rem; flex-wrap: wrap; }
+      .msg { font-size: .9rem; }
+      .msg.ok { color: var(--green); }
+      .msg.err { color: #9a3412; }
+      .hidden { display: none !important; }
+      .hint code { font-family: var(--plan); font-size: .85em; }
+    </style>
+  </head>
+
+  <body>
+    <div class="admin-bar">
+      <div class="wrap">
+        <img src="/images/brand/logo-full.webp" alt="Green Light Buying Machine" />
+        <span class="who" id="whoami">Editing the website</span>
+        <button class="btn ghost hidden" id="signout" style="padding:.45rem 1rem;font-size:.85rem">Sign out</button>
+      </div>
+    </div>
+
+    <!-- password gate -->
+    <div class="wrap gate" id="gate">
+      <div class="card">
+        <h2 style="margin-bottom:.35rem">Sign in</h2>
+        <p class="sub" style="opacity:.7;margin-bottom:1.25rem">Enter the site password to edit content.</p>
+        <div class="field">
+          <label for="pw">Password</label>
+          <input id="pw" type="password" autocomplete="current-password" />
+        </div>
+        <button class="submit" id="signin" style="width:100%">Sign in</button>
+        <p class="msg err hidden" id="gateMsg" style="margin-top:.8rem"></p>
+      </div>
+    </div>
+
+    <!-- editor -->
+    <div class="wrap editor hidden" id="editor">
+      <ul class="pagelist" id="pagelist"></ul>
+      <div>
+        <div id="fields"></div>
+        <div class="savebar">
+          <button class="submit" id="save">Publish changes</button>
+          <span class="msg" id="saveMsg"></span>
+        </div>
+        <p class="hint" style="margin-top:1rem">
+          Published changes go live in about a minute while the site rebuilds. Refresh the page
+          you edited to see them.
+        </p>
+      </div>
+    </div>
+
+    <script is:inline>
+      const $ = (id) => document.getElementById(id);
+      let current = null; // { slug, data }
+
+      /* ---------- labels: which JSON keys editors actually see ---------- */
+      const LABELS = {
+        title: "Browser tab title",
+        description: "Search description",
+        kicker: "Small label above heading",
+        heading: "Page heading",
+        lede: "Intro paragraph",
+        body: "Text",
+        value: "Number",
+        label: "Caption",
+        question: "Question",
+        answer: "Answer",
+        footnote: "Footnote",
+        fitTitle: "Left column title",
+        notTitle: "Right column title",
+        primaryLabel: "Green button label",
+        primaryHref: "Green button link",
+        secondaryLabel: "Outlined button label",
+        secondaryHref: "Outlined button link",
+        ctaLabel: "Button label",
+        ctaHref: "Button link",
+        note: "Requirements line",
+        aside: "Side panel",
+        brand: "Brand name",
+        tagline: "Footer tagline",
+        email: "Contact email",
+        phone: "Phone (shown)",
+        phoneHref: "Phone (link)",
+        footerFinePrint: "Footer legal text",
+        ga4: "Google Analytics ID",
+      };
+      const BLOCK_NAMES = {
+        prose: "Text section", stats: "Numbers strip", roles: "Three cards",
+        fit: "Fit / not a fit", stages: "Numbered steps", qa: "Questions and answers",
+        lists: "Two bullet lists", gallery: "Photo grid", doors: "Two-choice cards",
+        callout: "Highlighted box", cta: "Call to action", form: "A form",
+        people: "Brian and Gina", html: "Custom HTML",
+      };
+      const SKIP = new Set(["type", "set", "limit", "form", "accent", "noindex", "hidden", "order", "navLabel"]);
+      const LONG = new Set(["body", "answer", "lede", "description", "aside", "footnote", "note", "tagline", "footerFinePrint"]);
+
+      const labelFor = (k) => LABELS[k] || k.replace(/([A-Z])/g, " $1").replace(/^./, (c) => c.toUpperCase());
+
+      /* ---------- render a value into editable fields ---------- */
+      function fieldFor(value, path, key) {
+        const wrap = document.createElement("div");
+        wrap.className = "field";
+        const id = "f_" + path.join("_");
+        const lab = document.createElement("label");
+        lab.setAttribute("for", id);
+        lab.textContent = labelFor(key);
+        const input = document.createElement(LONG.has(key) || String(value).length > 90 ? "textarea" : "input");
+        input.id = id;
+        input.value = value ?? "";
+        input.addEventListener("input", () => setAt(path, input.value));
+        wrap.append(lab, input);
+        return wrap;
+      }
+
+      function setAt(path, value) {
+        let node = current.data;
+        for (let i = 0; i < path.length - 1; i++) node = node[path[i]];
+        node[path[path.length - 1]] = value;
+      }
+
+      function renderValue(container, value, path, key) {
+        if (typeof value === "string") {
+          container.append(fieldFor(value, path, key));
+        } else if (Array.isArray(value)) {
+          const list = document.createElement("div");
+          list.className = "sub-list";
+          const head = document.createElement("label");
+          head.textContent = labelFor(key);
+          list.append(head);
+          value.forEach((item, i) => renderValue(list, item, [...path, i], typeof item === "string" ? "item" : key));
+          container.append(list);
+        } else if (value && typeof value === "object") {
+          Object.entries(value).forEach(([k, v]) => {
+            if (SKIP.has(k)) return;
+            renderValue(container, v, [...path, k], k);
+          });
+        }
+      }
+
+      function renderPage() {
+        const host = $("fields");
+        host.innerHTML = "";
+        const d = current.data;
+
+        const top = document.createElement("div");
+        top.className = "blockcard";
+        top.innerHTML = "<h3>Page basics</h3>";
+        ["title", "description", "kicker", "heading", "lede", "brand", "tagline", "email",
+         "phone", "phoneHref", "instagram", "youtube", "trinity", "ga4", "footerFinePrint"]
+          .forEach((k) => { if (typeof d[k] === "string") top.append(fieldFor(d[k], [k], k)); });
+        host.append(top);
+
+        ["navCtaPrimary", "navCtaSecondary"].forEach((k) => {
+          if (!d[k]) return;
+          const card = document.createElement("div");
+          card.className = "blockcard";
+          card.innerHTML = `<h3>${k === "navCtaPrimary" ? "Nav button (green)" : "Nav button (outlined)"}</h3>`;
+          renderValue(card, d[k], [k], k);
+          host.append(card);
+        });
+
+        (d.blocks || []).forEach((b, i) => {
+          const card = document.createElement("div");
+          card.className = "blockcard";
+          card.innerHTML = `<h3>${BLOCK_NAMES[b.type] || b.type}</h3>`;
+          renderValue(card, b, ["blocks", i], b.type);
+          host.append(card);
+        });
+
+        if (!(d.blocks || []).length && !d.brand) {
+          host.insertAdjacentHTML("beforeend",
+            '<p class="hint">This page has no editable sections yet.</p>');
+        }
+      }
+
+      /* ---------- data ---------- */
+      async function api(path, options) {
+        const res = await fetch(path, {
+          headers: { "Content-Type": "application/json" },
+          ...options,
+        });
+        if (res.status === 401) { showGate("Session expired — sign in again."); throw new Error("401"); }
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(body.error || "Request failed");
+        return body;
+      }
+
+      async function loadPage(slug, button) {
+        const msg = $("saveMsg"); msg.textContent = "Loading…"; msg.className = "msg";
+        try {
+          const { data } = await api(`/api/admin/pages?slug=${encodeURIComponent(slug)}`);
+          current = { slug, data };
+          renderPage();
+          document.querySelectorAll("#pagelist button").forEach((b) =>
+            b.setAttribute("aria-current", b === button ? "true" : "false"));
+          msg.textContent = "";
+        } catch (e) { msg.textContent = e.message; msg.className = "msg err"; }
+      }
+
+      async function loadList() {
+        const { pages } = await api("/api/admin/pages");
+        const list = $("pagelist");
+        list.innerHTML = "";
+        [["site", "Contact & footer"], ...pages.map((p) => [p, p === "index" ? "Home" : p.replace(/-/g, " ")])]
+          .forEach(([slug, label]) => {
+            const li = document.createElement("li");
+            const btn = document.createElement("button");
+            btn.textContent = label;
+            btn.onclick = () => loadPage(slug, btn);
+            li.append(btn); list.append(li);
+          });
+        list.querySelector("button")?.click();
+      }
+
+      /* ---------- gate ---------- */
+      function showGate(message) {
+        $("gate").classList.remove("hidden");
+        $("editor").classList.add("hidden");
+        $("signout").classList.add("hidden");
+        if (message) { $("gateMsg").textContent = message; $("gateMsg").classList.remove("hidden"); }
+      }
+      function showEditor() {
+        $("gate").classList.add("hidden");
+        $("editor").classList.remove("hidden");
+        $("signout").classList.remove("hidden");
+      }
+
+      $("signin").onclick = async () => {
+        const btn = $("signin"); btn.disabled = true; btn.textContent = "Checking…";
+        $("gateMsg").classList.add("hidden");
+        try {
+          await api("/api/admin/login", { method: "POST", body: JSON.stringify({ password: $("pw").value }) });
+          showEditor(); await loadList();
+        } catch (e) {
+          $("gateMsg").textContent = e.message === "401" ? "Wrong password" : e.message;
+          $("gateMsg").classList.remove("hidden");
+        } finally { btn.disabled = false; btn.textContent = "Sign in"; }
+      };
+      $("pw").addEventListener("keydown", (e) => { if (e.key === "Enter") $("signin").click(); });
+
+      $("signout").onclick = async () => {
+        await fetch("/api/admin/logout", { method: "POST" });
+        location.reload();
+      };
+
+      $("save").onclick = async () => {
+        if (!current) return;
+        const btn = $("save"), msg = $("saveMsg");
+        btn.disabled = true; btn.textContent = "Publishing…"; msg.textContent = ""; msg.className = "msg";
+        try {
+          await api("/api/admin/pages", {
+            method: "PUT",
+            body: JSON.stringify({ slug: current.slug, data: current.data }),
+          });
+          msg.textContent = "Published. Live in about a minute.";
+          msg.className = "msg ok";
+        } catch (e) { msg.textContent = e.message; msg.className = "msg err"; }
+        finally { btn.disabled = false; btn.textContent = "Publish changes"; }
+      };
+
+      /* already signed in? */
+      (async () => {
+        try { await api("/api/admin/pages"); showEditor(); await loadList(); }
+        catch { showGate(); }
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+{
+  "title": "FAQ — Green Light Buying Machine",
+  "description": "Co-living, PadSplit, who actually lives in these homes, and how the numbers compare to traditional flipping.",
+  "kicker": "Questions",
+  "heading": "Frequently asked questions",
+  "lede": "The infrastructure behind certified co-living assets. Start here if co-living or PadSplit is new to you.",
+  "blocks": [
+    {
+      "type": "qa",
+      "items": [
+        {
+          "question": "What is co-living?",
+          "answer": "Unrelated adults sharing a house, each renting their own private, furnished bedroom while the kitchen, living room and laundry stay common. A lot of co-living houses run three or four residents. Ours don't &mdash; we build to a minimum of eight bedrooms, because the economics that make this worth doing come from room count."
+        },
+        {
+          "question": "What is PadSplit?",
+          "answer": "A marketplace that connects residents with hosts, in the way Airbnb connects guests with owners. PadSplit does the marketing and brings the applicants, then screens them &mdash; background checks, income verification, eviction history, no credit check &mdash; and runs the management system for week-to-week rentals. As the owner you're not advertising rooms or chasing rent."
+        },
+        {
+          "question": "Who actually lives in these homes?",
+          "answer": "Not students. In the Kingdeskis' houses the average resident is between 45 and 50 years old, and many stay for years rather than weeks. Affordable housing for working adults is what this is."
+        },
+        {
+          "question": "How do the numbers compare to a traditional flip?",
+          "answer": "Retail flip margins have thinned as rates rose, and you're competing for the same houses as everyone else. A co-living conversion sells to a buyer pricing the property on what it produces by the room rather than on comps, and that spread is meaningfully wider. What any individual deal returns depends on the house, the market, and how you execute &mdash; we'll walk you through the math on a real property rather than quote you an average."
+        },
+        {
+          "question": "How many bedrooms and bathrooms?",
+          "answer": "Eight bedrooms and two bathrooms is the floor &mdash; we don't build below it. Above that floor, bathrooms are an underwriting decision rather than a finish upgrade: a room with its own ensuite rents for more than one sharing down the hall, and PadSplit's data shows how much more by submarket."
+        },
+        {
+          "question": "What makes the Green Light approach different?",
+          "answer": "Most operators convert an existing rental and work around what's already there &mdash; which usually means rooms sharing a hall bathroom, because adding baths to a finished house is expensive and awkward. We buy distressed properties and design for PadSplit from the first wall."
+        },
+        {
+          "question": "What exactly am I buying?",
+          "answer": "Two things. Coaching and a documented standard of practice for converting fix-and-flip properties to co-living &mdash; and access to a platform that certifies a finished property against those standards and lists it for registered buyers. Certification is a documentation review, not a physical inspection, and it attaches to one specific property address rather than to you or your business."
+        },
+        {
+          "question": "What is the Green Light Way?",
+          "answer": "How we underwrite. We price a house by rentable room rather than by bedroom count, using PadSplit's room-level rent data and accounting for which rooms can be built ensuite. That calculation decides whether a conversion works."
+        },
+        {
+          "question": "Does certification mean the house is approved or up to code?",
+          "answer": "No. Certification confirms that the documentation you submitted meets our standards. It is not government approval, a code compliance certificate, zoning confirmation, or a safety guarantee, and we don't perform physical inspections. Permits, inspections, code compliance, occupancy rules and habitability all stay with you."
+        },
+        {
+          "question": "How long does coaching last?",
+          "answer": "For as long as your membership is active. Coaching runs weekly through your first month and every other week after that. The agreement is month to month, so coaching continues while you're a member and ends when membership does."
+        },
+        {
+          "question": "Do I have to be in Arizona?",
+          "answer": "No. We work with operators nationwide. Arizona is home and where we've done the most volume, so the local knowledge is deepest here &mdash; but the method isn't regional. What changes market to market is occupancy law, parking rules, permitting and room rents, and we'll show you how to check each of those where you are."
+        },
+        {
+          "question": "Is there real demand for the finished homes?",
+          "answer": "Demand for affordable housing is the reason this model works at all, and it's why we qualify buyers before inventory rather than after. How quickly any particular house finds its buyer depends on the property and the market at the time."
+        }
+      ]
+    },
+    {
+      "type": "doors",
+      "heading": "Still deciding which side you're on",
+      "items": [
+        {
+          "kicker": "If you build",
+          "title": "Build one with us",
+          "body": "You have completed renovations and a crew. We coach the conversion, certify the finished property, and list it for registered buyers.",
+          "ctaLabel": "How the program works",
+          "ctaHref": "/how-it-works",
+          "accent": "build"
+        },
+        {
+          "kicker": "If you buy",
+          "title": "Buy a finished property",
+          "body": "Converted, furnished, built to standard. Register and you'll see certified properties as they're listed.",
+          "ctaLabel": "Get on the buyer list",
+          "ctaHref": "/for-buyers",
+          "accent": "buy"
+        }
+      ]
+    }
+  ]
+}

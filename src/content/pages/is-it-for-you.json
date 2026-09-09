@@ -1,0 +1,88 @@
+{
+  "title": "Is it for you — Green Light Buying Machine",
+  "description": "An honest fit list: who the program works for, who it doesn't, and what members agree to.",
+  "kicker": "Before you apply",
+  "heading": "Is it for you?",
+  "lede": "We accept a small number of operators nationwide and we're careful about it &mdash; you apply, we review, and only then does anyone talk about money.",
+  "blocks": [
+    {
+      "type": "fit",
+      "fit": [
+        "Have 10 to 15 completed flips behind you",
+        "Already run your own crew &mdash; not trades you'd have to go find",
+        "Buy and finance your own deals: first, second, hard money, however you normally stack it",
+        "Are ready to own the entire buildout and every decision in it",
+        "Can cover the $15,000 onboarding fee and ongoing membership on top of the deal itself",
+        "Carry general liability insurance of at least $1,000,000 per occurrence",
+        "Want a different exit, not a different hobby"
+      ],
+      "not": [
+        "Are early in your flipping career",
+        "Would need to assemble a crew first",
+        "Are looking for passive income",
+        "Want to assign the contract instead of building",
+        "Need someone else to manage the build",
+        "Are shopping for a guarantee"
+      ]
+    },
+    {
+      "type": "lists",
+      "heading": "What members agree to",
+      "lede": "These aren't aspirations &mdash; they're in the agreement you'd sign.",
+      "left": [
+        "Submit accurate, complete documentation for certification",
+        "Attend coaching &mdash; weekly the first month, every other week after",
+        "Provide video walkthroughs of the property",
+        "Maintain compliance records"
+      ],
+      "right": [
+        "Carry general liability insurance of at least $1,000,000 per occurrence",
+        "Conduct all negotiations independently",
+        "Comply with all city, county, state and federal building codes, zoning, safety and occupancy law"
+      ],
+      "footnote": "You also take sole responsibility for permits, code compliance, contractor selection, legally required inspections, and habitability &mdash; and for your own due diligence on acquisition, financing, renovation feasibility, zoning, co-living legality, occupancy limits and resale value. We coach you through all of it. We don't verify any of it for you."
+    },
+    {
+      "type": "prose",
+      "heading": "Where we work",
+      "columns": [
+        {
+          "body": "<p>We're open nationwide. The method travels &mdash; underwriting by rentable room, designing for the model from the first wall, building to a standard an income buyer recognises. None of that is specific to Arizona.</p><p>What is specific to your market: occupancy limits, parking requirements, permitting, and what rooms actually rent for where you are. We'll show you how to check all of it. Confirming it stays your responsibility.</p>"
+        },
+        {
+          "body": "<p>Arizona is where we've done the most work, so the local knowledge runs deepest here. In a newer market you'll be leaning harder on the process and on your own reading of the ground, which is exactly why we only take operators who already know how to build.</p>"
+        }
+      ]
+    },
+    {
+      "type": "qa",
+      "heading": "Straight answers",
+      "items": [
+        {
+          "question": "Can I bring my own deal?",
+          "answer": "Yes, and we'll evaluate it with you first. Not every single-storey house converts &mdash; layout, egress, bathroom placement, parking and occupancy rules all decide it, and that varies house by house and city by city. Confirming legal permissibility for a given property is your responsibility, not something we verify on your behalf."
+        },
+        {
+          "question": "What if the renovation runs long?",
+          "answer": "Same as any flip &mdash; it's your holding cost and your schedule. What changes is that your buyer is being lined up while you work rather than after you list."
+        },
+        {
+          "question": "Is the buyer guaranteed?",
+          "answer": "No, and our agreement says so in plain terms. The Marketplace Module gives your certified property listing visibility to registered buyers. We don't match buyers with sellers, negotiate, draft contracts, hold escrow, or represent either party, and we don't guarantee that a property sells, that any buyer is interested, or the timing or price of a sale."
+        },
+        {
+          "question": "When does the next cohort start?",
+          "answer": "There isn't a start date to wait for. Enrollment is open and you begin when you're accepted and onboarded."
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "heading": "Sound like you?",
+      "primaryLabel": "Apply to become a student",
+      "primaryHref": "/apply",
+      "secondaryLabel": "See how it works",
+      "secondaryHref": "/how-it-works"
+    }
+  ]
+}

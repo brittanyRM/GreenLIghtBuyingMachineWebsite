@@ -1,0 +1,91 @@
+{
+  "title": "Green Light Buying Machine — co-living conversions for experienced flippers",
+  "description": "Coaching, certification and marketplace access for fix-and-flip operators converting houses for PadSplit co-living, nationwide.",
+  "kicker": "The co-living ecosystem",
+  "heading": "One house.<br>Eight doors.",
+  "lede": "The co-living ecosystem. We teach operators to convert distressed houses for PadSplit, certify the finished property against our documented standards, and list it where registered buyers are looking.",
+  "blocks": [
+    {
+      "type": "stats",
+      "items": [
+        {
+          "value": "2,300+",
+          "label": "Deals in Phoenix metro"
+        },
+        {
+          "value": "26",
+          "label": "Years fixing and flipping"
+        },
+        {
+          "value": "450+",
+          "label": "Doors produced"
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "heading": "You're bidding on the same houses as everyone else.",
+      "columns": [
+        {
+          "body": "<p>Every flipper is competing for the same inventory and selling to the same retail buyer pool. Margins thin out, days on market stretch, and the exit depends on what a family with a mortgage will pay that month.</p><p>Co-living changes what a house is worth, because it changes who buys it. A property converted to shared housing sells to an investor pricing off room-level income, not comps down the street.</p>"
+        },
+        {
+          "body": "<p>The catch is that the learning curve is unforgiving. Room count, egress, parking, bathroom ratios, city occupancy rules, the finish standard operators expect &mdash; get one wrong and a good deal becomes an expensive education.</p><p>This program exists so you don't pay for that education with your own capital. <a href=\"/how-it-works\">How the program works &rarr;</a></p>"
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "heading": "Who actually lives in these houses",
+      "columns": [
+        {
+          "body": "<p>Amazon drivers. Healthcare aides. Restaurant workers. People who just transferred to a new city. Veterans. Older adults on fixed incomes.</p><p>A third of Americans can't afford a studio or a one-bedroom apartment, and the deposits and credit requirements keep climbing. These are working people who need a clean, safe place to live that they aren't ashamed of.</p>"
+        },
+        {
+          "body": "<p>That's why the houses are built the way they are. Granite, stainless, tiled showers, smart locks, a ceiling fan in every room. Not a boarding house and not a dorm &mdash; a member should walk in feeling like they got the better end of the deal.</p><p>You can build a business that returns well and houses people decently. We've never accepted that those are different projects.</p>"
+        }
+      ]
+    },
+    {
+      "type": "gallery",
+      "heading": "What a finished one looks like",
+      "lede": "Not renderings. Houses we've converted, furnished, and put into service.",
+      "set": "homes",
+      "limit": 8
+    },
+    {
+      "type": "doors",
+      "heading": "Two ways in",
+      "lede": "The model has two sides. Operators build the houses. Investors buy them. Both sides are qualified before we put a deal in front of anyone.",
+      "items": [
+        {
+          "kicker": "If you build",
+          "title": "Build one of our houses",
+          "body": "Same as any flip &mdash; you buy it, finance it, run your crew, own every decision. We coach the process, certify the finished property, and list it on our marketplace where registered buyers can find it.",
+          "note": "<b>Requires:</b> 10&#8211;15 completed flips, your own crew, your own capital.",
+          "ctaLabel": "See how the program works",
+          "ctaHref": "/how-it-works",
+          "accent": "build"
+        },
+        {
+          "kicker": "If you buy",
+          "title": "Buy a finished property",
+          "body": "Register to see certified co-living properties as they're listed &mdash; converted, furnished, and documented to our standards, without running the renovation yourself.",
+          "note": "<b>Requires:</b> proof of funds or financing in place.",
+          "ctaLabel": "Get on the buyer list",
+          "ctaHref": "/for-buyers",
+          "accent": "buy"
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "heading": "Think you're a fit? Tell us about your work.",
+      "body": "We're looking for operators with 10 to 15 flips behind them and a crew already running. Send us your background and we'll tell you straight whether the program makes sense for you right now.",
+      "primaryLabel": "Apply to become a student",
+      "primaryHref": "/apply",
+      "secondaryLabel": "Read the fit list first",
+      "secondaryHref": "/is-it-for-you"
+    }
+  ]
+}

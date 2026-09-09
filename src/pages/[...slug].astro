@@ -1,0 +1,28 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../layouts/Base.astro";
+import Blocks from "../components/Blocks.astro";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("pages");
+  return pages.map((page) => ({
+    params: { slug: page.id === "index" ? undefined : page.id },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const d = page.data;
+---
+
+<Base title={d.title} description={d.description} noindex={d.noindex}>
+  <header class="phead">
+    <div class="wrap">
+      {d.kicker && <span class="kicker">{d.kicker}</span>}
+      <h1 set:html={d.heading} />
+      {d.lede && <p class="lede" set:html={d.lede} />}
+    </div>
+  </header>
+
+  <Blocks blocks={d.blocks} />
+</Base>

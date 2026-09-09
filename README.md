@@ -1,166 +1,100 @@
 # Green Light Buying Machine
 
-Static marketing site with two serverless functions that forward form
-submissions into GoHighLevel.
+Astro site with a built-in admin editor. Brian and Gina sign in at `/admin`
+with a password, edit the words, and hit publish. No GitHub account, no
+third-party login, nothing to install.
 
 ```
-├── index.html            home
-├── how-it-works.html     ten stages, division of labor
-├── is-it-for-you.html    fit list and FAQ
-├── for-buyers.html       buyer track: lender pre-qual + GHL form embed
-├── faq.html              co-living, PadSplit, the model
-├── disclosures.html      plain-language MSA summary
-├── homes.html            photo and floor plan gallery
-├── the-book.html         book as lead magnet, email capture
-├── about.html            Brian and Gina (needs real bio)
-├── start.html            short landing page, two-step application
-│                         (noindex — for warm traffic and direct links)
-├── funnel.html           long-form student funnel: problem, model, proof,
-│                         founders, fit, fees, application (noindex — for
-│                         cold paid traffic)
-├── apply.html            operator application (the primary intake)
-├── submit-a-property.html deal flow from wholesalers, agents, owners
-├── api/
-│   ├── apply.js          → GHL_APPLICATION_WEBHOOK_URL
-│   ├── property.js       → GHL_PROPERTY_WEBHOOK_URL
-│   ├── prequal.js        → GHL_PREQUAL_WEBHOOK_URL
-│   └── book-waitlist.js  → GHL_BOOK_WAITLIST_WEBHOOK_URL
-├── images/plans/         5 floor plans, full + thumb
-├── media/                intro video (H.264 MP4) + poster frame
-├── images/homes/         17 finished-home photos, full + thumb
-├── build.py              regenerates every page — edit here, not in the HTML
-├── nextjs/               same handlers as Next.js route files,
-│                         if this ever moves into an app
-└── ghl-build.md          workflow spec: fields, tags, sequences
+src/
+├── content/
+│   ├── settings/site.json     contact details, footer, nav buttons
+│   └── pages/*.json           one file per page — all the words live here
+├── layouts/Base.astro         nav, footer, analytics, shared scripts
+├── components/
+│   ├── Blocks.astro           renders content blocks into markup
+│   └── Form.astro             all four intake forms
+├── lib/
+│   ├── auth.ts                signed session cookie
+│   └── github.ts              commits content on the editor's behalf
+├── pages/
+│   ├── [...slug].astro        builds every page from src/content/pages
+│   ├── admin.astro            the editor
+│   ├── funnel.astro           paid-traffic funnel (bespoke, two-step form)
+│   └── api/
+│       ├── admin/*.ts         login, logout, read and save content
+│       └── *.ts               four handlers → GoHighLevel webhooks
+├── scripts/                   lightbox, form submission, two-step funnel form
+└── styles/global.css          the whole design system
 ```
 
-**Editing pages:** the CSS and the shared nav, footer, and form script are
-inlined into every HTML file so each page stands alone (useful for pasting
-one into a GHL page). That means the HTML is generated — change `build.py`
-and run `python3 build.py`, or a copy edit will silently drift from the
-other six pages. Output goes straight into this folder.
+## How the editor works
 
-No build step on the host and no dependencies. Vercel serves the HTML from root and
-picks up `api/` automatically. Framework preset: **Other**.
+Sign in at `/admin` → pick a page from the list → edit the fields → **Publish
+changes**. Behind the scenes the server commits the updated JSON to GitHub
+using a token that only it can see, Vercel notices the commit and rebuilds,
+and the change is live in about a minute.
 
----
+Editors never touch git. They also can't break the layout: they're editing
+text inside a fixed set of section types, not markup.
 
-## Order of operations
+What they can edit: every heading, paragraph, list item, FAQ answer, number,
+button label, and the site-wide contact details and footer.
 
-The sequence matters — GHL can't map webhook fields until it has seen a
-real payload, so the site has to be live before the workflows can be
-finished.
+## Setup
 
-**1. Create the four GHL workflows, triggers only.**
-Workflow → Inbound Webhook trigger → copy the URL. Once each for operator
-applications, property submissions, and the book waitlist. Don't build the
-actions yet.
+Six environment variables in Vercel → Settings → Environment Variables:
 
-The buyer form is different: it's the existing GHL form embedded directly
-on `for-buyers.html`, so it already runs through whatever workflow that
-form is attached to. No webhook needed — but confirm the form ID, since
-the one on the current page is named "Rachelle Test".
+| Variable | What it is |
+|---|---|
+| `ADMIN_PASSWORD` | The password they type in. Make it long. |
+| `ADMIN_SECRET` | Any long random string; signs the login cookie. Changing it signs everyone out. |
+| `GITHUB_REPO` | `owner/repo` — where content is committed |
+| `GITHUB_TOKEN` | Fine-grained PAT, **Contents: Read and write**, scoped to that one repo |
+| `GITHUB_BRANCH` | Optional, defaults to `main` |
+| `GHL_*_WEBHOOK_URL` | The four GoHighLevel inbound webhooks |
 
-**2. Push and deploy.**
+Generate the token at GitHub → Settings → Developer settings → Personal access
+tokens → Fine-grained. Give it access to this repository only, and only the
+Contents permission. It never reaches the browser.
+
+## Security notes
+
+- The session cookie is HMAC-signed, HttpOnly, Secure, and expires after 12 hours.
+- Password and signature comparisons are constant-time; the login endpoint is
+  deliberately slowed so it can't be used as a fast oracle.
+- `/admin` is `noindex`, but it is not secret — the password is what protects it.
+  Use a long one, and change `ADMIN_SECRET` if you ever suspect a leak.
+- The GitHub token is scoped to one repo and one permission. If it leaks, the
+  worst case is content edits, which are all revertible commits.
+
+## Adding a section type
+
+Three places, in this order:
+
+1. `src/content.config.ts` — add it to the `block` union so content validates
+2. `src/components/Blocks.astro` — add the markup
+3. `src/pages/admin.astro` — add a friendly name to `BLOCK_NAMES`
+
+If the first two disagree the build fails loudly, which is the intent.
+
+## Local development
 
 ```bash
-git init
-git add .
-git commit -m "Green Light Buying Machine site"
-git branch -M main
-git remote add origin git@github.com:USER/REPO.git
-git push -u origin main
+npm install
+cp .env.example .env      # fill it in
+npm run dev               # http://localhost:4321
+npm run build
 ```
 
-Import the repo in Vercel, framework preset **Other**, no build command,
-output directory root.
+`astro preview` doesn't work with the Vercel adapter — use `npm run dev`.
 
-**3. Set environment variables** in Vercel → Settings → Environment
-Variables, for Production and Preview:
+## Forms
 
-```
-GHL_APPLICATION_WEBHOOK_URL=https://...
-GHL_PROPERTY_WEBHOOK_URL=https://...
-GHL_PREQUAL_WEBHOOK_URL=https://...
-GHL_BOOK_WAITLIST_WEBHOOK_URL=https://...
-```
+Four forms post JSON to `/api/*`, which validate and forward to GoHighLevel.
+They run server-side because GHL webhook endpoints don't return CORS headers
+and the URLs are unauthenticated — they must never reach the browser.
 
-Redeploy after adding them. Env vars are read at request time but the
-deployment needs to exist with them attached.
+Full GHL workflow spec, tags and email copy: see `ghl-build.md`.
 
-**4. Submit each form once on the live URL.** Use a real address you
-don't mind seeing in the account.
-
-**5. Go back to GHL and map the fields.** The trigger will now show the
-captured payload. Build out the actions per `ghl-build.md` — custom
-fields must exist *before* this step or the mapping dropdowns come up
-empty.
-
-**6. Run the test list** at the end of `ghl-build.md`.
-
----
-
-## The video
-
-`media/glbm-intro.mp4` is transcoded from a 218MB 60fps HEVC `.mov` down to
-17MB H.264 at 864x864 / 30fps. The original wouldn't have played in Chrome or
-Firefox — HEVC in a .mov is effectively Safari-only.
-
-**It is not currently used on any page.** The 1:1 format is built for social
-feeds and didn't sit well in a landing-page layout. It's kept here because it's
-the web-ready encode — use it as ad creative pointing at /funnel, or as a
-YouTube/Vimeo upload. Delete `media/` if you'd rather keep the repo light.
-
-17MB is servable from Vercel but it isn't ideal: no adaptive quality, no
-playback analytics, and the binary bloats the git history every time it's
-replaced. If the video becomes central, move it to Cloudflare Stream, Vimeo or
-an unlisted YouTube embed and delete it from the repo.
-
-To re-encode a new take:
-
-```bash
-ffmpeg -i source.mov -vf "fps=30,scale=864:864:flags=lanczos" \
-  -c:v libx264 -profile:v high -crf 26 -preset slow -pix_fmt yuv420p \
-  -c:a aac -b:a 112k -movflags +faststart media/glbm-intro.mp4
-```
-
-## Gotchas
-
-**Don't post to GHL from the browser.** Those endpoints don't send CORS
-headers, so a direct `fetch` from the page is blocked, and `no-cors`
-mode gives you a response you can't read — the form would show success
-whether or not anything arrived. That's why these functions exist.
-
-**Keep the webhook URLs server-side.** No `NEXT_PUBLIC_` or `VITE_`
-prefix. They're unauthenticated endpoints; anyone with the URL can
-inject contacts into the workflow.
-
-**Rate limiting.** There's a honeypot but no rate limit. If the forms get
-hit, add Vercel's WAF rules or a per-IP check in the handler.
-
----
-
-## Before launch
-
-- [ ] Real bio and photo on `about.html`
-- [ ] Site now matches the MSA: listing visibility only, no guarantee of sale,
-      buyer interest, timing, price, or access to any end buyer
-- [ ] Confirm whether students can bring their own deal
-- [ ] Real cover art for the book (300 DPI minimum)
-- [ ] Add testimonials from students who have closed
-- [ ] Replace G-XXXXXXXXXX with the real GA4 measurement ID (in build.py, then rebuild)
-- [ ] Have counsel check disclosures.html against the executed MSA
-- [ ] Confirm what the ongoing membership and marketplace fees will be, and
-      that they're stated in full during the application call (the site says
-      they exist and that you'll walk through them — honor that)
-- [ ] Written permission from the student in the how-it-works story, plus his
-      name, a photo, and two sentences in his own words
-- [ ] Decide book delivery: instant PDF download or emailed link
-- [ ] Confirm you can substantiate 450+ doors and 26+ years if asked
-      (the market-share claim has been removed)
-- [ ] Decide whether the stats strip stays at all — it's the last
-      performance claim on the site
-- [ ] Disclose any buyer-side fee on for-buyers.html (still unanswered)
-- [ ] Point greenlightbuyingmachine.com at the deployment
-- [ ] Confirm PadSplit brand usage is cleared — the name now appears in copy
-      and is rendered into the Ash plan image
+The pre-qualification form deliberately collects no SSN, income, assets or
+documents. Those belong in the lender's own secure intake.

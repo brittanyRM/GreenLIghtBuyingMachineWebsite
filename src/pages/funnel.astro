@@ -1,0 +1,222 @@
+---
+import Base from "../layouts/Base.astro";
+import { getEntry } from "astro:content";
+import { HOMES } from "../consts";
+const site = (await getEntry("settings", "site"))!.data;
+const shots = HOMES.slice(0, 8);
+---
+
+<Base
+  title="Become a Green Light member — for fix-and-flip operators"
+  description="For operators with 10 to 15 flips behind them: convert distressed houses into certified co-living properties and list them for registered buyers. Nationwide."
+  noindex
+  bare
+>
+  <header class="lp-hero">
+    <div class="wrap">
+      <div class="lp-stack">
+        <span class="kicker">FOR OPERATORS WITH 10&#8211;15 FLIPS BEHIND THEM</span>
+
+        <div class="lp-below lp-below--top">
+          <div class="lp-words">
+            <h1>Your next flip could have a buyer waiting before the reno is finished.</h1>
+            <p class="lede">
+              <b>Could.</b> How you build decides it. Investors are looking for finished co-living
+              houses &mdash; whether yours is one they want comes down to the floor plan, the room
+              count, the bathrooms and the finish. That&#8217;s the part we teach.
+            </p>
+            <p class="lede" style="font-size:1rem;opacity:.8">
+              We take a small number of operators with 10 to 15 flips behind them and a crew already
+              running. Applying is free and takes two minutes.
+            </p>
+          </div>
+
+          <div class="card" id="form-card">
+            <div class="steps-bar"><span class="on" id="bar1"></span><span id="bar2"></span></div>
+            <h2>Start your application</h2>
+            <p class="sub">
+              Two minutes. Free. Nothing due unless you&#8217;re accepted. Under ten flips? There&#8217;s an option for that.
+            </p>
+
+            <form id="lpForm" novalidate>
+              <div class="hp" aria-hidden="true">
+                <label for="lp-company">Company</label>
+                <input id="lp-company" name="company" type="text" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="lp-step" id="step1">
+                <p class="step-note">STEP 1 OF 2 &#183; HOW TO REACH YOU</p>
+                <div class="field"><label for="lp-name">Your name</label>
+                  <input id="lp-name" name="name" type="text" autocomplete="name" required /></div>
+                <div class="field"><label for="lp-email">Email</label>
+                  <input id="lp-email" name="email" type="email" autocomplete="email" required /></div>
+                <div class="field"><label for="lp-phone">Phone</label>
+                  <input id="lp-phone" name="phone" type="tel" autocomplete="tel" /></div>
+                <div class="field"><label for="lp-city">City and state</label>
+                  <input id="lp-city" name="city" type="text" placeholder="Mesa, AZ" required />
+                  <p class="hint">We work nationwide. Knowing your market helps us tell you what to check locally.</p></div>
+                <button class="submit" type="button" id="toStep2">Continue</button>
+              </div>
+
+              <div class="lp-step" id="step2" hidden>
+                <p class="step-note">STEP 2 OF 2 &#183; YOUR WORK</p>
+                <div class="field"><label for="lp-flips">Flips you&#8217;ve completed</label>
+                  <select id="lp-flips" name="flips" required>
+                    <option value="">Select one</option>
+                    <option>Fewer than 5 &mdash; send me more info instead</option>
+                    <option>5 to 9 &mdash; send me more info instead</option>
+                    <option>10 to 15</option>
+                    <option>More than 15</option>
+                  </select>
+                  <p class="hint">We take operators at 10 or more. Under that, pick a &#8220;more info&#8221; option and we&#8217;ll send you the book and stay in touch.</p>
+                </div>
+                <div class="notice" id="belowBarNote" hidden>
+                  <b>Not a no &mdash; a not yet.</b> You&#8217;re under the bar today, so we&#8217;ll skip the sales call.
+                  Finish this and we&#8217;ll send you the book, keep you on our list, and pick the conversation
+                  back up when you&#8217;ve got the volume.
+                </div>
+                <input type="hidden" name="intent" id="lp-intent" value="apply" />
+                <div class="field"><label for="lp-crew">Your crew</label>
+                  <select id="lp-crew" name="crew" required>
+                    <option value="">Select one</option>
+                    <option>I run my own crew</option>
+                    <option>I use the same trades on every job</option>
+                    <option>I hire per project</option>
+                    <option>I&#8217;d need to build one</option>
+                  </select></div>
+                <div class="field"><label for="lp-financing">How you fund your deals</label>
+                  <select id="lp-financing" name="financing" required>
+                    <option value="">Select one</option>
+                    <option>Cash</option>
+                    <option>Hard money, first and second</option>
+                    <option>Private lenders</option>
+                    <option>Line of credit</option>
+                    <option>Still arranging financing</option>
+                  </select></div>
+                <div class="field"><label for="lp-market">Where you operate</label>
+                  <select id="lp-market" name="market" required>
+                    <option value="">Select one</option>
+                    <option>The Phoenix valley</option>
+                    <option>Elsewhere in Arizona</option>
+                    <option>Outside Arizona, in my own market</option>
+                    <option>Outside Arizona, open to travelling for a deal</option>
+                  </select></div>
+                <div class="field"><label for="lp-timeline">When you&#8217;d start</label>
+                  <select id="lp-timeline" name="timeline" required>
+                    <option value="">Select one</option>
+                    <option>Next available cohort</option>
+                    <option>Next 3 months</option>
+                    <option>3 to 6 months</option>
+                    <option>Just exploring</option>
+                  </select></div>
+                <div class="field"><label for="lp-recent">Your last project</label>
+                  <textarea id="lp-recent" name="recent" placeholder="Where it was, the scope, how it went."></textarea></div>
+                <button class="submit" type="submit">Send my application</button>
+                <button class="back-link" type="button" id="backTo1">&larr; Back</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat"><div class="n">2,300+</div><div class="l">Deals in Phoenix metro</div></div>
+        <div class="stat"><div class="n">26</div><div class="l">Years fixing and flipping</div></div>
+        <div class="stat"><div class="n">450+</div><div class="l">Doors produced</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>The retail exit keeps getting harder</h2>
+      <div class="split">
+        <div>
+          <p>You're bidding against every other flipper for the same inventory, then selling into the same retail buyer pool. Rates moved, margins thinned, days on market stretched.</p>
+          <p>The house isn't the problem. The buyer is. A family with a mortgage will pay what the comps say, and the comps are set by houses that produce nothing.</p>
+        </div>
+        <div>
+          <p>An investor buying a co-living property is doing different math. They're pricing what the house earns by the room, and a well-built eight- or ten-bedroom conversion earns considerably more than a three-bedroom rental on the same footprint.</p>
+          <p>That's the whole idea. Build for a buyer who values the property on income instead of comps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>We&#8217;ll teach you the way we build</h2>
+      <p>Almost nothing about your process changes. What you produce at the end does.</p>
+      <div class="split thirds" style="margin-top:2.5rem">
+        <div class="roles"><span class="who">Nothing changes</span><h3>The deal itself</h3>
+          <p>You find it or we help you evaluate one, you buy it, you finance it the way you always have, and you run your own crew. Every decision stays yours.</p></div>
+        <div class="roles"><span class="who">This changes</span><h3>What you build</h3>
+          <p>Eight bedrooms minimum, two bathrooms minimum, ensuite where the numbers support it, furnished and ready to launch on PadSplit.</p></div>
+        <div class="roles"><span class="who">This changes</span><h3>Where it lists</h3>
+          <p>The finished property is certified against our documented standards and listed for registered buyers &mdash; investors specifically looking for co-living assets.</p></div>
+      </div>
+      <p style="margin-top:2rem;opacity:.8;font-size:.95rem">To be plain: we provide listing visibility. We don't match buyers to sellers, negotiate, or guarantee that any property sells, at any price or on any timeline.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>What a finished one looks like</h2>
+      <p>Not renderings. Houses converted, furnished and put into service.</p>
+      <div class="grid-homes">
+        {shots.map(([slug, alt]) => (
+          <figure class="shot" data-full={`/images/homes/${slug}.jpg`}>
+            <img src={`/images/homes/${slug}-thumb.jpg`} alt={alt} loading="lazy" decoding="async" />
+            <figcaption>{alt}</figcaption>
+          </figure>
+        ))}
+      </div>
+      <div class="cta-row"><a class="btn ghost" href="/homes">See all the homes and floor plans</a></div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="book">
+        <figure class="cutout">
+          <img src="/images/brand/brian-gina-cutout-thumb.webp" alt="Brian and Gina Kingdeski" width="354" height="640" loading="lazy" decoding="async" />
+        </figure>
+        <div>
+          <h2>Who you&#8217;d be working with</h2>
+          <p>Brian and Gina Kingdeski have been fixing and flipping together for 26 years and have done north of 2,300 deals in the Phoenix metro. They own Trinity Design and Construction, which is where the build standards came from.</p>
+          <p>They coach members directly &mdash; weekly through your first month, every other week after. By phone, by email, and in Arizona they&#8217;ll come walk a house with you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Apply to become a member</h2>
+      <div class="split" style="margin-top:1.5rem">
+        <div>
+          <p>We accept a small number of operators and we read every application ourselves. Applying is free, takes about two minutes, and nothing is due unless you&#8217;re accepted.</p>
+          <p>If you&#8217;re under ten flips, say so on the form &mdash; there&#8217;s an option for it. We&#8217;ll send you the book instead of a sales call.</p>
+        </div>
+        <div>
+          <h3 style="margin-bottom:1rem">What happens next</h3>
+          <ul class="plain">
+            <li>We read it &mdash; a person, not a filter</li>
+            <li>If it&#8217;s a fit, we set up a call</li>
+            <li>We walk through the full fee schedule</li>
+            <li>If we both want to go ahead, you&#8217;re accepted</li>
+            <li>Payment comes after that, not before</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cta-row"><a class="btn" href="#form-card">Start your application &uarr;</a></div>
+      <p style="margin-top:1.5rem">Enrollment is open nationwide. There isn&#8217;t a cohort date to wait for.</p>
+    </div>
+  </section>
+
+  <script src="../scripts/funnel.js"></script>
+</Base>

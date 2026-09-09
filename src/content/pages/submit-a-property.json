@@ -1,0 +1,14 @@
+{
+  "title": "Submit a property — Green Light Buying Machine",
+  "description": "Wholesalers, agents and owners: send us a property you think converts to co-living.",
+  "kicker": "Deal flow",
+  "heading": "Submit a property",
+  "lede": "Have a house you think would make a good co-living conversion? Send it over. We'll underwrite it the Green Light way and tell you what we see.",
+  "blocks": [
+    {
+      "type": "form",
+      "form": "property",
+      "aside": "<h3 style=\"margin-bottom:1rem\">What we look for</h3><ul class=\"plain\"><li>Distressed or dated &mdash; we'd rather do the work</li><li>A footprint that can carry at least eight bedrooms</li><li>Somewhere residents actually want to live</li><li>Numbers that leave room for a conversion budget</li></ul><p style=\"margin-top:1.75rem\">Not every property works, and we'll tell you why when one doesn't. Send the next one anyway.</p><h3 style=\"margin:2rem 0 1rem\">Want to build them instead?</h3><p>If you're an operator with 10 to 15 flips behind you, <a href=\"/apply\">apply to become a student</a>.</p>"
+    }
+  ]
+}

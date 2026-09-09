@@ -1,0 +1,246 @@
+---
+interface Props {
+  kind: "apply" | "property" | "prequal" | "book";
+  aside?: string;
+}
+const { kind, aside } = Astro.props;
+
+const CONFIG = {
+  apply: {
+    action: "/api/apply",
+    source: "program application",
+    sending: "Sending your application…",
+    success: "Got it. We’ll review your background and come back to you either way.",
+    button: "Send my application",
+  },
+  property: {
+    action: "/api/property",
+    source: "property submission",
+    sending: "Sending the property…",
+    success: "Got it. We’ll take a look and come back to you.",
+    button: "Send the property",
+  },
+  prequal: {
+    action: "/api/prequal",
+    source: "lender pre-qualification",
+    sending: "Sending…",
+    success: "Sent. Rachelle will reach out to walk you through pre-qualification.",
+    button: "Send this to Rachelle",
+  },
+  book: {
+    action: "/api/book-waitlist",
+    source: "book waitlist",
+    sending: "Adding you…",
+    success: "On its way. Check your email.",
+    button: "Send me the book",
+  },
+}[kind];
+---
+
+<div class="split" style="margin-top:1.5rem">
+  <div>
+    <form
+      class="js-form"
+      action={CONFIG.action}
+      method="post"
+      novalidate
+      data-source={CONFIG.source}
+      data-sending={CONFIG.sending}
+      data-success={CONFIG.success}
+    >
+      <div class="hp" aria-hidden="true">
+        <label for={`${kind}-company`}>Company</label>
+        <input id={`${kind}-company`} name="company" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <div class="pair">
+        <div class="field">
+          <label for={`${kind}-name`}>Your name</label>
+          <input id={`${kind}-name`} name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for={`${kind}-phone`}>Phone</label>
+          <input id={`${kind}-phone`} name="phone" type="tel" autocomplete="tel" required={kind === "prequal"} />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for={`${kind}-email`}>Email</label>
+        <input id={`${kind}-email`} name="email" type="email" autocomplete="email" required />
+      </div>
+
+      {kind === "apply" && (
+        <>
+          <div class="field">
+            <label for="apply-flips">Flips you’ve completed</label>
+            <select id="apply-flips" name="flips" required>
+              <option value="">Select one</option>
+              <option>Fewer than 5</option>
+              <option>5 to 9</option>
+              <option>10 to 15</option>
+              <option>More than 15</option>
+            </select>
+            <p class="hint">We’re looking for 10 to 15 or more. Fewer is not a no forever, just a no for now.</p>
+          </div>
+          <div class="field">
+            <label for="apply-crew">Your crew</label>
+            <select id="apply-crew" name="crew" required>
+              <option value="">Select one</option>
+              <option>I run my own crew</option>
+              <option>I use the same trades on every job</option>
+              <option>I hire per project</option>
+              <option>I’d need to build one</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="apply-financing">How you fund your deals</label>
+            <select id="apply-financing" name="financing" required>
+              <option value="">Select one</option>
+              <option>Cash</option>
+              <option>Hard money, first and second</option>
+              <option>Private lenders</option>
+              <option>Line of credit</option>
+              <option>Still arranging financing</option>
+            </select>
+          </div>
+          <div class="pair">
+            <div class="field">
+              <label for="apply-market">Where you operate</label>
+              <select id="apply-market" name="market" required>
+                <option value="">Select one</option>
+                <option>The Phoenix valley</option>
+                <option>Elsewhere in Arizona</option>
+                <option>Outside Arizona, in my own market</option>
+                <option>Outside Arizona, open to travelling for a deal</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="apply-timeline">When you’d start</label>
+              <select id="apply-timeline" name="timeline" required>
+                <option value="">Select one</option>
+                <option>Next available cohort</option>
+                <option>Next 3 months</option>
+                <option>3 to 6 months</option>
+                <option>Just exploring</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="apply-city">Your city and state</label>
+            <input id="apply-city" name="city" type="text" placeholder="Mesa, AZ" required />
+            <p class="hint">We work nationwide. Knowing your market helps us tell you what to check locally.</p>
+          </div>
+          <div class="field">
+            <label for="apply-recent">Your last project</label>
+            <textarea id="apply-recent" name="recent" placeholder="Where it was, what the scope was, how it went."></textarea>
+          </div>
+        </>
+      )}
+
+      {kind === "property" && (
+        <>
+          <div class="field">
+            <label for="property-role">You are</label>
+            <select id="property-role" name="role" required>
+              <option value="">Select one</option>
+              <option>Wholesaler</option>
+              <option>Agent</option>
+              <option>Owner</option>
+              <option>Investor</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="property-address">Property address</label>
+            <input id="property-address" name="address" type="text" required />
+            <p class="hint">Anywhere in the US. An MLS or listing link works too.</p>
+          </div>
+          <div class="pair">
+            <div class="field">
+              <label for="property-price">Asking or contract price</label>
+              <input id="property-price" name="price" type="text" />
+            </div>
+            <div class="field">
+              <label for="property-specs">Beds, baths, square footage</label>
+              <input id="property-specs" name="specs" type="text" placeholder="3 / 2 / 1,650" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="property-notes">Anything we should know</label>
+            <textarea id="property-notes" name="notes" placeholder="Condition, lot, timing, why you think it works."></textarea>
+          </div>
+        </>
+      )}
+
+      {kind === "prequal" && (
+        <>
+          <div class="pair">
+            <div class="field">
+              <label for="prequal-state">State you’d buy in</label>
+              <input id="prequal-state" name="state" type="text" placeholder="Arizona" required />
+            </div>
+            <div class="field">
+              <label for="prequal-funding">How you’d fund the purchase</label>
+              <select id="prequal-funding" name="funding" required>
+                <option value="">Select one</option>
+                <option>Cash</option>
+                <option>Conventional financing</option>
+                <option>DSCR loan</option>
+                <option>1031 exchange</option>
+                <option>Partnership or fund</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+          <div class="pair">
+            <div class="field">
+              <label for="prequal-timeline">Timeline</label>
+              <select id="prequal-timeline" name="timeline" required>
+                <option value="">Select one</option>
+                <option>Ready now</option>
+                <option>Next 3 months</option>
+                <option>3 to 6 months</option>
+                <option>Just researching</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="prequal-status">Already pre-qualified?</label>
+              <select id="prequal-status" name="prequal_status" required>
+                <option value="">Select one</option>
+                <option>Not yet — please connect me</option>
+                <option>Yes, with Rachelle</option>
+                <option>Yes, with another lender</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="prequal-range">Price range you’re considering</label>
+            <select id="prequal-range" name="price_range">
+              <option value="">Select one</option>
+              <option>Under $400k</option>
+              <option>$400k to $600k</option>
+              <option>$600k to $800k</option>
+              <option>Over $800k</option>
+              <option>Depends on the deal</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="prequal-notes">Anything else worth knowing</label>
+            <textarea id="prequal-notes" name="notes" placeholder="Rentals you own, areas you like, questions you have."></textarea>
+          </div>
+        </>
+      )}
+
+      <button class="submit" type="submit">{CONFIG.button}</button>
+
+      {kind === "prequal" && (
+        <p class="hint" style="margin-top:.85rem">
+          This just starts the conversation. Nothing here is a credit application, and we don’t ask
+          for financial documents on this page — Rachelle handles that securely on her side.
+        </p>
+      )}
+    </form>
+  </div>
+
+  {aside && <div set:html={aside} />}
+</div>

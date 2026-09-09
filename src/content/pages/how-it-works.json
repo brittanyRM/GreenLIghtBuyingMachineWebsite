@@ -1,0 +1,131 @@
+{
+  "title": "How it works — Green Light Buying Machine",
+  "description": "Ten stages from qualification to closing, and exactly which parts we coach and which parts you own.",
+  "kicker": "The program",
+  "heading": "How it works",
+  "lede": "Ten stages from qualification to closing. You buy the house, run the renovation, and own every decision. We coach the process, certify the result, and list it.",
+  "blocks": [
+    {
+      "type": "prose",
+      "heading": "It's a flip. The exit is what changes.",
+      "body": "<p>You buy the distressed house and finance it the way you always do &mdash; first, second, hard money, your usual stack. You run your crew, you hold the budget, you own the risk. Nothing about the acquisition or the buildout is unfamiliar.</p><p>What changes is who you sell to. A retail buyer prices your house against comps down the street. A co-living investor prices it against what the finished house produces by the room, and that's a different number.</p><p>The other change is where the finished house gets listed. A certified property goes into our registry and in front of buyers specifically looking for co-living assets. To be plain about it: we provide listing visibility. We don't match buyers to sellers, negotiate, or guarantee that any property sells, at any price or on any timeline.</p>"
+    },
+    {
+      "type": "roles",
+      "heading": "We'll teach you the way we build",
+      "lede": "An investor pricing a house on room income is a different buyer than a family pricing it on comps. Almost nothing about your process changes. What you produce at the end does.",
+      "items": [
+        {
+          "kicker": "We share",
+          "title": "The process",
+          "body": "Our developed standard of practice for taking a fix-and-flip operator into co-living: locating, structuring, financing, and renovating &mdash; taught in coaching, weekly the first month and every other week after."
+        },
+        {
+          "kicker": "You own",
+          "title": "Everything about the property",
+          "body": "You buy it, finance it, hire and supervise your own contractors, set your own pricing, and retain full operational control. We coach; we don't manage your renovation."
+        },
+        {
+          "kicker": "We provide",
+          "title": "Certification and listing",
+          "body": "A documentation-based review against our standards, and listing visibility to registered buyers through the Marketplace Module. Sales happen directly between you and the buyer."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "heading": "The Green Light Way",
+      "body": "<p><b>The floor is eight bedrooms and two bathrooms.</b> We don't build below it, because room count is where the economics come from.</p><p>Bedrooms don't tell you what a co-living house is worth. Rentable rooms do &mdash; and not every room is worth the same. PadSplit reports what rooms actually rent for by submarket, and a room with its own ensuite bathroom prices differently than one sharing down the hall. That turns bathroom count into an underwriting decision rather than a finish preference.</p><p>It's also why we start from scratch rather than converting an existing rental. Adding bathrooms is the kind of thing you can only plan from the first wall.</p>"
+    },
+    {
+      "type": "prose",
+      "heading": "Financing that already understands the asset",
+      "columns": [
+        {
+          "body": "<p>Rachelle Coffey is the lender we work with, and she finances PadSplit conversions specifically &mdash; both the acquisition side for operators and the purchase side for buyers.</p>"
+        },
+        {
+          "body": "<p>That matters more than it sounds. A lender who prices this asset on room income rather than residential comps removes the friction that stalls these deals at the appraisal.</p><p><a href=\"https://go.homeownersfg.com/home/rachelle-coffey\" target=\"_blank\" rel=\"noopener noreferrer\">Talk to Rachelle &rarr;</a></p>"
+        }
+      ]
+    },
+    {
+      "type": "stages",
+      "heading": "Ten stages, start to close",
+      "lede": "Every student runs the same sequence, tracked in your portal so you always know what's next and what's waiting on you.",
+      "items": [
+        {
+          "title": "Qualification",
+          "body": "We confirm your experience, capital, and capacity before you enroll."
+        },
+        {
+          "title": "Market brief",
+          "body": "Where co-living works, and why. We'll walk you through what to check on parking and occupancy rules city by city &mdash; confirming it stays your responsibility."
+        },
+        {
+          "title": "Deal sourced",
+          "body": "We bring you a property already screened for co-living use and room count."
+        },
+        {
+          "title": "Room-count underwriting",
+          "body": "Pricing a house on rentable rooms instead of bedrooms."
+        },
+        {
+          "title": "You buy it",
+          "body": "Your offer, your financing, your name on the deed."
+        },
+        {
+          "title": "Scope and design",
+          "body": "Floor plan, partition strategy, and finish standard."
+        },
+        {
+          "title": "Renovation",
+          "body": "Your crew executes. We hand-hold to the standard and review at checkpoints."
+        },
+        {
+          "title": "Certification review",
+          "body": "You submit documentation and video walkthroughs; we review them against our standards. Certification attaches to that address."
+        },
+        {
+          "title": "Furnish and launch",
+          "body": "We furnish the house and get it live on PadSplit, ready to produce income on day one."
+        },
+        {
+          "title": "Listed and sold",
+          "body": "Your certified property is listed for registered buyers. You negotiate and close directly with whoever buys it."
+        }
+      ]
+    },
+    {
+      "type": "lists",
+      "heading": "What you get",
+      "left": [
+        "Coaching weekly for your first month, every other week after",
+        "Direct access to Brian and Gina Kingdeski",
+        "Shared processes for locating, structuring and financing deals",
+        "Certification review and listing visibility to registered buyers"
+      ],
+      "right": [
+        "The full course library and module handouts",
+        "SaaS compliance reporting tools and your deal tracked through all ten stages",
+        "The standard of practice for fix-and-flip to co-living",
+        "Tools for supplies, furnishings, and launching on PadSplit"
+      ]
+    },
+    {
+      "type": "callout",
+      "kicker": "BECOMING A STUDENT",
+      "heading": "$15,000 to onboard",
+      "body": "<p>You apply first. We review your background, and if it's a fit we talk. Nothing is due before you're accepted.</p><p>The onboarding fee covers coaching, education materials, certification, and platform setup. It's non-refundable once you're in, because the digital resources open immediately.</p><p>Ongoing membership and platform fees also apply. We'll walk you through the full fee schedule during the application conversation, before you commit to anything &mdash; and it's all set out in the agreement you'd sign.</p><p style=\"margin-bottom:0\">None of it includes the house. You buy and finance the property and the renovation yourself, exactly as you would any fix and flip. Membership is month to month; either side can end it with 30 days' written notice, and certification goes inactive if membership lapses.</p>"
+    },
+    {
+      "type": "cta",
+      "heading": "Think you're a fit?",
+      "body": "Applying is free and nothing is due unless you're accepted.",
+      "primaryLabel": "Apply to become a student",
+      "primaryHref": "/apply",
+      "secondaryLabel": "Read the fit list first",
+      "secondaryHref": "/is-it-for-you"
+    }
+  ]
+}

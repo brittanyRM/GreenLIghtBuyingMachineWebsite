@@ -1,0 +1,37 @@
+{
+  "title": "The Green Light Buying Machine — the book",
+  "description": "The complete guide to building a co-living real estate business, free.",
+  "kicker": "The book",
+  "heading": "The Green Light Buying Machine",
+  "lede": "The Complete Guide to Building a Co-Living Real Estate Business &mdash; from finding the deal to launch day.",
+  "blocks": [
+    {
+      "type": "prose",
+      "body": "<p>Twenty-six years and 2,300 deals, written down. Brian and Gina held nothing back &mdash; this isn't a teaser that leaves you wanting the paid version. It's the whole machine, laid out piece by piece, from the buy box through construction to launch day on PadSplit.</p><p>It isn't motivational. There are no posters and no vague advice. It's meat and potatoes: here's how it's done, here's why it's done that way, now go do it.</p><p><span class=\"todo\">Decide how this is delivered &mdash; instant PDF download, or emailed after signup. And add real cover art at 300 DPI.</span></p>"
+    },
+    {
+      "type": "lists",
+      "heading": "What's inside",
+      "lede": "Seven parts, nineteen chapters, and a checklist appendix you'll actually use on site.",
+      "left": [
+        "<b>One &middot; The Foundation</b><br>Co-living, PadSplit, and what a home must have",
+        "<b>Two &middot; Finding Your Deal</b><br>The buy box, finding deals, and comping them",
+        "<b>Three &middot; Walking and Designing</b><br>The first walk and the Whiteboard Method",
+        "<b>Four &middot; Preparing for Acquisition</b><br>Loan application, budget, permits, utilities"
+      ],
+      "right": [
+        "<b>Five &middot; Construction</b><br>Demo through framing, drywall, draws, finishes",
+        "<b>Six &middot; Finishing Strong</b><br>Appraiser, inspection, build day, final details",
+        "<b>Seven &middot; Launch Day</b><br>The complete PadSplit listing guide",
+        "<b>Appendix</b><br>Room-by-room and launch-day checklists"
+      ]
+    },
+    {
+      "type": "form",
+      "heading": "Get the book",
+      "lede": "Free. Tell us where to send it.",
+      "form": "book",
+      "aside": "<h3 style=\"margin-bottom:1rem\">Read it and want coaching?</h3><p>If the model makes sense to you and you've got ten or more flips behind you, the next step is applying.</p><p><a class=\"btn\" href=\"/apply\">Apply to become a student</a></p>"
+    }
+  ]
+}

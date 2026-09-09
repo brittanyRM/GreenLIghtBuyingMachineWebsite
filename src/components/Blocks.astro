@@ -1,0 +1,171 @@
+---
+import { HOMES, PLANS } from "../consts";
+import Form from "./Form.astro";
+
+const { blocks } = Astro.props;
+
+/* Sections alternate between the paper ground and the dark band so a page
+   never presents two identical grounds in a row. Blocks that carry their
+   own ground opt out. */
+const SELF_GROUND = new Set(["callout", "cta"]);
+let dark = false;
+const withGround = blocks.map((b: any) => {
+  if (SELF_GROUND.has(b.type)) return { block: b, band: false };
+  dark = !dark;
+  return { block: b, band: dark };
+});
+
+const shots = (set: "homes" | "plans", limit?: number) => {
+  const items = set === "homes" ? HOMES : PLANS;
+  return (limit ? items.slice(0, limit) : items).map(([slug, alt]) => ({
+    slug,
+    alt,
+    folder: set,
+  }));
+};
+---
+
+{withGround.map(({ block: b, band }) => (
+  <section class={band ? "band" : undefined}>
+    <div class="wrap">
+      {b.heading && <h2 set:html={b.heading} />}
+      {b.lede && <p set:html={b.lede} />}
+
+      {b.type === "prose" && (
+        <>
+          {b.body && <p set:html={b.body} />}
+          {b.columns && (
+            <div class="split">
+              {b.columns.map((c: any) => <div set:html={c.body} />)}
+            </div>
+          )}
+        </>
+      )}
+
+      {b.type === "stats" && (
+        <div class="stats">
+          {b.items.map((s: any) => (
+            <div class="stat">
+              <div class="n">{s.value}</div>
+              <div class="l">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {b.type === "roles" && (
+        <div class="split thirds" style="margin-top:2.5rem">
+          {b.items.map((r: any) => (
+            <div class="roles">
+              <span class="who">{r.kicker}</span>
+              <h3 set:html={r.title} />
+              <p set:html={r.body} />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {b.type === "fit" && (
+        <div class="fit" style="margin-top:2rem">
+          <div class="col">
+            <h3>{b.fitTitle}</h3>
+            <ul>{b.fit.map((i: string) => <li set:html={i} />)}</ul>
+          </div>
+          <div class="col not">
+            <h3>{b.notTitle}</h3>
+            <ul>{b.not.map((i: string) => <li set:html={i} />)}</ul>
+          </div>
+        </div>
+      )}
+
+      {b.type === "stages" && (
+        <ol class="stages">
+          {b.items.map((s: any) => (
+            <li>
+              <div>
+                <b set:html={s.title} />
+                <span set:html={s.body} />
+              </div>
+            </li>
+          ))}
+        </ol>
+      )}
+
+      {b.type === "qa" && b.items.map((q: any) => (
+        <div class="qa">
+          <h3 set:html={q.question} />
+          <p set:html={q.answer} />
+        </div>
+      ))}
+
+      {b.type === "lists" && (
+        <>
+          <div class="split" style="margin-top:1.5rem">
+            <ul class="plain">{b.left.map((i: string) => <li set:html={i} />)}</ul>
+            <ul class="plain">{b.right.map((i: string) => <li set:html={i} />)}</ul>
+          </div>
+          {b.footnote && <p style="margin-top:1.75rem" set:html={b.footnote} />}
+        </>
+      )}
+
+      {b.type === "gallery" && (
+        <div class={b.set === "plans" ? "grid-plans" : "grid-homes"}>
+          {shots(b.set, b.limit).map((s) => (
+            <figure class="shot" data-full={`/images/${s.folder}/${s.slug}.jpg`}>
+              <img
+                src={`/images/${s.folder}/${s.slug}-thumb.jpg`}
+                alt={s.alt}
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>{s.alt}</figcaption>
+            </figure>
+          ))}
+        </div>
+      )}
+
+      {b.type === "doors" && (
+        <div class="doors">
+          {b.items.map((d: any) => (
+            <div class={d.accent === "buy" ? "door buy" : "door"}>
+              <div class="who">{d.kicker}</div>
+              <h3 set:html={d.title} />
+              <p set:html={d.body} />
+              {d.note && <p style="opacity:.75;font-size:.95rem" set:html={d.note} />}
+              <div class="cta-row"><a class="btn" href={d.ctaHref}>{d.ctaLabel}</a></div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {b.type === "people" && (
+        <div class="book">
+          <figure class="cutout">
+            <img
+              src="/images/brand/brian-gina-cutout.webp"
+              alt="Brian and Gina Kingdeski"
+              width="665"
+              height="1200"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div set:html={b.body} />
+        </div>
+      )}
+
+      {b.type === "cta" && (
+        <div class="cta-row">
+          {b.primaryLabel && <a class="btn" href={b.primaryHref}>{b.primaryLabel}</a>}
+          {b.secondaryLabel && <a class="btn ghost" href={b.secondaryHref}>{b.secondaryLabel}</a>}
+        </div>
+      )}
+
+      {b.type === "form" && <Form kind={b.form} aside={b.aside} />}
+
+      {b.type === "html" && <div set:html={b.body} />}
+    </div>
+  </section>
+))}
+
+{/* callouts render as their own dark strip regardless of alternation */}

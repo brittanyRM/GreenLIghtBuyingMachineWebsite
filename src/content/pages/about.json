@@ -1,0 +1,38 @@
+{
+  "title": "About Brian and Gina Kingdeski — Green Light Buying Machine",
+  "description": "26 years, 2,300 deals in the Phoenix metro, and the system built out of all of it.",
+  "kicker": "Who runs this",
+  "heading": "Brian and Gina Kingdeski",
+  "lede": "26 years, 2,300 deals in the Phoenix metro, and a system built out of all of it. The program is small on purpose &mdash; you work with the people whose names are on the book.",
+  "blocks": [
+    {
+      "type": "people",
+      "body": "<p>Brian and Gina Kingdeski have been fixing and flipping homes together for 26 years. They've done north of 2,300 deals in the Phoenix metropolitan area alone &mdash; through markets going up, markets crashing, and markets recovering.</p><p>They've made great decisions and expensive mistakes, lost sleep over deals, and woken up to checks that changed things. What came out of all of it is a system: deal by deal, house by house, what it actually takes to build a co-living business that holds up.</p><p>They also own <a href=\"https://trinitydesignconstruction.com\" target=\"_blank\" rel=\"noopener noreferrer\">Trinity Design and Construction</a>, which is where the build standards came from &mdash; the co-living work sits on top of a construction company, not a marketing company.</p><p>They wrote the system down in <i>The Green Light Buying Machine</i> and they teach it directly &mdash; by phone, by email, and if you're in Arizona, they'll come walk a house with you.</p>"
+    },
+    {
+      "type": "prose",
+      "heading": "Why we teach it this way",
+      "columns": [
+        {
+          "body": "<p>Most real estate education is sold to people with no experience, because that's the biggest audience. It's also why so much of it doesn't work &mdash; you can't teach someone to run a renovation in a video course.</p><p>We went the other direction. We only take people who can already build, then we solve what they're actually missing: which houses convert, what standard to build to, and who buys the finished product.</p>"
+        },
+        {
+          "body": "<p>We'd rather you think of us as coaches than teachers. A teacher delivers information. A coach watches you apply it, corrects you when you're off, celebrates the wins, and pushes when you need pushing.</p><p>That means we're actually available &mdash; by phone, by email, and in Arizona we'll come walk the house with you. The goal was never for you to understand this. It's for you to do it.</p>"
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "heading": "Students say",
+      "body": "<p><span class=\"todo\">Add two or three testimonials from students who have closed. Ask each for the before and after: what their retail exit looked like, and what the co-living deal did.</span></p>"
+    },
+    {
+      "type": "cta",
+      "heading": "Work with them",
+      "primaryLabel": "Apply to become a student",
+      "primaryHref": "/apply",
+      "secondaryLabel": "See the homes",
+      "secondaryHref": "/homes"
+    }
+  ]
+}

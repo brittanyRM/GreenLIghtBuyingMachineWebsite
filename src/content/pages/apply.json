@@ -1,0 +1,14 @@
+{
+  "title": "Apply to become a student — Green Light Buying Machine",
+  "description": "For fix-and-flip operators with 10 to 15 projects behind them, anywhere in the country.",
+  "kicker": "For operators",
+  "heading": "Apply to become a student",
+  "lede": "We accept a small number of operators who already know how to build. Tell us about your work and we'll tell you honestly whether this is the right move for you now.",
+  "blocks": [
+    {
+      "type": "form",
+      "form": "apply",
+      "aside": "<h3 style=\"margin-bottom:1rem\">What happens next</h3><ul class=\"plain\"><li>We read it &mdash; a person, not a filter</li><li>If it's a fit, we set up a call</li><li>We walk through the full fee schedule</li><li>If we both want to go ahead, you're accepted</li><li>Payment comes after that, not before</li></ul><h3 style=\"margin:2rem 0 1rem\">Before you apply</h3><p>Applying costs nothing. If you're accepted it's <b>$15,000</b> to onboard, plus ongoing membership and platform fees we'll go through with you. The house and the renovation are yours to finance, as with any flip.</p><p>The <a href=\"/is-it-for-you\">fit list</a> is blunt about who this works for.</p><h3 style=\"margin:2rem 0 1rem\">Not an operator?</h3><p>If you have a property you think would convert well, <a href=\"/submit-a-property\">send it to us</a> instead. If you're looking to buy a finished home, <a href=\"/for-buyers\">start here</a>.</p>"
+    }
+  ]
+}

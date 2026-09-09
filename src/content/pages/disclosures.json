@@ -1,0 +1,59 @@
+{
+  "title": "Disclosures — Green Light Buying Machine",
+  "description": "What Green Light Buying Machine LLC does and does not do, in plain language.",
+  "kicker": "Plain language",
+  "heading": "Disclosures",
+  "lede": "A summary of what we do and don't do. It doesn't replace the Master Services Agreement &mdash; read that in full before signing.",
+  "noindex": false,
+  "blocks": [
+    {
+      "type": "qa",
+      "items": [
+        {
+          "question": "What we are",
+          "answer": "Green Light Buying Machine LLC is an Arizona limited liability company operating a private property certification and SaaS-based listing platform. Members submit properties for documentation-based certification review, maintain compliance records, and list certified properties for visibility to registered buyers."
+        },
+        {
+          "question": "What we are not",
+          "answer": "We are not a licensed real estate broker, an investment advisor, a fiduciary, a contractor, or a zoning authority. We don't provide legal, tax, financial or investment advice, and we don't offer, sell, promote or facilitate securities, investment contracts or pooled real estate investments. Certification and marketplace access are not an investment opportunity, endorsement, or financial guarantee."
+        },
+        {
+          "question": "We don't guarantee a sale",
+          "answer": "The Marketplace Module provides listing visibility only. We don't match buyers with sellers, negotiate transactions, draft contracts, hold escrow, or represent either party. We don't guarantee that any property will sell, that any buyer will be interested, or the timing, pricing or valuation of any sale, or access to any particular end buyer. All transactions occur independently between buyer and seller. If brokerage representation is needed, it must come from a separately licensed brokerage under its own written agreement."
+        },
+        {
+          "question": "We don't manage your renovation",
+          "answer": "We share processes and coach you through them. We don't manage renovations, supervise contractors, control pricing, or require operational formats. Members retain full operational control over their properties."
+        },
+        {
+          "question": "What certification means",
+          "answer": "Certification is granted solely on submitted documentation. We do not conduct physical inspections. It is not government approval, code compliance certification, zoning confirmation, or a safety guarantee. It attaches to a single property address, is revocable, and cannot be transferred. Members may reference certification only in connection with a specific certified property address &mdash; not as a general business credential."
+        },
+        {
+          "question": "Compliance is the member's responsibility",
+          "answer": "We do not verify legal compliance with municipal, state or federal regulation. Members are solely responsible for building permits, code compliance, contractor selection, legally required inspections, habitability, and for independent due diligence on acquisition, financing, renovation feasibility, zoning, co-living legality, occupancy regulations and resale valuation."
+        },
+        {
+          "question": "No agency, partnership or franchise",
+          "answer": "Nothing in our agreement creates an agency, partnership, joint venture, employment or franchise relationship, and it doesn't grant the right to operate under our trade name, system or marketing model in a way that would constitute a franchise. Members operate independently."
+        },
+        {
+          "question": "Fees",
+          "answer": "A one-time certification and onboarding fee, non-refundable because digital resources are made available immediately. A recurring monthly platform subscription, which begins once the trigger system course and one Green Light transaction are complete, and which keeps certification active. A platform technology fee may also apply in connection with use of the Marketplace Module &mdash; a technology usage fee, not a real estate commission. Current amounts are set out in the Master Services Agreement and reviewed with you before you sign."
+        },
+        {
+          "question": "Term, liability and disputes",
+          "answer": "The agreement is month to month; either party may terminate on 30 days' written notice, after which certification becomes inactive and marketplace access ends. Our total liability is limited to fees paid in the prior three months. Disputes are resolved by binding arbitration in Maricopa County, Arizona under Arizona law, with jury trial and class action participation waived."
+        },
+        {
+          "question": "Risk",
+          "answer": "Real estate investing carries risk. Results depend on the property, the market, and your own execution. Nothing on this site is a guarantee of profit or a promise of any particular outcome."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "body": "<p><span class=\"todo\">Have counsel review this page against the executed MSA before launch. Where the two differ, the MSA governs.</span></p>"
+    }
+  ]
+}

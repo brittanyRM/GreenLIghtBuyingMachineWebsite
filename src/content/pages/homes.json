@@ -1,0 +1,37 @@
+{
+  "title": "Homes we've built — Green Light Buying Machine",
+  "description": "Finished co-living conversions and the floor plans behind them.",
+  "kicker": "The work",
+  "heading": "Homes we&#8217;ve built",
+  "lede": "Finished conversions and the plans behind them. Every property is held to the same standard, whoever renovated it.",
+  "blocks": [
+    {
+      "type": "stats",
+      "items": [
+        { "value": "2,300+", "label": "Deals in Phoenix metro" },
+        { "value": "26", "label": "Years fixing and flipping" },
+        { "value": "450+", "label": "Doors produced" }
+      ]
+    },
+    {
+      "type": "gallery",
+      "heading": "Floor plans",
+      "lede": "Eight bedrooms minimum, on footprints that started as three or four, with ensuite bathrooms wherever the numbers support them.",
+      "set": "plans"
+    },
+    {
+      "type": "gallery",
+      "heading": "Finished houses",
+      "lede": "Shared kitchens, common areas, laundry, and private rooms &mdash; furnished by us and launched on PadSplit.",
+      "set": "homes"
+    },
+    {
+      "type": "cta",
+      "heading": "Where next",
+      "primaryLabel": "Get on the buyer list",
+      "primaryHref": "/for-buyers",
+      "secondaryLabel": "Build one with us",
+      "secondaryHref": "/how-it-works"
+    }
+  ]
+}

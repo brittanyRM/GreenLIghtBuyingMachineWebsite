@@ -1,0 +1,14 @@
+{
+  "brand": "Green Light Buying Machine",
+  "tagline": "The co-living ecosystem. Certification and marketplace access for operators nationwide.",
+  "email": "info@greenlightbuyingmachine.com",
+  "phone": "(480) 332-0143",
+  "phoneHref": "tel:14803320143",
+  "instagram": "https://www.instagram.com/greenlightbuying/",
+  "youtube": "https://www.youtube.com/channel/UCwHEV3PnWvhE4RG87nw6tmA",
+  "trinity": "https://trinitydesignconstruction.com",
+  "ga4": "G-XXXXXXXXXX",
+  "navCtaPrimary": { "label": "Become a student", "href": "/apply" },
+  "navCtaSecondary": { "label": "Buy a build", "href": "/for-buyers" },
+  "footerFinePrint": "Green Light Buying Machine LLC operates a private property certification and SaaS listing platform. It is not a licensed real estate broker, investment advisor, fiduciary, or contractor, and does not provide legal, tax, financial or investment advice. Certification and marketplace access are not an investment opportunity, endorsement, or financial guarantee. Members retain full operational control of their properties and sell independently to third-party buyers. Real estate investing carries risk."
+}
