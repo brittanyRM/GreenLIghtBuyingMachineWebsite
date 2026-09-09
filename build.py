@@ -231,6 +231,11 @@ CSS = r"""
     margin-bottom:.35rem}
   .cover .bar{height:5px;background:var(--green-bright);width:60%}
 
+  .cutout{margin:0;display:flex;justify-content:center;align-items:flex-end;
+    background:radial-gradient(ellipse at 50% 78%, rgba(59,168,95,.16), transparent 62%)}
+  .cutout img{width:100%;max-width:22rem;height:auto;display:block}
+  .band .cutout{background:radial-gradient(ellipse at 50% 78%, rgba(59,168,95,.22), transparent 62%)}
+
   .portrait{aspect-ratio:4/5;background:var(--paper-dim);border:1px solid var(--rule);
     display:flex;align-items:center;justify-content:center;font-family:var(--plan);
     font-size:.8rem;color:#8b8a80;text-align:center;padding:1rem}
@@ -816,7 +821,6 @@ main=phead("The program", "How it works",
       <p>The onboarding fee covers coaching, education materials, certification, and platform setup. It's non-refundable once you're in, because the digital resources open immediately.</p>
       <p>Ongoing membership fees and a marketplace fee at closing also apply. We'll walk you through the full fee schedule during the application conversation, before you commit to anything &mdash; and it's all set out in the agreement you'd sign.</p>
       <p style="margin-bottom:0">None of it includes the house. You buy and finance the property and the renovation yourself, exactly as you would any fix and flip. Membership is month to month; either side can end it with 30 days' written notice, and certification goes inactive if membership lapses.</p>
-      <p class="todo" style="margin-top:1.25rem">The MSA states a $10,000 onboarding fee. Amend the agreement to $15,000 before this page goes live, or change this number back &mdash; the two must not disagree.</p>
     </div>
   </div>
 </section>
@@ -1023,8 +1027,8 @@ main=phead("Who runs this", "Brian and Gina Kingdeski",
 <section>
   <div class="wrap">
     <div class="book">
-      <figure class="shot" data-full="images/brand/brian-gina.jpg" style="aspect-ratio:4/5;margin:0">
-        <img src="images/brand/brian-gina-thumb.jpg" alt="Brian and Gina Kingdeski" loading="lazy" decoding="async">
+      <figure class="cutout">
+        <img src="images/brand/brian-gina-cutout.webp" alt="Brian and Gina Kingdeski" width="665" height="1200" loading="lazy" decoding="async">
       </figure>
       <div>
         <p>Brian and Gina Kingdeski have been fixing and flipping homes together for 26 years. They've done north of 2,300 deals in the Phoenix metropolitan area alone &mdash; through markets going up, markets crashing, and markets recovering.</p>
@@ -1684,6 +1688,21 @@ LANDING = """<!DOCTYPE html>
   </div>
 </section>
 
+<section>
+  <div class="wrap">
+    <div class="book">
+      <figure class="cutout">
+        <img src="images/brand/brian-gina-cutout-thumb.webp" alt="Brian and Gina Kingdeski" width="354" height="640" loading="lazy" decoding="async">
+      </figure>
+      <div>
+        <h2>You&#8217;d be working with Brian and Gina</h2>
+        <p>Twenty-six years fixing and flipping together, north of 2,300 deals in the Phoenix metro, and a construction company of their own in Trinity Design and Construction.</p>
+        <p>They coach the members themselves &mdash; by phone, by email, and if you&#8217;re here in Arizona, they&#8217;ll come walk a house with you. The program is small on purpose.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="band">
   <div class="wrap">
     <h2>Who we accept</h2>
@@ -1914,7 +1933,7 @@ main=phead("Plain language", "Disclosures",
     <div class="qa">
       <h3>Fees</h3>
       <p>A one-time certification and onboarding fee, non-refundable because digital resources are made available immediately. A recurring monthly platform subscription, which begins once the trigger system course and one Green Light transaction are complete, and which keeps certification active. A platform technology success fee calculated on gross sale price if a certified property closes during an active listing period &mdash; a technology usage fee for the Marketplace Module, not a real estate commission.</p>
-      <p>Current amounts are set out in the Master Services Agreement and reviewed with you before you sign. <span class="todo">Confirm the fee figures here match the executed MSA.</span></p>
+      <p>Current amounts are set out in the Master Services Agreement and reviewed with you before you sign.</p>
     </div>
     <div class="qa">
       <h3>Term, liability and disputes</h3>

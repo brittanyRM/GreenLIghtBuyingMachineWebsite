@@ -121,9 +121,6 @@ hit, add Vercel's WAF rules or a per-IP check in the handler.
 - [ ] Rename the "Rachelle Test" form in GHL — the name shows in the iframe title
 - [ ] Replace G-XXXXXXXXXX with the real GA4 measurement ID (in build.py, then rebuild)
 - [ ] Have counsel check disclosures.html against the executed MSA
-- [ ] RESOLVE FEE CONFLICT: site says $15,000 onboarding, MSA says $10,000.
-      Amend the MSA or change the site. A member seeing two different numbers
-      is a refund dispute waiting to happen, and the fee is non-refundable
 - [ ] Confirm what the ongoing membership and marketplace fees will be, and
       that they're stated in full during the application call (the site says
       they exist and that you'll walk through them — honor that)
