@@ -10,8 +10,10 @@ submissions into GoHighLevel.
 ├── for-buyers.html       buyer track: lender pre-qual + GHL form embed
 ├── faq.html              co-living, PadSplit, the model
 ├── homes.html            photo and floor plan gallery
-├── the-book.html         coming soon + waitlist capture
+├── the-book.html         book as lead magnet, email capture
 ├── about.html            Brian and Gina (needs real bio)
+├── start.html            standalone landing page, two-step application
+│                         (noindex — for ads and direct links)
 ├── apply.html            operator application (the primary intake)
 ├── submit-a-property.html deal flow from wholesalers, agents, owners
 ├── api/
@@ -116,7 +118,9 @@ hit, add Vercel's WAF rules or a per-IP check in the handler.
 - [ ] Real cover art for the book (300 DPI minimum)
 - [ ] Add testimonials from students who have closed
 - [ ] Swap the "Rachelle Test" form ID for the production one
-- [ ] Real bio, photo, and Trinity relationship on about.html
+- [ ] Photo of Brian and Gina for about.html
+- [ ] Decide book delivery: instant PDF download or emailed link
+- [ ] Confirm the Trinity relationship on about.html
 - [ ] Confirm you can substantiate 450+ doors and 26+ years if asked
       (the market-share claim has been removed)
 - [ ] Decide whether the stats strip stays at all — it's the last

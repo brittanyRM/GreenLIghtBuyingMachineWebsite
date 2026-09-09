@@ -42,6 +42,24 @@ handler, don't edit by hand.
 `expansion_lead`: `yes` when an out-of-state applicant clears the experience
 and crew bar. These are not declines — they're the map for where to open next.
 
+### Partial applications
+
+The landing page (`start.html`) posts twice: contact details when they clear
+step 1, then everything when they submit. So expect two payloads per applicant,
+matched on email, with `stage` set to `partial` then `complete`.
+
+A partial arrives with `applicant_tier: incomplete`. Treat it as a live lead,
+not a bad one — they gave you their name, email and market and then hesitated
+on the experience questions. That is a person to call.
+
+- `stage` = `partial` → tag `A-000-STARTED`. Wait 1 hour, then if
+  `A-001-APPLIED` has not landed, send the nudge below. Follow with an
+  internal task at 24 hours.
+- `stage` = `complete` → remove `A-000-STARTED`, continue the normal branch.
+
+Do not create an opportunity on a partial. It skews the pipeline and someone
+will work it as though it were a real application.
+
 **Group: Property Submission**
 
 | Field name | Key | Type |
@@ -221,7 +239,7 @@ the buyer if you already have qualified buyers waiting.
 
 ## 5. Webhook D — Book waitlist
 
-**Workflow:** `WEB-D · Book Waitlist`
+**Workflow:** `WEB-D · Book Download`
 **Trigger:** Inbound Webhook → `GHL_BOOK_WAITLIST_WEBHOOK_URL`
 
 Payload: `first_name, last_name, full_name, email, source, page, submitted_at`
@@ -229,18 +247,19 @@ Payload: `first_name, last_name, full_name, email, source, page, submitted_at`
 ### Actions
 
 1. **Create/Update Contact**
-2. **Add tag** `BOOK-WAITLIST`
+2. **Add tag** `BOOK-DOWNLOAD`
 3. **Add tag** `SRC-WEBSITE`
-4. **Send email** — confirmation, copy below.
-5. **Stop.** No drip.
+4. **Send email** — the book, copy below.
+5. **Wait 5 days**, then send the follow-up below.
+6. **Wait 10 days**, then a second follow-up — one, not a campaign.
 
-The page promises one email at launch. Honor it. A waitlist that starts
-selling the $15k program four days later burns a list you'll only get to
-use once.
+The book is now the top of the funnel rather than a launch announcement.
+It's 80 pages of the actual system, which means it does the selling: someone
+who reads it and still wants coaching is a far warmer applicant than someone
+who filled in a form off an ad.
 
-**On launch day:** SmartList on `BOOK-WAITLIST` and not `BOOK-PURCHASED`,
-single broadcast. That list is also the cleanest audience for a Pipeline B
-reactivation later, but give it the book first.
+Suppress anyone already tagged `A-001-APPLIED` — don't send book follow-ups
+to someone who has already applied.
 
 ---
 
@@ -250,6 +269,7 @@ Following `[Pipeline]-[Stage]-[Action]-[Result]`:
 
 | Tag | Meaning |
 |---|---|
+| `A-000-STARTED` | Began an application, didn't finish |
 | `A-001-APPLIED` | Operator applied through the website |
 | `A-002-QUALIFIED-CORE` | Meets the bar, starting soon |
 | `A-002-QUALIFIED` | Meets the bar, longer timeline |
@@ -264,8 +284,8 @@ Following `[Pipeline]-[Stage]-[Action]-[Result]`:
 | `D-002-BUYER-REVIEW` | Needs a human read before a call |
 | `D-002-BUYER-NURTURE` | Researching, not ready |
 | `D-003-BUYER-POF` | Proof of funds on file |
-| `BOOK-WAITLIST` | Wants the book at launch |
-| `BOOK-PURCHASED` | Suppression tag for launch broadcast |
+| `BOOK-DOWNLOAD` | Downloaded the book |
+| `BOOK-NURTURE-DONE` | Finished the two follow-ups |
 | `SRC-WEBSITE` | Attribution |
 
 ---
@@ -316,6 +336,23 @@ Subject: `You'd qualify — wrong state, for now`
 >
 > — Green Light Buying Machine
 
+### Started but didn't finish — sends 1 hour after a partial
+
+Subject: `You started an application`
+
+> You got as far as your contact details and stopped. That's usually one of
+> two things: either the experience questions gave you pause, or life got in
+> the way.
+>
+> If it was the questions — we ask about completed flips and whether you run
+> your own crew because the program only works for operators who already
+> build. If you're close but not quite there, tell us where you are and we'll
+> give you a straight answer about timing.
+>
+> [Finish your application]
+>
+> — Green Light Buying Machine
+
 ### Property received
 
 Subject: `Got {{contact.property_address}}`
@@ -344,16 +381,48 @@ Subject: `You're on the buyer list`
 >
 > — Green Light Buying Machine
 
-### Book waitlist confirmation
+### Book delivery — sends immediately
 
-Subject: `You're on the list`
+Subject: `Here's the book`
 
-> You'll get one email from us the day *The Green Light Buying Machine* is
-> available. Nothing before that.
+> Here it is. [link]
 >
-> If you'd rather not wait: send us an Arizona property and we'll tell you
-> whether it converts. Same analysis the book teaches, applied to your actual
-> deal. [link]
+> Read it in order — the sequence matters, and every chapter builds on the one
+> before it. We didn't hold anything back; this is the whole machine, not a
+> teaser for something else.
+>
+> One thing worth saying up front: the goal isn't to understand this. It's to
+> do it. Understanding without action is just entertainment.
+>
+> All green lights.
+>
+> — Brian and Gina
+
+### Book follow-up, day 5
+
+Subject: `Get to Chapter 4 yet?`
+
+> The buy box chapter is where most people either lean in or realize this
+> isn't for them. Both are useful answers.
+>
+> If you're leaning in and you've got ten or more flips behind you, the next
+> step is applying. We take a small number of operators, we bring the deal,
+> and we work to line up your buyer while you're still building. [Apply]
+>
+> If you're not there yet, keep reading. The book works on its own.
+>
+> — Brian and Gina
+
+### Book follow-up, day 10 — last one
+
+Subject: `The part the book can't do`
+
+> The book gives you the system. What it can't do is walk a house with you,
+> tell you the wall you're about to move is load-bearing, or hand you a buyer
+> when you're finished.
+>
+> That's what the program is. If you want that, [apply here]. If not, we hope
+> the book earns its keep either way.
 >
 > — Brian and Gina
 
@@ -367,10 +436,17 @@ Subject: `You're on the list`
   decline, and creates no opportunity.
 - Submit the property form and confirm it lands on the supply side and does
   NOT enter the program nurture sequence.
+- On the landing page, complete step 1 and then close the tab. Confirm the
+  contact exists with `A-000-STARTED` and no opportunity, and that the nudge
+  fires an hour later.
+- Then finish the same application with the same email and confirm it updates
+  that contact rather than creating a second one.
 - Fill the hidden `company` field via devtools and confirm the contact is
   *not* created — the route should return 200 and drop it.
-- Submit the waitlist form twice with the same email and confirm it updates
+- Submit the book form twice with the same email and confirm it updates
   rather than duplicating.
+- Tag a test contact `A-001-APPLIED`, then submit the book form as that
+  contact and confirm the follow-ups are suppressed.
 - Submit the buyer form once as `Cash` + `Ready now` and confirm it tags
   `core`, and once as `Still figuring it out` + `Just researching` and
   confirm it tags `nurture` and does *not* send a booking link.

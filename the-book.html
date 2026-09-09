@@ -122,6 +122,40 @@
   ol.stages b{font-family:var(--display);font-weight:600;letter-spacing:-.01em}
   ol.stages span{display:block;font-size:.95rem;opacity:.75;line-height:1.45}
 
+  /* landing page */
+  .lp-nav{background:var(--ink);color:var(--paper);padding-block:1.15rem}
+  .lp-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .lp-nav .brand{font-family:var(--display);font-weight:800;letter-spacing:-.02em;
+    text-decoration:none;font-size:1.02rem;line-height:1.15}
+  .lp-nav .ph{font-family:var(--plan);font-size:.78rem;opacity:.7}
+
+  .lp-hero{background:var(--ink);color:var(--paper);padding-block:clamp(2.5rem,5vw,4rem) clamp(3rem,6vw,4.5rem)}
+  .lp-grid{display:grid;gap:clamp(2rem,4vw,3.5rem);grid-template-columns:1fr}
+  @media(min-width:60rem){.lp-grid{grid-template-columns:minmax(0,1fr) minmax(0,27rem);align-items:start}}
+  .lp-hero h1{font-size:clamp(2.3rem,1.5rem + 3.5vw,3.8rem);margin-bottom:1rem}
+  .lp-points{list-style:none;padding:0;margin:1.75rem 0 0;max-width:32rem}
+  .lp-points li{padding:.6rem 0 .6rem 1.6rem;position:relative;border-bottom:1px solid rgba(232,231,224,.18)}
+  .lp-points li::before{content:"";position:absolute;left:0;top:1.15rem;width:.6rem;height:.6rem;
+    background:var(--green-bright)}
+
+  .card{background:var(--paper);color:var(--ink);padding:clamp(1.5rem,3vw,2rem);
+    border-top:4px solid var(--green-bright)}
+  .card h2{font-size:1.5rem;margin-bottom:.35rem}
+  .card .sub{font-size:.95rem;opacity:.75;margin-bottom:1.5rem}
+  .card .field label{font-size:.85rem}
+  .card .hint{font-size:.8rem}
+  .card button.submit{width:100%}
+
+  .steps-bar{display:flex;gap:.4rem;margin-bottom:1.25rem}
+  .steps-bar span{flex:1;height:3px;background:var(--rule)}
+  .steps-bar span.on{background:var(--green-bright)}
+  .step-note{font-family:var(--plan);font-size:.72rem;letter-spacing:.06em;
+    opacity:.6;margin-bottom:.75rem}
+  .lp-step[hidden]{display:none}
+  .back-link{background:none;border:0;padding:0;margin-top:.9rem;font:inherit;
+    font-size:.9rem;text-decoration:underline;cursor:pointer;opacity:.7}
+  .back-link:hover{opacity:1}
+
   .stats{display:grid;gap:1.5rem;grid-template-columns:repeat(3,minmax(0,1fr));
     padding-block:clamp(2.25rem,4vw,3.25rem)}
   .stat .n{font-family:var(--display);font-weight:800;letter-spacing:-.03em;
@@ -257,9 +291,9 @@
 </nav>
 <header class="phead">
   <div class="wrap">
-    <span class="kicker">Coming soon</span>
+    <span class="kicker">The book</span>
     <h1>The Green Light Buying Machine</h1>
-    <p class="lede">The whole model in print. It isn't out yet &mdash; put your name down and we'll tell you the day it is.</p>
+    <p class="lede">The Complete Guide to Building a Co-Living Real Estate Business &mdash; from finding the deal to launch day.</p>
   </div>
 </header>
 
@@ -270,21 +304,20 @@
         <div class="bar"></div>
         <div><div class="t">The Green Light Buying Machine</div></div>
         <div>
-          <div class="soon">Coming soon</div>
           <div class="a">Brian &amp; Gina Kingdeski</div>
         </div>
       </div>
       <div>
-        <p>Brian and Gina Kingdeski are writing down what they've been teaching in cohorts: how co-living conversions are underwritten, where the margin actually comes from, and what separates a house that works from one that only looks like it does.</p>
-        <p>It isn't a motivational book. It's the model, the math, and the mistakes &mdash; written for people who already know how to run a job site and want to know whether this exit is worth their next project.</p>
-        <p><span class="todo">Swap the placeholder cover for the real KDP art at 300 DPI or better, and add the retail link on launch.</span></p>
+        <p>Twenty-six years and 2,300 deals, written down. Brian and Gina held nothing back &mdash; this isn't a teaser that leaves you wanting the paid version. It's the whole machine, laid out piece by piece, from the buy box through construction to launch day on PadSplit.</p>
+        <p>It isn't motivational. There are no posters and no vague advice. It's meat and potatoes: here's how it's done, here's why it's done that way, now go do it.</p>
+        <p><span class="todo">Decide how this is delivered &mdash; instant PDF download, or emailed after signup. And add real cover art at 300 DPI.</span></p>
 
-        <h3 style="margin-top:2rem">Hear when it's out</h3>
-        <p style="margin-bottom:1.25rem">No sequence, no drip. One email when the book is available.</p>
+        <h3 style="margin-top:2rem">Get the book</h3>
+        <p style="margin-bottom:1.25rem">Free. Tell us where to send it.</p>
         <form class="js-form" action="/api/book-waitlist" method="post" novalidate
               data-source="book waitlist"
               data-sending="Adding you&#8230;"
-              data-success="You&#8217;re on the list. We&#8217;ll email you the day it&#8217;s out.">
+              data-success="On its way. Check your email &#8212; and if the model makes sense to you, the next step is applying.">
           <div class="hp" aria-hidden="true">
             <label for="company">Company</label>
             <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
@@ -299,7 +332,7 @@
               <input id="wl-email" name="email" type="email" autocomplete="email" required>
             </div>
           </div>
-          <button class="submit" type="submit">Put me on the list</button>
+          <button class="submit" type="submit">Send me the book</button>
         </form>
       </div>
     </div>
@@ -308,19 +341,24 @@
 
 <section class="band">
   <div class="wrap">
-    <h2>What it covers</h2>
-    <p class="todo">Pull six to eight real chapter titles from the manuscript once it's final. Specific chapter names sell a pre-launch book far better than a description does.</p>
+    <h2>What&#8217;s inside</h2>
+    <p>Seven parts, nineteen chapters, and a checklist appendix you&#8217;ll actually use on site.</p>
     <div class="split" style="margin-top:1.5rem">
       <ul class="plain">
-        <li>Why the retail exit keeps getting harder</li>
-        <li>What makes a house convertible</li>
-        <li>Underwriting on rooms instead of bedrooms</li>
+        <li><b>One &#183; The Foundation</b><br>Co-living, PadSplit, and what a home must have</li>
+        <li><b>Two &#183; Finding Your Deal</b><br>The buy box, finding deals, and comping them</li>
+        <li><b>Three &#183; Walking and Designing</b><br>The first walk and the Whiteboard Method</li>
+        <li><b>Four &#183; Preparing for Acquisition</b><br>Loan application, budget, permits, utilities</li>
       </ul>
       <ul class="plain">
-        <li>Designing the partition plan</li>
-        <li>Building to operator standard</li>
-        <li>Who buys a finished co-living property</li>
+        <li><b>Five &#183; Construction</b><br>Demo through framing, drywall, draws, finishes</li>
+        <li><b>Six &#183; Finishing Strong</b><br>Appraiser, inspection, build day, final details</li>
+        <li><b>Seven &#183; Launch Day</b><br>The complete PadSplit listing guide</li>
+        <li><b>Appendix</b><br>Room-by-room and launch-day checklists</li>
       </ul>
+    </div>
+    <div class="cta-row">
+      <a class="btn" href="apply.html">Read it and want coaching? Apply</a>
     </div>
   </div>
 </section>

@@ -122,6 +122,40 @@
   ol.stages b{font-family:var(--display);font-weight:600;letter-spacing:-.01em}
   ol.stages span{display:block;font-size:.95rem;opacity:.75;line-height:1.45}
 
+  /* landing page */
+  .lp-nav{background:var(--ink);color:var(--paper);padding-block:1.15rem}
+  .lp-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .lp-nav .brand{font-family:var(--display);font-weight:800;letter-spacing:-.02em;
+    text-decoration:none;font-size:1.02rem;line-height:1.15}
+  .lp-nav .ph{font-family:var(--plan);font-size:.78rem;opacity:.7}
+
+  .lp-hero{background:var(--ink);color:var(--paper);padding-block:clamp(2.5rem,5vw,4rem) clamp(3rem,6vw,4.5rem)}
+  .lp-grid{display:grid;gap:clamp(2rem,4vw,3.5rem);grid-template-columns:1fr}
+  @media(min-width:60rem){.lp-grid{grid-template-columns:minmax(0,1fr) minmax(0,27rem);align-items:start}}
+  .lp-hero h1{font-size:clamp(2.3rem,1.5rem + 3.5vw,3.8rem);margin-bottom:1rem}
+  .lp-points{list-style:none;padding:0;margin:1.75rem 0 0;max-width:32rem}
+  .lp-points li{padding:.6rem 0 .6rem 1.6rem;position:relative;border-bottom:1px solid rgba(232,231,224,.18)}
+  .lp-points li::before{content:"";position:absolute;left:0;top:1.15rem;width:.6rem;height:.6rem;
+    background:var(--green-bright)}
+
+  .card{background:var(--paper);color:var(--ink);padding:clamp(1.5rem,3vw,2rem);
+    border-top:4px solid var(--green-bright)}
+  .card h2{font-size:1.5rem;margin-bottom:.35rem}
+  .card .sub{font-size:.95rem;opacity:.75;margin-bottom:1.5rem}
+  .card .field label{font-size:.85rem}
+  .card .hint{font-size:.8rem}
+  .card button.submit{width:100%}
+
+  .steps-bar{display:flex;gap:.4rem;margin-bottom:1.25rem}
+  .steps-bar span{flex:1;height:3px;background:var(--rule)}
+  .steps-bar span.on{background:var(--green-bright)}
+  .step-note{font-family:var(--plan);font-size:.72rem;letter-spacing:.06em;
+    opacity:.6;margin-bottom:.75rem}
+  .lp-step[hidden]{display:none}
+  .back-link{background:none;border:0;padding:0;margin-top:.9rem;font:inherit;
+    font-size:.9rem;text-decoration:underline;cursor:pointer;opacity:.7}
+  .back-link:hover{opacity:1}
+
   .stats{display:grid;gap:1.5rem;grid-template-columns:repeat(3,minmax(0,1fr));
     padding-block:clamp(2.25rem,4vw,3.25rem)}
   .stat .n{font-family:var(--display);font-weight:800;letter-spacing:-.03em;
@@ -266,9 +300,9 @@
 <section class="band">
   <div class="wrap">
     <div class="stats">
+      <div class="stat"><div class="n">2,300+</div><div class="l">Deals in Phoenix metro</div></div>
+      <div class="stat"><div class="n">26</div><div class="l">Years fixing and flipping</div></div>
       <div class="stat"><div class="n">450+</div><div class="l">Doors produced</div></div>
-      <div class="stat"><div class="n">26+</div><div class="l">Years in the trades</div></div>
-      <div class="stat"><div class="n">AZ</div><div class="l">Built and sold in the Valley</div></div>
     </div>
   </div>
 </section>

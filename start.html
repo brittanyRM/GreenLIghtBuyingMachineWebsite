@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Apply to the program — Green Light Buying Machine</title>
-<meta name="description" content="For Arizona fix-and-flip operators with 10 to 15 projects behind them and a crew already running.">
+<title>Become a student — Green Light Buying Machine</title>
+<meta name="description" content="Arizona co-living conversions for operators with 10 to 15 flips behind them. Apply to become a student.">
+<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Literata:opsz,wght@7..72,400;7..72,500&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -275,92 +276,98 @@
 </style>
 </head>
 <body>
-<nav class="nav">
+
+<nav class="lp-nav">
   <div class="wrap">
     <a class="brand" href="index.html">Green Light<br>Buying Machine</a>
-    <ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="how-it-works.html">Build with us</a></li>
-<li><a href="for-buyers.html">Buy a property</a></li>
-<li><a href="homes.html">Homes we've built</a></li>
-<li><a href="faq.html">FAQ</a></li>
-<li><a href="about.html">About</a></li>
-    </ul>
-    <a class="btn" href="apply.html">Become a student</a>
+    <span class="ph">Arizona &#183; info@greenlightbuyingmachine.com</span>
   </div>
 </nav>
-<header class="phead">
-  <div class="wrap">
-    <span class="kicker">For operators</span>
-    <h1>Apply to the program</h1>
-    <p class="lede">We take a small number of operators who already know how to build. Tell us about your work and we'll tell you honestly whether this is the right move for you now.</p>
-  </div>
-</header>
 
-<section>
+<header class="lp-hero">
   <div class="wrap">
-    <div class="split">
+    <div class="lp-grid">
       <div>
-        <p>Nothing here is a commitment. It's how we find out whether your experience, your crew, and your capital line up with what the program actually requires &mdash; before either of us spends time on a call.</p>
-        <p style="margin-bottom:1.75rem">Applying costs nothing. If you're accepted, the program is <b>$15,000</b>, separate from the house &mdash; you buy and finance the property yourself. We'd rather you know the number now than three conversations from now.</p>
-        <form class="js-form" action="/api/apply" method="post" novalidate
-              data-source="program application"
-              data-sending="Sending your application&#8230;"
-              data-success="Got it. We&#8217;ll review your background and come back to you either way.">
+        <h1>You already know how to flip. We change who you sell to.</h1>
+        <p class="lede">Same acquisition, same crew, same financing. The difference is the exit: a co-living investor pricing your house on what it produces by the room, lined up while you&#8217;re still building.</p>
+        <ul class="lp-points">
+          <li>We bring the deal, underwritten by rentable room</li>
+          <li>You buy it, finance it, and run your own crew &mdash; like any flip</li>
+          <li>We hold the build to the standard our buyers expect</li>
+          <li>We guarantee to present your finished house to our qualified buyer list</li>
+          <li>Arizona cohorts, small on purpose</li>
+        </ul>
+      </div>
+
+      <div class="card" id="form-card">
+        <div class="steps-bar"><span class="on" id="bar1"></span><span id="bar2"></span></div>
+        <h2>Become a student</h2>
+        <p class="sub">Applying is free and takes two minutes. Payment only happens if you&#8217;re accepted.</p>
+
+        <form id="lpForm" novalidate>
           <div class="hp" aria-hidden="true">
-            <label for="company">Company</label>
-            <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+            <label for="lp-company">Company</label>
+            <input id="lp-company" name="company" type="text" tabindex="-1" autocomplete="off">
           </div>
-          <div class="pair">
+
+          <div class="lp-step" id="step1">
+            <p class="step-note">STEP 1 OF 2 &#183; HOW TO REACH YOU</p>
             <div class="field">
-              <label for="a-name">Your name</label>
-              <input id="a-name" name="name" type="text" autocomplete="name" required>
+              <label for="lp-name">Your name</label>
+              <input id="lp-name" name="name" type="text" autocomplete="name" required>
             </div>
             <div class="field">
-              <label for="a-phone">Phone</label>
-              <input id="a-phone" name="phone" type="tel" autocomplete="tel">
+              <label for="lp-email">Email</label>
+              <input id="lp-email" name="email" type="email" autocomplete="email" required>
             </div>
-          </div>
-          <div class="field">
-            <label for="a-email">Email</label>
-            <input id="a-email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div class="field">
-            <label for="a-flips">Flips you've completed</label>
-            <select id="a-flips" name="flips" required>
-              <option value="">Select one</option>
-              <option>Fewer than 5</option>
-              <option>5 to 9</option>
-              <option>10 to 15</option>
-              <option>More than 15</option>
-            </select>
-            <p class="hint">We're looking for 10 to 15 or more. Fewer is not a no forever, just a no for now.</p>
-          </div>
-          <div class="field">
-            <label for="a-crew">Your crew</label>
-            <select id="a-crew" name="crew" required>
-              <option value="">Select one</option>
-              <option>I run my own crew</option>
-              <option>I use the same trades on every job</option>
-              <option>I hire per project</option>
-              <option>I'd need to build one</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="a-financing">How you fund your deals</label>
-            <select id="a-financing" name="financing" required>
-              <option value="">Select one</option>
-              <option>Cash</option>
-              <option>Hard money, first and second</option>
-              <option>Private lenders</option>
-              <option>Line of credit</option>
-              <option>Still arranging financing</option>
-            </select>
-          </div>
-          <div class="pair">
             <div class="field">
-              <label for="a-market">Where you operate</label>
-              <select id="a-market" name="market" required>
+              <label for="lp-phone">Phone</label>
+              <input id="lp-phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="lp-city">City and state</label>
+              <input id="lp-city" name="city" type="text" placeholder="Mesa, AZ" required>
+              <p class="hint">We run Arizona cohorts today and we&#8217;re choosing our next market. Tell us yours either way.</p>
+            </div>
+            <button class="submit" type="button" id="toStep2">Continue</button>
+          </div>
+
+          <div class="lp-step" id="step2" hidden>
+            <p class="step-note">STEP 2 OF 2 &#183; YOUR WORK</p>
+            <div class="field">
+              <label for="lp-flips">Flips you&#8217;ve completed</label>
+              <select id="lp-flips" name="flips" required>
+                <option value="">Select one</option>
+                <option>Fewer than 5</option>
+                <option>5 to 9</option>
+                <option>10 to 15</option>
+                <option>More than 15</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="lp-crew">Your crew</label>
+              <select id="lp-crew" name="crew" required>
+                <option value="">Select one</option>
+                <option>I run my own crew</option>
+                <option>I use the same trades on every job</option>
+                <option>I hire per project</option>
+                <option>I&#8217;d need to build one</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="lp-financing">How you fund your deals</label>
+              <select id="lp-financing" name="financing" required>
+                <option value="">Select one</option>
+                <option>Cash</option>
+                <option>Hard money, first and second</option>
+                <option>Private lenders</option>
+                <option>Line of credit</option>
+                <option>Still arranging financing</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="lp-market">Where you operate</label>
+              <select id="lp-market" name="market" required>
                 <option value="">Select one</option>
                 <option>The Phoenix valley</option>
                 <option>Elsewhere in Arizona</option>
@@ -369,8 +376,8 @@
               </select>
             </div>
             <div class="field">
-              <label for="a-timeline">When you'd start</label>
-              <select id="a-timeline" name="timeline" required>
+              <label for="lp-timeline">When you&#8217;d start</label>
+              <select id="lp-timeline" name="timeline" required>
                 <option value="">Select one</option>
                 <option>Next available cohort</option>
                 <option>Next 3 months</option>
@@ -378,38 +385,98 @@
                 <option>Just exploring</option>
               </select>
             </div>
+            <div class="field">
+              <label for="lp-recent">Your last project</label>
+              <textarea id="lp-recent" name="recent" placeholder="Where it was, the scope, how it went. A few lines is plenty."></textarea>
+            </div>
+            <button class="submit" type="submit">Send my application</button>
+            <button class="back-link" type="button" id="backTo1">&larr; Back</button>
           </div>
-          <div class="field">
-            <label for="a-city">Your city and state</label>
-            <input id="a-city" name="city" type="text" placeholder="Mesa, AZ" required>
-            <p class="hint">We run Arizona cohorts today. We're planning where to open next, and applications are how we decide.</p>
-          </div>
-          <div class="field">
-            <label for="a-recent">Your last project</label>
-            <textarea id="a-recent" name="recent" placeholder="Where it was, what the scope was, how it went. A few lines is fine."></textarea>
-          </div>
-          <button class="submit" type="submit">Send my application</button>
         </form>
       </div>
-      <div>
-        <h3 style="margin-bottom:1rem">What happens next</h3>
-        <ul class="plain">
-          <li>We read it &mdash; a person, not a filter</li>
-          <li>If it's a fit, we set up a call</li>
-          <li>If we both want to go ahead, you're accepted</li>
-          <li>Payment comes after that, not before</li>
-          <li>If it isn't a fit yet, we'll tell you what would change that</li>
+    </div>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><div class="n">2,300+</div><div class="l">Deals in Phoenix metro</div></div>
+      <div class="stat"><div class="n">26</div><div class="l">Years fixing and flipping</div></div>
+      <div class="stat"><div class="n">450+</div><div class="l">Doors produced</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What we build</h2>
+    <p>Eight bedrooms minimum, two bathrooms minimum, ensuite wherever the numbers support it. Furnished and launched on PadSplit.</p>
+    <div class="grid-homes">
+<figure class="shot" data-full="images/homes/kitchen-navy.jpg"><img src="images/homes/kitchen-navy-thumb.jpg" alt="Shared kitchen" loading="lazy" decoding="async"><figcaption>Shared kitchen</figcaption></figure>
+<figure class="shot" data-full="images/homes/common-green.jpg"><img src="images/homes/common-green-thumb.jpg" alt="Common area" loading="lazy" decoding="async"><figcaption>Common area</figcaption></figure>
+<figure class="shot" data-full="images/homes/kitchen-green.jpg"><img src="images/homes/kitchen-green-thumb.jpg" alt="Shared kitchen" loading="lazy" decoding="async"><figcaption>Shared kitchen</figcaption></figure>
+<figure class="shot" data-full="images/homes/dining-bar.jpg"><img src="images/homes/dining-bar-thumb.jpg" alt="Dining and living" loading="lazy" decoding="async"><figcaption>Dining and living</figcaption></figure>
+<figure class="shot" data-full="images/homes/living-open.jpg"><img src="images/homes/living-open-thumb.jpg" alt="Living room" loading="lazy" decoding="async"><figcaption>Living room</figcaption></figure>
+<figure class="shot" data-full="images/homes/common-seating.jpg"><img src="images/homes/common-seating-thumb.jpg" alt="Common seating" loading="lazy" decoding="async"><figcaption>Common seating</figcaption></figure>
+<figure class="shot" data-full="images/homes/bedroom-eight.jpg"><img src="images/homes/bedroom-eight-thumb.jpg" alt="Room 8" loading="lazy" decoding="async"><figcaption>Room 8</figcaption></figure>
+<figure class="shot" data-full="images/homes/bedroom-yellow.jpg"><img src="images/homes/bedroom-yellow-thumb.jpg" alt="Bedroom" loading="lazy" decoding="async"><figcaption>Bedroom</figcaption></figure>
+</div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Who we accept</h2>
+    <p>We take a small number of operators, and we&#8217;re blunt about the bar because it saves everyone time.</p>
+    <div class="fit" style="margin-top:2rem">
+      <div class="col">
+        <h3>A fit if you</h3>
+        <ul>
+          <li>Have 10 to 15 completed flips behind you</li>
+          <li>Already run your own crew</li>
+          <li>Buy and finance your own deals</li>
+          <li>Are ready to own the whole buildout</li>
         </ul>
-
-        <h3 style="margin:2rem 0 1rem">Before you apply</h3>
-        <p>The <a href="is-it-for-you.html">fit list</a> is blunt about who this works for. Reading it first will save you five minutes if the answer is no.</p>
-
-        <h3 style="margin:2rem 0 1rem">Not an operator?</h3>
-        <p>If you have a property you think would convert well, <a href="submit-a-property.html">send it to us</a> instead. If you're looking to buy a finished home, <a href="for-buyers.html">start here</a>.</p>
+      </div>
+      <div class="col not">
+        <h3>Not a fit if you</h3>
+        <ul>
+          <li>Are early in your flipping career</li>
+          <li>Would need to assemble a crew first</li>
+          <li>Are looking for passive income</li>
+          <li>Need someone else to manage the build</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
+
+<section>
+  <div class="wrap">
+    <h2>What you get as a student</h2>
+    <div class="split" style="margin-top:1.5rem">
+      <ul class="plain">
+        <li>A place in an Arizona cohort</li>
+        <li>Direct coaching from Brian and Gina Kingdeski</li>
+        <li>Deals sourced and brought to you</li>
+        <li>Your finished house presented to our qualified buyer list</li>
+      </ul>
+      <ul class="plain">
+        <li>The full course library and module handouts</li>
+        <li>A student portal tracking your deal through all ten stages</li>
+        <li>Renovation scope and co-living build standards</li>
+        <li>Financing through a lender who knows this asset</li>
+      </ul>
+    </div>
+    <p style="margin-top:2rem"><b>$15,000, once you&#8217;re accepted.</b> Applying is free. The program doesn&#8217;t include the house &mdash; you buy and finance that yourself, the way you would any flip.</p>
+    <div class="cta-row">
+      <a class="btn" href="#form-card">Apply now</a>
+      <a class="btn ghost" href="how-it-works.html">See the full process</a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div>
@@ -418,17 +485,12 @@
       <p style="margin:0"><a href="mailto:info@greenlightbuyingmachine.com">info@greenlightbuyingmachine.com</a></p>
     </div>
     <div>
-      <h4>Pages</h4>
+      <h4>More</h4>
       <ul>
-        <li><a href="how-it-works.html">Build with us</a></li>
-        <li><a href="is-it-for-you.html">Is the program for you</a></li>
-        <li><a href="for-buyers.html">Buy a finished property</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
         <li><a href="homes.html">Homes we&#8217;ve built</a></li>
         <li><a href="faq.html">FAQ</a></li>
-        <li><a href="the-book.html">The book</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="apply.html">Apply to become a student</a></li>
-        <li><a href="submit-a-property.html">Submit a property</a></li>
       </ul>
     </div>
     <div>
@@ -438,109 +500,102 @@
   </div>
 </footer>
 
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
-  <button class="close" id="lightboxClose" aria-label="Close">&times;</button>
-  <img id="lightboxImg" src="" alt="">
-  <div class="cap" id="lightboxCap"></div>
-</div>
-
 <script>
-/* Gallery lightbox. Thumbnails carry the full-size path in data-full so the
-   grid stays light and the big file only loads when someone asks for it. */
+/* Two-step application. Step 1 posts contact details on its own so an
+   abandoned application still leaves a usable lead in the CRM; step 2
+   posts the whole thing again and GHL updates the same contact by email. */
 (function () {
-  var box = document.getElementById('lightbox');
-  var img = document.getElementById('lightboxImg');
-  var cap = document.getElementById('lightboxCap');
-  var shots = document.querySelectorAll('.shot');
-  if (!shots.length) return;
-  var last = null;
+  var form = document.getElementById('lpForm');
+  var step1 = document.getElementById('step1');
+  var step2 = document.getElementById('step2');
+  var bar2 = document.getElementById('bar2');
+  var card = document.getElementById('form-card');
+  var next = document.getElementById('toStep2');
+  var back = document.getElementById('backTo1');
+  var submit = form.querySelector('[type=submit]');
+  var partialSent = false;
 
-  function open(shot) {
-    var thumb = shot.querySelector('img');
-    last = shot;
-    img.src = shot.dataset.full || thumb.src;
-    img.alt = thumb.alt;
-    cap.textContent = thumb.alt;
-    box.classList.add('open');
-    document.getElementById('lightboxClose').focus();
-  }
-  function close() {
-    box.classList.remove('open');
-    img.src = '';
-    if (last) last.focus();
+  function values() {
+    var out = {};
+    new FormData(form).forEach(function (v, k) { out[k] = v; });
+    out.page = window.location.pathname;
+    return out;
   }
 
-  Array.prototype.forEach.call(shots, function (shot) {
-    shot.setAttribute('tabindex', '0');
-    shot.setAttribute('role', 'button');
-    shot.addEventListener('click', function () { open(shot); });
-    shot.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(shot); }
+  function post(payload) {
+    return fetch('/api/apply', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
     });
-  });
-  document.getElementById('lightboxClose').addEventListener('click', close);
-  box.addEventListener('click', function (e) { if (e.target === box) close(); });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && box.classList.contains('open')) close();
-  });
-})();
-</script>
+  }
 
-<script>
-/* Handles every form marked .js-form. Posts JSON to the form's action,
-   which forwards to GoHighLevel server-side. Messages come from data
-   attributes on the form so each one can speak for itself. */
-(function () {
-  var FALLBACK = 'info@greenlightbuyingmachine.com';
+  function valid(fields) {
+    for (var i = 0; i < fields.length; i++) {
+      var el = document.getElementById(fields[i]);
+      if (!el.checkValidity()) { el.reportValidity(); return false; }
+    }
+    return true;
+  }
 
-  Array.prototype.forEach.call(document.querySelectorAll('.js-form'), function (form) {
-    var button = form.querySelector('[type=submit]');
-    var label = button.textContent;
-    var status = document.createElement('div');
-    status.className = 'status';
-    status.setAttribute('role', 'status');
-    status.setAttribute('aria-live', 'polite');
-    status.hidden = true;
-    form.parentNode.insertBefore(status, form);
+  next.addEventListener('click', function () {
+    if (!valid(['lp-name', 'lp-email', 'lp-city'])) return;
 
-    function show(kind, message) {
-      status.hidden = false;
-      status.className = 'status ' + kind;
-      status.textContent = message;
+    /* Fire and forget — a failed partial save must never block the
+       applicant from finishing. Step 2 sends everything anyway. */
+    if (!partialSent) {
+      var p = values();
+      p.stage = 'partial';
+      p.source = 'landing page';
+      post(p).catch(function () {});
+      partialSent = true;
     }
 
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      if (!form.checkValidity()) { form.reportValidity(); return; }
+    step1.hidden = true;
+    step2.hidden = false;
+    bar2.classList.add('on');
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('lp-flips').focus();
+  });
 
-      var payload = {};
-      new FormData(form).forEach(function (value, key) { payload[key] = value; });
-      payload.source = form.dataset.source || 'website';
-      payload.page = window.location.pathname;
+  back.addEventListener('click', function () {
+    step2.hidden = true;
+    step1.hidden = false;
+    bar2.classList.remove('on');
+  });
 
-      button.disabled = true;
-      button.textContent = 'Sending…';
-      show('pending', form.dataset.sending || 'Sending…');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!valid(['lp-flips', 'lp-crew', 'lp-financing', 'lp-market', 'lp-timeline'])) return;
 
-      fetch(form.action, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+    var payload = values();
+    payload.stage = 'complete';
+    payload.source = 'landing page';
+
+    submit.disabled = true;
+    submit.textContent = 'Sending…';
+
+    post(payload)
+      .then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        card.innerHTML =
+          '<h2>Application received</h2>' +
+          '<p>Brian or Gina will read it — a person, not a filter — and come back to you either way. ' +
+          'If it’s a fit we’ll set up a call. If the timing isn’t right yet, we’ll tell you what would change that.</p>' +
+          '<p style="margin-bottom:0"><a class="btn" href="homes.html">See the homes we’ve built</a></p>';
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
       })
-        .then(function (response) {
-          if (!response.ok) throw new Error(response.status);
-          form.reset();
-          show('ok', form.dataset.success || 'Thanks — we got it.');
-          button.textContent = 'Sent';
-        })
-        .catch(function () {
-          show('err', 'That didn’t send. Email ' + FALLBACK + ' and we’ll pick it up from there.');
-          button.disabled = false;
-          button.textContent = label;
-        });
-    });
+      .catch(function () {
+        submit.disabled = false;
+        submit.textContent = 'Send my application';
+        var err = document.createElement('p');
+        err.className = 'status err';
+        err.textContent = 'That didn’t send. Email info@greenlightbuyingmachine.com and we’ll pick it up from there.';
+        form.appendChild(err);
+      });
   });
 })();
 </script>
+
 </body>
 </html>

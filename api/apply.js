@@ -7,7 +7,8 @@
 // Required env var: GHL_APPLICATION_WEBHOOK_URL
 
 const MAX_LENGTH = 2000;
-const REQUIRED = ["name", "email", "flips", "crew", "financing", "market", "city", "timeline"];
+const REQUIRED_COMPLETE = ["name", "email", "flips", "crew", "financing", "market", "city", "timeline"];
+const REQUIRED_PARTIAL = ["name", "email"];
 
 function clean(value) {
   return typeof value === "string" ? value.trim().slice(0, MAX_LENGTH) : "";
@@ -30,7 +31,13 @@ export default async function handler(req, res) {
 
   if (clean(body.company)) return res.status(200).json({ ok: true });
 
-  const missing = REQUIRED.filter((f) => !clean(body[f]));
+  // Step 1 of the landing-page form posts on its own so an abandoned
+  // application still leaves a reachable lead. Those arrive as partials
+  // and can't be held to the full field list.
+  const isPartial = clean(body.stage) === "partial";
+  const required = isPartial ? REQUIRED_PARTIAL : REQUIRED_COMPLETE;
+
+  const missing = required.filter((f) => !clean(body[f]));
   if (missing.length) {
     return res.status(400).json({ error: `Missing required fields: ${missing.join(", ")}` });
   }
@@ -55,7 +62,8 @@ export default async function handler(req, res) {
   const outOfState = clean(body.market).startsWith("Out of state");
 
   const applicantTier =
-    experienceOk && crewOk && readyNow ? "core"
+    isPartial ? "incomplete"
+    : experienceOk && crewOk && readyNow ? "core"
     : experienceOk && crewOk ? "qualified"
     : flips === "Fewer than 5" || crew === "I'd need to build one" ? "below_bar"
     : "review";
@@ -80,6 +88,7 @@ export default async function handler(req, res) {
     start_timeline: timeline,
     recent_project: clean(body.recent),
     applicant_tier: applicantTier,
+    stage: isPartial ? "partial" : "complete",
     source: clean(body.source) || "program application",
     page: clean(body.page),
     submitted_at: new Date().toISOString(),
