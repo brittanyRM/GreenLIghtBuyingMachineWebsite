@@ -23,6 +23,7 @@ submissions into GoHighLevel.
 ├── api/
 │   ├── apply.js          → GHL_APPLICATION_WEBHOOK_URL
 │   ├── property.js       → GHL_PROPERTY_WEBHOOK_URL
+│   ├── prequal.js        → GHL_PREQUAL_WEBHOOK_URL
 │   └── book-waitlist.js  → GHL_BOOK_WAITLIST_WEBHOOK_URL
 ├── images/plans/         5 floor plans, full + thumb
 ├── media/                intro video (H.264 MP4) + poster frame
@@ -50,7 +51,7 @@ The sequence matters — GHL can't map webhook fields until it has seen a
 real payload, so the site has to be live before the workflows can be
 finished.
 
-**1. Create the three GHL workflows, triggers only.**
+**1. Create the four GHL workflows, triggers only.**
 Workflow → Inbound Webhook trigger → copy the URL. Once each for operator
 applications, property submissions, and the book waitlist. Don't build the
 actions yet.
@@ -80,6 +81,7 @@ Variables, for Production and Preview:
 ```
 GHL_APPLICATION_WEBHOOK_URL=https://...
 GHL_PROPERTY_WEBHOOK_URL=https://...
+GHL_PREQUAL_WEBHOOK_URL=https://...
 GHL_BOOK_WAITLIST_WEBHOOK_URL=https://...
 ```
 
@@ -146,8 +148,6 @@ hit, add Vercel's WAF rules or a per-IP check in the handler.
 - [ ] Confirm whether students can bring their own deal
 - [ ] Real cover art for the book (300 DPI minimum)
 - [ ] Add testimonials from students who have closed
-- [ ] Rename the "Rachelle Test" form in GHL (optional — the name appears in
-      the iframe title attribute, not on screen)
 - [ ] Replace G-XXXXXXXXXX with the real GA4 measurement ID (in build.py, then rebuild)
 - [ ] Have counsel check disclosures.html against the executed MSA
 - [ ] Confirm what the ongoing membership and marketplace fees will be, and

@@ -334,7 +334,7 @@
 <body>
 <nav class="nav">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="images/brand/logo-icon.webp" srcset="images/brand/logo-icon.webp 1x, images/brand/logo-icon-2x.webp 2x" alt="Green Light Buying Machine" width="400" height="242"></a>
+    <a class="brand" href="index.html"><img src="images/brand/logo-h.webp" srcset="images/brand/logo-h.webp 1x, images/brand/logo-h-2x.webp 2x" alt="Green Light Buying Machine" width="900" height="270"></a>
     <ul>
 <li><a href="index.html">Home</a></li>
 <li><a href="how-it-works.html">Build with us</a></li>
@@ -462,28 +462,100 @@
   <div class="wrap">
     <h2>Let us know you&#8217;re ready</h2>
     <p>Already pre-qualified? This is how we know to put you on the list. When a property goes live, this is who we call first.</p>
-    <div class="embed">
-      <iframe
-        src="https://api.leadconnectorhq.com/widget/form/cIkTFxnNpva0nNDICpQx"
-        style="width:100%;height:100%;border:none;border-radius:3px"
-        id="inline-cIkTFxnNpva0nNDICpQx"
-        data-layout="{'id':'INLINE'}"
-        data-trigger-type="alwaysShow"
-        data-trigger-value=""
-        data-activation-type="alwaysActivated"
-        data-activation-value=""
-        data-deactivation-type="neverDeactivate"
-        data-deactivation-value=""
-        data-form-name="Rachelle Test"
-        data-height="1008"
-        data-layout-iframe-id="inline-cIkTFxnNpva0nNDICpQx"
-        data-form-id="cIkTFxnNpva0nNDICpQx"
-        data-cookie-consent="true"
-        data-cookie-consent-provider="auto"
-        title="Rachelle Test">
-      </iframe>
+    <div class="split" style="margin-top:1.5rem">
+      <div>
+        <form class="js-form" action="/api/prequal" method="post" novalidate
+              data-source="lender pre-qualification"
+              data-sending="Sending&#8230;"
+              data-success="Sent. Rachelle will reach out to walk you through pre-qualification.">
+          <div class="hp" aria-hidden="true">
+            <label for="pq-company">Company</label>
+            <input id="pq-company" name="company" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="pair">
+            <div class="field">
+              <label for="pq-name">Your name</label>
+              <input id="pq-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="pq-phone">Phone</label>
+              <input id="pq-phone" name="phone" type="tel" autocomplete="tel" required>
+            </div>
+          </div>
+          <div class="pair">
+            <div class="field">
+              <label for="pq-email">Email</label>
+              <input id="pq-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="pq-state">State you&#8217;d buy in</label>
+              <input id="pq-state" name="state" type="text" placeholder="Arizona" required>
+            </div>
+          </div>
+          <div class="pair">
+            <div class="field">
+              <label for="pq-funding">How you&#8217;d fund the purchase</label>
+              <select id="pq-funding" name="funding" required>
+                <option value="">Select one</option>
+                <option>Cash</option>
+                <option>Conventional financing</option>
+                <option>DSCR loan</option>
+                <option>1031 exchange</option>
+                <option>Partnership or fund</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="pq-timeline">Timeline</label>
+              <select id="pq-timeline" name="timeline" required>
+                <option value="">Select one</option>
+                <option>Ready now</option>
+                <option>Next 3 months</option>
+                <option>3 to 6 months</option>
+                <option>Just researching</option>
+              </select>
+            </div>
+          </div>
+          <div class="pair">
+            <div class="field">
+              <label for="pq-range">Price range you&#8217;re considering</label>
+              <select id="pq-range" name="price_range">
+                <option value="">Select one</option>
+                <option>Under $400k</option>
+                <option>$400k to $600k</option>
+                <option>$600k to $800k</option>
+                <option>Over $800k</option>
+                <option>Depends on the deal</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="pq-status">Already pre-qualified?</label>
+              <select id="pq-status" name="prequal_status" required>
+                <option value="">Select one</option>
+                <option>Not yet &mdash; please connect me</option>
+                <option>Yes, with Rachelle</option>
+                <option>Yes, with another lender</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="pq-notes">Anything else worth knowing</label>
+            <textarea id="pq-notes" name="notes" placeholder="Rentals you own, areas you like, questions you have."></textarea>
+          </div>
+          <button class="submit" type="submit">Send this to Rachelle</button>
+          <p class="hint" style="margin-top:.85rem">This just starts the conversation. Nothing here is a credit application, and we don&#8217;t ask for financial documents on this page &mdash; Rachelle handles that securely on her side.</p>
+        </form>
+      </div>
+      <div>
+        <h3 style="margin-bottom:1rem">What Rachelle does</h3>
+        <ul class="plain">
+          <li>Reviews what you can close on, and how quickly</li>
+          <li>Finances PadSplit conversions specifically &mdash; she prices this asset on room income rather than residential comps</li>
+          <li>Sends you a pre-qualification letter so you can move when a property is listed</li>
+        </ul>
+        <p style="margin-top:1.5rem;font-size:.95rem;opacity:.85">Prefer to go direct? <a href="https://go.homeownersfg.com/home/rachelle-coffey" target="_blank" rel="noopener noreferrer">Rachelle&#8217;s booking page</a>.</p>
+      </div>
     </div>
-    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
   </div>
 </section>
 

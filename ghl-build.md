@@ -247,9 +247,49 @@ the buyer if you already have qualified buyers waiting.
 
 ---
 
-## 5. Webhook D — Book waitlist
+## 5. Webhook D — Lender pre-qualification
 
-**Workflow:** `WEB-D · Book Download`
+**Workflow:** `WEB-E · Buyer Pre-Qualification`
+**Trigger:** Inbound Webhook → `GHL_PREQUAL_WEBHOOK_URL`
+
+Replaces the embedded GHL form on `for-buyers.html` with a native form so the
+page matches the rest of the site. Same destination, better styling, and the
+data arrives already triaged.
+
+Payload:
+
+```
+first_name, last_name, full_name, email, phone,
+buyer_state, buyer_funding, buyer_timeline, buyer_price_range,
+prequal_status, buyer_notes, buyer_tier, source, page, submitted_at
+```
+
+`buyer_tier` is computed by the handler:
+`registry_ready` (already pre-qualified and moving inside three months),
+`send_to_lender` (funding identified, moving soon — hand to Rachelle),
+`nurture` (just researching), `review` (anything else).
+
+### Actions
+
+1. **Create/Update Contact** with all buyer fields.
+2. **Add tag** `D-001-BUYER-INQUIRY` and `SRC-WEBSITE`.
+3. **If/Else** on `buyer_tier`:
+   - `registry_ready` → tag `D-002-BUYER-QUALIFIED`, add to the buyer registry
+     SmartList, notify Brian and Gina.
+   - `send_to_lender` → notify Rachelle with the contact details and send the
+     introduction email below.
+   - `nurture` → education sequence, no lender handoff, no call.
+   - `review` → internal task.
+
+**Deliberately not collected:** SSN, income, assets, bank details, documents.
+Those belong in Rachelle's own secure intake. Keep it that way — a marketing
+site collecting financial documents is a liability with no upside.
+
+---
+
+## 6. Webhook E — Book waitlist
+
+**Workflow:** `WEB-F · Book Download`
 **Trigger:** Inbound Webhook → `GHL_BOOK_WAITLIST_WEBHOOK_URL`
 
 Payload: `first_name, last_name, full_name, email, source, page, submitted_at`
@@ -364,6 +404,23 @@ Subject: `Here's the book — come back when you're ready`
 > were exactly where you are a couple of years ago.
 >
 > — Brian and Gina
+
+### Pre-qualification introduction — sends when routed to the lender
+
+Subject: `Introducing you to Rachelle`
+
+> Thanks for sending this over. We've passed your details to Rachelle Coffey,
+> the lender we work with.
+>
+> Rachelle finances PadSplit conversions specifically, which matters more than
+> it sounds: a lender pricing this house against ordinary residential comps
+> will undervalue what you're buying. She'll walk you through what you can
+> close on and get you a pre-qualification letter.
+>
+> Once that's done you're on the list, and you'll hear from us when certified
+> properties are listed.
+>
+> — Green Light Buying Machine
 
 ### Property received
 
