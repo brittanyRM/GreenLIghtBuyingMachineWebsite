@@ -1,0 +1,75 @@
+{
+  "title": "AZREIA members — Green Light Buying Machine",
+  "description": "For AZREIA members: build certified co-living conversions with us, or buy a finished one.",
+  "kicker": "For AZREIA members",
+  "heading": "Two ways to work with us",
+  "lede": "Certified PadSplit co-living properties. Some AZREIA members build them with us. Others buy the finished homes. Both start with a conversation.",
+  "blocks": [
+    {
+      "type": "stats",
+      "items": [
+        { "value": "2,300+", "label": "Deals in Phoenix metro" },
+        { "value": "26", "label": "Years fixing and flipping" },
+        { "value": "450+", "label": "Doors produced" }
+      ]
+    },
+    {
+      "type": "doors",
+      "heading": "Which one are you?",
+      "items": [
+        {
+          "kicker": "If you build",
+          "title": "Become a student",
+          "body": "You buy the distressed house, finance it your usual way, and run your own crew — nothing about the acquisition changes. We coach the conversion, certify the finished property against documented standards, and list it for registered buyers. What changes is who buys it at the end.",
+          "note": "<b>Requires:</b> 10&#8211;15 completed flips and a crew already working.",
+          "ctaLabel": "Apply to become a student",
+          "ctaHref": "/apply?from=azreia",
+          "accent": "build"
+        },
+        {
+          "kicker": "If you buy",
+          "title": "Get on the buyer list",
+          "body": "Certified co-living properties as they're listed &mdash; converted, furnished, launched on PadSplit, with the certification documentation attached so you can see how the house was built. Houses close vacant, so you set the rates, the rules and the room mix from day one.",
+          "note": "<b>Requires:</b> pre-qualification, so we know you can close when a house comes up.",
+          "ctaLabel": "Register as a buyer",
+          "ctaHref": "/for-buyers?from=azreia",
+          "accent": "buy"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "kicker": "YOUR AZREIA MEMBER BENEFIT",
+      "heading": "A free co-living property evaluation",
+      "body": "<p>Send us an address and we&#8217;ll tell you whether it converts, roughly what room count it supports, and what the conversion would involve &mdash; including when the answer is no. A quick no on the wrong house is worth more than a slow maybe.</p><p>AZREIA members are also first to see certified properties as they come available, and get a free copy of <i>The Green Light Buying Machine</i>.</p><p style=\"margin-bottom:0\"><a class=\"btn\" href=\"/submit-a-property?from=azreia\">Send us a property</a></p>"
+    },
+    {
+      "type": "prose",
+      "heading": "Why co-living, and why now",
+      "columns": [
+        {
+          "body": "<p>Retail flip margins have thinned and every operator is bidding on the same inventory. A co-living conversion changes who buys the house: an investor pricing the property on what it earns by the room rather than on comps down the street.</p><p>We build to a floor of eight bedrooms and two bathrooms, ensuite wherever the numbers support it, furnished and launched on PadSplit.</p>"
+        },
+        {
+          "body": "<p>Brian and Gina Kingdeski have been flipping together for 26 years and have done north of 2,300 deals in the Phoenix metro. They also own Trinity Design and Construction, which is where the build standards came from &mdash; this sits on top of a construction company, not a marketing company.</p><p>Happy to speak at an AZREIA meeting or run a workshop on conversion, PadSplit standards, and underwriting a house by rentable room.</p>"
+        }
+      ]
+    },
+    {
+      "type": "gallery",
+      "heading": "What a finished one looks like",
+      "lede": "Not renderings. Houses converted, furnished and put into service.",
+      "set": "homes",
+      "limit": 8
+    },
+    {
+      "type": "cta",
+      "heading": "Come and talk to us",
+      "body": "Whether you'd build one or buy one, the first step is the same &mdash; a conversation.",
+      "primaryLabel": "Apply to become a student",
+      "primaryHref": "/apply?from=azreia",
+      "secondaryLabel": "Register as a buyer",
+      "secondaryHref": "/for-buyers?from=azreia"
+    }
+  ]
+}

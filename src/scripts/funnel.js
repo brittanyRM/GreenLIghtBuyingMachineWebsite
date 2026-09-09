@@ -16,6 +16,9 @@
     var out = {};
     new FormData(form).forEach(function (v, k) { out[k] = v; });
     out.page = window.location.pathname;
+    var params = new URLSearchParams(window.location.search);
+    var from = params.get('from') || params.get('utm_source');
+    if (from) out.referred_by = from.slice(0, 60);
     return out;
   }
 

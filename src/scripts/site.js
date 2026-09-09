@@ -80,6 +80,12 @@
       payload.source = form.dataset.source || 'website';
       payload.page = window.location.pathname;
 
+      /* Referral attribution: /apply?from=azreia arrives tagged, so leads
+         can be counted per partner without a separate form. */
+      var params = new URLSearchParams(window.location.search);
+      var from = params.get('from') || params.get('utm_source');
+      if (from) payload.referred_by = from.slice(0, 60);
+
       button.disabled = true;
       button.textContent = 'Sending\u2026';
       show('pending', form.dataset.sending || 'Sending\u2026');

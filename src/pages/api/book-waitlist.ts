@@ -46,6 +46,7 @@ export const POST: APIRoute = async ({ request }) => {
     last_name: rest.join(" "),
     full_name: fullName,
     email,
+    referred_by: clean(body.referred_by),
     source: clean(body.source) || "book waitlist",
     page: clean(body.page),
     submitted_at: new Date().toISOString(),

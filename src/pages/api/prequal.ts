@@ -81,6 +81,7 @@ export const POST: APIRoute = async ({ request }) => {
     prequal_status: status,
     buyer_notes: clean(body.notes),
     buyer_tier: buyerTier,
+    referred_by: clean(body.referred_by),
     source: clean(body.source) || "lender pre-qualification",
     page: clean(body.page),
     submitted_at: new Date().toISOString(),

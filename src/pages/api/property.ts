@@ -69,6 +69,7 @@ export const POST: APIRoute = async ({ request }) => {
     property_specs: clean(body.specs),
     submitter_role: clean(body.role),
     notes: clean(body.notes),
+    referred_by: clean(body.referred_by),
     source: clean(body.source) || "property submission",
     page: clean(body.page),
     submitted_at: new Date().toISOString(),

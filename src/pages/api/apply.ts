@@ -100,6 +100,7 @@ export const POST: APIRoute = async ({ request }) => {
     applicant_tier: applicantTier,
     intent: wantsInfo ? "more_info" : "apply",
     stage: isPartial ? "partial" : "complete",
+    referred_by: clean(body.referred_by),
     source: clean(body.source) || "program application",
     page: clean(body.page),
     submitted_at: new Date().toISOString(),
