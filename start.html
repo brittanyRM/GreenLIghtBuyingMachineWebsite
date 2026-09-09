@@ -146,26 +146,26 @@
   ol.stages b{font-family:var(--display);font-weight:600;letter-spacing:-.01em}
   ol.stages span{display:block;font-size:.95rem;opacity:.75;line-height:1.45}
 
-  .lp-stack{max-width:66rem;margin-inline:auto}
-  .lp-stack .kicker{text-align:center;display:block}
+  .lp-stack{max-width:74rem;margin-inline:auto}
+  .lp-stack .kicker{display:block;margin-bottom:.35rem}
 
-  .lp-below{display:grid;gap:clamp(1.75rem,4vw,3rem);grid-template-columns:1fr;
-    margin-top:clamp(2rem,4vw,2.75rem);align-items:start}
-  @media(min-width:58rem){
-    .lp-below{grid-template-columns:minmax(0,24rem) minmax(0,1fr)}
-    /* form sits left on desktop; headline reads first on mobile */
-    .lp-below .card{order:-1}
+  .lp-below{display:grid;gap:clamp(2rem,5vw,4.5rem);grid-template-columns:1fr;
+    margin-top:clamp(1.5rem,3vw,2.25rem);align-items:start}
+  @media(min-width:64rem){
+    /* words left, form right — only once there's genuinely room for both */
+    .lp-below{grid-template-columns:minmax(0,1fr) minmax(0,26rem)}
   }
-  .lp-words h1{margin:0 0 1rem}
-  .lp-words .lede{margin-bottom:1rem}
+  .lp-words h1{margin:0 0 1.15rem;line-height:1.06}
+  .lp-words .lede{margin-bottom:1.1rem;max-width:34rem}
   .lp-words .lede:last-child{margin-bottom:0}
 
-  .video-wrap{max-width:30rem;margin-inline:auto}
+  .video-wrap{max-width:26rem;margin:1.25rem auto 0}
   .vid{width:100%;height:auto;display:block;background:#000;border-radius:3px;
-    border:1px solid rgba(232,231,224,.14);
-    filter:brightness(.93) saturate(.97) contrast(1.02)}
-  .vid-cap{font-family:var(--plan);font-size:.75rem;opacity:.5;margin:.75rem 0 0;
+    border:1px solid rgba(15,36,25,.18);
+    filter:brightness(.86) saturate(.94) contrast(1.03)}
+  .vid-cap{font-family:var(--plan);font-size:.72rem;opacity:.55;margin:.6rem 0 0;
     text-align:center;max-width:none}
+  .lp-below--top{margin-top:clamp(1.25rem,3vw,2rem)}
 
   /* landing page */
   .lp-nav{background:var(--ink-soft);color:var(--paper);padding-block:1.15rem;
@@ -174,17 +174,19 @@
   .lp-nav .brand{display:block;line-height:0}
   .lp-nav .ph{font-family:var(--plan);font-size:.78rem;opacity:.7}
 
-  .lp-hero{background:var(--ink);color:var(--paper);padding-block:clamp(2.5rem,5vw,4rem) clamp(3rem,6vw,4.5rem)}
+  .lp-hero{background:var(--ink);color:var(--paper);
+    padding-block:clamp(2.25rem,4vw,3.25rem) clamp(3.25rem,6vw,5rem)}
   .lp-grid{display:grid;gap:clamp(2rem,4vw,3.5rem);grid-template-columns:1fr}
   @media(min-width:60rem){.lp-grid{grid-template-columns:minmax(0,1fr) minmax(0,27rem);align-items:start}}
-  .lp-hero h1{font-size:clamp(2.3rem,1.5rem + 3.5vw,3.8rem);margin-bottom:1rem}
+  .lp-hero h1{font-size:clamp(2.15rem,1.3rem + 2.6vw,3.15rem);margin-bottom:1rem}
   .lp-points{list-style:none;padding:0;margin:1.75rem 0 0;max-width:32rem}
   .lp-points li{padding:.6rem 0 .6rem 1.6rem;position:relative;border-bottom:1px solid rgba(232,231,224,.18)}
   .lp-points li::before{content:"";position:absolute;left:0;top:1.15rem;width:.6rem;height:.6rem;
     background:var(--green-bright)}
 
-  .card{background:var(--paper);color:var(--ink);padding:clamp(1.5rem,3vw,2rem);
+  .card{background:var(--paper);color:var(--ink);padding:clamp(1.5rem,2.5vw,2.15rem);
     border-top:4px solid var(--green-bright)}
+  .card .field{margin-bottom:1rem}
   .card h2{font-size:1.5rem;margin-bottom:.35rem}
   .card .sub{font-size:.95rem;opacity:.75;margin-bottom:1.5rem}
   .card .field label{font-size:.85rem}
@@ -359,7 +361,7 @@
         <h2>Become a student</h2>
         <p class="sub">Applying is free and takes two minutes. Nothing is due unless you&#8217;re accepted.</p>
 
-        <form id="lpForm" novalidate>
+        <form id="lpForm" data-video="off" novalidate>
           <div class="hp" aria-hidden="true">
             <label for="lp-company">Company</label>
             <input id="lp-company" name="company" type="text" tabindex="-1" autocomplete="off">
@@ -672,15 +674,30 @@
       .then(function (r) {
         if (!r.ok) throw new Error(r.status);
         var wantedInfo = intent && intent.value === 'more_info';
-        card.innerHTML = wantedInfo
+
+        /* The video is the reward for finishing, not a hurdle before it.
+           Only rendered on pages that ship the media folder. */
+        var video =
+          '<div class="video-wrap">' +
+            '<video class="vid" controls preload="metadata" playsinline ' +
+                   'poster="media/glbm-intro-poster.webp" width="864" height="864">' +
+              '<source src="media/glbm-intro.mp4" type="video/mp4">' +
+            '</video>' +
+            '<p class="vid-cap">Brian and Gina, about two minutes.</p>' +
+          '</div>';
+
+        var head = wantedInfo
           ? '<h2>On its way</h2>' +
             '<p>We’ll send you the book and keep you on the list. No sales calls — ' +
             'when you’ve got ten or more flips behind you, email us and we’ll pick it up from there.</p>' +
-            '<p style="margin-bottom:0"><a class="btn" href="homes.html">See the homes we’ve built</a></p>'
+            '<p>While you’re here, this is the two-minute version of what we do.</p>'
           : '<h2>Application received</h2>' +
             '<p>Brian or Gina will read it — a person, not a filter — and come back to you either way. ' +
-            'If it’s a fit we’ll set up a call. If the timing isn’t right yet, we’ll tell you what would change that.</p>' +
-            '<p style="margin-bottom:0"><a class="btn" href="homes.html">See the homes we’ve built</a></p>';
+            'If it’s a fit we’ll set up a call.</p>' +
+            '<p>While you wait, here’s the two-minute version of what we do.</p>';
+
+        card.innerHTML = head + (form.dataset.video === 'off' ? '' : video) +
+          '<p style="margin:1.25rem 0 0"><a class="btn" href="homes.html">See the homes we’ve built</a></p>';
         card.scrollIntoView({ behavior: 'smooth', block: 'center' });
       })
       .catch(function () {

@@ -100,9 +100,14 @@ empty.
 
 ## The video
 
-`media/glbm-intro.mp4` is the funnel intro, transcoded from a 218MB 60fps HEVC
-`.mov` down to 17MB H.264 at 864x864 / 30fps. The original wouldn't have played
-in Chrome or Firefox — HEVC in a .mov is effectively Safari-only.
+`media/glbm-intro.mp4` is transcoded from a 218MB 60fps HEVC `.mov` down to
+17MB H.264 at 864x864 / 30fps. The original wouldn't have played in Chrome or
+Firefox — HEVC in a .mov is effectively Safari-only.
+
+**It is not currently used on any page.** The 1:1 format is built for social
+feeds and didn't sit well in a landing-page layout. It's kept here because it's
+the web-ready encode — use it as ad creative pointing at /funnel, or as a
+YouTube/Vimeo upload. Delete `media/` if you'd rather keep the repo light.
 
 17MB is servable from Vercel but it isn't ideal: no adaptive quality, no
 playback analytics, and the binary bloats the git history every time it's
