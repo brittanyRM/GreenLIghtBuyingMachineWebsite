@@ -30,17 +30,23 @@ comes up empty for fields that don't exist yet.
 | Start Timeline | `start_timeline` | Dropdown |
 | Recent Project | `recent_project` | Multi line |
 | Operating Market | `operating_market` | Single line |
-| Expansion Lead | `expansion_lead` | Dropdown |
+| Outside Home Market | `outside_home_market` | Dropdown |
 | Applicant Tier | `applicant_tier` | Dropdown |
 
 Dropdown options must match the form exactly.
 `completed_flips`: `Fewer than 5`, `5 to 9`, `10 to 15`, `More than 15`.
 `crew_status`: `I run my own crew`, `I use the same trades on every job`,
 `I hire per project`, `I'd need to build one`.
-`applicant_tier`: `core`, `qualified`, `review`, `below_bar` — set by the
-handler, don't edit by hand.
-`expansion_lead`: `yes` when an out-of-state applicant clears the experience
-and crew bar. These are not declines — they're the map for where to open next.
+`applicant_tier`: `core`, `qualified`, `review`, `below_bar`, `not_yet` — set
+by the handler, don't edit by hand.
+
+`not_yet` comes from the funnel page (`funnel.html`), where operators under ten
+flips can choose an information path instead of applying. They answered every
+qualifying question and told you they're not there yet — that's a warm lead with
+a known gap, not a rejection. `intent` will be `more_info`.
+`outside_home_market`: `yes` when the applicant works outside Arizona. The
+program is nationwide, so this is routing information, not a filter — use it to
+group members by market and to know which local rules will come up on the call.
 
 ### Partial applications
 
@@ -141,9 +147,13 @@ instead of three: `core` (meets the bar and starting soon), `qualified`
      reads the recent-project answer and decides.
    - `below_bar` → tag `A-002-BELOW-BAR`, send the honest decline below. No
      opportunity created.
-4. **If** `expansion_lead` is `yes` → tag `EXPANSION-INTEREST` plus a market
-   tag derived from `operating_market` (`MKT-DFW`, `MKT-TAMPA`, and so on).
-   Send the out-of-market email below instead of the booking link.
+   - `not_yet` → tag `A-002-NOT-YET` and `BOOK-DOWNLOAD`, send the book and the
+     not-yet email below. No opportunity, no sales call, no drip beyond the
+     book sequence. Add to a quarterly check-in list instead.
+4. **If** `outside_home_market` is `yes` → add a market tag derived from
+   `operating_market` (`MKT-DFW`, `MKT-TAMPA`, and so on). Same branch as any
+   other applicant otherwise — the market tag just groups members geographically
+   and flags which local occupancy and parking rules to raise on the call.
 4. **Send email** — confirmation or decline, copy below.
 
 The decline matters more than it looks. An operator with four flips today has
@@ -275,7 +285,8 @@ Following `[Pipeline]-[Stage]-[Action]-[Result]`:
 | `A-002-QUALIFIED` | Meets the bar, longer timeline |
 | `A-002-REVIEW` | Borderline, needs a human read |
 | `A-002-BELOW-BAR` | Under the experience or crew requirement |
-| `EXPANSION-INTEREST` | Qualified operator outside Arizona |
+| `A-002-NOT-YET` | Chose the information path; building toward the bar |
+| `MKT-<CITY>` grouping | Which market the member operates in |
 | `MKT-<CITY>` | Which market they operate in |
 | `DEAL-SUBMITTED` | Property came in from the supply side |
 | `SUPPLY-WHOLESALER` / `SUPPLY-AGENT` | Who sent it |
@@ -320,22 +331,6 @@ Subject: `Not yet — here's what we'd want to see`
 >
 > — Green Light Buying Machine
 
-### Qualified but out of market
-
-Subject: `You'd qualify — wrong state, for now`
-
-> Your background is what we look for. The problem is geography: our deal flow,
-> our lender and our buyers are all in Arizona, and those are most of what
-> you'd be paying for.
->
-> We're planning which market to open next, and we're deciding it by where
-> qualified operators actually are. You're on the list for yours.
->
-> If you'd consider running a deal in Arizona in the meantime, reply and we'll
-> talk about it.
->
-> — Green Light Buying Machine
-
 ### Started but didn't finish — sends 1 hour after a partial
 
 Subject: `You started an application`
@@ -352,6 +347,23 @@ Subject: `You started an application`
 > [Finish your application]
 >
 > — Green Light Buying Machine
+
+### Chose the information path — sends immediately
+
+Subject: `Here's the book — come back when you're ready`
+
+> Thanks for being straight with us about where you are. You're under the ten
+> flips we look for, so we're not going to put you on a sales call.
+>
+> Here's the book instead. [link] It's the whole model — the buy box, the
+> underwriting, the build standard, launch day. Nothing held back and nothing
+> gated behind the program.
+>
+> Keep building. When you've got ten or more behind you and a crew you trust,
+> email us and we'll pick this straight back up. A good number of our members
+> were exactly where you are a couple of years ago.
+>
+> — Brian and Gina
 
 ### Property received
 
@@ -432,6 +444,9 @@ Subject: `The part the book can't do`
 
 - Submit the application with `More than 15` + `I run my own crew` +
   `Next available cohort` and confirm it tags `core` and books.
+- On funnel.html, pick a `send me more info instead` option and confirm the
+  notice appears, the button changes, and the submission tags `not_yet` with
+  `intent: more_info` — and that no booking link is sent.
 - Submit with `Fewer than 5` and confirm it tags `below_bar`, sends the
   decline, and creates no opportunity.
 - Submit the property form and confirm it lands on the supply side and does
@@ -466,9 +481,12 @@ Subject: `The part the book can't do`
 - Decide whether unqualified leads get a standing nurture sequence or sit in a
   SmartList until someone works them.
 - Confirm Pipeline D is a free letter in the existing Marcus system.
-- Build the expansion SmartList: `EXPANSION-INTEREST` grouped by market tag.
-  That count, market by market, is the input for where to open next — it's
-  worth reviewing monthly rather than when someone remembers.
+- Build a SmartList grouped by market tag. As members spread across the
+  country, that grouping is how you keep track of which local rules and which
+  buyer pools you're dealing with.
+- Decide how buyer registration works outside Arizona. The registry is the
+  thinnest part of a nationwide model — an operator in Tampa needs Tampa buyers,
+  and that side has to be built market by market.
 - Decide who owns buyer relationships. The builder side and the buyer side are
   different jobs, and running both out of one inbox is how the second one gets
   dropped.

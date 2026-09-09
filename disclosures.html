@@ -19,9 +19,9 @@
 </script>
 <style>
   :root{
-    --ink:#101C22; --ink-soft:#1B2C34;
+    --ink:#0F2419; --ink-soft:#1A3A29;
     --paper:#E8E7E0; --paper-dim:#DEDDD5;
-    --green:#1B6B3A; --green-bright:#3BA85F; --amber:#B87514;
+    --green:#1B6B3A; --green-bright:#55C878; --amber:#C98A1E;
     --rule:#C6C5BB;
     --display:"Archivo",system-ui,sans-serif;
     --body:"Literata",Georgia,serif;
@@ -48,7 +48,7 @@
   a.btn{display:inline-block;font-family:var(--display);font-weight:600;font-size:1rem;
     letter-spacing:-.01em;text-decoration:none;padding:.85rem 1.5rem;border-radius:2px;
     background:var(--green-bright);color:var(--ink);border:1px solid transparent}
-  a.btn:hover{background:#4FC176}
+  a.btn:hover{background:#6FD990}
   a.btn.ghost{background:transparent;color:inherit;border-color:currentColor;opacity:.8}
   a.btn.ghost:hover{opacity:1}
   a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
@@ -95,7 +95,7 @@
     aspect-ratio:auto;display:block}
   .hero-plan img{width:100%;height:auto;object-fit:contain;background:#fff}
   .hero-plan::after{content:"";position:absolute;inset:.35rem;
-    border:1px solid rgba(16,28,34,.12);pointer-events:none}
+    border:1px solid rgba(15,36,25,.14);pointer-events:none}
 
   /* layout helpers */
   .split{display:grid;gap:clamp(2rem,4vw,3.5rem);grid-template-columns:1fr}
@@ -155,6 +155,10 @@
   .card .hint{font-size:.8rem}
   .card button.submit{width:100%}
 
+  .notice{background:var(--paper-dim);border-left:3px solid var(--amber);
+    padding:.9rem 1rem;margin-bottom:1.15rem;font-size:.92rem;line-height:1.5}
+  .notice[hidden]{display:none}
+
   .steps-bar{display:flex;gap:.4rem;margin-bottom:1.25rem}
   .steps-bar span{flex:1;height:3px;background:var(--rule)}
   .steps-bar span.on{background:var(--green-bright)}
@@ -191,12 +195,12 @@
     .shot:hover img,.shot:focus-visible img{transform:none}}
   .shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:.5rem .7rem;
     font-family:var(--plan);font-size:.72rem;color:#fff;
-    background:linear-gradient(to top,rgba(16,28,34,.85),rgba(16,28,34,0));
+    background:linear-gradient(to top,rgba(15,36,25,.88),rgba(15,36,25,0));
     opacity:0;transition:opacity .25s ease}
   .shot:hover figcaption,.shot:focus-visible figcaption{opacity:1}
-  .grid-plans .shot figcaption{opacity:1;background:linear-gradient(to top,rgba(16,28,34,.8),rgba(16,28,34,0))}
+  .grid-plans .shot figcaption{opacity:1;background:linear-gradient(to top,rgba(15,36,25,.85),rgba(15,36,25,0))}
 
-  .lightbox{position:fixed;inset:0;background:rgba(16,28,34,.95);z-index:99;
+  .lightbox{position:fixed;inset:0;background:rgba(15,36,25,.96);z-index:99;
     display:none;align-items:center;justify-content:center;padding:clamp(1rem,4vw,3rem)}
   .lightbox[open],.lightbox.open{display:flex}
   .lightbox img{max-width:100%;max-height:88vh;object-fit:contain;background:#fff}
@@ -266,15 +270,15 @@
   @media(min-width:40rem){.pair{grid-template-columns:repeat(2,minmax(0,1fr))}}
   button.submit{font-family:var(--display);font-weight:600;font-size:1rem;padding:.85rem 1.6rem;
     background:var(--green-bright);color:var(--ink);border:0;border-radius:2px;cursor:pointer}
-  button.submit:hover{background:#4FC176}
+  button.submit:hover{background:#6FD990}
   button.submit:disabled{opacity:.55;cursor:not-allowed}
   .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
   .status{max-width:40rem;padding:.85rem 1rem;border-radius:2px;margin-bottom:1.25rem;
     border-left:3px solid var(--rule);background:var(--paper-dim);font-size:.95rem}
-  .status.ok{border-left-color:var(--green);background:#DDE9DF}
-  .status.err{border-left-color:var(--amber);background:#F0E4CC}
+  .status.ok{border-left-color:var(--green);background:#DCE8DE}
+  .status.err{border-left-color:var(--amber);background:#F1E6CE}
 
-  .todo{background:var(--amber);color:#180F02;padding:.06em .45em;border-radius:2px;
+  .todo{background:var(--amber);color:#1A1204;padding:.06em .45em;border-radius:2px;
     font-family:var(--plan);font-size:.82em}
 
   footer{padding-block:2.5rem;font-size:.9rem}
@@ -291,7 +295,7 @@
 <body>
 <nav class="nav">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="images/brand/logo-mark.png" alt="Green Light Buying Machine" width="140" height="140"><span>Green Light<br>Buying Machine</span></a>
+    <a class="brand" href="index.html"><img src="images/brand/logo-icon.png" srcset="images/brand/logo-icon.png 1x, images/brand/logo-icon-2x.png 2x" alt="" width="400" height="209"><span>Green Light<br>Buying Machine</span></a>
     <ul>
 <li><a href="index.html">Home</a></li>
 <li><a href="how-it-works.html">Build with us</a></li>

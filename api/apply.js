@@ -47,7 +47,9 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Enter a valid email address" });
   }
 
-  const flips = clean(body.flips);
+  // The funnel labels the under-10 options with an information path, e.g.
+  // "5 to 9 — send me more info instead". Strip that before scoring.
+  const flips = clean(body.flips).split("\u2014")[0].split(" - ")[0].trim();
   const crew = clean(body.crew);
   const timeline = clean(body.timeline);
 
@@ -57,18 +59,21 @@ export default async function handler(req, res) {
   const crewOk = crew === "I run my own crew" || crew === "I use the same trades on every job";
   const readyNow = timeline === "Next available cohort" || timeline === "Next 3 months";
 
-  // Out-of-state applicants aren't declines — they're the expansion list.
-  // Tag them by market so the next city is chosen from real demand.
-  const outOfState = clean(body.market).startsWith("Out of state");
+  // We work nationwide, so market is routing information rather than a gate.
+  const outsideArizona = clean(body.market).startsWith("Outside Arizona");
+
+  // Someone who chose the information path is a nurture lead, not a decline.
+  const wantsInfo = clean(body.intent) === "more_info";
 
   const applicantTier =
     isPartial ? "incomplete"
+    : wantsInfo ? "not_yet"
     : experienceOk && crewOk && readyNow ? "core"
     : experienceOk && crewOk ? "qualified"
     : flips === "Fewer than 5" || crew === "I'd need to build one" ? "below_bar"
     : "review";
 
-  const expansionLead = outOfState && experienceOk && crewOk;
+  const outsideHomeMarket = outsideArizona;
 
   const fullName = clean(body.name);
   const [firstName, ...rest] = fullName.split(/\s+/);
@@ -84,10 +89,11 @@ export default async function handler(req, res) {
     financing_method: clean(body.financing),
     market_status: clean(body.market),
     operating_market: clean(body.city),
-    expansion_lead: expansionLead ? "yes" : "no",
+    outside_home_market: outsideHomeMarket ? "yes" : "no",
     start_timeline: timeline,
     recent_project: clean(body.recent),
     applicant_tier: applicantTier,
+    intent: wantsInfo ? "more_info" : "apply",
     stage: isPartial ? "partial" : "complete",
     source: clean(body.source) || "program application",
     page: clean(body.page),

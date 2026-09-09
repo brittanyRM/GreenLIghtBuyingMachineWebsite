@@ -5,9 +5,9 @@ os.makedirs(OUT, exist_ok=True)
 
 CSS = r"""
   :root{
-    --ink:#101C22; --ink-soft:#1B2C34;
+    --ink:#0F2419; --ink-soft:#1A3A29;
     --paper:#E8E7E0; --paper-dim:#DEDDD5;
-    --green:#1B6B3A; --green-bright:#3BA85F; --amber:#B87514;
+    --green:#1B6B3A; --green-bright:#55C878; --amber:#C98A1E;
     --rule:#C6C5BB;
     --display:"Archivo",system-ui,sans-serif;
     --body:"Literata",Georgia,serif;
@@ -34,7 +34,7 @@ CSS = r"""
   a.btn{display:inline-block;font-family:var(--display);font-weight:600;font-size:1rem;
     letter-spacing:-.01em;text-decoration:none;padding:.85rem 1.5rem;border-radius:2px;
     background:var(--green-bright);color:var(--ink);border:1px solid transparent}
-  a.btn:hover{background:#4FC176}
+  a.btn:hover{background:#6FD990}
   a.btn.ghost{background:transparent;color:inherit;border-color:currentColor;opacity:.8}
   a.btn.ghost:hover{opacity:1}
   a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
@@ -81,7 +81,7 @@ CSS = r"""
     aspect-ratio:auto;display:block}
   .hero-plan img{width:100%;height:auto;object-fit:contain;background:#fff}
   .hero-plan::after{content:"";position:absolute;inset:.35rem;
-    border:1px solid rgba(16,28,34,.12);pointer-events:none}
+    border:1px solid rgba(15,36,25,.14);pointer-events:none}
 
   /* layout helpers */
   .split{display:grid;gap:clamp(2rem,4vw,3.5rem);grid-template-columns:1fr}
@@ -141,6 +141,10 @@ CSS = r"""
   .card .hint{font-size:.8rem}
   .card button.submit{width:100%}
 
+  .notice{background:var(--paper-dim);border-left:3px solid var(--amber);
+    padding:.9rem 1rem;margin-bottom:1.15rem;font-size:.92rem;line-height:1.5}
+  .notice[hidden]{display:none}
+
   .steps-bar{display:flex;gap:.4rem;margin-bottom:1.25rem}
   .steps-bar span{flex:1;height:3px;background:var(--rule)}
   .steps-bar span.on{background:var(--green-bright)}
@@ -177,12 +181,12 @@ CSS = r"""
     .shot:hover img,.shot:focus-visible img{transform:none}}
   .shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:.5rem .7rem;
     font-family:var(--plan);font-size:.72rem;color:#fff;
-    background:linear-gradient(to top,rgba(16,28,34,.85),rgba(16,28,34,0));
+    background:linear-gradient(to top,rgba(15,36,25,.88),rgba(15,36,25,0));
     opacity:0;transition:opacity .25s ease}
   .shot:hover figcaption,.shot:focus-visible figcaption{opacity:1}
-  .grid-plans .shot figcaption{opacity:1;background:linear-gradient(to top,rgba(16,28,34,.8),rgba(16,28,34,0))}
+  .grid-plans .shot figcaption{opacity:1;background:linear-gradient(to top,rgba(15,36,25,.85),rgba(15,36,25,0))}
 
-  .lightbox{position:fixed;inset:0;background:rgba(16,28,34,.95);z-index:99;
+  .lightbox{position:fixed;inset:0;background:rgba(15,36,25,.96);z-index:99;
     display:none;align-items:center;justify-content:center;padding:clamp(1rem,4vw,3rem)}
   .lightbox[open],.lightbox.open{display:flex}
   .lightbox img{max-width:100%;max-height:88vh;object-fit:contain;background:#fff}
@@ -252,15 +256,15 @@ CSS = r"""
   @media(min-width:40rem){.pair{grid-template-columns:repeat(2,minmax(0,1fr))}}
   button.submit{font-family:var(--display);font-weight:600;font-size:1rem;padding:.85rem 1.6rem;
     background:var(--green-bright);color:var(--ink);border:0;border-radius:2px;cursor:pointer}
-  button.submit:hover{background:#4FC176}
+  button.submit:hover{background:#6FD990}
   button.submit:disabled{opacity:.55;cursor:not-allowed}
   .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
   .status{max-width:40rem;padding:.85rem 1rem;border-radius:2px;margin-bottom:1.25rem;
     border-left:3px solid var(--rule);background:var(--paper-dim);font-size:.95rem}
-  .status.ok{border-left-color:var(--green);background:#DDE9DF}
-  .status.err{border-left-color:var(--amber);background:#F0E4CC}
+  .status.ok{border-left-color:var(--green);background:#DCE8DE}
+  .status.err{border-left-color:var(--amber);background:#F1E6CE}
 
-  .todo{background:var(--amber);color:#180F02;padding:.06em .45em;border-radius:2px;
+  .todo{background:var(--amber);color:#1A1204;padding:.06em .45em;border-radius:2px;
     font-family:var(--plan);font-size:.82em}
 
   footer{padding-block:2.5rem;font-size:.9rem}
@@ -370,7 +374,7 @@ def nav(current):
         items += '<li><a href="%s"%s>%s</a></li>\n' % (href, cur, label)
     return """<nav class="nav">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="images/brand/logo-mark.png" alt="Green Light Buying Machine" width="140" height="140"><span>Green Light<br>Buying Machine</span></a>
+    <a class="brand" href="index.html"><img src="images/brand/logo-icon.png" srcset="images/brand/logo-icon.png 1x, images/brand/logo-icon-2x.png 2x" alt="" width="400" height="209"><span>Green Light<br>Buying Machine</span></a>
     <ul>
 %s    </ul>
     <a class="btn" href="apply.html">Become a student</a>
@@ -571,7 +575,7 @@ PAGES = {}
 # ---------------------------------------------------------------- home
 PAGES["index.html"] = dict(
 title="Green Light Buying Machine — co-living conversions for experienced flippers",
-desc="Coaching, certification and marketplace access for Arizona fix-and-flip operators converting houses for PadSplit co-living.",
+desc="Coaching, certification and marketplace access for fix-and-flip operators converting houses for PadSplit co-living, nationwide.",
 main="""<header class="phead">
   <div class="wrap">
     <div class="hero-grid">
@@ -845,7 +849,6 @@ main=phead("Before you apply", "Is it for you?",
           <li>Buy and finance your own deals: first, second, hard money, however you normally stack it</li>
           <li>Are ready to own the entire buildout and every decision in it</li>
           <li>Want a different exit, not a different hobby</li>
-          <li>Can work an Arizona property &mdash; that's where our deal flow and buyers are today</li>
           <li>Can cover the $15,000 onboarding fee and ongoing membership on top of the deal itself</li>
           <li>Carry general liability insurance of at least $1,000,000 per occurrence</li>
         </ul>
@@ -888,15 +891,15 @@ main=phead("Before you apply", "Is it for you?",
 
 <section class="band">
   <div class="wrap">
-    <h2>Not in Arizona?</h2>
+    <h2>Where we work</h2>
     <div class="split" style="margin-top:1.5rem">
       <div>
-        <p>Arizona is where we operate today. The processes, the lender relationship, the registered buyers, and twenty-six years of knowing which streets work &mdash; all of it is here, and that's most of what you'd be paying for.</p>
-        <p>We're building toward other markets. We'd rather do that properly than plant a flag somewhere we can't yet source a deal or bring you a buyer.</p>
+        <p>We're open nationwide. The method travels &mdash; underwriting by rentable room, designing for the model from the first wall, building to a standard an income buyer recognises. None of that is specific to Arizona.</p>
+        <p>What is specific to your market: occupancy limits, parking requirements, permitting, and what rooms actually rent for where you are. We'll show you how to check all of it. Confirming it stays your responsibility.</p>
       </div>
       <div>
-        <p>So apply anyway. Tell us where you operate, and we'll put you on the list for your market. Where we go next is going to be decided by where the qualified operators are &mdash; which means the applications we get.</p>
-        <div class="cta-row"><a class="btn" href="apply.html">Apply and name your market</a></div>
+        <p>Arizona is where we've done the most work, so the local knowledge runs deepest here. In a newer market you'll be leaning harder on the process and on your own reading of the ground, which is exactly why we only take operators who already know how to build.</p>
+        <div class="cta-row"><a class="btn" href="apply.html">Apply from anywhere</a></div>
       </div>
     </div>
   </div>
@@ -931,7 +934,7 @@ main=phead("Before you apply", "Is it for you?",
     </div>
     <div class="qa">
       <h3>Do I have to be in Arizona?</h3>
-      <p>You don't have to live here, but today the property does. Cohorts are Arizona-based because that's where our deal flow, our lender and our buyers are. We're working toward other markets, and applications from out-of-state operators are how we decide which one comes next &mdash; so apply and tell us where you are.</p>
+      <p>No. We work with operators nationwide. Arizona is home and it's where we've done the most volume, so the local knowledge is deepest here &mdash; but the method isn't regional. What does change market to market is occupancy law, parking rules, permitting and room rents, and we'll show you how to check each of those where you are.</p>
     </div>
     <div class="qa">
       <h3>What if the renovation runs long?</h3>
@@ -1139,8 +1142,8 @@ main=phead("For operators", "Apply to the program",
                 <option value="">Select one</option>
                 <option>The Phoenix valley</option>
                 <option>Elsewhere in Arizona</option>
-                <option>Out of state, would work an Arizona deal</option>
-                <option>Out of state, want it in my market</option>
+                <option>Outside Arizona, in my own market</option>
+                <option>Outside Arizona, open to travelling for a deal</option>
               </select>
             </div>
             <div class="field">
@@ -1157,7 +1160,7 @@ main=phead("For operators", "Apply to the program",
           <div class="field">
             <label for="a-city">Your city and state</label>
             <input id="a-city" name="city" type="text" placeholder="Mesa, AZ" required>
-            <p class="hint">We run Arizona cohorts today. We're planning where to open next, and applications are how we decide.</p>
+            <p class="hint">We work nationwide. Knowing your market helps us tell you what to check locally.</p>
           </div>
           <div class="field">
             <label for="a-recent">Your last project</label>
@@ -1189,15 +1192,15 @@ main=phead("For operators", "Apply to the program",
 # ---------------------------------------------------------------- submit a property
 PAGES["submit-a-property.html"] = dict(
 title="Submit a property — Green Light Buying Machine",
-desc="Wholesalers, agents and owners: send us an Arizona property you think converts to co-living.",
+desc="Wholesalers, agents and owners: send us a property you think converts to co-living.",
 main=phead("Deal flow", "Submit a property",
-  "Have an Arizona house you think would make a good co-living conversion? Send it over. We'll underwrite it the Green Light way and tell you what we see.") + """
+  "Have a house you think would make a good co-living conversion? Send it over. We'll underwrite it the Green Light way and tell you what we see.") + """
 
 <section>
   <div class="wrap">
     <div class="split">
       <div>
-        <p>We're always looking at distressed inventory for our operators. If you're a wholesaler, an agent, or an owner sitting on something that might work, this is the fastest way to get it in front of us.</p>
+        <p>We're always looking at distressed inventory for our operators, in Arizona and increasingly beyond it. If you're a wholesaler, an agent, or an owner sitting on something that might work, this is the fastest way to get it in front of us.</p>
         <p style="margin-bottom:1.75rem">We underwrite by rentable room rather than bedroom count, so houses that look unremarkable on the MLS sometimes work very well &mdash; and some that look perfect don't. Send it either way.</p>
         <form class="js-form" action="/api/property" method="post" novalidate
               data-source="property submission"
@@ -1237,7 +1240,7 @@ main=phead("Deal flow", "Submit a property",
           <div class="field">
             <label for="p-address">Property address</label>
             <input id="p-address" name="address" type="text" required>
-            <p class="hint">Arizona properties for now. An MLS or listing link works too.</p>
+            <p class="hint">Anywhere in the US. An MLS or listing link works too.</p>
           </div>
           <div class="pair">
             <div class="field">
@@ -1531,6 +1534,475 @@ main=phead("Questions", "Frequently asked questions",
   </div>
 </section>""")
 
+
+# ---------------------------------------------------------------- funnel (long form)
+FUNNEL = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Become a Green Light member — for Arizona fix-and-flip operators</title>
+<meta name="description" content="For operators with 10 to 15 flips behind them: convert distressed houses into certified co-living properties and list them for registered buyers. Nationwide.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Literata:opsz,wght@7..72,400;7..72,500&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/brand/favicon-256.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<style>{{CSS}}</style>
+</head>
+<body>
+
+<nav class="lp-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="images/brand/logo-icon.png" srcset="images/brand/logo-icon.png 1x, images/brand/logo-icon-2x.png 2x" alt="" width="400" height="209"><span>Green Light<br>Buying Machine</span></a>
+    <span class="ph">(480) 332-0143</span>
+  </div>
+</nav>
+
+<header class="lp-hero">
+  <div class="wrap">
+    <div class="lp-grid">
+      <div>
+        <span class="kicker">FOR OPERATORS WITH 10&#8211;15 FLIPS BEHIND THEM</span>
+        <h1>Your next flip could have a buyer waiting before the reno is finished.</h1>
+        <p class="lede"><b>Could.</b> How you build decides it. Investors are looking for finished co-living houses in the Valley &mdash; whether yours is one they want comes down to the floor plan, the room count, the bathrooms and the finish. That&#8217;s the part we teach.</p>
+        <div class="cta-row">
+          <a class="btn" href="#apply">Apply to become a member</a>
+          <a class="btn ghost" href="#how">How it works</a>
+        </div>
+      </div>
+      <div class="card" id="form-card">
+        <div class="steps-bar"><span class="on" id="bar1"></span><span id="bar2"></span></div>
+        <h2>Start your application</h2>
+        <p class="sub">Two minutes. Free. Nothing due unless you&#8217;re accepted. Under ten flips? There&#8217;s an option for that.</p>
+
+        <form id="lpForm" novalidate>
+          <div class="hp" aria-hidden="true">
+            <label for="lp-company">Company</label>
+            <input id="lp-company" name="company" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="lp-step" id="step1">
+            <p class="step-note">STEP 1 OF 2 &#183; HOW TO REACH YOU</p>
+            <div class="field"><label for="lp-name">Your name</label>
+              <input id="lp-name" name="name" type="text" autocomplete="name" required></div>
+            <div class="field"><label for="lp-email">Email</label>
+              <input id="lp-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="lp-phone">Phone</label>
+              <input id="lp-phone" name="phone" type="tel" autocomplete="tel"></div>
+            <div class="field"><label for="lp-city">City and state</label>
+              <input id="lp-city" name="city" type="text" placeholder="Mesa, AZ" required>
+              <p class="hint">We work nationwide. Knowing your market helps us tell you what to check locally.</p></div>
+            <button class="submit" type="button" id="toStep2">Continue</button>
+          </div>
+
+          <div class="lp-step" id="step2" hidden>
+            <p class="step-note">STEP 2 OF 2 &#183; YOUR WORK</p>
+            <div class="field"><label for="lp-flips">Flips you&#8217;ve completed</label>
+              <select id="lp-flips" name="flips" required>
+                <option value="">Select one</option>
+                <option>Fewer than 5 &mdash; send me more info instead</option>
+                <option>5 to 9 &mdash; send me more info instead</option>
+                <option>10 to 15</option>
+                <option>More than 15</option>
+              </select>
+              <p class="hint">We take operators at 10 or more. Under that, pick one of the &#8220;more info&#8221; options and we&#8217;ll send you the book and stay in touch &mdash; tell us when you get there.</p>
+            </div>
+            <div class="notice" id="belowBarNote" hidden>
+              <b>Not a no &mdash; a not yet.</b> You&#8217;re under the bar today, so we&#8217;ll skip the sales call. Finish this and we&#8217;ll send you the book, keep you on our list, and pick the conversation back up when you&#8217;ve got the volume. Plenty of our members were exactly here a couple of years ago.
+            </div>
+            <input type="hidden" name="intent" id="lp-intent" value="apply">
+            <div class="field"><label for="lp-crew">Your crew</label>
+              <select id="lp-crew" name="crew" required>
+                <option value="">Select one</option><option>I run my own crew</option>
+                <option>I use the same trades on every job</option>
+                <option>I hire per project</option><option>I&#8217;d need to build one</option>
+              </select></div>
+            <div class="field"><label for="lp-financing">How you fund your deals</label>
+              <select id="lp-financing" name="financing" required>
+                <option value="">Select one</option><option>Cash</option>
+                <option>Hard money, first and second</option><option>Private lenders</option>
+                <option>Line of credit</option><option>Still arranging financing</option>
+              </select></div>
+            <div class="field"><label for="lp-market">Where you operate</label>
+              <select id="lp-market" name="market" required>
+                <option value="">Select one</option><option>The Phoenix valley</option>
+                <option>Elsewhere in Arizona</option>
+                <option>Outside Arizona, in my own market</option>
+                <option>Outside Arizona, open to travelling for a deal</option>
+              </select></div>
+            <div class="field"><label for="lp-timeline">When you&#8217;d start</label>
+              <select id="lp-timeline" name="timeline" required>
+                <option value="">Select one</option><option>Next available cohort</option>
+                <option>Next 3 months</option><option>3 to 6 months</option><option>Just exploring</option>
+              </select></div>
+            <div class="field"><label for="lp-recent">Your last project</label>
+              <textarea id="lp-recent" name="recent" placeholder="Where it was, the scope, how it went. A few lines is plenty."></textarea></div>
+            <button class="submit" type="submit">Send my application</button>
+            <button class="back-link" type="button" id="backTo1">&larr; Back</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</header>
+
+""" + STATS + """
+
+<section>
+  <div class="wrap">
+    <h2>The retail exit keeps getting harder</h2>
+    <div class="split">
+      <div>
+        <p>You're bidding against every other flipper in the Valley for the same inventory, then selling into the same retail buyer pool. Rates moved, margins thinned, days on market stretched. None of that is news to you.</p>
+        <p>The house itself isn't the problem. The buyer is. A family with a mortgage will pay what the comps say, and the comps are set by houses that produce nothing.</p>
+      </div>
+      <div>
+        <p>An investor buying a co-living property is doing different math. They're pricing what the house earns by the room, and a well-built eight- or ten-bedroom conversion earns considerably more than a three-bedroom rental on the same footprint.</p>
+        <p>That's the whole idea. Build for a buyer who values the property on income instead of comps.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="how">
+  <div class="wrap">
+    <h2>We&#8217;ll teach you the way we build</h2>
+    <p>An investor pricing a house on room income is a different buyer than a family pricing it on comps. They know what they&#8217;re looking at, which means the build has to hold up to someone who does this for a living. Almost nothing about your process changes. What you produce at the end does.</p>
+    <div class="split thirds" style="margin-top:2.5rem">
+      <div class="roles">
+        <span class="who">Nothing changes</span>
+        <h3>The deal itself</h3>
+        <p>You find it or we help you evaluate one, you buy it, you finance it first and second the way you always have, and you run your own crew. Every decision stays yours.</p>
+      </div>
+      <div class="roles">
+        <span class="who">This changes</span>
+        <h3>What you build</h3>
+        <p>Eight bedrooms minimum, two bathrooms minimum, ensuite where the numbers support it, furnished and ready to launch on PadSplit. We coach you through the standard.</p>
+      </div>
+      <div class="roles">
+        <span class="who">This changes</span>
+        <h3>Where it lists</h3>
+        <p>The finished property is certified against our documented standards and listed on our marketplace for registered buyers &mdash; investors specifically looking for co-living assets.</p>
+      </div>
+    </div>
+    <p style="margin-top:2rem;opacity:.8;font-size:.95rem">To be plain: we provide listing visibility. We don't match buyers to sellers, negotiate, or guarantee that any property sells, at any price or on any timeline.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What a finished one looks like</h2>
+    <p>Not renderings. Houses converted, furnished and put into service &mdash; and the plans behind them.</p>
+    <figure class="shot hero-plan" data-full="images/plans/plan-ash.jpg" style="max-width:46rem;margin:0 auto 1.25rem">
+      <img src="images/plans/plan-ash.jpg" alt="Floor plan of the Ash conversion: eight bedrooms and seven bathrooms" loading="lazy">
+    </figure>
+    <p class="plan-cap" style="text-align:center;margin-bottom:1.75rem">Ash &#183; 8 bedrooms, 7 baths. Nearly every room ensuite.</p>
+    <div class="grid-homes">
+""" + shots(HOMES, "homes", 8) + """</div>
+    <div class="cta-row">
+      <a class="btn ghost" href="homes.html">See all the homes and floor plans</a>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="book">
+      <figure class="cutout">
+        <img src="images/brand/brian-gina-cutout-thumb.webp" alt="Brian and Gina Kingdeski" width="354" height="640" loading="lazy" decoding="async">
+      </figure>
+      <div>
+        <h2>Who you&#8217;d be working with</h2>
+        <p>Brian and Gina Kingdeski have been fixing and flipping together for 26 years and have done north of 2,300 deals in the Phoenix metro. They own Trinity Design and Construction, which is where the build standards came from.</p>
+        <p>They coach members directly &mdash; weekly through your first month, every other week after. By phone, by email, and in Arizona they&#8217;ll come walk a house with you.</p>
+        <p>We&#8217;d rather be coaches than teachers. A teacher delivers information. A coach watches you apply it, corrects you when you&#8217;re off, and pushes when you need pushing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Who this is for, and who it isn&#8217;t</h2>
+    <div class="fit" style="margin-top:2rem">
+      <div class="col">
+        <h3>A fit if you</h3>
+        <ul>
+          <li>Have 10 to 15 completed flips behind you</li>
+          <li>Already run your own crew</li>
+          <li>Buy and finance your own deals</li>
+          <li>Are ready to own the entire buildout and every decision in it</li>
+          <li>Carry general liability insurance of at least $1,000,000</li>
+        </ul>
+      </div>
+      <div class="col not">
+        <h3>Not a fit if you</h3>
+        <ul>
+          <li>Are early in your flipping career</li>
+          <li>Would need to assemble a crew first</li>
+          <li>Are looking for passive income</li>
+          <li>Need someone else to manage the build</li>
+          <li>Are shopping for a guarantee</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>What members get</h2>
+    <div class="split" style="margin-top:1.5rem">
+      <ul class="plain">
+        <li>Coaching weekly for your first month, every other week after</li>
+        <li>Direct access to Brian and Gina</li>
+        <li>Shared processes for locating, structuring and financing deals</li>
+        <li>The standard of practice for fix-and-flip to co-living</li>
+      </ul>
+      <ul class="plain">
+        <li>The full course library and module handouts</li>
+        <li>SaaS compliance tools and your deal tracked through all ten stages</li>
+        <li>Tools for supplies, furnishings, and launching on PadSplit</li>
+        <li>Certification review and listing visibility to registered buyers</li>
+      </ul>
+    </div>
+
+    <div class="stepbox" style="margin-top:2.5rem">
+      <div class="n">WHAT IT COSTS</div>
+      <h3 style="font-size:clamp(1.3rem,1.1rem + .8vw,1.75rem);font-weight:800">$15,000 to onboard</h3>
+      <p>Applying is free and nothing is due unless you&#8217;re accepted. The onboarding fee covers coaching, education materials, certification and platform setup, and is non-refundable once you&#8217;re in, because the digital resources open immediately.</p>
+      <p>Ongoing membership fees and a marketplace fee at closing also apply. We go through the full schedule with you during the application conversation, before you commit to anything.</p>
+      <p style="margin-bottom:0">None of it includes the house. You buy and finance the property and the renovation yourself, exactly as you would any fix and flip.</p>
+    </div>
+  </div>
+</section>
+
+<section id="apply">
+  <div class="wrap">
+    <h2>Apply to become a member</h2>
+    <div class="split" style="margin-top:1.5rem">
+      <div>
+        <p>We accept a small number of operators and we read every application ourselves. Applying is free, takes about two minutes, and nothing is due unless you&#8217;re accepted.</p>
+        <p>If you&#8217;re under ten flips, say so on the form &mdash; there&#8217;s an option for it. We&#8217;ll send you the book instead of a sales call and pick this back up when you&#8217;ve got the volume.</p>
+      </div>
+      <div>
+        <h3 style="margin-bottom:1rem">What happens next</h3>
+        <ul class="plain">
+          <li>We read it &mdash; a person, not a filter</li>
+          <li>If it&#8217;s a fit, we set up a call</li>
+          <li>We walk through the full fee schedule</li>
+          <li>If we both want to go ahead, you&#8217;re accepted</li>
+          <li>Payment comes after that, not before</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cta-row">
+      <a class="btn" href="#form-card">Start your application &uarr;</a>
+    </div>
+    <p style="margin-top:1.5rem">Enrollment is open nationwide. There isn&#8217;t a cohort date to wait for &mdash; you start when you&#8217;re accepted and onboarded.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>Green Light Buying Machine</h4>
+      <p class="fine" style="margin:0 0 .6rem">The co-living ecosystem.</p>
+      <p style="margin:0 0 .25rem"><a href="mailto:info@greenlightbuyingmachine.com">info@greenlightbuyingmachine.com</a></p>
+      <p style="margin:0"><a href="tel:14803320143">(480) 332-0143</a></p>
+    </div>
+    <div>
+      <h4>More</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="homes.html">Homes we&#8217;ve built</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="disclosures.html">Disclosures</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Fine print</h4>
+      <p class="fine" style="margin:0">Green Light Buying Machine LLC operates a private property certification and SaaS listing platform. It is not a licensed real estate broker, investment advisor, fiduciary or contractor, and does not guarantee that any property will sell, or the timing or price of any sale. Members retain full operational control and sell independently to third-party buyers. Real estate investing carries risk.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <button class="close" id="lightboxClose" aria-label="Close">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+  <div class="cap" id="lightboxCap"></div>
+</div>
+
+<script>
+/* Gallery lightbox. Thumbnails carry the full-size path in data-full so the
+   grid stays light and the big file only loads when someone asks for it. */
+(function () {
+  var box = document.getElementById('lightbox');
+  var img = document.getElementById('lightboxImg');
+  var cap = document.getElementById('lightboxCap');
+  var shots = document.querySelectorAll('.shot');
+  if (!shots.length) return;
+  var last = null;
+
+  function open(shot) {
+    var thumb = shot.querySelector('img');
+    last = shot;
+    img.src = shot.dataset.full || thumb.src;
+    img.alt = thumb.alt;
+    cap.textContent = thumb.alt;
+    box.classList.add('open');
+    document.getElementById('lightboxClose').focus();
+  }
+  function close() {
+    box.classList.remove('open');
+    img.src = '';
+    if (last) last.focus();
+  }
+
+  Array.prototype.forEach.call(shots, function (shot) {
+    shot.setAttribute('tabindex', '0');
+    shot.setAttribute('role', 'button');
+    shot.addEventListener('click', function () { open(shot); });
+    shot.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(shot); }
+    });
+  });
+  document.getElementById('lightboxClose').addEventListener('click', close);
+  box.addEventListener('click', function (e) { if (e.target === box) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && box.classList.contains('open')) close();
+  });
+})();
+</script>
+
+<script>
+/* Two-step application. Step 1 posts contact details on its own so an
+   abandoned application still leaves a usable lead in the CRM; step 2
+   posts the whole thing again and GHL updates the same contact by email. */
+(function () {
+  var form = document.getElementById('lpForm');
+  var step1 = document.getElementById('step1');
+  var step2 = document.getElementById('step2');
+  var bar2 = document.getElementById('bar2');
+  var card = document.getElementById('form-card');
+  var next = document.getElementById('toStep2');
+  var back = document.getElementById('backTo1');
+  var submit = form.querySelector('[type=submit]');
+  var partialSent = false;
+
+  function values() {
+    var out = {};
+    new FormData(form).forEach(function (v, k) { out[k] = v; });
+    out.page = window.location.pathname;
+    return out;
+  }
+
+  function post(payload) {
+    return fetch('/api/apply', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  }
+
+  function valid(fields) {
+    for (var i = 0; i < fields.length; i++) {
+      var el = document.getElementById(fields[i]);
+      if (!el.checkValidity()) { el.reportValidity(); return false; }
+    }
+    return true;
+  }
+
+  /* Funnel only: under-10 operators get an information path instead of a
+     dead end. The question still gets asked — only the ask changes. */
+  var flips = document.getElementById('lp-flips');
+  var note = document.getElementById('belowBarNote');
+  var intent = document.getElementById('lp-intent');
+  if (flips && note && intent) {
+    flips.addEventListener('change', function () {
+      var below = flips.value.indexOf('more info') !== -1;
+      note.hidden = !below;
+      intent.value = below ? 'more_info' : 'apply';
+      submit.textContent = below ? 'Send me the info' : 'Send my application';
+    });
+  }
+
+  next.addEventListener('click', function () {
+    if (!valid(['lp-name', 'lp-email', 'lp-city'])) return;
+
+    /* Fire and forget — a failed partial save must never block the
+       applicant from finishing. Step 2 sends everything anyway. */
+    if (!partialSent) {
+      var p = values();
+      p.stage = 'partial';
+      p.source = 'landing page';
+      post(p).catch(function () {});
+      partialSent = true;
+    }
+
+    step1.hidden = true;
+    step2.hidden = false;
+    bar2.classList.add('on');
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('lp-flips').focus();
+  });
+
+  back.addEventListener('click', function () {
+    step2.hidden = true;
+    step1.hidden = false;
+    bar2.classList.remove('on');
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!valid(['lp-flips', 'lp-crew', 'lp-financing', 'lp-market', 'lp-timeline'])) return;
+
+    var payload = values();
+    payload.stage = 'complete';
+    payload.source = 'landing page';
+
+    submit.disabled = true;
+    submit.textContent = 'Sending\u2026';
+
+    post(payload)
+      .then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        var wantedInfo = intent && intent.value === 'more_info';
+        card.innerHTML = wantedInfo
+          ? '<h2>On its way</h2>' +
+            '<p>We\u2019ll send you the book and keep you on the list. No sales calls \u2014 ' +
+            'when you\u2019ve got ten or more flips behind you, email us and we\u2019ll pick it up from there.</p>' +
+            '<p style="margin-bottom:0"><a class="btn" href="homes.html">See the homes we\u2019ve built</a></p>'
+          : '<h2>Application received</h2>' +
+            '<p>Brian or Gina will read it \u2014 a person, not a filter \u2014 and come back to you either way. ' +
+            'If it\u2019s a fit we\u2019ll set up a call. If the timing isn\u2019t right yet, we\u2019ll tell you what would change that.</p>' +
+            '<p style="margin-bottom:0"><a class="btn" href="homes.html">See the homes we\u2019ve built</a></p>';
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch(function () {
+        submit.disabled = false;
+        submit.textContent = 'Send my application';
+        var err = document.createElement('p');
+        err.className = 'status err';
+        err.textContent = 'That didn\u2019t send. Email info@greenlightbuyingmachine.com and we\u2019ll pick it up from there.';
+        form.appendChild(err);
+      });
+  });
+})();
+</script>
+
+</body>
+</html>
+"""
+
 # ---------------------------------------------------------------- landing page
 LANDING = """<!DOCTYPE html>
 <html lang="en">
@@ -1538,7 +2010,7 @@ LANDING = """<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Become a student — Green Light Buying Machine</title>
-<meta name="description" content="Arizona co-living conversions for operators with 10 to 15 flips behind them. Apply to become a student.">
+<meta name="description" content="Co-living conversions for operators with 10 to 15 flips behind them, nationwide. Apply to become a member.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1558,8 +2030,8 @@ LANDING = """<!DOCTYPE html>
 
 <nav class="lp-nav">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="images/brand/logo-mark.png" alt="Green Light Buying Machine" width="140" height="140"><span>Green Light<br>Buying Machine</span></a>
-    <span class="ph">Arizona &#183; info@greenlightbuyingmachine.com</span>
+    <a class="brand" href="index.html"><img src="images/brand/logo-icon.png" srcset="images/brand/logo-icon.png 1x, images/brand/logo-icon-2x.png 2x" alt="" width="400" height="209"><span>Green Light<br>Buying Machine</span></a>
+    <span class="ph">(480) 332-0143</span>
   </div>
 </nav>
 
@@ -1574,7 +2046,7 @@ LANDING = """<!DOCTYPE html>
           <li>You buy it, finance it, and run your own crew &mdash; like any flip</li>
           <li>We hold the build to the standard our buyers expect</li>
           <li>Certification and listing visibility to registered buyers</li>
-          <li>Arizona cohorts, small on purpose</li>
+          <li>Nationwide, and small on purpose</li>
         </ul>
       </div>
 
@@ -1606,7 +2078,7 @@ LANDING = """<!DOCTYPE html>
             <div class="field">
               <label for="lp-city">City and state</label>
               <input id="lp-city" name="city" type="text" placeholder="Mesa, AZ" required>
-              <p class="hint">We run Arizona cohorts today and we&#8217;re choosing our next market. Tell us yours either way.</p>
+              <p class="hint">We work nationwide. Knowing your market helps us tell you what to check locally.</p>
             </div>
             <button class="submit" type="button" id="toStep2">Continue</button>
           </div>
@@ -1650,8 +2122,8 @@ LANDING = """<!DOCTYPE html>
                 <option value="">Select one</option>
                 <option>The Phoenix valley</option>
                 <option>Elsewhere in Arizona</option>
-                <option>Out of state, would work an Arizona deal</option>
-                <option>Out of state, want it in my market</option>
+                <option>Outside Arizona, in my own market</option>
+                <option>Outside Arizona, open to travelling for a deal</option>
               </select>
             </div>
             <div class="field">
@@ -1824,6 +2296,20 @@ LANDING = """<!DOCTYPE html>
     return true;
   }
 
+  /* Funnel only: under-10 operators get an information path instead of a
+     dead end. The question still gets asked — only the ask changes. */
+  var flips = document.getElementById('lp-flips');
+  var note = document.getElementById('belowBarNote');
+  var intent = document.getElementById('lp-intent');
+  if (flips && note && intent) {
+    flips.addEventListener('change', function () {
+      var below = flips.value.indexOf('more info') !== -1;
+      note.hidden = !below;
+      intent.value = below ? 'more_info' : 'apply';
+      submit.textContent = below ? 'Send me the info' : 'Send my application';
+    });
+  }
+
   next.addEventListener('click', function () {
     if (!valid(['lp-name', 'lp-email', 'lp-city'])) return;
 
@@ -1864,11 +2350,16 @@ LANDING = """<!DOCTYPE html>
     post(payload)
       .then(function (r) {
         if (!r.ok) throw new Error(r.status);
-        card.innerHTML =
-          '<h2>Application received</h2>' +
-          '<p>Brian or Gina will read it \u2014 a person, not a filter \u2014 and come back to you either way. ' +
-          'If it\u2019s a fit we\u2019ll set up a call. If the timing isn\u2019t right yet, we\u2019ll tell you what would change that.</p>' +
-          '<p style="margin-bottom:0"><a class="btn" href="homes.html">See the homes we\u2019ve built</a></p>';
+        var wantedInfo = intent && intent.value === 'more_info';
+        card.innerHTML = wantedInfo
+          ? '<h2>On its way</h2>' +
+            '<p>We\u2019ll send you the book and keep you on the list. No sales calls \u2014 ' +
+            'when you\u2019ve got ten or more flips behind you, email us and we\u2019ll pick it up from there.</p>' +
+            '<p style="margin-bottom:0"><a class="btn" href="homes.html">See the homes we\u2019ve built</a></p>'
+          : '<h2>Application received</h2>' +
+            '<p>Brian or Gina will read it \u2014 a person, not a filter \u2014 and come back to you either way. ' +
+            'If it\u2019s a fit we\u2019ll set up a call. If the timing isn\u2019t right yet, we\u2019ll tell you what would change that.</p>' +
+            '<p style="margin-bottom:0"><a class="btn" href="homes.html">See the homes we\u2019ve built</a></p>';
         card.scrollIntoView({ behavior: 'smooth', block: 'center' });
       })
       .catch(function () {
@@ -1890,6 +2381,10 @@ LANDING = """<!DOCTYPE html>
 with open(os.path.join(OUT, "start.html"), "w") as f:
     f.write(LANDING.replace("{{CSS}}", CSS))
 print("start.html", "written")
+
+with open(os.path.join(OUT, "funnel.html"), "w") as f:
+    f.write(FUNNEL.replace("{{CSS}}", CSS))
+print("funnel.html", "written")
 
 
 # ---------------------------------------------------------------- disclosures

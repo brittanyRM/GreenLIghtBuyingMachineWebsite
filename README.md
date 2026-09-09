@@ -13,8 +13,11 @@ submissions into GoHighLevel.
 ├── homes.html            photo and floor plan gallery
 ├── the-book.html         book as lead magnet, email capture
 ├── about.html            Brian and Gina (needs real bio)
-├── start.html            standalone landing page, two-step application
-│                         (noindex — for ads and direct links)
+├── start.html            short landing page, two-step application
+│                         (noindex — for warm traffic and direct links)
+├── funnel.html           long-form student funnel: problem, model, proof,
+│                         founders, fit, fees, application (noindex — for
+│                         cold paid traffic)
 ├── apply.html            operator application (the primary intake)
 ├── submit-a-property.html deal flow from wholesalers, agents, owners
 ├── api/
