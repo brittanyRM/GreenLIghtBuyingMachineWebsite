@@ -132,6 +132,12 @@
   ol.stages b{font-family:var(--display);font-weight:600;letter-spacing:-.01em}
   ol.stages span{display:block;font-size:.95rem;opacity:.75;line-height:1.45}
 
+  .video-wrap{max-width:34rem;margin-inline:auto}
+  .vid{width:100%;height:auto;display:block;background:#000;border-radius:2px;
+    border:1px solid rgba(232,231,224,.2)}
+  .vid-cap{font-family:var(--plan);font-size:.78rem;opacity:.65;margin:.85rem 0 0;
+    text-align:center;max-width:none}
+
   /* landing page */
   .lp-nav{background:var(--ink);color:var(--paper);padding-block:1.15rem}
   .lp-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
@@ -209,8 +215,10 @@
   .lightbox .cap{position:absolute;bottom:1.25rem;left:0;right:0;text-align:center;
     font-family:var(--plan);font-size:.8rem;color:var(--paper);opacity:.8}
 
-  .embed{background:#fff;border:1px solid var(--rule);padding:.5rem;margin-top:1.5rem}
-  .embed iframe{width:100%;min-height:800px;border:0;display:block}
+  .embed{background:#fff;border:1px solid var(--rule);padding:.5rem;margin-top:1.5rem;
+    height:1024px}
+  .embed iframe{display:block}
+  @media(max-width:44rem){.embed{height:1180px}}
 
   .steps2{display:grid;gap:1.5rem;grid-template-columns:1fr;margin-top:2rem}
   @media(min-width:52rem){.steps2{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -423,24 +431,26 @@
   <div class="wrap">
     <h2>Let us know you&#8217;re ready</h2>
     <p>Already pre-qualified? This is how we know to put you on the list. When a property goes live, this is who we call first.</p>
-    <p class="todo">This is the form named &#8220;Rachelle Test&#8221; in GoHighLevel. Rename it before launch &mdash; the name shows in the iframe title.</p>
     <div class="embed">
       <iframe
-        src="https://api.leadconnectorhq.com/widget/form/cIkTFxnNpva0nNDICpQx?notrack=true"
+        src="https://api.leadconnectorhq.com/widget/form/cIkTFxnNpva0nNDICpQx"
+        style="width:100%;height:100%;border:none;border-radius:3px"
         id="inline-cIkTFxnNpva0nNDICpQx"
         data-layout="{'id':'INLINE'}"
         data-trigger-type="alwaysShow"
+        data-trigger-value=""
         data-activation-type="alwaysActivated"
+        data-activation-value=""
         data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
         data-form-name="Rachelle Test"
         data-height="1008"
         data-layout-iframe-id="inline-cIkTFxnNpva0nNDICpQx"
         data-form-id="cIkTFxnNpva0nNDICpQx"
         data-cookie-consent="true"
         data-cookie-consent-provider="auto"
-        title="Rachelle Test"
-        loading="lazy"
-        allowfullscreen></iframe>
+        title="Rachelle Test">
+      </iframe>
     </div>
     <script src="https://link.msgsndr.com/js/form_embed.js"></script>
   </div>

@@ -25,6 +25,7 @@ submissions into GoHighLevel.
 │   ├── property.js       → GHL_PROPERTY_WEBHOOK_URL
 │   └── book-waitlist.js  → GHL_BOOK_WAITLIST_WEBHOOK_URL
 ├── images/plans/         5 floor plans, full + thumb
+├── media/                intro video (H.264 MP4) + poster frame
 ├── images/homes/         17 finished-home photos, full + thumb
 ├── build.py              regenerates every page — edit here, not in the HTML
 ├── nextjs/               same handlers as Next.js route files,
@@ -97,6 +98,25 @@ empty.
 
 ---
 
+## The video
+
+`media/glbm-intro.mp4` is the funnel intro, transcoded from a 218MB 60fps HEVC
+`.mov` down to 17MB H.264 at 864x864 / 30fps. The original wouldn't have played
+in Chrome or Firefox — HEVC in a .mov is effectively Safari-only.
+
+17MB is servable from Vercel but it isn't ideal: no adaptive quality, no
+playback analytics, and the binary bloats the git history every time it's
+replaced. If the video becomes central, move it to Cloudflare Stream, Vimeo or
+an unlisted YouTube embed and delete it from the repo.
+
+To re-encode a new take:
+
+```bash
+ffmpeg -i source.mov -vf "fps=30,scale=864:864:flags=lanczos" \
+  -c:v libx264 -profile:v high -crf 26 -preset slow -pix_fmt yuv420p \
+  -c:a aac -b:a 112k -movflags +faststart media/glbm-intro.mp4
+```
+
 ## Gotchas
 
 **Don't post to GHL from the browser.** Those endpoints don't send CORS
@@ -121,7 +141,8 @@ hit, add Vercel's WAF rules or a per-IP check in the handler.
 - [ ] Confirm whether students can bring their own deal
 - [ ] Real cover art for the book (300 DPI minimum)
 - [ ] Add testimonials from students who have closed
-- [ ] Rename the "Rachelle Test" form in GHL — the name shows in the iframe title
+- [ ] Rename the "Rachelle Test" form in GHL (optional — the name appears in
+      the iframe title attribute, not on screen)
 - [ ] Replace G-XXXXXXXXXX with the real GA4 measurement ID (in build.py, then rebuild)
 - [ ] Have counsel check disclosures.html against the executed MSA
 - [ ] Confirm what the ongoing membership and marketplace fees will be, and

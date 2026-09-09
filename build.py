@@ -118,6 +118,12 @@ CSS = r"""
   ol.stages b{font-family:var(--display);font-weight:600;letter-spacing:-.01em}
   ol.stages span{display:block;font-size:.95rem;opacity:.75;line-height:1.45}
 
+  .video-wrap{max-width:34rem;margin-inline:auto}
+  .vid{width:100%;height:auto;display:block;background:#000;border-radius:2px;
+    border:1px solid rgba(232,231,224,.2)}
+  .vid-cap{font-family:var(--plan);font-size:.78rem;opacity:.65;margin:.85rem 0 0;
+    text-align:center;max-width:none}
+
   /* landing page */
   .lp-nav{background:var(--ink);color:var(--paper);padding-block:1.15rem}
   .lp-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
@@ -195,8 +201,10 @@ CSS = r"""
   .lightbox .cap{position:absolute;bottom:1.25rem;left:0;right:0;text-align:center;
     font-family:var(--plan);font-size:.8rem;color:var(--paper);opacity:.8}
 
-  .embed{background:#fff;border:1px solid var(--rule);padding:.5rem;margin-top:1.5rem}
-  .embed iframe{width:100%;min-height:800px;border:0;display:block}
+  .embed{background:#fff;border:1px solid var(--rule);padding:.5rem;margin-top:1.5rem;
+    height:1024px}
+  .embed iframe{display:block}
+  @media(max-width:44rem){.embed{height:1180px}}
 
   .steps2{display:grid;gap:1.5rem;grid-template-columns:1fr;margin-top:2rem}
   @media(min-width:52rem){.steps2{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -826,7 +834,7 @@ main=phead("The program", "How it works",
       <h3 style="font-size:clamp(1.3rem,1.1rem + .8vw,1.75rem);font-weight:800">$15,000 to onboard</h3>
       <p>You apply first. We review your background, and if it's a fit we talk. Nothing is due before you're accepted.</p>
       <p>The onboarding fee covers coaching, education materials, certification, and platform setup. It's non-refundable once you're in, because the digital resources open immediately.</p>
-      <p>Ongoing membership fees and a marketplace fee at closing also apply. We'll walk you through the full fee schedule during the application conversation, before you commit to anything &mdash; and it's all set out in the agreement you'd sign.</p>
+      <p>Ongoing membership and platform fees also apply. We'll walk you through the full fee schedule during the application conversation, before you commit to anything &mdash; and it's all set out in the agreement you'd sign.</p>
       <p style="margin-bottom:0">None of it includes the house. You buy and finance the property and the renovation yourself, exactly as you would any fix and flip. Membership is month to month; either side can end it with 30 days' written notice, and certification goes inactive if membership lapses.</p>
     </div>
   </div>
@@ -1083,7 +1091,7 @@ main=phead("For operators", "Apply to the program",
     <div class="split">
       <div>
         <p>Nothing here is a commitment. It's how we find out whether your experience, your crew, and your capital line up with what the program actually requires &mdash; before either of us spends time on a call.</p>
-        <p style="margin-bottom:1.75rem">Applying costs nothing. If you're accepted, onboarding is <b>$15,000</b>, and ongoing membership and marketplace fees apply &mdash; we'll go through the full schedule with you before you commit. The house and the renovation are yours to finance, as with any flip. Better you know the shape of it now than three conversations from now.</p>
+        <p style="margin-bottom:1.75rem">Applying costs nothing. If you're accepted, onboarding is <b>$15,000</b>, and ongoing membership and platform fees apply &mdash; we'll go through the full schedule with you before you commit. The house and the renovation are yours to finance, as with any flip. Better you know the shape of it now than three conversations from now.</p>
         <form class="js-form" action="/api/apply" method="post" novalidate
               data-source="program application"
               data-sending="Sending your application&#8230;"
@@ -1391,24 +1399,26 @@ main=phead("For investors", "Certified co-living properties",
   <div class="wrap">
     <h2>Let us know you&#8217;re ready</h2>
     <p>Already pre-qualified? This is how we know to put you on the list. When a property goes live, this is who we call first.</p>
-    <p class="todo">This is the form named &#8220;Rachelle Test&#8221; in GoHighLevel. Rename it before launch &mdash; the name shows in the iframe title.</p>
     <div class="embed">
       <iframe
-        src="https://api.leadconnectorhq.com/widget/form/cIkTFxnNpva0nNDICpQx?notrack=true"
+        src="https://api.leadconnectorhq.com/widget/form/cIkTFxnNpva0nNDICpQx"
+        style="width:100%;height:100%;border:none;border-radius:3px"
         id="inline-cIkTFxnNpva0nNDICpQx"
         data-layout="{'id':'INLINE'}"
         data-trigger-type="alwaysShow"
+        data-trigger-value=""
         data-activation-type="alwaysActivated"
+        data-activation-value=""
         data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
         data-form-name="Rachelle Test"
         data-height="1008"
         data-layout-iframe-id="inline-cIkTFxnNpva0nNDICpQx"
         data-form-id="cIkTFxnNpva0nNDICpQx"
         data-cookie-consent="true"
         data-cookie-consent-provider="auto"
-        title="Rachelle Test"
-        loading="lazy"
-        allowfullscreen></iframe>
+        title="Rachelle Test">
+      </iframe>
     </div>
     <script src="https://link.msgsndr.com/js/form_embed.js"></script>
   </div>
@@ -1656,6 +1666,20 @@ FUNNEL = """<!DOCTYPE html>
   </div>
 </header>
 
+<section class="band" style="padding-block:clamp(2rem,4vw,3rem)">
+  <div class="wrap">
+    <div class="video-wrap">
+      <video class="vid" controls preload="metadata" playsinline
+             poster="media/glbm-intro-poster.webp"
+             width="864" height="864">
+        <source src="media/glbm-intro.mp4" type="video/mp4">
+        Your browser can&#8217;t play this video. <a href="media/glbm-intro.mp4">Download it instead</a>.
+      </video>
+      <p class="vid-cap">Brian and Gina on what changes when you build for an income buyer &mdash; about two minutes.</p>
+    </div>
+  </div>
+</section>
+
 """ + STATS + """
 
 <section>
@@ -1781,7 +1805,7 @@ FUNNEL = """<!DOCTYPE html>
       <div class="n">WHAT IT COSTS</div>
       <h3 style="font-size:clamp(1.3rem,1.1rem + .8vw,1.75rem);font-weight:800">$15,000 to onboard</h3>
       <p>Applying is free and nothing is due unless you&#8217;re accepted. The onboarding fee covers coaching, education materials, certification and platform setup, and is non-refundable once you&#8217;re in, because the digital resources open immediately.</p>
-      <p>Ongoing membership fees and a marketplace fee at closing also apply. We go through the full schedule with you during the application conversation, before you commit to anything.</p>
+      <p>Ongoing membership and platform fees also apply. We go through the full schedule with you during the application conversation, before you commit to anything.</p>
       <p style="margin-bottom:0">None of it includes the house. You buy and finance the property and the renovation yourself, exactly as you would any fix and flip.</p>
     </div>
   </div>
@@ -2222,7 +2246,7 @@ LANDING = """<!DOCTYPE html>
         <li>Tools for supplies, furnishings, and launching on PadSplit</li>
       </ul>
     </div>
-    <p style="margin-top:2rem"><b>$15,000 to onboard</b>, with ongoing membership and marketplace fees covered in full during the application conversation. Applying is free. None of it includes the house &mdash; you buy and finance that yourself, the way you would any flip.</p>
+    <p style="margin-top:2rem"><b>$15,000 to onboard</b>, with ongoing membership and platform fees covered in full during the application conversation. Applying is free. None of it includes the house &mdash; you buy and finance that yourself, the way you would any flip.</p>
     <div class="cta-row">
       <a class="btn" href="#form-card">Apply now</a>
       <a class="btn ghost" href="how-it-works.html">See the full process</a>
@@ -2430,7 +2454,7 @@ main=phead("Plain language", "Disclosures",
     </div>
     <div class="qa">
       <h3>Fees</h3>
-      <p>A one-time certification and onboarding fee, non-refundable because digital resources are made available immediately. A recurring monthly platform subscription, which begins once the trigger system course and one Green Light transaction are complete, and which keeps certification active. A platform technology success fee calculated on gross sale price if a certified property closes during an active listing period &mdash; a technology usage fee for the Marketplace Module, not a real estate commission.</p>
+      <p>A one-time certification and onboarding fee, non-refundable because digital resources are made available immediately. A recurring monthly platform subscription, which begins once the trigger system course and one Green Light transaction are complete, and which keeps certification active. A platform technology fee may also apply in connection with use of the Marketplace Module &mdash; a technology usage fee, not a real estate commission. We are not a licensed brokerage and do not represent buyers or sellers.</p>
       <p>Current amounts are set out in the Master Services Agreement and reviewed with you before you sign.</p>
     </div>
     <div class="qa">

@@ -132,6 +132,12 @@
   ol.stages b{font-family:var(--display);font-weight:600;letter-spacing:-.01em}
   ol.stages span{display:block;font-size:.95rem;opacity:.75;line-height:1.45}
 
+  .video-wrap{max-width:34rem;margin-inline:auto}
+  .vid{width:100%;height:auto;display:block;background:#000;border-radius:2px;
+    border:1px solid rgba(232,231,224,.2)}
+  .vid-cap{font-family:var(--plan);font-size:.78rem;opacity:.65;margin:.85rem 0 0;
+    text-align:center;max-width:none}
+
   /* landing page */
   .lp-nav{background:var(--ink);color:var(--paper);padding-block:1.15rem}
   .lp-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
@@ -209,8 +215,10 @@
   .lightbox .cap{position:absolute;bottom:1.25rem;left:0;right:0;text-align:center;
     font-family:var(--plan);font-size:.8rem;color:var(--paper);opacity:.8}
 
-  .embed{background:#fff;border:1px solid var(--rule);padding:.5rem;margin-top:1.5rem}
-  .embed iframe{width:100%;min-height:800px;border:0;display:block}
+  .embed{background:#fff;border:1px solid var(--rule);padding:.5rem;margin-top:1.5rem;
+    height:1024px}
+  .embed iframe{display:block}
+  @media(max-width:44rem){.embed{height:1180px}}
 
   .steps2{display:grid;gap:1.5rem;grid-template-columns:1fr;margin-top:2rem}
   @media(min-width:52rem){.steps2{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -323,7 +331,7 @@
     <div class="split">
       <div>
         <p>Nothing here is a commitment. It's how we find out whether your experience, your crew, and your capital line up with what the program actually requires &mdash; before either of us spends time on a call.</p>
-        <p style="margin-bottom:1.75rem">Applying costs nothing. If you're accepted, onboarding is <b>$15,000</b>, and ongoing membership and marketplace fees apply &mdash; we'll go through the full schedule with you before you commit. The house and the renovation are yours to finance, as with any flip. Better you know the shape of it now than three conversations from now.</p>
+        <p style="margin-bottom:1.75rem">Applying costs nothing. If you're accepted, onboarding is <b>$15,000</b>, and ongoing membership and platform fees apply &mdash; we'll go through the full schedule with you before you commit. The house and the renovation are yours to finance, as with any flip. Better you know the shape of it now than three conversations from now.</p>
         <form class="js-form" action="/api/apply" method="post" novalidate
               data-source="program application"
               data-sending="Sending your application&#8230;"

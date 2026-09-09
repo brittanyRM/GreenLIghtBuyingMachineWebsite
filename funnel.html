@@ -132,6 +132,12 @@
   ol.stages b{font-family:var(--display);font-weight:600;letter-spacing:-.01em}
   ol.stages span{display:block;font-size:.95rem;opacity:.75;line-height:1.45}
 
+  .video-wrap{max-width:34rem;margin-inline:auto}
+  .vid{width:100%;height:auto;display:block;background:#000;border-radius:2px;
+    border:1px solid rgba(232,231,224,.2)}
+  .vid-cap{font-family:var(--plan);font-size:.78rem;opacity:.65;margin:.85rem 0 0;
+    text-align:center;max-width:none}
+
   /* landing page */
   .lp-nav{background:var(--ink);color:var(--paper);padding-block:1.15rem}
   .lp-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
@@ -209,8 +215,10 @@
   .lightbox .cap{position:absolute;bottom:1.25rem;left:0;right:0;text-align:center;
     font-family:var(--plan);font-size:.8rem;color:var(--paper);opacity:.8}
 
-  .embed{background:#fff;border:1px solid var(--rule);padding:.5rem;margin-top:1.5rem}
-  .embed iframe{width:100%;min-height:800px;border:0;display:block}
+  .embed{background:#fff;border:1px solid var(--rule);padding:.5rem;margin-top:1.5rem;
+    height:1024px}
+  .embed iframe{display:block}
+  @media(max-width:44rem){.embed{height:1180px}}
 
   .steps2{display:grid;gap:1.5rem;grid-template-columns:1fr;margin-top:2rem}
   @media(min-width:52rem){.steps2{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -388,6 +396,20 @@
   </div>
 </header>
 
+<section class="band" style="padding-block:clamp(2rem,4vw,3rem)">
+  <div class="wrap">
+    <div class="video-wrap">
+      <video class="vid" controls preload="metadata" playsinline
+             poster="media/glbm-intro-poster.webp"
+             width="864" height="864">
+        <source src="media/glbm-intro.mp4" type="video/mp4">
+        Your browser can&#8217;t play this video. <a href="media/glbm-intro.mp4">Download it instead</a>.
+      </video>
+      <p class="vid-cap">Brian and Gina on what changes when you build for an income buyer &mdash; about two minutes.</p>
+    </div>
+  </div>
+</section>
+
 <section class="band">
   <div class="wrap">
     <div class="stats">
@@ -529,7 +551,7 @@
       <div class="n">WHAT IT COSTS</div>
       <h3 style="font-size:clamp(1.3rem,1.1rem + .8vw,1.75rem);font-weight:800">$15,000 to onboard</h3>
       <p>Applying is free and nothing is due unless you&#8217;re accepted. The onboarding fee covers coaching, education materials, certification and platform setup, and is non-refundable once you&#8217;re in, because the digital resources open immediately.</p>
-      <p>Ongoing membership fees and a marketplace fee at closing also apply. We go through the full schedule with you during the application conversation, before you commit to anything.</p>
+      <p>Ongoing membership and platform fees also apply. We go through the full schedule with you during the application conversation, before you commit to anything.</p>
       <p style="margin-bottom:0">None of it includes the house. You buy and finance the property and the renovation yourself, exactly as you would any fix and flip.</p>
     </div>
   </div>
