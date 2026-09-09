@@ -772,6 +772,27 @@ main=phead("The program", "How it works",
         <li>A copy of <i>The Green Light Buying Machine</i> when it publishes</li>
       </ul>
     </div>
+    <h3 style="margin-top:2.5rem;font-size:1.15rem">Inside the course</h3>
+    <p>Filmed walkthroughs, not slides. Real houses, real deals, in the order you'll actually do them.</p>
+    <div class="split" style="margin-top:1.25rem">
+      <ul class="plain">
+        <li>The buy box &mdash; what we buy and what we pass on</li>
+        <li>Finding deals: wholesalers, direct to seller, partners</li>
+        <li>Comping a co-living property, fast</li>
+        <li>The first walk and the sewer scope</li>
+        <li>Designing the house &mdash; the Whiteboard Method</li>
+        <li>Filling out the loan application, note and insurance</li>
+      </ul>
+      <ul class="plain">
+        <li>Pre-construction budget and big-ticket items</li>
+        <li>Neighbor letters, permits, utilities, dumpsters</li>
+        <li>Demo through framing, drywall and the draw process</li>
+        <li>Preparing for the appraiser and the inspection</li>
+        <li>Build day: staging, smart locks, final setup</li>
+        <li>Internet, property manager, and launching on PadSplit</li>
+      </ul>
+    </div>
+
     <div class="stepbox" style="margin-top:2.5rem;border-top-color:var(--green)">
       <div class="n">BECOMING A STUDENT</div>
       <h3 style="font-size:clamp(1.3rem,1.1rem + .8vw,1.75rem);font-weight:800">$15,000, once you're accepted</h3>
@@ -1229,7 +1250,7 @@ main=phead("For investors", "Buy a finished property",
         <p>Every house we build has at least eight bedrooms and two bathrooms, and often considerably more bathrooms than that. Ensuite rooms command higher rent on PadSplit and turn over less, so where the numbers support the extra baths we build them &mdash; and it's far cheaper to do that during a gut renovation than to add them later.</p>
         <p>The house comes furnished. We handle the furnishings as part of the buildout, so you're not sourcing eight or ten bedrooms' worth of beds and desks after closing.</p>
         <p>We also help you launch it on PadSplit &mdash; getting the listing live and the rooms ready to fill. That holds whether you bring in a property manager or run it yourself.</p>
-        <p><span class="todo">Confirm whether properties are tenanted or vacant at close, and disclose any buyer-side fee here.</span></p>
+        <p>Houses close vacant. That's deliberate &mdash; you set the rules, the rates and the room mix from day one rather than inheriting someone else's residents and agreements. We help you launch on PadSplit and the platform fills the rooms from there.</p>
       </div>
     </div>
   </div>
@@ -1240,7 +1261,7 @@ main=phead("For investors", "Buy a finished property",
     <h2>After you close</h2>
     <div class="split">
       <div>
-        <p>A finished house still has to get listed and filled. We help you launch on PadSplit rather than handing you keys and a login &mdash; the listing, the room setup, and getting live in front of residents.</p>
+        <p>You close on a vacant house, which means the lease-up is yours &mdash; and so is every decision about how the house runs. We don't hand you keys and a login. We help you launch on PadSplit: the listing, the room setup, the house rules, and getting live in front of residents.</p>
         <p>From there PadSplit is the engine. It markets the rooms and drives the applicant flow, so you're not advertising a bedroom or fielding calls. It screens too: background checks, income verification, eviction history, and week-to-week payments, with no credit check on residents.</p>
       </div>
       <div>
@@ -1259,7 +1280,7 @@ main=phead("For investors", "Buy a finished property",
       <li><div><b>You go on the list</b><span>Qualified buyers see properties before they're marketed anywhere else.</span></div></li>
       <li><div><b>We work to match you early</b><span>We aim to pair inventory with buyers while the renovation is underway rather than after it lists.</span></div></li>
       <li><div><b>You tour and diligence</b><span>Your inspector, your lender, your timeline. We don't rush this part.</span></div></li>
-      <li><div><b>You close</b><span>On a property that was built to be exactly what it is.</span></div></li>
+      <li><div><b>You close</b><span>Vacant, furnished, and built to be exactly what it is.</span></div></li>
     </ol>
   </div>
 </section>
@@ -1284,6 +1305,7 @@ main=phead("For investors", "Buy a finished property",
           <li>Need seller financing we don't offer</li>
           <li>Want a guaranteed return</li>
           <li>Expect an asset with no management decisions at all</li>
+          <li>Need income from day one &mdash; houses close vacant and fill from there</li>
         </ul>
       </div>
     </div>

@@ -119,14 +119,15 @@ hit, add Vercel's WAF rules or a per-IP check in the handler.
 - [ ] Add testimonials from students who have closed
 - [ ] Swap the "Rachelle Test" form ID for the production one
 - [ ] Photo of Brian and Gina for about.html
+- [ ] Written permission from the student in the how-it-works story, plus his
+      name, a photo, and two sentences in his own words
 - [ ] Decide book delivery: instant PDF download or emailed link
 - [ ] Confirm the Trinity relationship on about.html
 - [ ] Confirm you can substantiate 450+ doors and 26+ years if asked
       (the market-share claim has been removed)
 - [ ] Decide whether the stats strip stays at all — it's the last
       performance claim on the site
-- [ ] Confirm what conveys with a buyer property (furnished, managed, tenanted)
-- [ ] Disclose any buyer-side fee on for-buyers.html
+- [ ] Disclose any buyer-side fee on for-buyers.html (still unanswered)
 - [ ] Point greenlightbuyingmachine.com at the deployment
 - [ ] Confirm PadSplit brand usage is cleared — the name now appears in copy
       and is rendered into the Ash plan image
