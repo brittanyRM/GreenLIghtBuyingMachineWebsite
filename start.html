@@ -9,6 +9,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Literata:opsz,wght@7..72,400;7..72,500&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/brand/favicon-256.png">
+<!-- Google Analytics 4 - replace G-XXXXXXXXXX with your measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 <style>
   :root{
     --ink:#101C22; --ink-soft:#1B2C34;
@@ -50,8 +59,9 @@
   .nav{background:var(--ink);color:var(--paper)}
   .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;
     flex-wrap:wrap;padding-block:1.15rem}
-  .nav .brand{font-family:var(--display);font-weight:800;letter-spacing:-.02em;
-    text-decoration:none;font-size:1.02rem;line-height:1.15}
+  .nav .brand{display:block;line-height:0}
+  .nav .brand img{width:auto;height:52px;display:block}
+  .lp-nav .brand img{width:auto;height:52px;display:block}
   .nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;margin:0;padding:0;
     font-family:var(--display);font-weight:500;font-size:.94rem}
   .nav a{text-decoration:none;opacity:.72;padding-block:.2rem}
@@ -126,8 +136,7 @@
   /* landing page */
   .lp-nav{background:var(--ink);color:var(--paper);padding-block:1.15rem}
   .lp-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-  .lp-nav .brand{font-family:var(--display);font-weight:800;letter-spacing:-.02em;
-    text-decoration:none;font-size:1.02rem;line-height:1.15}
+  .lp-nav .brand{display:block;line-height:0}
   .lp-nav .ph{font-family:var(--plan);font-size:.78rem;opacity:.7}
 
   .lp-hero{background:var(--ink);color:var(--paper);padding-block:clamp(2.5rem,5vw,4rem) clamp(3rem,6vw,4.5rem)}
@@ -279,7 +288,7 @@
 
 <nav class="lp-nav">
   <div class="wrap">
-    <a class="brand" href="index.html">Green Light<br>Buying Machine</a>
+    <a class="brand" href="index.html"><img src="images/brand/logo-mark.png" alt="Green Light Buying Machine" width="140" height="140"><span>Green Light<br>Buying Machine</span></a>
     <span class="ph">Arizona &#183; info@greenlightbuyingmachine.com</span>
   </div>
 </nav>
@@ -294,7 +303,7 @@
           <li>We bring the deal, underwritten by rentable room</li>
           <li>You buy it, finance it, and run your own crew &mdash; like any flip</li>
           <li>We hold the build to the standard our buyers expect</li>
-          <li>We guarantee to present your finished house to our qualified buyer list</li>
+          <li>Certification and listing visibility to registered buyers</li>
           <li>Arizona cohorts, small on purpose</li>
         </ul>
       </div>
@@ -302,7 +311,7 @@
       <div class="card" id="form-card">
         <div class="steps-bar"><span class="on" id="bar1"></span><span id="bar2"></span></div>
         <h2>Become a student</h2>
-        <p class="sub">Applying is free and takes two minutes. Payment only happens if you&#8217;re accepted.</p>
+        <p class="sub">Applying is free and takes two minutes. Nothing is due unless you&#8217;re accepted.</p>
 
         <form id="lpForm" novalidate>
           <div class="hp" aria-hidden="true">
@@ -457,19 +466,19 @@
     <h2>What you get as a student</h2>
     <div class="split" style="margin-top:1.5rem">
       <ul class="plain">
-        <li>A place in an Arizona cohort</li>
-        <li>Direct coaching from Brian and Gina Kingdeski</li>
-        <li>Deals sourced and brought to you</li>
-        <li>Your finished house presented to our qualified buyer list</li>
+        <li>Coaching weekly for your first month, every other week after</li>
+        <li>Direct access to Brian and Gina Kingdeski</li>
+        <li>Shared processes for locating, structuring and financing deals</li>
+        <li>Certification review and listing visibility to registered buyers</li>
       </ul>
       <ul class="plain">
         <li>The full course library and module handouts</li>
-        <li>A student portal tracking your deal through all ten stages</li>
-        <li>Renovation scope and co-living build standards</li>
-        <li>Financing through a lender who knows this asset</li>
+        <li>SaaS compliance reporting tools and your deal tracked through all ten stages</li>
+        <li>The standard of practice for fix-and-flip to co-living</li>
+        <li>Tools for supplies, furnishings, and launching on PadSplit</li>
       </ul>
     </div>
-    <p style="margin-top:2rem"><b>$15,000, once you&#8217;re accepted.</b> Applying is free. The program doesn&#8217;t include the house &mdash; you buy and finance that yourself, the way you would any flip.</p>
+    <p style="margin-top:2rem"><b>$10,000 to onboard, then $1,000 a month</b> once you&#8217;ve completed the course and your first transaction, plus a 2% platform fee if a certified property sells through the marketplace. Applying is free. None of it includes the house &mdash; you buy and finance that yourself, the way you would any flip.</p>
     <div class="cta-row">
       <a class="btn" href="#form-card">Apply now</a>
       <a class="btn ghost" href="how-it-works.html">See the full process</a>
@@ -481,8 +490,14 @@
   <div class="wrap">
     <div>
       <h4>Green Light Buying Machine</h4>
-      <p class="fine" style="margin:0 0 .6rem">The infrastructure behind certified co-living assets.</p>
-      <p style="margin:0"><a href="mailto:info@greenlightbuyingmachine.com">info@greenlightbuyingmachine.com</a></p>
+      <p class="fine" style="margin:0 0 .8rem">The co-living ecosystem. Property certification and marketplace access, Arizona.</p>
+      <p style="margin:0 0 .3rem"><a href="tel:4803320143">(480) 332-0143</a></p>
+      <p style="margin:0 0 .8rem"><a href="mailto:info@greenlightbuyingmachine.com">info@greenlightbuyingmachine.com</a></p>
+      <p style="margin:0">
+        <a href="https://www.instagram.com/greenlightbuying/" target="_blank" rel="noopener noreferrer">Instagram</a> &#183;
+        <a href="https://www.youtube.com/channel/UCwHEV3PnWvhE4RG87nw6tmA" target="_blank" rel="noopener noreferrer">YouTube</a> &#183;
+        <a href="https://trinitydesignconstruction.com" target="_blank" rel="noopener noreferrer">Trinity Design</a>
+      </p>
     </div>
     <div>
       <h4>More</h4>
@@ -491,11 +506,13 @@
         <li><a href="how-it-works.html">How it works</a></li>
         <li><a href="homes.html">Homes we&#8217;ve built</a></li>
         <li><a href="faq.html">FAQ</a></li>
+        <li><a href="disclosures.html">Disclosures</a></li>
       </ul>
     </div>
     <div>
       <h4>Fine print</h4>
-      <p class="fine" style="margin:0">Real estate investing carries risk. Results depend on the property, the market, and your own execution. Nothing on this site is a guarantee of profit, financial advice, or an offer to sell a security. <span class="todo">Have counsel review before launch.</span></p>
+      <p class="fine" style="margin:0 0 .6rem">Green Light Buying Machine LLC operates a private property certification and listing platform. We are not a licensed real estate broker, investment advisor, fiduciary, or contractor, and we do not provide legal, tax, financial, or investment advice. Certification is a documentation-based review, not a government approval, code-compliance certification, zoning confirmation, or safety guarantee.</p>
+      <p class="fine" style="margin:0">Members own and operate their properties independently and are solely responsible for due diligence, permits, code compliance, contractor selection, and confirming the legality of co-living use. Real estate investing carries risk and nothing here guarantees any sale, buyer, price, timing, or profit.</p>
     </div>
   </div>
 </footer>

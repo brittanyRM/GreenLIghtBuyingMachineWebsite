@@ -9,6 +9,7 @@ submissions into GoHighLevel.
 ├── is-it-for-you.html    fit list and FAQ
 ├── for-buyers.html       buyer track: lender pre-qual + GHL form embed
 ├── faq.html              co-living, PadSplit, the model
+├── disclosures.html      plain-language MSA summary
 ├── homes.html            photo and floor plan gallery
 ├── the-book.html         book as lead magnet, email capture
 ├── about.html            Brian and Gina (needs real bio)
@@ -112,17 +113,20 @@ hit, add Vercel's WAF rules or a per-IP check in the handler.
 ## Before launch
 
 - [ ] Real bio and photo on `about.html`
-- [ ] Confirm the buyer-presentation guarantee wording matches the MSA
-      exactly (site now says: we guarantee to present, not to sell)
+- [ ] Site now matches the MSA: listing visibility only, no guarantee of sale,
+      buyer interest, timing, price, or access to any end buyer
 - [ ] Confirm whether students can bring their own deal
 - [ ] Real cover art for the book (300 DPI minimum)
 - [ ] Add testimonials from students who have closed
-- [ ] Swap the "Rachelle Test" form ID for the production one
-- [ ] Photo of Brian and Gina for about.html
+- [ ] Rename the "Rachelle Test" form in GHL — the name shows in the iframe title
+- [ ] Replace G-XXXXXXXXXX with the real GA4 measurement ID (in build.py, then rebuild)
+- [ ] Resolve the lifetime-coaching conflict: the site says coaching lasts as long
+      as membership is active, because the MSA is month-to-month. If coaching is
+      meant to continue after a subscription ends, amend the MSA
+- [ ] Have counsel check disclosures.html against the executed MSA
 - [ ] Written permission from the student in the how-it-works story, plus his
       name, a photo, and two sentences in his own words
 - [ ] Decide book delivery: instant PDF download or emailed link
-- [ ] Confirm the Trinity relationship on about.html
 - [ ] Confirm you can substantiate 450+ doors and 26+ years if asked
       (the market-share claim has been removed)
 - [ ] Decide whether the stats strip stays at all — it's the last

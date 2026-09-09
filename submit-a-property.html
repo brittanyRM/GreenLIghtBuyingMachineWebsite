@@ -8,6 +8,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Literata:opsz,wght@7..72,400;7..72,500&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/brand/favicon-256.png">
+<!-- Google Analytics 4 - replace G-XXXXXXXXXX with your measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 <style>
   :root{
     --ink:#101C22; --ink-soft:#1B2C34;
@@ -49,8 +58,9 @@
   .nav{background:var(--ink);color:var(--paper)}
   .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;
     flex-wrap:wrap;padding-block:1.15rem}
-  .nav .brand{font-family:var(--display);font-weight:800;letter-spacing:-.02em;
-    text-decoration:none;font-size:1.02rem;line-height:1.15}
+  .nav .brand{display:block;line-height:0}
+  .nav .brand img{width:auto;height:52px;display:block}
+  .lp-nav .brand img{width:auto;height:52px;display:block}
   .nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;margin:0;padding:0;
     font-family:var(--display);font-weight:500;font-size:.94rem}
   .nav a{text-decoration:none;opacity:.72;padding-block:.2rem}
@@ -125,8 +135,7 @@
   /* landing page */
   .lp-nav{background:var(--ink);color:var(--paper);padding-block:1.15rem}
   .lp-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-  .lp-nav .brand{font-family:var(--display);font-weight:800;letter-spacing:-.02em;
-    text-decoration:none;font-size:1.02rem;line-height:1.15}
+  .lp-nav .brand{display:block;line-height:0}
   .lp-nav .ph{font-family:var(--plan);font-size:.78rem;opacity:.7}
 
   .lp-hero{background:var(--ink);color:var(--paper);padding-block:clamp(2.5rem,5vw,4rem) clamp(3rem,6vw,4.5rem)}
@@ -277,7 +286,7 @@
 <body>
 <nav class="nav">
   <div class="wrap">
-    <a class="brand" href="index.html">Green Light<br>Buying Machine</a>
+    <a class="brand" href="index.html"><img src="images/brand/logo-mark.png" alt="Green Light Buying Machine" width="140" height="140"><span>Green Light<br>Buying Machine</span></a>
     <ul>
 <li><a href="index.html">Home</a></li>
 <li><a href="how-it-works.html">Build with us</a></li>
@@ -380,8 +389,14 @@
   <div class="wrap">
     <div>
       <h4>Green Light Buying Machine</h4>
-      <p class="fine" style="margin:0 0 .6rem">The infrastructure behind certified co-living assets.</p>
-      <p style="margin:0"><a href="mailto:info@greenlightbuyingmachine.com">info@greenlightbuyingmachine.com</a></p>
+      <p class="fine" style="margin:0 0 .8rem">The co-living ecosystem. Property certification and marketplace access, Arizona.</p>
+      <p style="margin:0 0 .3rem"><a href="tel:4803320143">(480) 332-0143</a></p>
+      <p style="margin:0 0 .8rem"><a href="mailto:info@greenlightbuyingmachine.com">info@greenlightbuyingmachine.com</a></p>
+      <p style="margin:0">
+        <a href="https://www.instagram.com/greenlightbuying/" target="_blank" rel="noopener noreferrer">Instagram</a> &#183;
+        <a href="https://www.youtube.com/channel/UCwHEV3PnWvhE4RG87nw6tmA" target="_blank" rel="noopener noreferrer">YouTube</a> &#183;
+        <a href="https://trinitydesignconstruction.com" target="_blank" rel="noopener noreferrer">Trinity Design</a>
+      </p>
     </div>
     <div>
       <h4>Pages</h4>
@@ -399,7 +414,8 @@
     </div>
     <div>
       <h4>Fine print</h4>
-      <p class="fine" style="margin:0">Real estate investing carries risk. Results depend on the property, the market, and your own execution. Nothing on this site is a guarantee of profit, financial advice, or an offer to sell a security. <span class="todo">Have counsel review before launch.</span></p>
+      <p class="fine" style="margin:0 0 .6rem">Green Light Buying Machine LLC operates a private property certification and listing platform. We are not a licensed real estate broker, investment advisor, fiduciary, or contractor, and we do not provide legal, tax, financial, or investment advice. Certification is a documentation-based review, not a government approval, code-compliance certification, zoning confirmation, or safety guarantee.</p>
+      <p class="fine" style="margin:0">Members own and operate their properties independently and are solely responsible for due diligence, permits, code compliance, contractor selection, and confirming the legality of co-living use. Real estate investing carries risk and nothing here guarantees any sale, buyer, price, timing, or profit.</p>
     </div>
   </div>
 </footer>

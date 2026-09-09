@@ -44,8 +44,9 @@ CSS = r"""
   .nav{background:var(--ink);color:var(--paper)}
   .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;
     flex-wrap:wrap;padding-block:1.15rem}
-  .nav .brand{font-family:var(--display);font-weight:800;letter-spacing:-.02em;
-    text-decoration:none;font-size:1.02rem;line-height:1.15}
+  .nav .brand{display:block;line-height:0}
+  .nav .brand img{width:auto;height:52px;display:block}
+  .lp-nav .brand img{width:auto;height:52px;display:block}
   .nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;margin:0;padding:0;
     font-family:var(--display);font-weight:500;font-size:.94rem}
   .nav a{text-decoration:none;opacity:.72;padding-block:.2rem}
@@ -120,8 +121,7 @@ CSS = r"""
   /* landing page */
   .lp-nav{background:var(--ink);color:var(--paper);padding-block:1.15rem}
   .lp-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-  .lp-nav .brand{font-family:var(--display);font-weight:800;letter-spacing:-.02em;
-    text-decoration:none;font-size:1.02rem;line-height:1.15}
+  .lp-nav .brand{display:block;line-height:0}
   .lp-nav .ph{font-family:var(--plan);font-size:.78rem;opacity:.7}
 
   .lp-hero{background:var(--ink);color:var(--paper);padding-block:clamp(2.5rem,5vw,4rem) clamp(3rem,6vw,4.5rem)}
@@ -365,7 +365,7 @@ def nav(current):
         items += '<li><a href="%s"%s>%s</a></li>\n' % (href, cur, label)
     return """<nav class="nav">
   <div class="wrap">
-    <a class="brand" href="index.html">Green Light<br>Buying Machine</a>
+    <a class="brand" href="index.html"><img src="images/brand/logo-mark.png" alt="Green Light Buying Machine" width="140" height="140"><span>Green Light<br>Buying Machine</span></a>
     <ul>
 %s    </ul>
     <a class="btn" href="apply.html">Become a student</a>
@@ -376,8 +376,14 @@ FOOTER = """<footer>
   <div class="wrap">
     <div>
       <h4>Green Light Buying Machine</h4>
-      <p class="fine" style="margin:0 0 .6rem">The infrastructure behind certified co-living assets.</p>
-      <p style="margin:0"><a href="mailto:info@greenlightbuyingmachine.com">info@greenlightbuyingmachine.com</a></p>
+      <p class="fine" style="margin:0 0 .8rem">The co-living ecosystem. Property certification and marketplace access, Arizona.</p>
+      <p style="margin:0 0 .3rem"><a href="tel:4803320143">(480) 332-0143</a></p>
+      <p style="margin:0 0 .8rem"><a href="mailto:info@greenlightbuyingmachine.com">info@greenlightbuyingmachine.com</a></p>
+      <p style="margin:0">
+        <a href="https://www.instagram.com/greenlightbuying/" target="_blank" rel="noopener noreferrer">Instagram</a> &#183;
+        <a href="https://www.youtube.com/channel/UCwHEV3PnWvhE4RG87nw6tmA" target="_blank" rel="noopener noreferrer">YouTube</a> &#183;
+        <a href="https://trinitydesignconstruction.com" target="_blank" rel="noopener noreferrer">Trinity Design</a>
+      </p>
     </div>
     <div>
       <h4>Pages</h4>
@@ -395,7 +401,8 @@ FOOTER = """<footer>
     </div>
     <div>
       <h4>Fine print</h4>
-      <p class="fine" style="margin:0">Real estate investing carries risk. Results depend on the property, the market, and your own execution. Nothing on this site is a guarantee of profit, financial advice, or an offer to sell a security. <span class="todo">Have counsel review before launch.</span></p>
+      <p class="fine" style="margin:0 0 .6rem">Green Light Buying Machine LLC operates a private property certification and listing platform. We are not a licensed real estate broker, investment advisor, fiduciary, or contractor, and we do not provide legal, tax, financial, or investment advice. Certification is a documentation-based review, not a government approval, code-compliance certification, zoning confirmation, or safety guarantee.</p>
+      <p class="fine" style="margin:0">Members own and operate their properties independently and are solely responsible for due diligence, permits, code compliance, contractor selection, and confirming the legality of co-living use. Real estate investing carries risk and nothing here guarantees any sale, buyer, price, timing, or profit.</p>
     </div>
   </div>
 </footer>"""
@@ -410,6 +417,15 @@ SHELL = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Literata:opsz,wght@7..72,400;7..72,500&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/brand/favicon-256.png">
+<!-- Google Analytics 4 - replace G-XXXXXXXXXX with your measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 <style>{{CSS}}</style>
 </head>
 <body>
@@ -550,13 +566,13 @@ PAGES = {}
 # ---------------------------------------------------------------- home
 PAGES["index.html"] = dict(
 title="Green Light Buying Machine — co-living conversions for experienced flippers",
-desc="A done-with-you program for Arizona fix-and-flippers moving into co-living. We source the deal, you renovate, we bring the buyer.",
+desc="Coaching, certification and marketplace access for Arizona fix-and-flip operators converting houses for PadSplit co-living.",
 main="""<header class="phead">
   <div class="wrap">
     <div class="hero-grid">
       <div>
         <h1 style="font-size:clamp(2.9rem,1.5rem + 6vw,5.6rem)">One house.<br>Eight doors.</h1>
-        <p class="lede">Institutional-grade deal flow for PadSplit investors. The Green Light Way underwrites Arizona houses by the room &mdash; so operators build the right conversion and investors buy a finished one.</p>
+        <p class="lede">The co-living ecosystem. We teach Arizona operators to convert distressed houses for PadSplit, certify the finished property against our documented standards, and list it where registered buyers are looking.</p>
         <div class="cta-row">
           <a class="btn" href="how-it-works.html">I build</a>
           <a class="btn ghost" href="for-buyers.html">I buy</a>
@@ -608,7 +624,7 @@ main="""<header class="phead">
       <div class="roles">
         <span class="who">We handle</span>
         <h3>The exit</h3>
-        <p>We bring the buyer. You aren't listing into a retail market and hoping &mdash; you know who the property is for before you open a wall.</p>
+        <p>Your certified property is listed for registered buyers who are specifically looking for co-living assets. You sell to them directly.</p>
       </div>
     </div>
   </div>
@@ -650,7 +666,7 @@ main="""<header class="phead">
       <div class="door">
         <div class="who">If you build</div>
         <h3>Build one of our houses</h3>
-        <p>Same as any flip &mdash; you buy it, finance it, run your crew. We bring the deal flow, hold you to the standard, and identify your buyer while you're still building.</p>
+        <p>Same as any flip &mdash; you buy it, finance it, run your crew, own every decision. We coach the process, certify the finished property, and list it on our marketplace where registered buyers can find it.</p>
         <p style="opacity:.75;font-size:.95rem"><b>Requires:</b> 10&#8211;15 completed flips, your own crew, your own capital.</p>
         <div class="cta-row">
           <a class="btn" href="how-it-works.html">See how the program works</a>
@@ -659,7 +675,7 @@ main="""<header class="phead">
       <div class="door buy">
         <div class="who">If you buy</div>
         <h3>Buy a finished property</h3>
-        <p>Converted, furnished, and launched on PadSplit &mdash; without running the renovation yourself. We qualify buyers ahead of inventory so we can match early.</p>
+        <p>Register to see certified co-living properties as they're listed &mdash; converted, furnished, and documented to our standards, without running the renovation yourself.</p>
         <p style="opacity:.75;font-size:.95rem"><b>Requires:</b> proof of funds or financing in place.</p>
         <div class="cta-row">
           <a class="btn" href="for-buyers.html">Get on the buyer list</a>
@@ -674,9 +690,9 @@ main="""<header class="phead">
 # ---------------------------------------------------------------- how it works
 PAGES["how-it-works.html"] = dict(
 title="How it works — Green Light Buying Machine",
-desc="Ten stages from qualification to buyer placement, and exactly which parts we handle and which parts you do.",
+desc="Ten stages from qualification to closing, and exactly which parts we coach and which parts you own.",
 main=phead("The program", "How it works",
-  "Ten stages from qualification to buyer placement. You run the renovation. We handle the two hardest parts &mdash; finding the deal and finding the buyer.") + """
+  "Ten stages from qualification to closing. You buy the house, run the renovation, and own every decision. We coach the process, certify the result, and list it.") + """
 
 <section>
   <div class="wrap">
@@ -698,7 +714,7 @@ main=phead("The program", "How it works",
       <div class="roles">
         <span class="who">We bring</span>
         <h3>The buyer</h3>
-        <p>We guarantee to present your finished house to our qualified buyer list &mdash; investors who've bought from us before and are waiting on the next one. Whether one of them buys yours depends on the house and the market.</p>
+        <p>A certified property is listed for registered buyers &mdash; investors specifically looking for co-living assets, many of whom have bought before. We provide the visibility; the sale is between you and them, and it isn't guaranteed.</p>
       </div>
     </div>
   </div>
@@ -742,15 +758,15 @@ main=phead("The program", "How it works",
     <p>Every student runs the same sequence, tracked in your portal so you always know what's next and what's waiting on you.</p>
     <ol class="stages">
       <li><div><b>Qualification</b><span>We confirm your experience, capital, and capacity before you enroll.</span></div></li>
-      <li><div><b>Market brief</b><span>Where co-living works in the Valley, and why &mdash; submarket by submarket.</span></div></li>
+      <li><div><b>Market brief</b><span>Where co-living works in the Valley, and why. We'll walk you through what to check on parking and occupancy rules city by city &mdash; confirming it stays your responsibility.</span></div></li>
       <li><div><b>Deal sourced</b><span>We bring you a property already screened for co-living use and room count.</span></div></li>
       <li><div><b>Room-count underwriting</b><span>Pricing a house on rentable rooms instead of bedrooms.</span></div></li>
       <li><div><b>You buy it</b><span>Your offer, your financing, your name on the deed.</span></div></li>
       <li><div><b>Scope and design</b><span>Floor plan, partition strategy, and finish standard.</span></div></li>
       <li><div><b>Renovation</b><span>Your crew executes. We hand-hold to the standard and review at checkpoints.</span></div></li>
-      <li><div><b>Standards inspection</b><span>The property is checked against operator requirements before listing.</span></div></li>
+      <li><div><b>Certification review</b><span>You submit documentation and video walkthroughs; we review them against our standards. Certification attaches to that address.</span></div></li>
       <li><div><b>Furnish and launch</b><span>We furnish the house and get it live on PadSplit, ready to produce income on day one.</span></div></li>
-      <li><div><b>You sell</b><span>We bring the buyer we've been working to line up while you built.</span></div></li>
+      <li><div><b>Listed and sold</b><span>Your certified property is listed for registered buyers. You negotiate and close directly with whoever buys it.</span></div></li>
     </ol>
   </div>
 </section>
@@ -760,14 +776,14 @@ main=phead("The program", "How it works",
     <h2>What you get</h2>
     <div class="split" style="margin-top:2rem">
       <ul class="plain">
-        <li>A place in an Arizona cohort</li>
-        <li>Direct coaching from Brian and Gina Kingdeski</li>
-        <li>Deals sourced and brought to you</li>
-        <li>Your finished house presented to our qualified buyer list</li>
+        <li>Coaching weekly for your first month, every other week after</li>
+        <li>Direct access to Brian and Gina Kingdeski</li>
+        <li>Shared processes for locating, structuring and financing deals</li>
+        <li>Certification review and listing visibility to registered buyers</li>
       </ul>
       <ul class="plain">
         <li>The full course library and module handouts</li>
-        <li>A student portal tracking your deal through all ten stages</li>
+        <li>SaaS compliance reporting tools and your deal tracked through all ten stages</li>
         <li>Renovation scope and co-living build standards</li>
         <li>A copy of <i>The Green Light Buying Machine</i> when it publishes</li>
       </ul>
@@ -794,10 +810,16 @@ main=phead("The program", "How it works",
     </div>
 
     <div class="stepbox" style="margin-top:2.5rem;border-top-color:var(--green)">
-      <div class="n">BECOMING A STUDENT</div>
-      <h3 style="font-size:clamp(1.3rem,1.1rem + .8vw,1.75rem);font-weight:800">$15,000, once you're accepted</h3>
-      <p>You apply first. We review your background, and if it's a fit we talk. Payment comes after you're accepted &mdash; not before, and not as a way in.</p>
-      <p style="margin-bottom:0">As a student you get access to everything: we walk you through every step, from the first deal we bring you to the buyer at the end. The full curriculum, the coaching, the deal flow, the standards, the buyer side. It doesn't include the house &mdash; you buy and finance that yourself, the way you would any flip.</p>
+      <div class="n">BECOMING A MEMBER</div>
+      <h3 style="font-size:clamp(1.3rem,1.1rem + .8vw,1.75rem);font-weight:800">What it costs</h3>
+      <p>You apply first. We review your background, and if it's a fit we talk. Nothing is due before you're accepted.</p>
+      <ul class="plain" style="margin-top:1.25rem">
+        <li><b>$10,000 one-time</b> &mdash; certification and onboarding. Covers onboarding, coaching, education materials, and platform setup. Non-refundable, because digital resources open immediately.</li>
+        <li><b>$1,000 per month</b> &mdash; platform subscription, which begins once you've completed the trigger system course and one Green Light transaction. Covers platform tools, mentor-based coaching, the member community, certification maintenance, and marketplace access.</li>
+        <li><b>2% of gross sale price</b> &mdash; platform technology success fee, owed if a certified property closes during an active listing period. This is a technology usage fee for the Marketplace Module, not a real estate commission.</li>
+      </ul>
+      <p>None of that includes the house. You buy and finance the property and the renovation yourself, exactly as you would any fix and flip.</p>
+      <p style="margin-bottom:0">Membership is month to month, and either side can end it with 30 days' written notice. If the subscription lapses, certification goes inactive.</p>
     </div>
   </div>
 </section>
@@ -820,10 +842,11 @@ main=phead("Before you apply", "Is it for you?",
           <li>Have 10 to 15 completed flips behind you</li>
           <li>Already run your own crew &mdash; not trades you'd have to go find</li>
           <li>Buy and finance your own deals: first, second, hard money, however you normally stack it</li>
-          <li>Are ready to own the entire buildout, start to finish</li>
+          <li>Are ready to own the entire buildout and every decision in it</li>
           <li>Want a different exit, not a different hobby</li>
           <li>Can work an Arizona property &mdash; that's where our deal flow and buyers are today</li>
-          <li>Can invest $15,000 in the program, if accepted, on top of the deal itself</li>
+          <li>Can cover the onboarding fee and monthly subscription on top of the deal itself</li>
+          <li>Carry general liability insurance of at least $1,000,000 per occurrence</li>
         </ul>
       </div>
       <div class="col not">
@@ -843,18 +866,22 @@ main=phead("Before you apply", "Is it for you?",
 
 <section class="band">
   <div class="wrap">
-    <h2>What we expect from you</h2>
+    <h2>What members agree to</h2>
+    <p>These aren't aspirations &mdash; they're in the agreement you'd sign.</p>
     <div class="split" style="margin-top:2rem">
       <ul class="plain">
-        <li>You build to the standard, not to your usual retail spec</li>
-        <li>You keep the portal current so we can see where the deal stands</li>
-        <li>You raise problems early, while they're still cheap</li>
+        <li>Submit accurate, complete documentation for certification</li>
+        <li>Attend coaching &mdash; weekly the first month, every other week after</li>
+        <li>Provide video walkthroughs of the property</li>
+        <li>Maintain compliance records</li>
       </ul>
       <ul class="plain">
-        <li>You show up to cohort calls</li>
-        <li>You make decisions on your own project &mdash; we advise, you own it</li>
+        <li>Carry general liability insurance of at least $1,000,000 per occurrence</li>
+        <li>Conduct all negotiations independently</li>
+        <li>Comply with all city, county, state and federal building codes, zoning, safety and occupancy law</li>
       </ul>
     </div>
+    <p style="margin-top:1.5rem">You also take sole responsibility for permits, code compliance, contractor selection, legally required inspections, and habitability &mdash; and for your own due diligence on acquisition, financing, renovation feasibility, zoning, co-living legality, occupancy limits and resale value. We coach you through all of it. We don't verify any of it for you.</p>
   </div>
 </section>
 
@@ -863,7 +890,7 @@ main=phead("Before you apply", "Is it for you?",
     <h2>Not in Arizona?</h2>
     <div class="split" style="margin-top:1.5rem">
       <div>
-        <p>Arizona is where we operate today. The deal flow, the lender, the buyer list, and twenty-six years of knowing which streets work &mdash; all of it is here, and that's most of what makes the program worth $15,000.</p>
+        <p>Arizona is where we operate today. The processes, the lender relationship, the registered buyers, and twenty-six years of knowing which streets work &mdash; all of it is here, and that's most of what you'd be paying for.</p>
         <p>We're building toward other markets. We'd rather do that properly than plant a flag somewhere we can't yet source a deal or bring you a buyer.</p>
       </div>
       <div>
@@ -878,8 +905,8 @@ main=phead("Before you apply", "Is it for you?",
   <div class="wrap">
     <h2>Straight answers</h2>
     <div class="qa">
-      <h3>Do I have to use your deal?</h3>
-      <p>No. Bring your own if you have one &mdash; we'll underwrite it with you. Sourcing is there because finding the right house is the part most people get wrong, not because it's mandatory. <span class="todo">Confirm this is accurate.</span></p>
+      <h3>Can I bring my own deal?</h3>
+      <p>Yes, and we'll evaluate it with you first. Not every single-storey house converts &mdash; layout, egress, bathroom placement, parking and occupancy rules all decide it, and that varies house by house and city by city. We'll walk through what to look at. Confirming legal permissibility for a given property is your responsibility, not something we verify on your behalf.</p>
     </div>
     <div class="qa">
       <h3>What if the renovation goes sideways?</h3>
@@ -887,7 +914,19 @@ main=phead("Before you apply", "Is it for you?",
     </div>
     <div class="qa">
       <h3>Is the buyer guaranteed?</h3>
-      <p>We guarantee we'll present your finished property to our qualified buyer list &mdash; investors who have already bought from us and are waiting on the next one. What we can't guarantee is that one of them buys yours. That comes down to the house, your execution, and the market when you finish. <span class="todo">Confirm this wording matches the MSA before launch.</span></p>
+      <p>No, and our agreement says so in plain terms. The Marketplace Module gives your certified property listing visibility to registered buyers. We don't match buyers with sellers, negotiate, draft contracts, hold escrow, or represent either party, and we don't guarantee that a property sells, that any buyer is interested, or the timing or price of a sale. Every transaction happens directly between you and the buyer. What we do bring is an audience already looking for co-living assets and a certification that tells them what they're looking at.</p>
+    </div>
+    <div class="qa">
+      <h3>Does certification mean the house is approved or up to code?</h3>
+      <p>No. Certification confirms that the documentation you submitted meets our standards. It is not government approval, a code compliance certificate, zoning confirmation, or a safety guarantee, and we don't perform physical inspections. Permits, inspections, code compliance, occupancy rules and habitability all stay with you.</p>
+    </div>
+    <div class="qa">
+      <h3>How long does coaching last?</h3>
+      <p>For as long as your membership is active. Coaching runs weekly through your first month and every other week after that, and the agreement is month to month. <span class="todo">If coaching is meant to continue after a subscription ends, that needs to be written into the MSA &mdash; right now the two say different things.</span></p>
+    </div>
+    <div class="qa">
+      <h3>When does the next cohort start?</h3>
+      <p>There isn't a start date to wait for. Enrollment is open and you begin when you're accepted and onboarded.</p>
     </div>
     <div class="qa">
       <h3>Do I have to be in Arizona?</h3>
@@ -987,12 +1026,14 @@ main=phead("Who runs this", "Brian and Gina Kingdeski",
 <section>
   <div class="wrap">
     <div class="book">
-      <div class="portrait">photo of Brian and Gina<br>4:5 &#183; 1200&#215;1500 min</div>
+      <figure class="shot" data-full="images/brand/brian-gina.jpg" style="aspect-ratio:4/5;margin:0">
+        <img src="images/brand/brian-gina-thumb.jpg" alt="Brian and Gina Kingdeski" loading="lazy" decoding="async">
+      </figure>
       <div>
         <p>Brian and Gina Kingdeski have been fixing and flipping homes together for 26 years. They've done north of 2,300 deals in the Phoenix metropolitan area alone &mdash; through markets going up, markets crashing, and markets recovering.</p>
         <p>They've made great decisions and expensive mistakes, lost sleep over deals, and woken up to checks that changed things. What came out of all of it is a system: deal by deal, house by house, what it actually takes to build a co-living business that holds up.</p>
-        <p>They wrote that system down in <i>The Green Light Buying Machine</i> and they teach it directly &mdash; by phone, by email, and if you're here in Arizona, they'll come walk a house with you.</p>
-        <p><span class="todo">Add a photo of Brian and Gina.</span></p>
+        <p>They also own <a href="https://trinitydesignconstruction.com" target="_blank" rel="noopener noreferrer">Trinity Design and Construction</a>, which is where the build standards came from &mdash; the co-living work sits on top of a construction company, not a marketing company.</p>
+        <p>They wrote the system down in <i>The Green Light Buying Machine</i> and they teach it directly &mdash; by phone, by email, and if you're here in Arizona, they'll come walk a house with you.</p>
       </div>
     </div>
   </div>
@@ -1035,7 +1076,7 @@ main=phead("For operators", "Apply to the program",
     <div class="split">
       <div>
         <p>Nothing here is a commitment. It's how we find out whether your experience, your crew, and your capital line up with what the program actually requires &mdash; before either of us spends time on a call.</p>
-        <p style="margin-bottom:1.75rem">Applying costs nothing. If you're accepted, the program is <b>$15,000</b>, separate from the house &mdash; you buy and finance the property yourself. We'd rather you know the number now than three conversations from now.</p>
+        <p style="margin-bottom:1.75rem">Applying costs nothing. If you're accepted it's <b>$10,000</b> to onboard and certify, then <b>$1,000 a month</b> once you've finished the course and your first transaction, plus a <b>2%</b> platform fee if a certified property sells through the marketplace. The house and the renovation are yours to finance, as with any flip. Better you know that now than three conversations from now.</p>
         <form class="js-form" action="/api/apply" method="post" novalidate
               data-source="program application"
               data-sending="Sending your application&#8230;"
@@ -1235,8 +1276,8 @@ main=phead("Deal flow", "Submit a property",
 PAGES["for-buyers.html"] = dict(
 title="Buy a finished co-living property — Green Light Buying Machine",
 desc="Qualified investors get first look at Arizona co-living properties, converted and built to operator standard.",
-main=phead("For investors", "Buy a finished property",
-  "Converted, furnished, and built to PadSplit standard. We work to match inventory with pre-qualified buyers before a renovation finishes &mdash; which is why getting qualified comes first.") + """
+main=phead("For investors", "Certified co-living properties",
+  "Converted, furnished, and documented against our standards. Register as a buyer and you'll see certified properties as they're listed.") + """
 
 <section>
   <div class="wrap">
@@ -1244,7 +1285,7 @@ main=phead("For investors", "Buy a finished property",
     <div class="split">
       <div>
         <p>A single-family house in the Valley, reconfigured into individually rented rooms with shared kitchen and living space, listed and managed through PadSplit. Built to the standard the platform's residents expect rather than to whatever a contractor thought was close enough.</p>
-        <p>Every property in our inventory was renovated by an operator inside our program, to a scope we set, with review at defined checkpoints. That's the difference between this and buying somebody's first attempt at a room conversion.</p>
+        <p>Every certified property was renovated by an operator working through our program and our standards, and the documentation behind that certification comes with the listing. Certification is a documentation review rather than a physical inspection &mdash; your own inspection and due diligence still matter, and always will.</p>
       </div>
       <div>
         <p>Every house we build has at least eight bedrooms and two bathrooms, and often considerably more bathrooms than that. Ensuite rooms command higher rent on PadSplit and turn over less, so where the numbers support the extra baths we build them &mdash; and it's far cheaper to do that during a gut renovation than to add them later.</p>
@@ -1276,9 +1317,9 @@ main=phead("For investors", "Buy a finished property",
   <div class="wrap">
     <h2>How it works</h2>
     <ol class="stages">
-      <li><div><b>You get qualified</b><span>Short conversation about your criteria, timeline, and how you're funding the purchase.</span></div></li>
-      <li><div><b>You go on the list</b><span>Qualified buyers see properties before they're marketed anywhere else.</span></div></li>
-      <li><div><b>We work to match you early</b><span>We aim to pair inventory with buyers while the renovation is underway rather than after it lists.</span></div></li>
+      <li><div><b>You get pre-qualified</b><span>A conversation with Rachelle so you know what you can close on, and so do we.</span></div></li>
+      <li><div><b>You register as a buyer</b><span>Tell us your criteria and you'll be notified when certified properties are listed.</span></div></li>
+      <li><div><b>You review listings</b><span>Certification documentation comes with the listing, so you can see how the house was built.</span></div></li>
       <li><div><b>You tour and diligence</b><span>Your inspector, your lender, your timeline. We don't rush this part.</span></div></li>
       <li><div><b>You close</b><span>Vacant, furnished, and built to be exactly what it is.</span></div></li>
     </ol>
@@ -1343,7 +1384,7 @@ main=phead("For investors", "Buy a finished property",
   <div class="wrap">
     <h2>Let us know you&#8217;re ready</h2>
     <p>Already pre-qualified? This is how we know to put you on the list. When a property goes live, this is who we call first.</p>
-    <p class="todo">The embedded form is currently the one named &#8220;Rachelle Test&#8221; &mdash; confirm the production form ID before launch.</p>
+    <p class="todo">This is the form named &#8220;Rachelle Test&#8221; in GoHighLevel. Rename it before launch &mdash; the name shows in the iframe title.</p>
     <div class="embed">
       <iframe
         src="https://api.leadconnectorhq.com/widget/form/cIkTFxnNpva0nNDICpQx?notrack=true"
@@ -1352,11 +1393,13 @@ main=phead("For investors", "Buy a finished property",
         data-trigger-type="alwaysShow"
         data-activation-type="alwaysActivated"
         data-deactivation-type="neverDeactivate"
-        data-form-name="Buyer readiness"
-        data-height="800"
+        data-form-name="Rachelle Test"
+        data-height="1008"
         data-layout-iframe-id="inline-cIkTFxnNpva0nNDICpQx"
         data-form-id="cIkTFxnNpva0nNDICpQx"
-        title="Buyer readiness form"
+        data-cookie-consent="true"
+        data-cookie-consent-provider="auto"
+        title="Rachelle Test"
         loading="lazy"
         allowfullscreen></iframe>
     </div>
@@ -1410,7 +1453,7 @@ main=phead("The work", "Homes we&#8217;ve built",
 <section>
   <div class="wrap">
     <h2>More of the construction work</h2>
-    <p>Brian and Gina's construction company has a wider portfolio than the co-living conversions shown here.</p>
+    <p>Brian and Gina own Trinity Design and Construction, whose portfolio runs wider than the co-living conversions shown here.</p>
     <p><a class="btn ghost" href="https://trinitydesignconstruction.com/" target="_blank" rel="noopener noreferrer">See Trinity Design and Construction &rarr;</a></p>
   </div>
 </section>""")
@@ -1449,6 +1492,10 @@ main=phead("Questions", "Frequently asked questions",
       <p>Eight bedrooms and two bathrooms is the floor &mdash; we don't build below it. Above that floor, bathrooms are an underwriting decision rather than a finish upgrade: a room with its own ensuite bathroom rents for more than one sharing down the hall, and PadSplit's data shows how much more by submarket. Where the numbers support the extra baths, we build them. The plan on our home page is eight bedrooms and seven bathrooms for exactly that reason.</p>
     </div>
     <div class="qa">
+      <h3>What exactly am I buying?</h3>
+      <p>Two things. Coaching and a documented standard of practice for converting fix-and-flip properties to co-living &mdash; and access to a platform that certifies a finished property against those standards and lists it for registered buyers. Certification is a documentation review, not a physical inspection, and it attaches to one specific property address rather than to you or your business.</p>
+    </div>
+    <div class="qa">
       <h3>What is the Green Light Way?</h3>
       <p>How we underwrite. We price a house by rentable room rather than by bedroom count, using PadSplit's room-level rent data and accounting for which rooms can be built ensuite. That calculation is what decides whether a conversion works, and it's what turns a pile of wholesale addresses into deal flow an investor can act on.</p>
     </div>
@@ -1470,7 +1517,7 @@ main=phead("Questions", "Frequently asked questions",
       <div class="door">
         <div class="who">If you build</div>
         <h3>Build one with us</h3>
-        <p>You have completed renovations and a crew. We source the deal, coach the conversion, and bring the buyer.</p>
+        <p>You have completed renovations and a crew. We coach the conversion, certify the finished property, and list it for registered buyers.</p>
         <div class="cta-row"><a class="btn" href="how-it-works.html">How the program works</a></div>
       </div>
       <div class="door buy">
@@ -1495,13 +1542,22 @@ LANDING = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Literata:opsz,wght@7..72,400;7..72,500&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/brand/favicon-256.png">
+<!-- Google Analytics 4 - replace G-XXXXXXXXXX with your measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 <style>{{CSS}}</style>
 </head>
 <body>
 
 <nav class="lp-nav">
   <div class="wrap">
-    <a class="brand" href="index.html">Green Light<br>Buying Machine</a>
+    <a class="brand" href="index.html"><img src="images/brand/logo-mark.png" alt="Green Light Buying Machine" width="140" height="140"><span>Green Light<br>Buying Machine</span></a>
     <span class="ph">Arizona &#183; info@greenlightbuyingmachine.com</span>
   </div>
 </nav>
@@ -1516,7 +1572,7 @@ LANDING = """<!DOCTYPE html>
           <li>We bring the deal, underwritten by rentable room</li>
           <li>You buy it, finance it, and run your own crew &mdash; like any flip</li>
           <li>We hold the build to the standard our buyers expect</li>
-          <li>We guarantee to present your finished house to our qualified buyer list</li>
+          <li>Certification and listing visibility to registered buyers</li>
           <li>Arizona cohorts, small on purpose</li>
         </ul>
       </div>
@@ -1524,7 +1580,7 @@ LANDING = """<!DOCTYPE html>
       <div class="card" id="form-card">
         <div class="steps-bar"><span class="on" id="bar1"></span><span id="bar2"></span></div>
         <h2>Become a student</h2>
-        <p class="sub">Applying is free and takes two minutes. Payment only happens if you&#8217;re accepted.</p>
+        <p class="sub">Applying is free and takes two minutes. Nothing is due unless you&#8217;re accepted.</p>
 
         <form id="lpForm" novalidate>
           <div class="hp" aria-hidden="true">
@@ -1663,19 +1719,19 @@ LANDING = """<!DOCTYPE html>
     <h2>What you get as a student</h2>
     <div class="split" style="margin-top:1.5rem">
       <ul class="plain">
-        <li>A place in an Arizona cohort</li>
-        <li>Direct coaching from Brian and Gina Kingdeski</li>
-        <li>Deals sourced and brought to you</li>
-        <li>Your finished house presented to our qualified buyer list</li>
+        <li>Coaching weekly for your first month, every other week after</li>
+        <li>Direct access to Brian and Gina Kingdeski</li>
+        <li>Shared processes for locating, structuring and financing deals</li>
+        <li>Certification review and listing visibility to registered buyers</li>
       </ul>
       <ul class="plain">
         <li>The full course library and module handouts</li>
-        <li>A student portal tracking your deal through all ten stages</li>
-        <li>Renovation scope and co-living build standards</li>
-        <li>Financing through a lender who knows this asset</li>
+        <li>SaaS compliance reporting tools and your deal tracked through all ten stages</li>
+        <li>The standard of practice for fix-and-flip to co-living</li>
+        <li>Tools for supplies, furnishings, and launching on PadSplit</li>
       </ul>
     </div>
-    <p style="margin-top:2rem"><b>$15,000, once you&#8217;re accepted.</b> Applying is free. The program doesn&#8217;t include the house &mdash; you buy and finance that yourself, the way you would any flip.</p>
+    <p style="margin-top:2rem"><b>$10,000 to onboard, then $1,000 a month</b> once you&#8217;ve completed the course and your first transaction, plus a 2% platform fee if a certified property sells through the marketplace. Applying is free. None of it includes the house &mdash; you buy and finance that yourself, the way you would any flip.</p>
     <div class="cta-row">
       <a class="btn" href="#form-card">Apply now</a>
       <a class="btn ghost" href="how-it-works.html">See the full process</a>
@@ -1687,8 +1743,14 @@ LANDING = """<!DOCTYPE html>
   <div class="wrap">
     <div>
       <h4>Green Light Buying Machine</h4>
-      <p class="fine" style="margin:0 0 .6rem">The infrastructure behind certified co-living assets.</p>
-      <p style="margin:0"><a href="mailto:info@greenlightbuyingmachine.com">info@greenlightbuyingmachine.com</a></p>
+      <p class="fine" style="margin:0 0 .8rem">The co-living ecosystem. Property certification and marketplace access, Arizona.</p>
+      <p style="margin:0 0 .3rem"><a href="tel:4803320143">(480) 332-0143</a></p>
+      <p style="margin:0 0 .8rem"><a href="mailto:info@greenlightbuyingmachine.com">info@greenlightbuyingmachine.com</a></p>
+      <p style="margin:0">
+        <a href="https://www.instagram.com/greenlightbuying/" target="_blank" rel="noopener noreferrer">Instagram</a> &#183;
+        <a href="https://www.youtube.com/channel/UCwHEV3PnWvhE4RG87nw6tmA" target="_blank" rel="noopener noreferrer">YouTube</a> &#183;
+        <a href="https://trinitydesignconstruction.com" target="_blank" rel="noopener noreferrer">Trinity Design</a>
+      </p>
     </div>
     <div>
       <h4>More</h4>
@@ -1697,11 +1759,13 @@ LANDING = """<!DOCTYPE html>
         <li><a href="how-it-works.html">How it works</a></li>
         <li><a href="homes.html">Homes we&#8217;ve built</a></li>
         <li><a href="faq.html">FAQ</a></li>
+        <li><a href="disclosures.html">Disclosures</a></li>
       </ul>
     </div>
     <div>
       <h4>Fine print</h4>
-      <p class="fine" style="margin:0">Real estate investing carries risk. Results depend on the property, the market, and your own execution. Nothing on this site is a guarantee of profit, financial advice, or an offer to sell a security. <span class="todo">Have counsel review before launch.</span></p>
+      <p class="fine" style="margin:0 0 .6rem">Green Light Buying Machine LLC operates a private property certification and listing platform. We are not a licensed real estate broker, investment advisor, fiduciary, or contractor, and we do not provide legal, tax, financial, or investment advice. Certification is a documentation-based review, not a government approval, code-compliance certification, zoning confirmation, or safety guarantee.</p>
+      <p class="fine" style="margin:0">Members own and operate their properties independently and are solely responsible for due diligence, permits, code compliance, contractor selection, and confirming the legality of co-living use. Real estate investing carries risk and nothing here guarantees any sale, buyer, price, timing, or profit.</p>
     </div>
   </div>
 </footer>
@@ -1811,6 +1875,60 @@ with open(os.path.join(OUT, "start.html"), "w") as f:
     f.write(LANDING.replace("{{CSS}}", CSS))
 print("start.html", "written")
 
+
+# ---------------------------------------------------------------- disclosures
+PAGES["disclosures.html"] = dict(
+title="Disclosures — Green Light Buying Machine",
+desc="What Green Light Buying Machine LLC does and does not do, in plain language.",
+main=phead("Plain language", "Disclosures",
+  "A summary of what we do and don't do. It doesn't replace the Master Services Agreement &mdash; read that in full before signing.") + """
+
+<section>
+  <div class="wrap">
+    <div class="qa">
+      <h3>What we are</h3>
+      <p>Green Light Buying Machine LLC is an Arizona limited liability company operating a private property certification and SaaS-based listing platform. Members submit properties for documentation-based certification review, maintain compliance records, and list certified properties for visibility to registered buyers.</p>
+    </div>
+    <div class="qa">
+      <h3>What we are not</h3>
+      <p>We are not a licensed real estate broker, an investment advisor, a fiduciary, a contractor, or a zoning authority. We don't provide legal, tax, financial or investment advice, and we don't offer, sell, promote or facilitate securities, investment contracts or pooled real estate investments. Certification and marketplace access are not an investment opportunity, endorsement, or financial guarantee.</p>
+    </div>
+    <div class="qa">
+      <h3>We don't guarantee a sale</h3>
+      <p>The Marketplace Module provides listing visibility only. We don't match buyers with sellers, negotiate transactions, draft contracts, hold escrow, or represent either party. We don't guarantee that any property will sell, that any buyer will be interested, or the timing, pricing or valuation of any sale, or access to any particular end buyer. All transactions occur independently between buyer and seller. If brokerage representation is needed, it must come from a separately licensed brokerage under its own written agreement.</p>
+    </div>
+    <div class="qa">
+      <h3>We don't manage your renovation</h3>
+      <p>We share processes and coach you through them. We don't manage renovations, supervise contractors, control pricing, or require operational formats. Members retain full operational control over their properties.</p>
+    </div>
+    <div class="qa">
+      <h3>What certification means</h3>
+      <p>Certification is granted solely on submitted documentation. We do not conduct physical inspections. It is not government approval, code compliance certification, zoning confirmation, or a safety guarantee. It attaches to a single property address, is revocable, and cannot be transferred. It may be revoked for false documentation, misrepresentation, or a lapsed subscription or insurance requirement.</p>
+      <p>Members may reference certification only in connection with a specific certified property address &mdash; not as a general business credential, not as an endorsement of their company, and not in any way suggesting we guarantee property performance.</p>
+    </div>
+    <div class="qa">
+      <h3>Compliance is the member's responsibility</h3>
+      <p>We do not verify legal compliance with municipal, state or federal regulation. Members are solely responsible for building permits, code compliance, contractor selection, legally required inspections, habitability, and for independent due diligence on acquisition, financing, renovation feasibility, zoning, co-living legality, occupancy regulations and resale valuation.</p>
+    </div>
+    <div class="qa">
+      <h3>No agency, partnership or franchise</h3>
+      <p>Nothing in our agreement creates an agency, partnership, joint venture, employment or franchise relationship, and it doesn't grant the right to operate under our trade name, system or marketing model in a way that would constitute a franchise. Members operate independently.</p>
+    </div>
+    <div class="qa">
+      <h3>Fees</h3>
+      <p>A one-time $10,000 certification and onboarding fee, non-refundable because digital resources are made available immediately. A $1,000 monthly subscription, applied once the trigger system course and one Green Light transaction are complete. A 2% platform technology success fee on gross sale price if a certified property closes during an active listing period &mdash; a technology usage fee for the Marketplace Module, not a real estate commission.</p>
+    </div>
+    <div class="qa">
+      <h3>Term, liability and disputes</h3>
+      <p>The agreement is month to month; either party may terminate on 30 days' written notice, after which certification becomes inactive and marketplace access ends. Our total liability is limited to fees paid in the prior three months. Disputes are resolved by binding arbitration in Maricopa County, Arizona under Arizona law, with jury trial and class action participation waived.</p>
+    </div>
+    <div class="qa">
+      <h3>Risk</h3>
+      <p>Real estate investing carries risk. Results depend on the property, the market, and your own execution. Nothing on this site is a guarantee of profit or a promise of any particular outcome.</p>
+    </div>
+    <p style="margin-top:2rem" class="todo">Have counsel review this page against the executed MSA before launch. Where the two differ, the MSA governs.</p>
+  </div>
+</section>""")
 
 for filename, page in PAGES.items():
     html = (SHELL

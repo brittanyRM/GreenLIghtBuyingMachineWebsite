@@ -8,6 +8,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Literata:opsz,wght@7..72,400;7..72,500&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/brand/favicon-256.png">
+<!-- Google Analytics 4 - replace G-XXXXXXXXXX with your measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 <style>
   :root{
     --ink:#101C22; --ink-soft:#1B2C34;
@@ -49,8 +58,9 @@
   .nav{background:var(--ink);color:var(--paper)}
   .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;
     flex-wrap:wrap;padding-block:1.15rem}
-  .nav .brand{font-family:var(--display);font-weight:800;letter-spacing:-.02em;
-    text-decoration:none;font-size:1.02rem;line-height:1.15}
+  .nav .brand{display:block;line-height:0}
+  .nav .brand img{width:auto;height:52px;display:block}
+  .lp-nav .brand img{width:auto;height:52px;display:block}
   .nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;margin:0;padding:0;
     font-family:var(--display);font-weight:500;font-size:.94rem}
   .nav a{text-decoration:none;opacity:.72;padding-block:.2rem}
@@ -125,8 +135,7 @@
   /* landing page */
   .lp-nav{background:var(--ink);color:var(--paper);padding-block:1.15rem}
   .lp-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-  .lp-nav .brand{font-family:var(--display);font-weight:800;letter-spacing:-.02em;
-    text-decoration:none;font-size:1.02rem;line-height:1.15}
+  .lp-nav .brand{display:block;line-height:0}
   .lp-nav .ph{font-family:var(--plan);font-size:.78rem;opacity:.7}
 
   .lp-hero{background:var(--ink);color:var(--paper);padding-block:clamp(2.5rem,5vw,4rem) clamp(3rem,6vw,4.5rem)}
@@ -277,7 +286,7 @@
 <body>
 <nav class="nav">
   <div class="wrap">
-    <a class="brand" href="index.html">Green Light<br>Buying Machine</a>
+    <a class="brand" href="index.html"><img src="images/brand/logo-mark.png" alt="Green Light Buying Machine" width="140" height="140"><span>Green Light<br>Buying Machine</span></a>
     <ul>
 <li><a href="index.html">Home</a></li>
 <li><a href="how-it-works.html">Build with us</a></li>
@@ -292,8 +301,8 @@
 <header class="phead">
   <div class="wrap">
     <span class="kicker">For investors</span>
-    <h1>Buy a finished property</h1>
-    <p class="lede">Converted, furnished, and built to PadSplit standard. We work to match inventory with pre-qualified buyers before a renovation finishes &mdash; which is why getting qualified comes first.</p>
+    <h1>Certified co-living properties</h1>
+    <p class="lede">Converted, furnished, and documented against our standards. Register as a buyer and you'll see certified properties as they're listed.</p>
   </div>
 </header>
 
@@ -303,7 +312,7 @@
     <div class="split">
       <div>
         <p>A single-family house in the Valley, reconfigured into individually rented rooms with shared kitchen and living space, listed and managed through PadSplit. Built to the standard the platform's residents expect rather than to whatever a contractor thought was close enough.</p>
-        <p>Every property in our inventory was renovated by an operator inside our program, to a scope we set, with review at defined checkpoints. That's the difference between this and buying somebody's first attempt at a room conversion.</p>
+        <p>Every certified property was renovated by an operator working through our program and our standards, and the documentation behind that certification comes with the listing. Certification is a documentation review rather than a physical inspection &mdash; your own inspection and due diligence still matter, and always will.</p>
       </div>
       <div>
         <p>Every house we build has at least eight bedrooms and two bathrooms, and often considerably more bathrooms than that. Ensuite rooms command higher rent on PadSplit and turn over less, so where the numbers support the extra baths we build them &mdash; and it's far cheaper to do that during a gut renovation than to add them later.</p>
@@ -335,9 +344,9 @@
   <div class="wrap">
     <h2>How it works</h2>
     <ol class="stages">
-      <li><div><b>You get qualified</b><span>Short conversation about your criteria, timeline, and how you're funding the purchase.</span></div></li>
-      <li><div><b>You go on the list</b><span>Qualified buyers see properties before they're marketed anywhere else.</span></div></li>
-      <li><div><b>We work to match you early</b><span>We aim to pair inventory with buyers while the renovation is underway rather than after it lists.</span></div></li>
+      <li><div><b>You get pre-qualified</b><span>A conversation with Rachelle so you know what you can close on, and so do we.</span></div></li>
+      <li><div><b>You register as a buyer</b><span>Tell us your criteria and you'll be notified when certified properties are listed.</span></div></li>
+      <li><div><b>You review listings</b><span>Certification documentation comes with the listing, so you can see how the house was built.</span></div></li>
       <li><div><b>You tour and diligence</b><span>Your inspector, your lender, your timeline. We don't rush this part.</span></div></li>
       <li><div><b>You close</b><span>Vacant, furnished, and built to be exactly what it is.</span></div></li>
     </ol>
@@ -402,7 +411,7 @@
   <div class="wrap">
     <h2>Let us know you&#8217;re ready</h2>
     <p>Already pre-qualified? This is how we know to put you on the list. When a property goes live, this is who we call first.</p>
-    <p class="todo">The embedded form is currently the one named &#8220;Rachelle Test&#8221; &mdash; confirm the production form ID before launch.</p>
+    <p class="todo">This is the form named &#8220;Rachelle Test&#8221; in GoHighLevel. Rename it before launch &mdash; the name shows in the iframe title.</p>
     <div class="embed">
       <iframe
         src="https://api.leadconnectorhq.com/widget/form/cIkTFxnNpva0nNDICpQx?notrack=true"
@@ -411,11 +420,13 @@
         data-trigger-type="alwaysShow"
         data-activation-type="alwaysActivated"
         data-deactivation-type="neverDeactivate"
-        data-form-name="Buyer readiness"
-        data-height="800"
+        data-form-name="Rachelle Test"
+        data-height="1008"
         data-layout-iframe-id="inline-cIkTFxnNpva0nNDICpQx"
         data-form-id="cIkTFxnNpva0nNDICpQx"
-        title="Buyer readiness form"
+        data-cookie-consent="true"
+        data-cookie-consent-provider="auto"
+        title="Rachelle Test"
         loading="lazy"
         allowfullscreen></iframe>
     </div>
@@ -442,8 +453,14 @@
   <div class="wrap">
     <div>
       <h4>Green Light Buying Machine</h4>
-      <p class="fine" style="margin:0 0 .6rem">The infrastructure behind certified co-living assets.</p>
-      <p style="margin:0"><a href="mailto:info@greenlightbuyingmachine.com">info@greenlightbuyingmachine.com</a></p>
+      <p class="fine" style="margin:0 0 .8rem">The co-living ecosystem. Property certification and marketplace access, Arizona.</p>
+      <p style="margin:0 0 .3rem"><a href="tel:4803320143">(480) 332-0143</a></p>
+      <p style="margin:0 0 .8rem"><a href="mailto:info@greenlightbuyingmachine.com">info@greenlightbuyingmachine.com</a></p>
+      <p style="margin:0">
+        <a href="https://www.instagram.com/greenlightbuying/" target="_blank" rel="noopener noreferrer">Instagram</a> &#183;
+        <a href="https://www.youtube.com/channel/UCwHEV3PnWvhE4RG87nw6tmA" target="_blank" rel="noopener noreferrer">YouTube</a> &#183;
+        <a href="https://trinitydesignconstruction.com" target="_blank" rel="noopener noreferrer">Trinity Design</a>
+      </p>
     </div>
     <div>
       <h4>Pages</h4>
@@ -461,7 +478,8 @@
     </div>
     <div>
       <h4>Fine print</h4>
-      <p class="fine" style="margin:0">Real estate investing carries risk. Results depend on the property, the market, and your own execution. Nothing on this site is a guarantee of profit, financial advice, or an offer to sell a security. <span class="todo">Have counsel review before launch.</span></p>
+      <p class="fine" style="margin:0 0 .6rem">Green Light Buying Machine LLC operates a private property certification and listing platform. We are not a licensed real estate broker, investment advisor, fiduciary, or contractor, and we do not provide legal, tax, financial, or investment advice. Certification is a documentation-based review, not a government approval, code-compliance certification, zoning confirmation, or safety guarantee.</p>
+      <p class="fine" style="margin:0">Members own and operate their properties independently and are solely responsible for due diligence, permits, code compliance, contractor selection, and confirming the legality of co-living use. Real estate investing carries risk and nothing here guarantees any sale, buyer, price, timing, or profit.</p>
     </div>
   </div>
 </footer>
