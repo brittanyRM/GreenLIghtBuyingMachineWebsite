@@ -51,7 +51,7 @@ const shots = (set: "homes" | "plans", limit?: number) => {
 {withGround.map(({ block: b, band }) => (
   <section class={band ? "band" : undefined}>
     <div class="wrap">
-      {b.heading && <h2 set:html={b.heading} />}
+      {b.heading && b.type !== "callout" && <h2 set:html={b.heading} />}
       {b.lede && <p set:html={b.lede} />}
 
       {b.type === "prose" && (
@@ -174,6 +174,18 @@ const shots = (set: "homes" | "plans", limit?: number) => {
             />
           </figure>
           <div set:html={b.body} />
+        </div>
+      )}
+
+      {b.type === "callout" && (
+        <div class="stepbox">
+          {b.kicker && <div class="n">{b.kicker}</div>}
+          {b.heading && (
+            <h3 style="font-size:clamp(1.3rem,1.1rem + .8vw,1.75rem);font-weight:800">
+              <Fragment set:html={b.heading} />
+            </h3>
+          )}
+          <Fragment set:html={b.body} />
         </div>
       )}
 
