@@ -374,10 +374,13 @@ def nav(current):
         items += '<li><a href="%s"%s>%s</a></li>\n' % (href, cur, label)
     return """<nav class="nav">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="images/brand/logo-icon.png" srcset="images/brand/logo-icon.png 1x, images/brand/logo-icon-2x.png 2x" alt="" width="400" height="209"><span>Green Light<br>Buying Machine</span></a>
+    <a class="brand" href="index.html"><img src="images/brand/logo-icon.webp" srcset="images/brand/logo-icon.webp 1x, images/brand/logo-icon-2x.webp 2x" alt="Green Light Buying Machine" width="400" height="242"></a>
     <ul>
 %s    </ul>
-    <a class="btn" href="apply.html">Become a student</a>
+    <span class="nav-cta">
+      <a class="btn ghost" href="for-buyers.html">Buy a build</a>
+      <a class="btn" href="apply.html">Become a student</a>
+    </span>
   </div>
 </nav>""" % items
 
@@ -1561,7 +1564,7 @@ FUNNEL = """<!DOCTYPE html>
 
 <nav class="lp-nav">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="images/brand/logo-icon.png" srcset="images/brand/logo-icon.png 1x, images/brand/logo-icon-2x.png 2x" alt="" width="400" height="209"><span>Green Light<br>Buying Machine</span></a>
+    <a class="brand" href="index.html"><img src="images/brand/logo-icon.webp" srcset="images/brand/logo-icon.webp 1x, images/brand/logo-icon-2x.webp 2x" alt="Green Light Buying Machine" width="400" height="242"></a>
     <span class="ph">(480) 332-0143</span>
   </div>
 </nav>
@@ -2030,7 +2033,7 @@ LANDING = """<!DOCTYPE html>
 
 <nav class="lp-nav">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="images/brand/logo-icon.png" srcset="images/brand/logo-icon.png 1x, images/brand/logo-icon-2x.png 2x" alt="" width="400" height="209"><span>Green Light<br>Buying Machine</span></a>
+    <a class="brand" href="index.html"><img src="images/brand/logo-icon.webp" srcset="images/brand/logo-icon.webp 1x, images/brand/logo-icon-2x.webp 2x" alt="Green Light Buying Machine" width="400" height="242"></a>
     <span class="ph">(480) 332-0143</span>
   </div>
 </nav>
