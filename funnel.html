@@ -55,12 +55,25 @@
     outline:3px solid var(--amber);outline-offset:3px}
 
   /* nav */
-  .nav{background:var(--ink);color:var(--paper)}
+  .nav{background:var(--ink-soft);color:var(--paper);
+    box-shadow:inset 0 -1px 0 rgba(232,231,224,.12)}
   .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;
     flex-wrap:wrap;padding-block:1.15rem}
   .nav .brand{display:block;line-height:0}
-  .nav .brand img{width:auto;height:52px;display:block}
-  .lp-nav .brand img{width:auto;height:52px;display:block}
+  .nav .brand img,.lp-nav .brand img{width:auto;height:56px;display:block;
+    filter:drop-shadow(0 0 9px rgba(85,200,120,.42))
+           drop-shadow(0 1px 2px rgba(0,0,0,.45))
+           saturate(1.08) brightness(1.06)}
+  .nav .brand:hover img,.lp-nav .brand:hover img{
+    filter:drop-shadow(0 0 13px rgba(85,200,120,.58))
+           drop-shadow(0 1px 2px rgba(0,0,0,.45))
+           saturate(1.12) brightness(1.1)}
+  @media(prefers-reduced-motion:no-preference){
+    .nav .brand img,.lp-nav .brand img{transition:filter .25s ease}
+  }
+  @media(max-width:46rem){
+    .nav .brand img,.lp-nav .brand img{height:46px}
+  }
   .nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;margin:0;padding:0;
     font-family:var(--display);font-weight:500;font-size:.94rem}
   .nav a{text-decoration:none;opacity:.72;padding-block:.2rem}
@@ -132,14 +145,30 @@
   ol.stages b{font-family:var(--display);font-weight:600;letter-spacing:-.01em}
   ol.stages span{display:block;font-size:.95rem;opacity:.75;line-height:1.45}
 
-  .video-wrap{max-width:34rem;margin-inline:auto}
-  .vid{width:100%;height:auto;display:block;background:#000;border-radius:2px;
-    border:1px solid rgba(232,231,224,.2)}
-  .vid-cap{font-family:var(--plan);font-size:.78rem;opacity:.65;margin:.85rem 0 0;
+  .lp-stack{max-width:66rem;margin-inline:auto}
+  .lp-stack .kicker{text-align:center;display:block}
+
+  .lp-below{display:grid;gap:clamp(1.75rem,4vw,3rem);grid-template-columns:1fr;
+    margin-top:clamp(2rem,4vw,2.75rem);align-items:start}
+  @media(min-width:58rem){
+    .lp-below{grid-template-columns:minmax(0,24rem) minmax(0,1fr)}
+    /* form sits left on desktop; headline reads first on mobile */
+    .lp-below .card{order:-1}
+  }
+  .lp-words h1{margin:0 0 1rem}
+  .lp-words .lede{margin-bottom:1rem}
+  .lp-words .lede:last-child{margin-bottom:0}
+
+  .video-wrap{max-width:30rem;margin-inline:auto}
+  .vid{width:100%;height:auto;display:block;background:#000;border-radius:3px;
+    border:1px solid rgba(232,231,224,.14);
+    filter:brightness(.93) saturate(.97) contrast(1.02)}
+  .vid-cap{font-family:var(--plan);font-size:.75rem;opacity:.5;margin:.75rem 0 0;
     text-align:center;max-width:none}
 
   /* landing page */
-  .lp-nav{background:var(--ink);color:var(--paper);padding-block:1.15rem}
+  .lp-nav{background:var(--ink-soft);color:var(--paper);padding-block:1.15rem;
+    box-shadow:inset 0 -1px 0 rgba(232,231,224,.12)}
   .lp-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
   .lp-nav .brand{display:block;line-height:0}
   .lp-nav .ph{font-family:var(--plan);font-size:.78rem;opacity:.7}
@@ -311,17 +340,27 @@
 
 <header class="lp-hero">
   <div class="wrap">
-    <div class="lp-grid">
-      <div>
-        <span class="kicker">FOR OPERATORS WITH 10&#8211;15 FLIPS BEHIND THEM</span>
-        <h1>Your next flip could have a buyer waiting before the reno is finished.</h1>
-        <p class="lede"><b>Could.</b> How you build decides it. Investors are looking for finished co-living houses in the Valley &mdash; whether yours is one they want comes down to the floor plan, the room count, the bathrooms and the finish. That&#8217;s the part we teach.</p>
-        <div class="cta-row">
-          <a class="btn" href="#apply">Apply to become a member</a>
-          <a class="btn ghost" href="#how">How it works</a>
-        </div>
+    <div class="lp-stack">
+      <span class="kicker">FOR OPERATORS WITH 10&#8211;15 FLIPS BEHIND THEM</span>
+
+      <div class="video-wrap">
+        <video class="vid" controls preload="metadata" playsinline
+               poster="media/glbm-intro-poster.webp"
+               width="864" height="864">
+          <source src="media/glbm-intro.mp4" type="video/mp4">
+          Your browser can&#8217;t play this video. <a href="media/glbm-intro.mp4">Download it instead</a>.
+        </video>
+        <p class="vid-cap">Brian and Gina, about two minutes.</p>
       </div>
-      <div class="card" id="form-card">
+
+      <div class="lp-below">
+        <div class="lp-words">
+          <h1>Your next flip could have a buyer waiting before the reno is finished.</h1>
+          <p class="lede"><b>Could.</b> How you build decides it. Investors are looking for finished co-living houses &mdash; whether yours is one they want comes down to the floor plan, the room count, the bathrooms and the finish. That&#8217;s the part we teach.</p>
+          <p class="lede" style="font-size:1rem;opacity:.8">We take a small number of operators with 10 to 15 flips behind them and a crew already running. Applying is free and takes two minutes.</p>
+        </div>
+
+        <div class="card" id="form-card">
         <div class="steps-bar"><span class="on" id="bar1"></span><span id="bar2"></span></div>
         <h2>Start your application</h2>
         <p class="sub">Two minutes. Free. Nothing due unless you&#8217;re accepted. Under ten flips? There&#8217;s an option for that.</p>
@@ -392,23 +431,11 @@
             <button class="back-link" type="button" id="backTo1">&larr; Back</button>
           </div>
         </form>
+      </div>
+      </div>
     </div>
   </div>
 </header>
-
-<section class="band" style="padding-block:clamp(2rem,4vw,3rem)">
-  <div class="wrap">
-    <div class="video-wrap">
-      <video class="vid" controls preload="metadata" playsinline
-             poster="media/glbm-intro-poster.webp"
-             width="864" height="864">
-        <source src="media/glbm-intro.mp4" type="video/mp4">
-        Your browser can&#8217;t play this video. <a href="media/glbm-intro.mp4">Download it instead</a>.
-      </video>
-      <p class="vid-cap">Brian and Gina on what changes when you build for an income buyer &mdash; about two minutes.</p>
-    </div>
-  </div>
-</section>
 
 <section class="band">
   <div class="wrap">
