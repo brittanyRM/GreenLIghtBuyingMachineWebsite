@@ -4,6 +4,9 @@
   "kicker": "The co-living ecosystem",
   "heading": "One house.<br>Eight doors.",
   "lede": "The co-living ecosystem. We teach operators to convert distressed houses for PadSplit, certify the finished property against our documented standards, and list it where registered buyers are looking.",
+  "heroImage": "/images/plans/plan-ash.jpg",
+  "heroAlt": "Floor plan of the Ash conversion: eight bedrooms and seven bathrooms around a shared kitchen, great room and second sitting area",
+  "heroCaption": "Ash &#183; 8 bedrooms, 7 baths. Nearly every room ensuite.",
   "blocks": [
     {
       "type": "stats",

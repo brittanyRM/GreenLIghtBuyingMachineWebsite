@@ -18,9 +18,27 @@ const d = page.data;
 <Base title={d.title} description={d.description} noindex={d.noindex}>
   <header class="phead">
     <div class="wrap">
-      {d.kicker && <span class="kicker">{d.kicker}</span>}
-      <h1 set:html={d.heading} />
-      {d.lede && <p class="lede" set:html={d.lede} />}
+      {d.heroImage ? (
+        <div class="hero-grid">
+          <div>
+            {d.kicker && <span class="kicker">{d.kicker}</span>}
+            <h1 set:html={d.heading} />
+            {d.lede && <p class="lede" set:html={d.lede} />}
+          </div>
+          <div>
+            <figure class="shot hero-plan" data-full={d.heroImage}>
+              <img src={d.heroImage} alt={d.heroAlt ?? ""} decoding="async" />
+            </figure>
+            {d.heroCaption && <p class="plan-cap" set:html={d.heroCaption} />}
+          </div>
+        </div>
+      ) : (
+        <>
+          {d.kicker && <span class="kicker">{d.kicker}</span>}
+          <h1 set:html={d.heading} />
+          {d.lede && <p class="lede" set:html={d.lede} />}
+        </>
+      )}
     </div>
   </header>
 

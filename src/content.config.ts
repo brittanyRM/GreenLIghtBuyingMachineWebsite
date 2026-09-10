@@ -117,6 +117,11 @@ const pages = defineCollection({
     kicker: z.string().optional(),
     heading: z.string(),
     lede: z.string().optional(),
+    /* Optional image beside the page heading — a floor plan on the home
+       page, for instance. Path is relative to /public. */
+    heroImage: z.string().optional(),
+    heroAlt: z.string().optional(),
+    heroCaption: z.string().optional(),
     navLabel: z.string().optional(),
     order: z.number().optional(),
     hidden: z.boolean().default(false),
