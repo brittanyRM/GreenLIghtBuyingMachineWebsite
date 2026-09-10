@@ -20,6 +20,7 @@ src/
 │   ├── [...slug].astro        builds every page from src/content/pages
 │   ├── admin.astro            the editor
 │   ├── funnel.astro           paid-traffic funnel (bespoke, two-step form)
+│   ├── webinar.astro          live webinar registration, countdown, .ics download
 │   └── api/
 │       ├── admin/*.ts         login, logout, read and save content
 │       └── *.ts               four handlers → GoHighLevel webhooks
@@ -51,7 +52,7 @@ Six environment variables in Vercel → Settings → Environment Variables:
 | `GITHUB_REPO` | `owner/repo` — where content is committed |
 | `GITHUB_TOKEN` | Fine-grained PAT, **Contents: Read and write**, scoped to that one repo |
 | `GITHUB_BRANCH` | Optional, defaults to `main` |
-| `GHL_*_WEBHOOK_URL` | The four GoHighLevel inbound webhooks |
+| `GHL_*_WEBHOOK_URL` | The five GoHighLevel inbound webhooks |
 
 Generate the token at GitHub → Settings → Developer settings → Personal access
 tokens → Fine-grained. Give it access to this repository only, and only the
@@ -90,7 +91,7 @@ npm run build
 
 ## Forms
 
-Four forms post JSON to `/api/*`, which validate and forward to GoHighLevel.
+Five forms post JSON to `/api/*`, which validate and forward to GoHighLevel.
 They run server-side because GHL webhook endpoints don't return CORS headers
 and the URLs are unauthenticated — they must never reach the browser.
 

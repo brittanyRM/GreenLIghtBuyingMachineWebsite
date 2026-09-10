@@ -551,3 +551,38 @@ Subject: `The part the book can't do`
   the site. Selling a finished property with projected room income attached is
   a different regulatory posture than teaching a class, and the wording needs
   counsel.
+
+
+---
+
+## Webhook — Webinar registration
+
+**Workflow:** `WEB-G · Webinar Registration`
+**Trigger:** Inbound Webhook → `GHL_WEBINAR_WEBHOOK_URL`
+**Page:** `/webinar`
+
+Payload:
+
+```
+first_name, last_name, email, phone, city, state,
+flips_completed, webinar_goal, source, page, submitted_at
+```
+
+### Actions
+
+1. **Create/Update Contact** with all fields.
+2. **Add tag** `WEBINAR-REGISTERED` and `SRC-WEBSITE`.
+3. **Send email** immediately with the join link — the page tells people to
+   expect it, so it has to arrive.
+4. **Reminders:** 24 hours before, and 1 hour before. Attendance on a free
+   webinar lives and dies on the reminder sequence.
+5. **After the session,** split on attendance:
+   - Attended → the replay plus a link to apply.
+   - Didn't attend → the replay, then the apply link a day later.
+
+`flips_completed` is the qualifier. Registrants at 10+ flips who attend are the
+warmest applicants you'll get all year — tag them and treat the follow-up
+accordingly.
+
+**Set the join link before promoting the page.** The registration email is the
+only thing standing between a signup and an attendee.
