@@ -17,6 +17,22 @@ const TIME_LOCAL = "2:00 PM Arizona";
   <header class="lp-hero">
     <div class="wrap">
       <div class="web-grid">
+        <figure class="web-video">
+          <video
+            class="vid"
+            controls
+            preload="metadata"
+            playsinline
+            poster="/media/glbm-intro-poster.webp"
+            width="864"
+            height="864"
+          >
+            <source src="/media/glbm-intro.mp4" type="video/mp4" />
+            Your browser can&#8217;t play this video.
+            <a href="/media/glbm-intro.mp4">Download it instead</a>.
+          </video>
+          <figcaption>Brian and Gina, two minutes on what this is.</figcaption>
+        </figure>
         <div>
           <span class="kicker">FREE LIVE SESSION &#183; {DATE_LONG} &#183; {TIME_LOCAL}</span>
 
@@ -42,22 +58,6 @@ const TIME_LOCAL = "2:00 PM Arizona";
           </div>
         </div>
 
-        <figure class="web-video">
-          <video
-            class="vid"
-            controls
-            preload="metadata"
-            playsinline
-            poster="/media/glbm-intro-poster.webp"
-            width="864"
-            height="864"
-          >
-            <source src="/media/glbm-intro.mp4" type="video/mp4" />
-            Your browser can&#8217;t play this video.
-            <a href="/media/glbm-intro.mp4">Download it instead</a>.
-          </video>
-          <figcaption>Brian and Gina, two minutes on what this is.</figcaption>
-        </figure>
       </div>
     </div>
   </header>
@@ -343,12 +343,17 @@ const TIME_LOCAL = "2:00 PM Arizona";
 
 <style is:global>
   .web-grid { display: grid; gap: clamp(2rem, 5vw, 4rem); grid-template-columns: 1fr; align-items: center; }
-  @media (min-width: 62rem) { .web-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 24rem); } }
+  @media (min-width: 62rem) { .web-grid { grid-template-columns: minmax(0, 24rem) minmax(0, 1fr); } }
+  /* the sign-up block keeps words left, form right */
+  .signup .web-grid { grid-template-columns: 1fr; }
+  @media (min-width: 62rem) {
+    .signup .web-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 24rem); }
+  }
 
   .web-video { margin: 0; max-width: 24rem; margin-inline: auto; }
   .web-video .vid { width: 100%; height: auto; display: block; background: #000;
     border-radius: 3px; border: 1px solid rgba(232, 231, 224, .14);
-    filter: brightness(.88) saturate(.95) contrast(1.02); }
+    filter: brightness(.78) saturate(.9) contrast(1.04); }
   .web-video figcaption { font-family: var(--plan); font-size: .72rem; opacity: .55;
     margin-top: .7rem; text-align: center; }
 
