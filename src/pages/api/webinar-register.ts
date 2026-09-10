@@ -8,7 +8,7 @@ import type { APIRoute } from 'astro';
 
 export const prerender = false;
 
-const REQUIRED = ['firstName', 'lastName', 'email', 'phone', 'city', 'state'];
+const REQUIRED = ['firstName', 'email', 'phone'];
 
 export const POST: APIRoute = async ({ request }) => {
   const json = (body: unknown, status: number) =>
@@ -43,14 +43,22 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ error: 'Registration is temporarily unavailable.' }, 503);
   }
 
+  // Registrants at ten or more flips are the ones worth chasing after the
+  // session, so score it here rather than re-deriving it in the workflow.
+  const flips = (data.flipsCompleted ?? '').trim();
+  const tier = flips === '10\u201315' || flips === 'More than 15' ? 'core'
+    : flips === '5\u20139' ? 'building'
+    : 'below_bar';
+
   const payload = {
     first_name: data.firstName.trim(),
-    last_name: data.lastName.trim(),
+    last_name: (data.lastName ?? '').trim(),
     email: data.email.trim().toLowerCase(),
     phone: data.phone.trim(),
-    city: data.city.trim(),
-    state: data.state.trim(),
-    flips_completed: data.flipsCompleted ?? '',
+    city: (data.city ?? '').trim(),
+    state: (data.state ?? '').trim(),
+    flips_completed: flips,
+    registrant_tier: tier,
     webinar_goal: data.goal ?? '',
     source: data.source ?? 'webinar',
     page: data.page ?? '',

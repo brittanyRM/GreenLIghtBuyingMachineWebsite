@@ -1,249 +1,377 @@
 ---
 import Base from "../layouts/Base.astro";
+
+/* Single source of truth for the date. Change it here and the countdown,
+   the calendar file and every mention on the page follow. */
+const START_UTC = "2026-09-29T21:00:00Z"; // 2:00 PM Arizona (no DST, UTC-7)
+const DATE_LONG = "Tuesday, September 29";
+const TIME_LOCAL = "2:00 PM Arizona";
 ---
 
 <Base
-  title="Free webinar — find, fund and flip co-living properties"
-  description="A live session for experienced flippers moving into co-living: underwriting by the room, funding the project, and who the finished house sells to."
+  title="Free live session — the flip that sells to an investor"
+  description="For flippers with a crew already working: how a co-living conversion changes who buys the finished house. Live with Brian and Gina Kingdeski."
+  noindex
   bare
 >
-<header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="kicker">Live webinar for fix and flippers</span>
-      <h1>Find, fund, and flip co‑living properties.</h1>
-      <p class="lede">Brian and Gina Kingdeski walk through the strategy, the systems, and the resources behind the Green Light Buying Machine — and how experienced flippers put an existing crew to work converting houses into co‑living properties.</p>
-      <div class="cta-row">
+  <header class="lp-hero">
+    <div class="wrap">
+      <div class="web-grid">
+        <div>
+          <span class="kicker">FREE LIVE SESSION &#183; {DATE_LONG} &#183; {TIME_LOCAL}</span>
+
+          <h1>Same house. Same crew.<br />A different buyer.</h1>
+
+          <p class="lede">
+            Brian and Gina Kingdeski have flipped for 26 years and done north of 2,300 deals
+            in the Phoenix metro. In one hour they'll show you how a co-living conversion
+            changes who buys your finished house &mdash; and why that changes the whole deal.
+          </p>
+
+          <div class="web-proof">
+            <div><b>2,300+</b><span>deals</span></div>
+            <div><b>26</b><span>years</span></div>
+            <div><b>450+</b><span>doors built</span></div>
+          </div>
+
+          <p class="web-count" id="count">&#160;</p>
+
+          <div class="cta-row">
+            <a class="btn" href="#register">Save my seat</a>
+            <a class="btn ghost" href="#agenda">What's covered</a>
+          </div>
+        </div>
+
+        <figure class="web-video">
+          <video
+            class="vid"
+            controls
+            preload="metadata"
+            playsinline
+            poster="/media/glbm-intro-poster.webp"
+            width="864"
+            height="864"
+          >
+            <source src="/media/glbm-intro.mp4" type="video/mp4" />
+            Your browser can&#8217;t play this video.
+            <a href="/media/glbm-intro.mp4">Download it instead</a>.
+          </video>
+          <figcaption>Brian and Gina, two minutes on what this is.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </header>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>You already know how to run a rehab. That's not the problem.</h2>
+      <div class="split">
+        <div>
+          <p>
+            You're bidding against every other flipper for the same inventory and selling
+            into the same retail buyer pool. Rates moved. Margins thinned. Days on market
+            stretched. None of that is news to you.
+          </p>
+          <p>
+            The house isn't the problem. The buyer is. A family with a mortgage pays what
+            the comps say, and the comps are set by houses that produce nothing.
+          </p>
+        </div>
+        <div>
+          <p>
+            An investor buying a co-living property is doing different math. They price what
+            the house earns by the room, and a well-built eight or ten bedroom conversion
+            earns considerably more than a three-bedroom rental on the same footprint.
+          </p>
+          <p>
+            Almost nothing about how you work changes. What you produce at the end does, and
+            so does who writes the cheque.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="agenda">
+    <div class="wrap">
+      <h2>What you'll walk away with</h2>
+      <p>Four things you can use on your next deal, whether or not you ever work with us.</p>
+      <ol class="stages" style="margin-top:1.5rem">
+        <li>
+          <div>
+            <b>How to tell in five minutes whether a house converts</b>
+            <span>Layout, egress, bathroom placement, parking. The things that kill a conversion, and how to spot them before you walk it.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>Underwriting by the room instead of the bedroom</b>
+            <span>Where room-level rent data comes from, and how to price a house on what it earns rather than what the block comps at.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>The build standard buyers actually want</b>
+            <span>Eight bedrooms and two bathrooms as a floor, ensuite where the numbers support it, and why bathroom count is an underwriting decision rather than a finish choice.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>Where the finished house goes</b>
+            <span>Who the registered buyers are, what has to be documented for a property to qualify, and how financing works when the appraiser is pricing income instead of comps.</span>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Who should be on this call</h2>
+      <div class="fit" style="margin-top:2rem">
+        <div class="col">
+          <h3>Come if you</h3>
+          <ul>
+            <li>Have completed flips behind you &mdash; ideally ten or more</li>
+            <li>Already run a crew, or use the same trades on every job</li>
+            <li>Buy and finance your own deals</li>
+            <li>Are watching retail margins thin and want a different exit</li>
+          </ul>
+        </div>
+        <div class="col not">
+          <h3>Skip it if you</h3>
+          <ul>
+            <li>Haven't done a renovation yet &mdash; this isn't a starting point</li>
+            <li>Are looking for passive income</li>
+            <li>Want to wholesale rather than build</li>
+            <li>Are hoping for a get-rich pitch. It's an hour on how the work is actually done</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:1.75rem;opacity:.85">
+        We'd rather you skip it than sit through an hour that wasn't meant for you.
+      </p>
+    </div>
+  </section>
+
+  <section class="signup" id="register">
+    <div class="wrap">
+      <div class="web-grid">
+        <div>
+          <h2>Save your seat</h2>
+          <p class="lede" style="color:inherit;opacity:.9">
+            Free, live, about an hour including questions. Three details and you're in.
+          </p>
+
+          <h3 style="margin:2rem 0 .9rem">What happens after you register</h3>
+          <ul class="plain">
+            <li>The join link lands in your inbox within a minute</li>
+            <li>A reminder the day before, and one an hour before</li>
+            <li>A calendar file so it doesn't get buried</li>
+            <li>Can't make the 29th? Register anyway and we'll tell you when the next one runs</li>
+          </ul>
+
+          <p class="fine" style="margin-top:1.75rem;opacity:.75">
+            Live means live &mdash; Brian and Gina answer questions on the call, and that's the
+            part you can't get from a recording.
+          </p>
+        </div>
+
+        <div class="card" id="form-card">
+          <div class="web-when" id="when">
+            <div><span>Date</span><b>{DATE_LONG}</b></div>
+            <div><span>Time</span><b>{TIME_LOCAL}</b></div>
+            <div><span>Cost</span><b>Free</b></div>
+          </div>
+
+          <form id="webinarForm" novalidate>
+            <div class="hp" aria-hidden="true">
+              <label for="wb-company">Company</label>
+              <input id="wb-company" name="company" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div class="field">
+              <label for="wb-first">First name</label>
+              <input id="wb-first" name="firstName" type="text" autocomplete="given-name" required />
+            </div>
+            <div class="field">
+              <label for="wb-email">Email</label>
+              <input id="wb-email" name="email" type="email" autocomplete="email" required />
+              <p class="hint">This is where the join link goes.</p>
+            </div>
+            <div class="field">
+              <label for="wb-phone">Mobile</label>
+              <input id="wb-phone" name="phone" type="tel" autocomplete="tel" required />
+              <p class="hint">For the reminder before we start. Nothing else.</p>
+            </div>
+            <div class="field">
+              <label for="wb-flips">Flips you've completed <span class="opt">optional</span></label>
+              <select id="wb-flips" name="flipsCompleted">
+                <option value="">Select one</option>
+                <option>None yet</option>
+                <option>1&#8211;4</option>
+                <option>5&#8211;9</option>
+                <option>10&#8211;15</option>
+                <option>More than 15</option>
+              </select>
+              <p class="hint">Helps us pitch the session at the right level. Skip it if you'd rather.</p>
+            </div>
+
+            <button class="submit" type="submit">Save my seat</button>
+
+            <p class="fine" style="margin-top:.9rem;font-size:.78rem;opacity:.7">
+              By registering you agree to receive email and text about this webinar and the
+              Green Light Buying Machine. Reply STOP to opt out any time.
+            </p>
+          </form>
+
+          <div class="web-done" id="done" hidden>
+            <h3>You're in.</h3>
+            <p>
+              The join link is on its way. If it hasn't landed in a few minutes check spam,
+              then email <a href="mailto:info@greenlightbuyingmachine.com">info@greenlightbuyingmachine.com</a>.
+            </p>
+            <p style="margin-bottom:0">
+              <button class="btn" id="ics" type="button">Add to my calendar</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap" style="text-align:center">
+      <h2 style="max-width:24ch;margin-inline:auto">
+        Don't just flip houses. Build something that keeps paying.
+      </h2>
+      <div class="cta-row" style="justify-content:center">
         <a class="btn" href="#register">Save my seat</a>
-        <a class="btn ghost" href="/how-it-works">See how it works</a>
       </div>
     </div>
+  </section>
 
-    <div class="when">
-      <dl>
-        <dt>Date</dt>
-        <dd>Tuesday, September 29</dd>
-        <dt>Time</dt>
-        <dd>2:00 PM
-          <span class="tz">Arizona time — same clock as Pacific in September</span>
-        </dd>
-        <dt>Where</dt>
-        <dd>Online, live
-          <span class="tz">Join link is emailed after you register</span>
-        </dd>
-        <dt>Cost</dt>
-        <dd>Free to attend</dd>
-      </dl>
-      <p class="count" id="count" hidden></p>
-    </div>
-  </div>
-</header>
+  <script is:inline define:vars={{ START_UTC }}>
+    (function () {
+      var START = new Date(START_UTC);
 
-<div class="band">
-  <div class="wrap covered">
-    <div>
-      <h3>The co‑living model itself</h3>
-      <p>What a purpose‑built co‑living conversion is, how it differs from the flip you already know, and why the room count changes the math.</p>
-    </div>
-    <div>
-      <h3>Underwriting by the room</h3>
-      <p>How room‑level rents are used to underwrite a property before you buy it, rather than pricing the house off comparable sales alone.</p>
-    </div>
-    <div>
-      <h3>Funding the project</h3>
-      <p>The financing routes operators use on these conversions, including lenders who work on both the acquisition and the buyer side.</p>
-    </div>
-    <div>
-      <h3>Who the house sells to</h3>
-      <p>Where the finished property goes, who the registered buyers are, and what has to be documented along the way for it to qualify.</p>
-    </div>
-  </div>
-</div>
+      /* A date is information. A countdown is pressure. */
+      var el = document.getElementById("count");
+      function tick() {
+        var ms = START - new Date();
+        if (ms <= 0) { el.textContent = "The session is underway."; return; }
+        var d = Math.floor(ms / 86400000);
+        var h = Math.floor((ms % 86400000) / 3600000);
+        var m = Math.floor((ms % 3600000) / 60000);
+        el.textContent = d > 0
+          ? d + (d === 1 ? " day " : " days ") + h + "h " + m + "m to go"
+          : h + "h " + m + "m to go";
+      }
+      tick();
+      setInterval(tick, 60000);
 
-<section>
-  <div class="wrap">
-    <h2>This one is worth your time if you already run flips</h2>
-    <p>It is built for operators with a track record — roughly ten to fifteen completed flips, a crew that already works for you, and your own capital and financing. Nothing here is a starting point for a first deal.</p>
+      var form = document.getElementById("webinarForm");
+      var when = document.getElementById("when");
+      var done = document.getElementById("done");
+      var btn = form.querySelector("[type=submit]");
+      var label = btn.textContent;
 
-    <div class="ready">
-      <div>
-        <h3>Find the right deals</h3>
-        <p>How to source properties with the layout and lot to support a co‑living conversion.</p>
-      </div>
-      <div>
-        <h3>Renovate with confidence</h3>
-        <p>The remodel standard we build to: a minimum of eight bedrooms and two bathrooms, with ensuites where room rents support them.</p>
-      </div>
-      <div>
-        <h3>Fund your projects</h3>
-        <p>Financing options and hard money strategies for conversions specifically, not generic flip lending.</p>
-      </div>
-      <div>
-        <h3>Work alongside other operators</h3>
-        <p>Access to the vendor, lender, and contractor network other members are already using.</p>
-      </div>
-      <div>
-        <h3>Get certified as a builder</h3>
-        <p>What documentation the certification requires and how a certified build gets listed to registered buyers.</p>
-      </div>
-    </div>
-  </div>
-</section>
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          var bad = form.querySelector(":invalid");
+          if (bad) { bad.scrollIntoView({ behavior: "smooth", block: "center" }); bad.focus(); }
+          form.reportValidity();
+          return;
+        }
 
-<section class="signup" id="register">
-  <div class="wrap signup-grid">
-    <div>
-      <h2>Don’t just flip houses. Build a co‑living legacy.</h2>
-      <p class="lede">Register and we’ll send the join link straight away, plus a reminder the morning of the webinar.</p>
-      <p class="fine">Seats are live and limited by the room, and the session isn’t always replayed. If you can’t make September 29, register anyway and we’ll let you know when the next one is scheduled.</p>
-    </div>
+        var payload = {};
+        new FormData(form).forEach(function (v, k) { payload[k] = v; });
+        payload.source = "webinar";
+        payload.page = window.location.pathname;
 
-    <div>
-      <form id="webinarForm" novalidate>
-        <div class="row">
-          <div>
-            <label for="w-first">First name</label>
-            <input id="w-first" name="firstName" type="text" autocomplete="given-name" required>
-          </div>
-          <div>
-            <label for="w-last">Last name</label>
-            <input id="w-last" name="lastName" type="text" autocomplete="family-name" required>
-          </div>
-        </div>
+        btn.disabled = true;
+        btn.textContent = "Saving your seat\u2026";
 
-        <div class="row">
-          <div>
-            <label for="w-email">Email</label>
-            <input id="w-email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div>
-            <label for="w-phone">Mobile phone</label>
-            <input id="w-phone" name="phone" type="tel" autocomplete="tel" required>
-          </div>
-        </div>
+        fetch("/api/webinar-register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        })
+          .then(function (r) {
+            if (!r.ok) throw new Error(r.status);
+            form.hidden = true;
+            when.hidden = true;
+            done.hidden = false;
+            done.scrollIntoView({ behavior: "smooth", block: "center" });
+          })
+          .catch(function () {
+            btn.disabled = false;
+            btn.textContent = label;
+            var box = form.querySelector(".status") || document.createElement("p");
+            box.className = "status err";
+            box.textContent =
+              "That didn\u2019t save. Email info@greenlightbuyingmachine.com and we\u2019ll add you.";
+            form.insertBefore(box, form.firstChild);
+          });
+      });
 
-        <div class="row">
-          <div>
-            <label for="w-city">City</label>
-            <input id="w-city" name="city" type="text" autocomplete="address-level2" required>
-          </div>
-          <div>
-            <label for="w-state">State</label>
-            <input id="w-state" name="state" type="text" autocomplete="address-level1" required>
-          </div>
-        </div>
-
-        <div>
-          <label for="w-flips">Flips you’ve completed</label>
-          <select id="w-flips" name="flipsCompleted" required>
-            <option value="">Select one</option>
-            <option>None yet</option>
-            <option>1–4</option>
-            <option>5–9</option>
-            <option>10–15</option>
-            <option>More than 15</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="w-goal">What do you want to walk away with? <span style="font-weight:400;opacity:.65">(optional)</span></label>
-          <textarea id="w-goal" name="goal" rows="3"></textarea>
-        </div>
-
-        <div class="hp" aria-hidden="true">
-          <label for="w-company">Company</label>
-          <input id="w-company" name="company" type="text" tabindex="-1" autocomplete="off">
-        </div>
-
-        <input type="hidden" name="source" value="webinar-2026-09-29">
-
-        <button class="btn" type="submit">Register for the webinar</button>
-        <p class="fine formnote" id="formnote">By registering you agree to receive email and text messages about this webinar and the Green Light Buying Machine. Reply STOP to opt out at any time.</p>
-      </form>
-
-      <div class="msg" id="ok" role="status" aria-live="polite">
-        <h3>You’re registered.</h3>
-        <p>The join link is on its way to the email address you gave us. If it hasn’t landed in a few minutes, check the spam folder, then email <a href="mailto:info@greenlightbuyingmachine.com">info@greenlightbuyingmachine.com</a>.</p>
-        <p>Put it on your calendar so it doesn’t get away from you:</p>
-        <button class="btn" type="button" id="ics">Add to calendar</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <script src="../scripts/webinar.js"></script>
+      document.getElementById("ics").addEventListener("click", function () {
+        function stamp(d) { return d.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z"; }
+        var end = new Date(START.getTime() + 3600000);
+        var ics = [
+          "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Green Light Buying Machine//EN",
+          "BEGIN:VEVENT",
+          "UID:" + Date.now() + "@greenlightbuyingmachine.com",
+          "DTSTAMP:" + stamp(new Date()),
+          "DTSTART:" + stamp(START),
+          "DTEND:" + stamp(end),
+          "SUMMARY:Green Light Buying Machine - live session",
+          "DESCRIPTION:Find, fund and flip co-living properties. The join link was emailed to you.",
+          "URL:https://greenlightbuyingmachine.com/webinar",
+          "END:VEVENT", "END:VCALENDAR"
+        ].join("\r\n");
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(new Blob([ics], { type: "text/calendar" }));
+        a.download = "green-light-webinar.ics";
+        a.click();
+        URL.revokeObjectURL(a.href);
+      });
+    })();
+  </script>
 </Base>
 
 <style is:global>
-  *{box-sizing:border-box}
-  /* ---------- nav ---------- */
-.nav{background:var(--ink-deep);color:var(--paper);
-  box-shadow:inset 0 -1px 0 var(--rule)}
-  /* ---------- hero ---------- */
-.hero{background:var(--ink);color:var(--paper);
-  padding-block:clamp(2.75rem,6vw,4.5rem)}
-  .hero-grid{display:grid;gap:clamp(2rem,4vw,3.25rem);
-  grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:start}
-  .hero p{opacity:.9}
-  .when{border:1px solid var(--rule);border-radius:2px;
-  padding:1.25rem 1.35rem;background:rgba(85,200,120,.05)}
-  .when dl{margin:0;display:grid;grid-template-columns:auto 1fr;
-  gap:.35rem 1rem;align-items:baseline}
-  .when dt{font-family:"Spline Sans Mono",monospace;font-size:.76rem;
-  letter-spacing:.05em;text-transform:uppercase;opacity:.6}
-  .when dd{margin:0;font-family:Archivo,sans-serif;font-weight:600;font-size:1.05rem}
-  .when .tz{display:block;font-weight:500;font-size:.86rem;opacity:.72;
-  font-family:Literata,serif}
-  .count{margin-top:1.1rem;padding-top:1rem;border-top:1px solid var(--rule);
-  font-family:"Spline Sans Mono",monospace;font-size:.9rem;opacity:.85}
-  .count b{color:var(--signal-bright);font-weight:500}
-  /* ---------- buttons ---------- */
-.btn{display:inline-block;background:var(--signal);color:var(--ink-deep);
-  font-weight:700;font-size:.95rem;letter-spacing:.01em;
-  padding:.8rem 1.5rem;border:0;border-radius:2px;text-decoration:none;cursor:pointer;
-  transition:background .15s ease}
-  /* ---------- covered ---------- */
-.band{background:var(--ink-soft);color:var(--paper)}
-  .covered{display:grid;gap:1.6rem 2.25rem;
-  grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));
-  padding-block:clamp(2.25rem,4vw,3.25rem)}
-  .covered h3{color:var(--signal-bright);margin-bottom:.3rem}
-  .covered p{font-size:.96rem;opacity:.86;margin:0}
-  section{padding-block:clamp(2.75rem,5vw,4rem)}
-  .ready{display:grid;gap:1.5rem 2rem;margin-top:2rem;
-  grid-template-columns:repeat(auto-fit,minmax(14rem,1fr))}
-  .ready div{border-top:2px solid var(--ink);padding-top:.85rem}
-  .ready h3{margin-bottom:.25rem}
-  .ready p{font-size:.95rem;opacity:.78;margin:0}
-  /* ---------- form ---------- */
-.signup{background:var(--ink-deep);color:var(--paper)}
-  .signup .wrap{padding-block:clamp(2.75rem,5vw,4rem)}
-  .signup-grid{display:grid;gap:clamp(1.75rem,4vw,3rem);
-  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:start}
-  .signup h2{color:var(--paper)}
-  .signup .lede{opacity:.85}
-  form{display:grid;gap:.9rem}
-  .row{display:grid;gap:.9rem;grid-template-columns:1fr 1fr}
-  label{display:block;font-size:.82rem;font-weight:600;letter-spacing:.02em;
-  margin-bottom:.3rem}
-  input,select,textarea{width:100%;font:inherit;font-size:.98rem;
-  padding:.62rem .7rem;color:var(--ink);background:var(--paper);
-  border:1px solid transparent;border-radius:2px}
-  input:focus-visible,select:focus-visible,textarea:focus-visible,
-.btn:focus-visible,a:focus-visible{outline:2px solid var(--signal-bright);
-  outline-offset:2px}
-  textarea{resize:vertical;min-height:4.5rem}
-  .formnote{margin:.4rem 0 0}
-  .err{color:#FFC9C0}
-  /* ---------- footer ---------- */
-footer{background:var(--ink);color:var(--paper);
-  padding-block:clamp(2.25rem,4vw,3rem)}
-  .hero-grid,.signup-grid{grid-template-columns:1fr}
-  .row{grid-template-columns:1fr}
-  *{transition:none !important;animation:none !important}
-  @media (max-width:820px){
-  .hero-grid,.signup-grid{grid-template-columns:1fr}
-  .row{grid-template-columns:1fr}
-  h1{max-width:none}
-}
+  .web-grid { display: grid; gap: clamp(2rem, 5vw, 4rem); grid-template-columns: 1fr; align-items: center; }
+  @media (min-width: 62rem) { .web-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 24rem); } }
+
+  .web-video { margin: 0; max-width: 24rem; margin-inline: auto; }
+  .web-video .vid { width: 100%; height: auto; display: block; background: #000;
+    border-radius: 3px; border: 1px solid rgba(232, 231, 224, .14);
+    filter: brightness(.88) saturate(.95) contrast(1.02); }
+  .web-video figcaption { font-family: var(--plan); font-size: .72rem; opacity: .55;
+    margin-top: .7rem; text-align: center; }
+
+  .opt { font-family: var(--plan); font-size: .68rem; text-transform: uppercase;
+    letter-spacing: .06em; opacity: .55; margin-left: .4rem; font-weight: 400; }
+
+  .web-proof { display: flex; gap: 2.25rem; margin: 1.75rem 0 1.1rem; flex-wrap: wrap; }
+  .web-proof b { font-family: var(--display); font-weight: 800; font-size: 1.65rem;
+    color: var(--green-bright); display: block; line-height: 1; }
+  .web-proof span { font-size: .8rem; opacity: .7; }
+
+  .web-count { font-family: var(--plan); font-size: .82rem; letter-spacing: .06em;
+    color: var(--green-bright); margin: 0 0 1.5rem; min-height: 1.1em; }
+
+  .web-when { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem;
+    padding-bottom: 1.1rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--rule); }
+  .web-when span { display: block; font-size: .7rem; text-transform: uppercase;
+    letter-spacing: .06em; opacity: .6; }
+  .web-when b { font-family: var(--display); font-size: .92rem; }
+
+  .signup { background: var(--ink); color: var(--paper); }
+  .signup .card { color: var(--ink); }
+  .signup .plain li { border-color: rgba(232, 231, 224, .2); }
+
+  .web-done h3 { font-size: 1.4rem; margin-bottom: .6rem; }
 </style>
